@@ -20,7 +20,7 @@
   --text-color: #000;
 
   /* fonts */
-  --body-font-family: 'helvetica neue', helvetica, ubuntu, roboto, noto, sans-serif;
+  --body-font-family: 'Comfortaa', 'helvetica neue', helvetica, ubuntu, roboto, noto, sans-serif;
   --heading-font-family: var(--body-font-family);
   --fixed-font-family: 'Roboto Mono', menlo, consolas, 'Liberation Mono', monospace;
 
@@ -40,6 +40,11 @@
   /* nav height */
   --nav-height: 64px;
 
+}
+
+@font-face {
+  font-family: Comfortaa;
+  src: url(../fonts/Comfortaa-VariableFont_wght.ttf);
 }
 
 body {
@@ -200,7 +205,7 @@ hr {
 }
 
 main img {
-  max-width: 100%;
+  max-width: 400px;
   width: auto;
   height: auto;
 }
@@ -243,4 +248,18 @@ main .section.start .default-content-wrapper p:first-child {
 
 main .section.highlight {
   background-color: var(--highlight-background-color);
+}
+
+@media (min-width: 900px) {
+    main .section.highlight .cards-card-body:last-child {
+    position: relative;
+    min-height: 290px;
+  }
+
+  main .section.highlight .cards-card-body:last-child p.button-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin: 0;
+  }
 }
