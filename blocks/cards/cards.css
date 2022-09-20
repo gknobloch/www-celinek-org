@@ -18,6 +18,7 @@
 
 .cards .cards-card-image {
     line-height: 0;
+    text-align: center;
 }
 
 .cards .cards-card-body > *:first-child {
