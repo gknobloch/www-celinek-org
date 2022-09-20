@@ -253,7 +253,7 @@ main .section.highlight {
 @media (min-width: 900px) {
     main .section.highlight .cards-card-body:last-child {
     position: relative;
-    min-height: 290px;
+    min-height: 380px;
   }
 
   main .section.highlight .cards-card-body:last-child p.button-container {
