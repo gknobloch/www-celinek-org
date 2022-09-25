@@ -31,7 +31,7 @@ export default async function decorate(block) {
     nav.innerHTML = html;
     decorateIcons(nav);
 
-    const classes = ['brand', 'sections', 'tools'];
+    const classes = ['sections', 'tools'];
     classes.forEach((e, j) => {
       const section = nav.children[j];
       if (section) section.classList.add(`nav-${e}`);
@@ -49,7 +49,7 @@ export default async function decorate(block) {
       });
     }
 
-    // hamburger for mobile
+    // Hamburger for mobile
     const hamburger = document.createElement('div');
     hamburger.classList.add('nav-hamburger');
     hamburger.innerHTML = '<div class="nav-hamburger-icon"></div>';
@@ -59,6 +59,13 @@ export default async function decorate(block) {
       nav.setAttribute('aria-expanded', expanded ? 'false' : 'true');
     });
     nav.prepend(hamburger);
+
+    // Logo
+    const logo = document.createElement('div');
+    logo.setAttribute('class', 'nav-logo');
+    logo.innerHTML = '<a href="/"><img src="/icons/logo.svg" alt="Logo Céline Knobloch"/><div class="logo-description"><p class="name">Céline Knobloch</p><p class="baseline"><span>Trier</span><span class="dot">&bull;</span><span>Ranger</span><span class="dot">&bull;</span><span>Optimiser</span></p></div></a>';
+    nav.prepend(logo);
+
     nav.setAttribute('aria-expanded', 'false');
     decorateIcons(nav);
     block.append(nav);

@@ -1,18 +1,67 @@
+:root {
+  --nav-logo-height: 60px;
+  --nav-logo-height-small: 36px;
+  --nav-font-size-m: 18px;
+  --nav-font-size-s: 14px;
+  --nav-font-size-xs: 11px;
+}
+
 /* header and nav layout */
 header nav {
   display: grid;
   grid-template:
-    'hamburger brand tools' var(--nav-height)
+    'hamburger logo tools' var(--nav-height)
     'sections sections sections' 1fr / 50px 1fr 50px;
   align-items: center;
   padding: 0 2rem;
   position: fixed;
   z-index: 1;
-  background-color: var(--link-color);
+  background-color: var(--background-color);
   width: 100vw;
   height: var(--nav-height);
   box-sizing: border-box;
   font-family: var(--body-font-family);
+}
+
+/* Logo */
+header nav .nav-logo {
+  flex: 0 0 300px;
+}
+
+header nav .nav-logo img {
+  height: var(--nav-logo-height-small);
+}
+
+header nav .nav-logo .logo-description {
+  display: inline-block;
+  padding: 0 16px;
+  vertical-align: bottom;
+}
+
+header nav .nav-logo .logo-description p {
+  font-size: var(--nav-font-size-xs);
+  text-align: center;
+  line-height: 0.5rem;
+}
+
+header nav .nav-logo .logo-description p.name {
+  text-transform: uppercase;
+  color: var(--link-color);
+}
+
+header nav .nav-logo .logo-description p.baseline span {
+  display: inline-block;
+  font-variant: small-caps;
+  padding: 0 2px;
+}
+
+header nav .nav-logo .logo-description p.baseline span::first-letter {
+  color: var(--link-color);
+  font-weight: bold;
+}
+
+header nav .nav-logo .logo-description p.baseline span.dot {
+  vertical-align: middle;
 }
 
 header nav a:any-link {
@@ -20,26 +69,11 @@ header nav a:any-link {
 }
 
 header nav[aria-expanded='true'] {
-  grid-template: 'hamburger brand' 'sections sections' 'tools tools';
-  grid-template-columns:  56px 1fr;
+  grid-template: 'hamburger logo' 'sections sections' 'tools tools';
+  grid-template-columns: 50px 1fr;
+  grid-template-rows: var(--nav-height) auto;
   overflow-y: scroll;
   min-height: 100vh;
-}
-
-/* brand */
-header .nav-brand {
-  grid-area: brand;
-  font-size: 22px;
-  font-weight: 700;
-  line-height: 1em;
-}
-
-header nav .nav-brand p {
-  margin: 0;
-}
-
-header nav .nav-brand img {
-  width: 128px;
 }
 
 /* hamburger */
@@ -114,20 +148,19 @@ header nav .nav-sections {
 }
 
 header nav .nav-sections ul  {
-  font-size: 16px;
-  font-weight: 500;
   list-style: none;
   padding-left: 0;
 } 
 
 header nav .nav-sections li {
-  font-size: 20px;
-  font-weight: 500;
+  font-size: var(--nav-font-size-m);
+  font-weight: bolder;
 }
 
 header nav[aria-expanded='true'] .nav-sections {
   display: block;
   align-self: flex-start;
+  line-height: 3rem;
 }
 
 /* tools */
@@ -156,6 +189,11 @@ header nav[aria-expanded='true'] .nav-tools li {
 
 /* desktop nav styles */
 @media (min-width: 1000px) {
+  header {
+    max-width: 1220px;
+    margin: auto;
+  }
+
   header nav {
     display: flex;
     justify-content: space-between;
@@ -181,16 +219,21 @@ header nav[aria-expanded='true'] .nav-tools li {
     right: 14px;
   }
 
+  /* Logo */
+  header nav .nav-logo img {
+    height: var(--nav-logo-height);
+  }
+
+  header nav .nav-logo .logo-description p {
+    font-size: var(--nav-font-size-s);
+  }
+
   header nav .nav-hamburger {
     display: none;
   }
 
   header nav .nav-sections {
     display: unset;
-  }
-
-  header nav .nav-brand {
-    flex: 0 0 150px;
   }
 
   header nav .nav-sections ul {
@@ -209,7 +252,7 @@ header nav[aria-expanded='true'] .nav-tools li {
   header nav .nav-sections > ul > li {
     padding: 0 16px;
     position: relative;
-    font-size: 16px;
+    font-size: var(--nav-font-size-s);
     margin: 0;
     cursor: pointer;
     padding-top: 0;
@@ -223,10 +266,6 @@ header nav[aria-expanded='true'] .nav-tools li {
     margin-top: 20px;
     display: none;
     position: relative;
-  }
-
-  header nav .nav-sections > ul > li > ul:any-link {
-    font-size: var(--body-font-size-m);
   }
 
   header nav .nav-sections > ul > li > ul::before {
@@ -243,7 +282,7 @@ header nav[aria-expanded='true'] .nav-tools li {
 
 
   header nav .nav-sections > ul > li > ul > li {
-    font-size: 18px;
+    font-size: var(--nav-font-size-m);
     padding: 8px 16px;
   }
 
