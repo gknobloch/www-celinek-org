@@ -241,24 +241,14 @@ main .section.start {
   text-align: center;
 }
 
+main .section .default-content-wrapper {
+  padding: 10px;
+}
+
 main .section.start .default-content-wrapper p:first-child {
   font-weight: bold;
 }
 
-main .section.highlight {
+main .section.highlight .default-content-wrapper {
   background-color: var(--highlight-background-color);
-}
-
-@media (min-width: 900px) {
-    main .section.highlight .cards-card-body:last-child {
-    position: relative;
-    min-height: 380px;
-  }
-
-  main .section.highlight .cards-card-body:last-child p.button-container {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    margin: 0;
-  }
 }
