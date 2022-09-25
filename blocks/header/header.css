@@ -1,7 +1,6 @@
 :root {
   --nav-logo-height: 60px;
   --nav-logo-height-small: 36px;
-  --nav-font-size-l: 22px;
   --nav-font-size-m: 18px;
   --nav-font-size-s: 14px;
   --nav-font-size-xs: 11px;
@@ -190,6 +189,11 @@ header nav[aria-expanded='true'] .nav-tools li {
 
 /* desktop nav styles */
 @media (min-width: 1000px) {
+  header {
+    max-width: 1200px;
+    margin: auto;
+  }
+
   header nav {
     display: flex;
     justify-content: space-between;
@@ -248,7 +252,7 @@ header nav[aria-expanded='true'] .nav-tools li {
   header nav .nav-sections > ul > li {
     padding: 0 16px;
     position: relative;
-    font-size: var(--nav-font-size-m);
+    font-size: var(--nav-font-size-s);
     margin: 0;
     cursor: pointer;
     padding-top: 0;
@@ -262,10 +266,6 @@ header nav[aria-expanded='true'] .nav-tools li {
     margin-top: 20px;
     display: none;
     position: relative;
-  }
-
-  header nav .nav-sections > ul > li > ul:any-link {
-    font-size: var(--nav-font-size-l);
   }
 
   header nav .nav-sections > ul > li > ul::before {
