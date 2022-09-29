@@ -203,12 +203,6 @@ hr {
   border-bottom: 1px solid var(--overlay-background-color);
 }
 
-main img {
-  max-width: 400px;
-  width: auto;
-  height: auto;
-}
-
 @media (min-width: 600px) {
   main .section {
     padding: 1rem;
