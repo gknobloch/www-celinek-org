@@ -17,11 +17,12 @@ main .hero {
 main .hero h1 {
     max-width: 600px;
     margin-left: auto;
-    margin-right: 2rem;
+    margin-right: 30%;
     text-align: left;
     color: white;
+    background: #728e7fcc;
+    padding: 20px;
 }
-
 
 main .hero picture {
     position: absolute;
