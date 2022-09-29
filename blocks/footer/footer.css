@@ -12,3 +12,17 @@ footer .footer {
 footer .footer p {
   margin: 0;
 }
+
+footer .footer ul {
+  list-style: none;
+}
+
+footer .footer li {
+  padding: 0 20px;
+}
+
+@media (min-width: 600px) {
+  footer .footer ul {
+    display: flex;
+  }
+}

@@ -1,0 +1,33 @@
+main .section.pricing-container {
+  margin: 0;
+  padding: 0;
+}
+
+main .section.pricing-container ul {
+  list-style: none;
+  display: grid;
+  padding-inline-start: unset;
+}
+
+main .section.pricing-container ul li {
+  display: inline-block;
+  margin: 5px;
+  padding: 5px 30px;
+
+  border: 1px solid var(--link-color);
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (min-width: 600px) {
+  main .section.pricing-container ul {
+    display: flex;
+  }
+
+  main .section.pricing-container ul li {
+    margin: 0 2px;
+    padding: 5px 30px;
+  }
+}

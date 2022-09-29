@@ -246,3 +246,23 @@ main .section.start .default-content-wrapper p:first-child {
 main .section.highlight .default-content-wrapper {
   background-color: var(--highlight-background-color);
 }
+
+main .section.condensed-margin {
+  padding: 0.25rem;
+}
+
+main .section.condensed-margin .default-content-wrapper {
+  padding-bottom: 0;
+}
+
+main .section.who-am-i img {
+  max-width: 400px;
+  width: auto;
+  height: auto;
+}
+
+main .section.images img {
+  max-width: 100%;
+  width: auto;
+  height: auto;
+}
