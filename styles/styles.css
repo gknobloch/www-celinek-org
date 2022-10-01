@@ -15,21 +15,26 @@
   --link-color: #728e7f;
   --link-hover-color: #eed366;
   --background-color: #fdfefa;
-  --overlay-background-color: #eee;
-  --highlight-background-color: #ccc;
+  --overlay-background-color: #eed36633;
+  --highlight-background-color: #eed36666;
   --text-color: #000;
 
   /* fonts */
   --body-font-family: 'Comfortaa', 'helvetica neue', helvetica, ubuntu, roboto, noto, sans-serif;
+  --script-font-family: 'Allura', 'Brush Script MT';
   --heading-font-family: var(--body-font-family);
   --fixed-font-family: 'Roboto Mono', menlo, consolas, 'Liberation Mono', monospace;
 
   /* body sizes */
+  --body-font-size-xxl: 40px;
+  --body-font-size-xl: 32px;
+  --body-font-size-l: 28px;
   --body-font-size-m: 22px;
   --body-font-size-s: 18px;
   --body-font-size-xs: 14px;
 
   /* heading sizes */
+  --heading-font-size-4xl: 40px;
   --heading-font-size-xxl: 28px;
   --heading-font-size-xl: 22px;
   --heading-font-size-l: 18px;
@@ -44,6 +49,11 @@
 @font-face {
   font-family: Comfortaa;
   src: url(../fonts/Comfortaa-VariableFont_wght.ttf);
+}
+
+@font-face {
+  font-family: Allura;
+  src: url(../fonts/Allura-Regular.otf);
 }
 
 body {
@@ -85,6 +95,7 @@ h6 { font-size: var(--heading-font-size-xs) }
 p, dl, ol, ul, pre, blockquote {
   margin-top: 1em;
   margin-bottom: 1em;
+  text-align: justify;
 }
 
 a:any-link {
@@ -255,14 +266,44 @@ main .section.condensed-margin .default-content-wrapper {
   padding-bottom: 0;
 }
 
-main .section.who-am-i img {
+main .section.images img {
+  max-width: 100%;
+  width: auto;
+  height: auto;
+}
+
+main .section.who-am-i p {
+  text-align: justify;
+}
+
+main .section.who-am-i img, main .section.contact img {
   max-width: 400px;
   width: auto;
   height: auto;
 }
 
-main .section.images img {
-  max-width: 100%;
-  width: auto;
-  height: auto;
+main .section.who-am-i img {
+  border-radius: 70%;
+}
+
+main .section.who-am-i table {
+  font-family: var(--script-font-family);
+  font-size: var(--body-font-size-l);
+  line-height: 1;
+}
+
+main .section.who-am-i div.columns-2-cols > div > div:last-child table {
+  font-size: var(--heading-font-size-4xl);
+}
+
+@media (min-width: 900px) {
+  main .section.who-am-i div.columns-2-cols > div > div:last-child table {
+    font-size: var(--heading-font-size-xxl);
+  }
+}
+
+@media (min-width: 900px) {
+  .section.who-am-i .columns > div > div:last-child {
+    margin-left: 96px;
+  }
 }
