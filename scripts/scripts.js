@@ -142,8 +142,9 @@ export function toCamelCase(name) {
 /**
  * Replace icons with inline SVG and prefix with codeBasePath.
  * @param {Element} element
+ * @param {String} linkTarget
  */
-export function decorateIcons(element = document) {
+export function decorateIcons(element = document, linkTarget) {
   element.querySelectorAll('span.icon').forEach(async (span) => {
     if (span.classList.length < 2 || !span.classList[1].startsWith('icon-')) {
       return;
@@ -159,6 +160,9 @@ export function decorateIcons(element = document) {
         span.appendChild(img);
       } else {
         span.innerHTML = iconHTML;
+      }
+      if (linkTarget) {
+        span.parentElement.setAttribute('target', linkTarget)
       }
     }
   });
