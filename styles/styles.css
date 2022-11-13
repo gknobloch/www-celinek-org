@@ -74,15 +74,14 @@ header {
   height: var(--nav-height);
 }
 
-h1, h2, h3,
-h4, h5, h6 {
+h1, h2, h3, h4, h5, h6 {
   font-family: var(--heading-font-family);
   font-weight: 600;
   line-height: 1.25;
   margin-top: 1em;
   margin-bottom: .5em;
   scroll-margin: calc(var(--nav-height) + 1em);
-  color: #728e7f;
+  color: var(--text-color);
 }
 
 h1 { font-size: var(--heading-font-size-xxl) }
@@ -294,6 +293,21 @@ main .section.who-am-i table {
 
 main .section.who-am-i div.columns-2-cols > div > div:last-child table {
   font-size: var(--heading-font-size-4xl);
+}
+
+main .section.benefit .cards-wrapper {
+  padding: 1rem;
+}
+
+main .section.benefit img {
+  width: 50px;
+  height: 50px;
+}
+
+main .section.benefit div.cards-card-body {
+  color: var(--link-color);
+  text-align: center;
+  text-transform: uppercase;
 }
 
 @media (min-width: 900px) {
