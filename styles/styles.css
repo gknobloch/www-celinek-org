@@ -282,7 +282,7 @@ main .section.who-am-i img, main .section.contact img {
 }
 
 main .section.who-am-i img {
-  border-radius: 70%;
+  border-radius: 5%;
 }
 
 main .section.who-am-i table {
