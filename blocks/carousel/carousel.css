@@ -1,0 +1,110 @@
+.carousel-wrapper {
+  display: grid;
+  align-items: center;
+  justify-items: center;
+}
+
+.carousel {
+  max-width: 100%;
+  position: relative;
+}
+
+.carousel > ol {
+  list-style: none;
+  display: flex;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch; 
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth; 
+  padding-bottom: 5px;
+}
+
+.carousel > ol > li {
+  flex: none;
+  scroll-snap-align: start;
+  padding: 0 20px;
+  width: 100%;
+  position: relative;
+}
+
+.carousel .carousel-item-body {
+  background-color: var(--comment-background-color);
+  border-radius: 20px;
+  padding: 1rem 2rem;
+}
+
+.carousel .carousel-item-body blockquote {
+  margin-top: 2rem;
+  margin-left: 1rem;
+  margin-bottom: 0;
+}
+
+.carousel .carousel-item-body blockquote p:first-child {
+  font-style: italic;
+  margin: 0;
+}
+
+.carousel .carousel-item-body blockquote p:first-child::before,
+.carousel .carousel-item-body blockquote p:first-child::after {
+  content: '“';
+  display: block;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: xx-large;
+  color: var(--overlay-background-color);
+  line-height: 0;
+}
+
+.carousel .carousel-item-body blockquote p:first-child::after {
+  content: ' ”';
+  display: contents;
+}
+
+.carousel .carousel-item-body blockquote > cite {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  text-align: right;
+  display: block;
+  margin-top: -0.5rem;
+}
+
+.carousel > button {
+  position: absolute;
+  top: calc(50% - 15px);
+  transform: translateY(-50%);
+  border: none;
+  background-color: var(--overlay-background-color);
+  color: #000;
+  cursor: pointer;
+  padding: 10px 15px;
+  border-radius: 50%;
+  outline: none;
+  transition: all ease-in-out 0.5s;
+  opacity: 1;
+}
+
+.carousel > button.carousel-previous-button {
+  left: 0;
+}
+
+.carousel > button.carousel-next-button {
+  right: 0;
+}
+
+@media (max-width: 1200px) {
+  .carousel > ol {
+    display: block;
+  }
+
+  .carousel > ol > li {
+    margin-bottom: 1rem;
+    max-width: 90vw;
+    padding: 0 5vw;
+  }
+
+  .carousel .carousel-item-body blockquote {
+    margin: 1rem;
+  }
+
+  .carousel > button {
+    visibility: hidden;
+  }
+}

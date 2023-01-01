@@ -15,8 +15,9 @@
   --link-color: #728e7f;
   --link-hover-color: #eed366;
   --background-color: #fdfefa;
-  --overlay-background-color: #f8fcf1;
-  --highlight-background-color: #f8fcf1;
+  --overlay-background-color: #f8e1af;
+  --highlight-background-color: #f8e1af;
+  --comment-background-color: rgba(114, 142, 127, 0.7);
   --text-color: #000;
 
   /* fonts */
@@ -64,6 +65,7 @@ body {
   color: var(--text-color);
   background-color: var(--background-color);
   display: none;
+  overflow-x: hidden;
 }
 
 body.appear {
