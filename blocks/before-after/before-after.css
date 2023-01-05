@@ -1,0 +1,40 @@
+.before-after > .before-after-container {
+  display: grid;
+}
+
+.before-after .before-after-image {
+  grid-column: 1;
+  grid-row: 1;
+  position: relative;
+  z-index: 1;
+}
+
+.before-after .before-after-image.before-after-image-overlay {
+  z-index: 2;
+  
+}
+
+.before-after .before-after-container input[type='range'] {
+  grid-column: 1;
+  grid-row: 1;
+  position: relative;
+  z-index: 3;
+  margin: 0 20px 0 -20px;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  -webkit-appearance: none;
+  outline: none;
+}
+
+.before-after .before-after-container input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 40px;
+  width: 40px;
+  background-color: var(--comment-background-color);
+  border: 4px solid var(--overlay-background-color);
+  border-radius: 50%;
+  background-size: contain;
+  cursor: pointer;
+  margin-top: 50px;
+}

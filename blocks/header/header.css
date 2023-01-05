@@ -199,6 +199,7 @@ header nav[aria-expanded='true'] .nav-tools li {
     justify-content: space-between;
     height: var(--nav-height);
     padding: 16px 2rem;
+    z-index: 99;
   }
 
   header nav .nav-sections > ul > li.nav-drop {
