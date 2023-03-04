@@ -251,6 +251,22 @@ main .section .default-content-wrapper {
   padding: 10px;
 }
 
+main .section strong {
+  position: relative;
+}
+
+main .section strong:before {
+  background-color: var(--overlay-background-color);
+  content: "";
+  position: absolute;
+  width: calc(100% + 4px);
+  height: 60%;
+  left: -2px;
+  bottom: 0;
+  z-index: -1;
+  transform: rotate(-2deg);
+}
+
 main .section.start .default-content-wrapper p:first-child {
   font-weight: bold;
 }
