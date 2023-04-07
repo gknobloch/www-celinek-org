@@ -3,7 +3,7 @@
 main .hero-container {
     padding: 0;
 }
-  
+
 main .hero {
     position: relative;
 }
@@ -11,14 +11,38 @@ main .hero {
 main .hero h1 {
     margin-left: auto;
     text-align: left;
-    color: white;
-    background: #728e7fcc;
+    color: var(--link-color);
+    font-family: var(--script-font-family);
+    font-style: italic;
+    text-align: center;
+    transform: scale(0.85);
+    animation: scale 4s forwards cubic-bezier(0.42, 0, 0.58, 1);
+}
+
+@keyframes scale {
+    100% {
+        transform: scale(1);
+    }
+}
+
+main .hero h1 span {
+    display: inline-block;
+    opacity: 0;
+    filter: blur(4px);
+    padding: 0 5px;
+}
+
+@keyframes fade-in {
+    100% {
+        opacity: 1;
+        filter: blur(0);
+    }
 }
 
 @media (max-width: 400px) {
     main .hero h1 {
         max-width: 150px;
-        font-size: var(--body-font-size-m);
+        font-size: var(--body-font-size-l);
     }
 }
 
@@ -33,6 +57,7 @@ main .hero h1 {
         margin-top: 10px;
         margin-right: 10px;
         padding: 10px;
+        font-size: var(--body-font-size-l);
     }
 }
 
@@ -43,9 +68,10 @@ main .hero h1 {
     }
 
     main .hero h1 {
-        max-width: 250px;
+        max-width: 280px;
         margin-right: 20px;
         padding: 20px;
+        font-size: var(--body-font-size-xl);
     }
 }
 
@@ -60,6 +86,7 @@ main .hero h1 {
         max-width: 350px;
         margin-right: 30px;
         padding: 20px;
+        font-size: var(--body-font-size-xxl);
     }
 }
 
@@ -74,8 +101,10 @@ main .hero h1 {
     }
 
     main .hero h1 {
+        max-width: 550px;
         margin-right: 40px;
         padding: 20px;
+        font-size: 70px;
     }
 }
 

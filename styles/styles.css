@@ -22,7 +22,7 @@
 
   /* fonts */
   --body-font-family: 'Comfortaa', 'helvetica neue', helvetica, ubuntu, roboto, noto, sans-serif;
-  --script-font-family: 'Allura', 'Brush Script MT';
+  --script-font-family: 'Sacramento', 'Brush Script MT';
   --heading-font-family: var(--body-font-family);
   --fixed-font-family: 'Roboto Mono', menlo, consolas, 'Liberation Mono', monospace;
 
@@ -35,7 +35,7 @@
   --body-font-size-xs: 14px;
 
   /* heading sizes */
-  --heading-font-size-4xl: 40px;
+  --heading-font-size-4xl: 52px;
   --heading-font-size-xxl: 28px;
   --heading-font-size-xl: 22px;
   --heading-font-size-l: 18px;
@@ -53,8 +53,8 @@
 }
 
 @font-face {
-  font-family: Allura;
-  src: url(../fonts/Allura-Regular.otf);
+  font-family: Sacramento;
+  src: url(../fonts/Sacramento-Regular.ttf);
 }
 
 body {
@@ -283,7 +283,7 @@ main .section.condensed-margin .default-content-wrapper {
   padding-bottom: 0;
 }
 
-main .section.images img {
+main img {
   max-width: 100%;
   width: auto;
   height: auto;
@@ -305,7 +305,7 @@ main .section.who-am-i img {
 
 main .section.who-am-i table {
   font-family: var(--script-font-family);
-  font-size: var(--body-font-size-l);
+  font-size: var(--body-font-size-xxl);
   line-height: 1;
 }
 
@@ -330,7 +330,7 @@ main .section.benefit div.cards-card-body {
 
 @media (min-width: 900px) {
   main .section.who-am-i div.columns-2-cols > div > div:last-child table {
-    font-size: var(--heading-font-size-xxl);
+    font-size: var(--heading-font-size-4xl);
   }
 }
 
