@@ -27,6 +27,10 @@ export default async function decorate(block) {
     const html = await resp.text();
 
     // decorate nav DOM
+    const navWrapper = document.createElement('div');
+    navWrapper.setAttribute('class', 'nav-wrapper');
+
+    // decorate nav DOM
     const nav = document.createElement('nav');
     nav.innerHTML = html;
     decorateIcons(nav);
@@ -68,6 +72,7 @@ export default async function decorate(block) {
 
     nav.setAttribute('aria-expanded', 'false');
     decorateIcons(nav);
-    block.append(nav);
+    navWrapper.append(nav);
+    block.append(navWrapper);
   }
 }
