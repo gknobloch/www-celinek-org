@@ -3,12 +3,13 @@
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
   grid-gap: 16px;
 }
 
 .cards > ul > li {
-  background-color: var(--background-color)
+  background-color: var(--background-color);
+  border-radius: 5%;
 }
 
 .highlight .cards > ul > li {
@@ -32,4 +33,5 @@
   width: 100%;
   aspect-ratio: 4 / 3;
   object-fit: cover;
+  border-radius: 5%;
 }
