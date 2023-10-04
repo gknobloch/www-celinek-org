@@ -309,6 +309,22 @@ main .section.who-am-i table {
   line-height: 1;
 }
 
+main .section.script {
+  font-family: var(--script-font-family);
+  font-size: var(--body-font-size-xl);
+  line-height: 1;
+  padding: 0 1rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 900px) {
+  main .section.script {
+    max-width: 50%;
+    font-size: var(--body-font-size-xxl);
+  }
+}
+
 main .section.who-am-i div.columns-2-cols > div > div:last-child table {
   font-size: var(--heading-font-size-4xl);
 }
