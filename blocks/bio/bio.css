@@ -4,6 +4,7 @@
 
 .bio img {
     border-radius: 16px;
+    min-width: 150px;
 }
 
 .bio > div {
