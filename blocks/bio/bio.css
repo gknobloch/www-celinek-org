@@ -1,0 +1,28 @@
+.bio {
+    margin: auto;
+}
+
+.bio img {
+    border-radius: 16px;
+}
+
+.bio > div {
+    display: flex;
+    flex-direction: column;
+}
+
+.bio > div > div {
+    margin: 10px;
+}
+
+@media (min-width: 900px) {
+    .bio {
+        width: 750px;
+    }
+
+    .bio > div {
+        display: flex;
+        align-items: flex-start;
+        flex-direction: unset;
+    }
+}
