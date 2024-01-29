@@ -23,7 +23,11 @@
 
     .bio > div {
         display: flex;
-        align-items: flex-start;
+        align-items: center;
         flex-direction: unset;
+    }
+
+    .bio > div > div {
+        text-align: justify;
     }
 }
