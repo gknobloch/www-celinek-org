@@ -27,16 +27,24 @@ footer .footer li {
   padding: 0 20px;
 }
 
+footer .footer a.button {
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background: none;
+}
+
 footer .footer a:hover {
   color: black;
 }
 
-footer .footer span.icon svg {
+footer .footer span.icon img {
   width: 30px;
   height: 30px;
 }
 
-@media (min-width: 600px) {
+@media (width >= 600px) {
   footer .footer ul {
     display: flex;
   }

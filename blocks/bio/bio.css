@@ -16,7 +16,7 @@
     margin: 10px;
 }
 
-@media (min-width: 900px) {
+@media (width >= 900px) {
     .bio {
         width: 750px;
     }

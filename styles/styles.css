@@ -17,7 +17,7 @@
   --background-color: #fdfefa;
   --overlay-background-color: #f8e1af;
   --highlight-background-color: #f8e1af;
-  --comment-background-color: rgba(114, 142, 127, 0.7);
+  --comment-background-color: rgb(114 142 127 / 70%);
   --text-color: #000;
 
   /* fonts */
@@ -45,16 +45,6 @@
 
   /* nav height */
   --nav-height: 96px;
-}
-
-@font-face {
-  font-family: Comfortaa;
-  src: url(../fonts/Comfortaa-VariableFont_wght.ttf);
-}
-
-@font-face {
-  font-family: Sacramento;
-  src: url(../fonts/Sacramento-Regular.ttf);
 }
 
 body {
@@ -215,13 +205,13 @@ hr {
   border-bottom: 1px solid var(--overlay-background-color);
 }
 
-@media (min-width: 600px) {
+@media (width >= 600px) {
   main .section {
     padding: 1rem;
   }  
 }
 
-@media (min-width: 900px) {
+@media (width >= 900px) {
   :root {
     --heading-font-size-xxl: 36px;
     --heading-font-size-xl: 28px;
@@ -255,7 +245,7 @@ main .section strong {
   position: relative;
 }
 
-main .section strong:before {
+main .section strong::before {
   background-color: var(--overlay-background-color);
   content: "";
   position: absolute;
@@ -265,6 +255,10 @@ main .section strong:before {
   bottom: 0;
   z-index: -1;
   transform: rotate(-2deg);
+}
+
+main .section.who-am-i p {
+  text-align: justify;
 }
 
 main .section.start .default-content-wrapper p:first-child {
@@ -287,10 +281,6 @@ main img {
   max-width: 100%;
   width: auto;
   height: auto;
-}
-
-main .section.who-am-i p {
-  text-align: justify;
 }
 
 main .section.who-am-i img, main .section.contact img {
@@ -318,7 +308,7 @@ main .section.script {
   margin-right: auto;
 }
 
-@media (min-width: 900px) {
+@media (width >= 900px) {
   main .section.script {
     max-width: 50%;
     font-size: var(--body-font-size-xxl);
@@ -344,13 +334,13 @@ main .section.benefit div.cards-card-body {
   text-transform: uppercase;
 }
 
-@media (min-width: 900px) {
+@media (width >= 900px) {
   main .section.who-am-i div.columns-2-cols > div > div:last-child table {
     font-size: var(--heading-font-size-4xl);
   }
 }
 
-@media (min-width: 900px) {
+@media (width >= 900px) {
   .section.who-am-i .columns > div > div:last-child {
     margin-left: 96px;
   }

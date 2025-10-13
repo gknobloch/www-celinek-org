@@ -1,4 +1,4 @@
-import { createOptimizedPicture } from '../../scripts/scripts.js';
+import { createOptimizedPicture } from '../../scripts/aem.js';
 
 export default async function decorate(block) {
   const maxWidth = 500;
@@ -9,10 +9,9 @@ export default async function decorate(block) {
 
     // Replace images with optimized pictures
     container.querySelectorAll('img').forEach((img, index) => {
-      var eager = (index % 2) != 0; // To make sure the right image is not lazy loaded
-      console.log('eager', index, eager);
+      const eager = (index % 2) !== 0; // To make sure the right image is not lazy loaded
       img.closest('picture').replaceWith(
-        createOptimizedPicture(img.src, img.alt, eager, [{ width: maxWidth }])
+        createOptimizedPicture(img.src, img.alt, eager, [{ width: maxWidth }]),
       );
       img.width = maxWidth + 'px';
     });

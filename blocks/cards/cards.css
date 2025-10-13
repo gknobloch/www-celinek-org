@@ -4,7 +4,7 @@
   padding: 0;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
-  grid-gap: 16px;
+  gap: 16px;
 }
 
 .cards > ul > li {
@@ -18,6 +18,10 @@
 
 .cards .cards-card-body {
   margin: 16px;
+}
+
+.benefit .cards .cards-card-body p {
+  text-align: center;
 }
 
 .cards .cards-card-image {
