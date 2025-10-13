@@ -2,7 +2,6 @@ import js from '@eslint/js';
 import babelParser from '@babel/eslint-parser';
 import importPlugin from 'eslint-plugin-import';
 import globals from 'globals';
-import airbnbBase from 'eslint-config-airbnb-base';
 
 export default [
   // Global ignores
@@ -31,10 +30,27 @@ export default [
       import: importPlugin,
     },
     rules: {
-      ...airbnbBase.rules,
-      'import/extensions': ['error', { js: 'always' }],
+      // Import rules
+      'import/extensions': ['error', 'always', { ignorePackages: true }],
+      'import/no-unresolved': 'off',
+      'import/prefer-default-export': 'off',
+      
+      // Code quality
+      'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+      'no-param-reassign': ['error', { props: false }],
+      'no-console': 'off',
+      
+      // Style
       'linebreak-style': ['error', 'unix'],
-      'no-param-reassign': [2, { props: false }],
+      'quotes': ['error', 'single', { avoidEscape: true }],
+      'semi': ['error', 'always'],
+      'comma-dangle': ['error', 'always-multiline'],
+      
+      // Best practices
+      'eqeqeq': ['error', 'always'],
+      'no-var': 'error',
+      'prefer-const': 'error',
+      'prefer-arrow-callback': 'error',
     },
   },
 ];
