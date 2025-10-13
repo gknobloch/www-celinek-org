@@ -20,6 +20,10 @@
   margin: 16px;
 }
 
+.benefit .cards .cards-card-body p {
+  text-align: center;
+}
+
 .cards .cards-card-image {
   line-height: 0;
   text-align: center;
