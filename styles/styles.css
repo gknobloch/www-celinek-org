@@ -47,16 +47,6 @@
   --nav-height: 96px;
 }
 
-@font-face {
-  font-family: Comfortaa;
-  src: url(../fonts/Comfortaa-VariableFont_wght.ttf);
-}
-
-@font-face {
-  font-family: Sacramento;
-  src: url(../fonts/Sacramento-Regular.ttf);
-}
-
 body {
   font-size: var(--body-font-size-s);
   margin: 0;
