@@ -44,7 +44,7 @@ footer .footer span.icon img {
   height: 30px;
 }
 
-@media (min-width: 600px) {
+@media (width >= 600px) {
   footer .footer ul {
     display: flex;
   }

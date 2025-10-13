@@ -54,7 +54,7 @@ export default async function decorateCarousel(block) {
     carousel.scrollBy(300, 0);
   };
 
-  nextButton.addEventListener('click', e => {
+  nextButton.addEventListener('click', () => {
     nextCarousel();
   });
 
@@ -68,7 +68,7 @@ export default async function decorateCarousel(block) {
     carousel.scrollBy(-300, 0);
   };
 
-  prevButton.addEventListener('click', e => {
+  prevButton.addEventListener('click', () => {
     prevCarousel();
   });
 
@@ -80,21 +80,21 @@ export default async function decorateCarousel(block) {
     sliderInterval = setInterval(nextCarousel, intervalTime);
   }
 
-  carousel.addEventListener('mouseover', (stopInterval) => {
+  carousel.addEventListener('mouseover', () => {
     clearInterval(sliderInterval);
   });
 
-  carousel.addEventListener('mouseleave', (startInterval) => {
+  carousel.addEventListener('mouseleave', () => {
     if (auto) {
       sliderInterval = setInterval(nextCarousel, intervalTime);
     }
   });
 
   // For mobile events
-  carousel.addEventListener('touchstart', (stopIntervalT) => {
+  carousel.addEventListener('touchstart', () => {
     clearInterval(sliderInterval);
   });
-  carousel.addEventListener('touchend', (startIntervalT) => {
+  carousel.addEventListener('touchend', () => {
     if (auto) {
       sliderInterval = setInterval(nextCarousel, intervalTime);
     }

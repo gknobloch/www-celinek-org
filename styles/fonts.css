@@ -1,10 +1,10 @@
 /* stylelint-disable max-line-length */
 @font-face {
   font-family: Comfortaa;
-  src: url(../fonts/Comfortaa-VariableFont_wght.ttf);
+  src: url("../fonts/Comfortaa-VariableFont_wght.ttf");
 }
 
 @font-face {
   font-family: Sacramento;
-  src: url(../fonts/Sacramento-Regular.ttf);
+  src: url("../fonts/Sacramento-Regular.ttf");
 }

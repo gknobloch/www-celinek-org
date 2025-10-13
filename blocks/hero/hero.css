@@ -10,7 +10,6 @@ main .hero {
 
 main .hero h1 {
     margin-left: auto;
-    text-align: left;
     color: var(--link-color);
     font-family: var(--script-font-family);
     font-style: italic;
@@ -39,14 +38,14 @@ main .hero h1 span {
     }
 }
 
-@media (max-width: 400px) {
+@media (width <= 400px) {
     main .hero h1 {
         max-width: 150px;
         font-size: var(--body-font-size-l);
     }
 }
 
-@media (max-width: 600px) {
+@media (width <= 600px) {
     main .hero {
         min-height: 350px;
         padding: 10px;
@@ -61,7 +60,7 @@ main .hero h1 span {
     }
 }
 
-@media (min-width: 600px) {
+@media (width >= 600px) {
     main .hero {
         min-height: 350px;
         padding: 10px;
@@ -76,7 +75,7 @@ main .hero h1 span {
 }
 
 
-@media (min-width: 900px) {
+@media (width >= 900px) {
     main .hero {
         min-height: 400px;
         padding: 20px;
@@ -90,7 +89,7 @@ main .hero h1 span {
     }
 }
 
-@media (min-width: 1200px) {
+@media (width >= 1200px) {
     main .hero-container > div {
         max-width: 1600px;
     }
@@ -111,10 +110,7 @@ main .hero h1 span {
 main .hero picture {
     position: absolute;
     z-index: -1;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
+    inset: 0;
     object-fit: cover;
     box-sizing: border-box;
 }
