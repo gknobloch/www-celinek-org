@@ -441,12 +441,12 @@ body:has(.cine-hero) header .nav-logo .logo-description { padding: 0; text-align
 body:has(.cine-hero) header .nav-logo img { height: 56px; transition: height 0.38s cubic-bezier(0.16, 1, 0.3, 1); }
 
 /* logo text — deep sage #4a6357 (prototype), name 16px/700, tag 11px/600 uppercase */
-body:has(.cine-hero) header .nav-logo .logo-description p.name { color: #4a6357; font-size: 16px; font-weight: 700; line-height: 1.1; letter-spacing: 0; text-align: left; margin: 0; }
+body:has(.cine-hero) header .nav-logo .logo-description p.name { color: var(--link-color); font-size: 16px; font-weight: 700; line-height: 1.1; letter-spacing: 0; text-align: left; margin: 0; }
 /* tagline is OUT OF FLOW (absolute) so the NAME centers with the mark/links/CTA;
    it hangs just below the name and fades out on scroll */
 body:has(.cine-hero) header .nav-logo .logo-description p.baseline { position: absolute; top: 100%; left: 0; margin: 2px 0 0; white-space: nowrap; font-size: 11px; line-height: 1.35; letter-spacing: 0.12em; text-align: left; opacity: 1; transition: opacity 0.3s ease; }
-body:has(.cine-hero) header .nav-logo .logo-description p.baseline span { color: #4a6357; font-weight: 600; }
-body:has(.cine-hero) header .nav-logo .logo-description p.baseline span::first-letter { color: #4a6357; }
+body:has(.cine-hero) header .nav-logo .logo-description p.baseline span { color: var(--link-color); font-weight: 600; }
+body:has(.cine-hero) header .nav-logo .logo-description p.baseline span::first-letter { color: var(--link-color); }
 
 /* nav links — dark #1a1a17, 15px, weight 500 (prototype), sage on hover */
 body:has(.cine-hero) header .nav-sections a:any-link { color: #1a1a17; font-size: 15px; font-weight: 500; }
