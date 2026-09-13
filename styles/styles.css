@@ -439,13 +439,17 @@ body:has(.cine-hero) header .nav-logo .logo-description p.baseline span,
 body:has(.cine-hero) header .nav-logo .logo-description p.baseline span::first-letter { color: #fff; }
 body:has(.cine-hero) header .nav-logo .logo-description p.name { text-shadow: 0 1px 8px rgb(26 26 23 / 40%); }
 body:has(.cine-hero) header nav a:hover { text-decoration: none; color: #eed366; }
-/* Contactez-moi (nav-tools) as a gold pill */
-body:has(.cine-hero) header .nav-tools a { background: #eed366; color: #1a1a17; padding: 10px 20px; border-radius: 999px; font-weight: 600; }
+/* Contactez-moi (nav-tools) as a compact gold pill */
+body:has(.cine-hero) header .nav-tools a { background: #eed366; color: #1a1a17; padding: 8px 18px; border-radius: 999px; font-weight: 600; font-size: 14px; }
 body:has(.cine-hero) header .nav-tools a:hover { background: #f2dd80; color: #1a1a17; }
 
-/* condensing / solidifying nav once scrolled (like the prototype) */
+/* condensing + shrinking nav once scrolled (like the prototype) */
+body:has(.cine-hero) header nav { transition: height 0.35s cubic-bezier(0.16, 1, 0.3, 1); }
+body:has(.cine-hero) header .nav-logo img { transition: height 0.35s cubic-bezier(0.16, 1, 0.3, 1); }
 body:has(.cine-hero) header.scrolled .nav-wrapper,
-body:has(.cine-hero) header.scrolled nav { background: rgb(253 254 250 / 96%); backdrop-filter: blur(6px); box-shadow: 0 4px 20px rgb(90 90 82 / 10%); }
+body:has(.cine-hero) header.scrolled nav { background: var(--background-color); box-shadow: 0 4px 20px rgb(90 90 82 / 10%); }
+body:has(.cine-hero) header.scrolled nav { height: 66px; }
+body:has(.cine-hero) header.scrolled .nav-logo img { height: 30px; }
 body:has(.cine-hero) header.scrolled nav a:any-link,
 body:has(.cine-hero) header.scrolled .nav-logo .logo-description p.name,
 body:has(.cine-hero) header.scrolled .nav-logo .logo-description p.baseline span { color: #1a1a17; text-shadow: none; }

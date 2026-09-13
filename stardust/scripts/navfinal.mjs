@@ -1,0 +1,14 @@
+import { chromium } from 'playwright';
+const b=await chromium.launch();
+const p=await (await b.newContext({viewport:{width:1440,height:900}})).newPage();
+await p.goto('http://localhost:3000/redesign',{waitUntil:'networkidle',timeout:40000});
+await p.waitForTimeout(2500);
+const cta=await p.evaluate(()=>{const a=document.querySelector('header .nav-tools a');return a?{fs:getComputedStyle(a).fontSize,pad:getComputedStyle(a).padding,h:Math.round(a.getBoundingClientRect().height)}:'-';});
+console.log('CTA:',JSON.stringify(cta));
+const navTopH=await p.evaluate(()=>Math.round(document.querySelector('header nav').getBoundingClientRect().height));
+console.log('nav height at top:',navTopH);
+await p.evaluate(()=>window.scrollTo(0,400)); await p.waitForTimeout(600);
+const scrolled=await p.evaluate(()=>{const n=document.querySelector('header nav');const w=document.querySelector('header .nav-wrapper');const body=getComputedStyle(document.body).backgroundColor;return {navH:Math.round(n.getBoundingClientRect().height), wrapBg:getComputedStyle(w).backgroundColor, bodyBg:body, match:getComputedStyle(w).backgroundColor===body};});
+console.log('scrolled:',JSON.stringify(scrolled));
+await p.screenshot({path:'stardust/validation/eds/nav-scrolled2.png',clip:{x:0,y:0,width:1440,height:90}});
+await b.close();
