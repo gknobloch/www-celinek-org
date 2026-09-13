@@ -76,9 +76,11 @@
 .editorial-split .editorial__copy em a:hover,
 .editorial-split .editorial__copy .button-container a.button.secondary:hover { background: #eef3ef; transform: translateY(-2px); }
 
-/* reveal */
+/* reveal — band rises + fades; the photo settles from a soft scale */
 .editorial-split .editorial.reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.85s cubic-bezier(0.16, 1, 0.3, 1); }
 .editorial-split .editorial.reveal.in { opacity: 1; transform: none; }
+.editorial-split .editorial.reveal .editorial__media { transform: scale(1.05); transition: transform 1.1s cubic-bezier(0.16, 1, 0.3, 1); }
+.editorial-split .editorial.reveal.in .editorial__media { transform: scale(1); }
 
 @media (width <= 900px) {
   .editorial-split .editorial { grid-template-columns: 1fr; gap: 28px; margin-bottom: 56px; }

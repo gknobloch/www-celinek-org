@@ -1,0 +1,11 @@
+import { chromium } from 'playwright';
+const b=await chromium.launch();
+const p=await (await b.newContext({viewport:{width:1440,height:900}})).newPage();
+await p.goto('http://localhost:3000/redesign',{waitUntil:'networkidle',timeout:40000});
+await p.waitForTimeout(2000);
+const f=await p.evaluate(()=>{const a=[...document.querySelectorAll('a')].find(x=>x.textContent.includes('Voir mes'));return a?getComputedStyle(a).fontFamily.slice(0,25):'MISSING';});
+console.log('Voir button font:',f);
+await p.evaluate(()=>{const el=document.querySelector('.steps-flow');window.scrollTo(0,el.getBoundingClientRect().top+window.scrollY-40);});
+await p.waitForTimeout(700);
+await p.screenshot({path:'stardust/validation/eds/s-process2.png'});
+await b.close();

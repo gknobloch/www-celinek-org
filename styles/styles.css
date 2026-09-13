@@ -384,12 +384,12 @@ main .section.testi-band { background: #e4ebe6; }
    NB: the pipeline strips author classes, so these are POSITIONAL: the first
    paragraph of the head is the script; in why-band the paragraph after the h2
    is the lead. */
-main .section:is(.head-center, .why-band) .default-content-wrapper > p:first-child {
+main .section:is(.head-center, .why-band) .default-content-wrapper > p:first-child:not(.button-container) {
   font-family: var(--script-font-family), cursive;
   display: block; line-height: 1; margin: 0 0 2px; font-size: 40px; font-weight: 400;
 }
-main .section.head-center .default-content-wrapper > p:first-child { color: #728e7f; }
-main .section.why-band .default-content-wrapper > p:first-child { color: #4a6357; font-size: 38px; }
+main .section.head-center .default-content-wrapper > p:first-child:not(.button-container) { color: #728e7f; }
+main .section.why-band .default-content-wrapper > p:first-child:not(.button-container) { color: #4a6357; font-size: 38px; }
 main .section:is(.head-center, .why-band) h2 { font-size: 42px; color: #1a1a17; margin: 0 0 8px; letter-spacing: -0.01em; line-height: 1.15; }
 main .section.head-center h2 { margin-bottom: 40px; }
 main .section.why-band .default-content-wrapper > h2 + p { font-size: 22px; color: #4a4433; max-width: 60ch; margin: 16px 0 40px; line-height: 1.6; }
@@ -421,3 +421,53 @@ main .section.head-center .button-container a.button:hover { background: #f2dd80
   main .section.editorial-split-container { padding: 64px 16px; }
   main .section.head-center, main .section.why-band { padding: 64px 16px; }
 }
+
+/* ── /redesign fixes (round 2) ────────────────────────────────────────── */
+
+/* head alignment: beat the global `p { text-align: justify }` by targeting p */
+main .section.head-center .default-content-wrapper p { text-align: center; }
+main .section.why-band .default-content-wrapper p { text-align: left; }
+
+/* hero starts at the very top: overlay the nav (scoped to the redesign page) */
+body:has(.cine-hero) header {
+  position: absolute; top: 0; left: 0; right: 0; z-index: 20;
+  height: auto; background: transparent; border: none;
+}
+body:has(.cine-hero) header .header { background: transparent; }
+body:has(.cine-hero) header .nav-sections a,
+body:has(.cine-hero) header .nav-brand,
+body:has(.cine-hero) header a { color: #fff; }
+body:has(.cine-hero) header .nav-brand a.button { color: #1a1a17; }
+
+/* footer: smaller type, clean white monochrome icons (no dark blob on deep sage) */
+body:has(.cine-hero) footer { font-size: 14px; padding: 40px 2rem; }
+body:has(.cine-hero) footer .footer p,
+body:has(.cine-hero) footer .footer li { font-size: 14px; }
+body:has(.cine-hero) footer .footer a.button { color: #fff; }
+body:has(.cine-hero) footer span.icon img { filter: brightness(0) invert(1); width: 20px; height: 20px; opacity: 0.92; }
+
+/* process CTA: reset the boilerplate button margin so the pill sits cleanly */
+main .section.head-center .button-container a.button { margin: 8px 0 0; }
+
+/* scroll-linked head reveals — script + heading rise/fade as the section enters
+   (native scroll-driven animation; gracefully ignored where unsupported) */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    main .section:is(.head-center, .why-band) .default-content-wrapper > *,
+    main .section.editorial-split-container .default-content-wrapper > * {
+      animation: redesign-rise linear both;
+      animation-timeline: view();
+      animation-range: entry 5% entry 45%;
+    }
+    @keyframes redesign-rise {
+      from { opacity: 0; transform: translateY(26px); }
+      to { opacity: 1; transform: none; }
+    }
+  }
+}
+
+/* the metadata block leaves an empty first section — collapse it (redesign page) */
+body:has(.cine-hero) main > .section:empty,
+body:has(.cine-hero) main > .section:has(> .default-content-wrapper:empty:only-child) { display: none; }
+body:has(.cine-hero) main { padding-top: 0; }
+body:has(.cine-hero) main > .section.cine-hero-container { margin-top: 0; }

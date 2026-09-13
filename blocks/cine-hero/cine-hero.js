@@ -57,23 +57,37 @@ export default function decorate(block) {
   block.classList.add('anim');
   requestAnimationFrame(() => block.classList.add('is-in'));
 
-  // scroll parallax + slow scale on the bg (desktop only)
+  // reading-progress bar (fixed, spans the whole page)
+  const progress = document.createElement('div');
+  progress.className = 'cine-hero__progress';
+  progress.setAttribute('aria-hidden', 'true');
+  document.body.append(progress);
+
+  // scroll effects: bg parallax + slow scale, hero copy drift + fade, progress bar
   let ticking = false;
   const onScroll = () => {
     if (ticking) return;
     ticking = true;
     requestAnimationFrame(() => {
-      const rect = block.getBoundingClientRect();
+      const sy = window.scrollY;
       const vh = window.innerHeight;
-      if (window.innerWidth > 767 && rect.bottom > 0 && rect.top < vh) {
-        const p = Math.min(Math.max(-rect.top / vh, 0), 1);
-        bg.style.transform = `translateY(${p * 14}vh) scale(${1 + p * 0.1})`;
+      const max = document.documentElement.scrollHeight - vh;
+      progress.style.transform = `scaleX(${max > 0 ? Math.min(sy / max, 1) : 0})`;
+      if (window.innerWidth > 767 && sy > 2) {
+        const p = Math.min(Math.max(sy / vh, 0), 1);
+        bg.style.transform = `translateY(${-p * 12}vh) scale(${1 + p * 0.08})`;
+        inner.style.transform = `translateY(${-p * 8}vh)`;
+        inner.style.opacity = String(1 - Math.min(Math.max((sy - vh * 0.1) / (vh * 0.55), 0), 1));
       } else {
+        // at rest / mobile: let CSS handle the intro + entrance
         bg.style.transform = '';
+        inner.style.transform = '';
+        inner.style.opacity = '';
       }
       ticking = false;
     });
   };
   window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
   onScroll();
 }

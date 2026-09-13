@@ -93,3 +93,26 @@ The build-harness gave false confidence (it doesn't strip classes). Testing via
 
 Verified on aem up: anchors resolve, parallax fires, all reveals fire, carousel
 aligns, footer deep-sage, 0 non-chrome console errors, one <h1>.
+
+## Round 3 (2026-09-13) — styling fixes + richer scroll effects
+Fixed from user testing at /redesign:
+- **Multi-value section style** (#120): `head-center testi-band` (space) collapsed to
+  ONE class → testimonials lost centering + sage bg + Sacramento script. Fixed with
+  comma: `head-center, testi-band`.
+- **Head alignment**: global `p{text-align:justify}` beat the wrapper center → target
+  the `p` directly.
+- **"Voir mes réalisations" in script font**: the head-script `p:first-child` selector
+  caught the CTA's `.button-container` paragraph → excluded `:not(.button-container)`.
+- **Hero starts at top**: overlay the nav (`position:absolute`, transparent, white links)
+  scoped via `body:has(.cine-hero)`, hero-bg top-aligned, empty metadata section collapsed.
+- **Carousel arrows too low**: were centered on the whole carousel (incl. dots) → centered
+  on the viewport/card via `top:0; bottom:57px; margin-block:auto`.
+- **Footer**: 14px type; social icons → clean white monochrome (`filter:brightness(0) invert(1)`),
+  no dark blob; all scoped to the redesign page.
+- **Local header/footer**: added `content/nav.html` + `content/footer.html` (preview-only,
+  mirror live) so aem up can serve chrome. Header still races in the aem-up warmup (fetches
+  /nav before the route is ready); unchanged from main, renders on the deployed preview.
+
+Added scroll effects: reading-progress bar (sage→gold), hero bg parallax + scale + copy
+drift/fade, editorial image parallax + scale-in "settle", scroll-linked CSS head reveals
+(`animation-timeline: view()`), staggered card + sequential step reveals.

@@ -33,8 +33,10 @@
 
 .testimonials .carousel__nav {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+  top: 0;
+  bottom: 57px;   /* the dots row sits below the viewport — center on the card, not the whole carousel */
+  margin-block: auto;
+  height: 46px;
   width: 46px;
   height: 46px;
   border-radius: 999px;

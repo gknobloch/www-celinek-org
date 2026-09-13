@@ -9,12 +9,19 @@
 
 .cine-hero__bg {
   position: absolute;
-  inset: -16vh 0 0 0;
-  height: 132vh;
+  inset: 0 0 -18vh 0;   /* image top-aligned to the hero; headroom BELOW for parallax */
+  height: 118vh;
   z-index: 0;
   will-change: transform;
   transform: scale(1.1);
   transition: transform 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* reading-progress bar (injected by the block) */
+.cine-hero__progress {
+  position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 60; pointer-events: none;
+  transform: scaleX(0); transform-origin: left center;
+  background: linear-gradient(90deg, #728e7f, #eed366);
 }
 
 .cine-hero.is-in .cine-hero__bg { transform: scale(1); }
