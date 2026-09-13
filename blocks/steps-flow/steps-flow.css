@@ -29,7 +29,7 @@
   align-items: center;
   justify-content: center;
   margin-bottom: 18px;
-  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s;
+  transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.1s;
 }
 
 .steps-flow .step__num::before { content: counter(step); }
