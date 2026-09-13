@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<!--
+  _provenance:
+    writtenBy: stardust:uplift (Phase 5 / prototype — variant C, static reference)
+    writtenAt: 2026-09-12
+    variant: C — static reference (no motion) for the cinematic editorial variant
+    register: editorial (auto-picked; registerSource: auto-picked)
+    againstInput: https://www.celinek.org
+    mode: A (brand-faithful — palette + type pinned)
+    capturedTrait: identity photography (the trait editorial naturally amplifies)
+    motion:
+      register: editorial
+      behaviors: [hero-photo micro-parallax (~10vh), slow fade-and-rise reveals, soft image scale-in]
+      refuses: [count-ups, tickers/live-sweeps, hard kinetic clip reveals]
+    contentSource: stardust/current/pages/index.json (verbatim fr-FR)
+-->
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Céline Knobloch, Home Organiser — Haut-Rhin</title>
+<link rel="icon" href="assets/favicon.ico">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Trier, Ranger, Optimiser - Conseil et accompagnement par une Home Organiser dans le Haut-Rhin">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;600;700&family=Sacramento&display=swap');
+
+:root{
+  --heading-font-family:'Comfortaa','helvetica neue',helvetica,sans-serif;
+  --body-font-family:'Comfortaa','helvetica neue',helvetica,sans-serif;
+  --script-font-family:'Sacramento','Brush Script MT',cursive;
+
+  --heading-xxl:60px; --heading-xl:42px; --heading-lg:32px; --heading-md:22px;
+  --body:18px; --body-sm:15px;
+  --line-height-heading:1.14; --line-height-body:1.75;
+
+  --color-bg:#fdfefa; --color-surface:#ffffff; --color-fg:#1a1a17; --color-muted:#5a5a52;
+  --color-accent:#728e7f; --color-accent-deep:#4a6357;
+  --color-gold:#eed366; --color-gold-deep:#806515;
+  --color-band-warm:#f8e1af; --color-band-sage:#e4ebe6; --color-contact:#445b4f;
+
+  --spacing-xl:48px; --spacing-2xl:96px;
+  --section-padding:104px; --max-width:1120px; --radius:16px;
+  --shadow-soft:0 10px 30px rgba(90,90,82,.12); --shadow-card:0 6px 20px rgba(90,90,82,.10);
+
+  /* motion tokens (editorial) */
+  --ease-out-cubic:cubic-bezier(0.25,0.46,0.45,0.94);
+  --ease-expo:cubic-bezier(0.16,1,0.3,1);
+  --enter-duration:800ms; --enter-stagger:110ms;
+  --parallax-translate:10;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--color-bg);color:var(--color-fg);font-family:var(--body-font-family);
+  font-size:var(--body);line-height:var(--line-height-body);-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:var(--color-accent-deep);text-decoration:none}
+a:hover{color:var(--color-gold-deep)}
+h1,h2,h3{font-family:var(--heading-font-family);line-height:var(--line-height-heading);font-weight:700;margin:0}
+.container{max-width:var(--max-width);margin:0 auto;padding:0 24px}
+.script{font-family:var(--script-font-family);color:var(--color-accent);font-weight:400}
+.eyebrow{font-size:var(--body-sm);letter-spacing:.14em;text-transform:uppercase;color:var(--color-accent-deep);font-weight:600;margin:0 0 12px}
+
+.btn{display:inline-block;border:none;cursor:pointer;font-family:var(--heading-font-family);font-weight:600;
+  font-size:var(--body-sm);padding:14px 28px;border-radius:999px;transition:transform .18s ease,background .18s ease}
+.btn:hover{transform:translateY(-2px)}
+.btn--primary{background:var(--color-accent);color:#fff}
+.btn--primary:hover{background:var(--color-accent-deep);color:#fff}
+.btn--gold{background:var(--color-gold);color:#1a1a17;box-shadow:0 6px 18px rgba(90,90,82,.20)}
+.btn--gold:hover{background:#f2dd80;color:#1a1a17}
+.btn--ghost{background:transparent;color:var(--color-accent-deep);border:1.5px solid var(--color-accent)}
+.btn--ghost:hover{background:#eef3ef;color:var(--color-accent-deep)}
+.btn--light{background:#fff;color:#1a1a17;box-shadow:0 6px 18px rgba(26,26,23,.18)}
+.btn--light:hover{background:#f4f1e8;color:#1a1a17}
+.btn--ghost-light{background:rgba(255,255,255,.10);color:#fff;border:1.5px solid rgba(255,255,255,.72);backdrop-filter:blur(2px)}
+.btn--ghost-light:hover{background:rgba(255,255,255,.22);color:#fff}
+.btn--deep{background:#445b4f;color:#fff}
+.btn--deep:hover{background:#374b40;color:#fff}
+
+/* Header */
+.site-header{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(253,254,250,0);border-bottom:1px solid transparent;transition:background .3s ease,border-color .3s ease,box-shadow .3s ease}
+.site-header.scrolled{background:rgba(253,254,250,.92);backdrop-filter:blur(8px);border-bottom-color:#eceee6;box-shadow:0 6px 24px rgba(90,90,82,.10)}
+.site-header .container{display:flex;align-items:center;justify-content:space-between;height:92px;transition:height .38s var(--ease-out-cubic)}
+.site-header.scrolled .container{height:62px}
+.brand{display:flex;align-items:center;gap:12px}
+.brand img{height:56px;width:auto;transform-origin:left center;transition:transform .38s var(--ease-out-cubic)}
+.site-header.scrolled .brand img{transform:scale(.68)}   /* GPU transform, no layout reflow */
+.brand .name{font-family:var(--heading-font-family);font-weight:700;font-size:16px;line-height:1.1}
+/* tagline collapses via grid-template-rows (GPU-composited height, no layout thrash) */
+.brand .tagwrap{display:grid;grid-template-rows:1fr;transition:grid-template-rows .38s var(--ease-out-cubic)}
+.site-header.scrolled .brand .tagwrap{grid-template-rows:0fr}
+.brand .tag{display:block;min-height:0;overflow:hidden;font-size:11px;letter-spacing:.12em;color:var(--color-accent-deep);text-transform:uppercase;font-weight:600;opacity:1;transition:opacity .3s ease}
+.site-header.scrolled .brand .tag{opacity:0}
+.nav{display:flex;gap:26px;align-items:center}
+.nav a{font-size:15px;color:var(--color-fg);font-weight:500}
+.nav a:hover{color:var(--color-accent-deep)}
+.nav .btn{padding:10px 20px}
+.nav-toggle{display:none;background:none;border:none;font-size:26px;color:var(--color-fg);cursor:pointer}
+
+/* Hero — full-bleed editorial photo with parallax */
+.hero{position:relative;height:100vh;min-height:600px;overflow:hidden;display:flex;align-items:flex-end}
+.hero-marquee{position:absolute;inset:-20vh 0 0 0;height:148vh;will-change:transform;z-index:0;transform-origin:center 30%}
+.hero-marquee img{width:100%;height:100%;object-fit:cover;object-position:center 30%}
+.hero-marquee::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(26,26,23,.18) 0%,rgba(26,26,23,.05) 34%,rgba(26,26,23,.68) 100%)}
+.hero__inner{position:relative;z-index:1;width:100%;padding-bottom:72px;will-change:transform,opacity}
+.hero__panel{max-width:540px;margin-left:auto}/* push copy to the right, clearing Céline on the left */
+.hero__script{font-family:var(--script-font-family);color:#fff;font-weight:400;font-size:76px;line-height:.95;margin:0 0 12px;
+  text-shadow:0 2px 20px rgba(26,26,23,.35)}
+.hero h1{font-size:var(--heading-lg);font-weight:600;color:#fff;letter-spacing:-.01em;margin:0 0 24px;max-width:22ch;
+  text-shadow:0 2px 16px rgba(26,26,23,.4)}
+.hero__cta{display:flex;gap:14px;flex-wrap:wrap}
+.scroll-cue{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);z-index:1;color:#fff;font-size:22px;opacity:.85;animation:bob 2.4s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,8px)}}
+/* Reading-progress bar */
+.read-progress{position:fixed;top:0;left:0;right:0;height:3px;z-index:60;pointer-events:none;background:transparent}
+.read-progress i{display:block;height:100%;width:100%;transform:scaleX(0);transform-origin:left center;
+  background:linear-gradient(90deg,var(--color-accent),var(--color-gold));will-change:transform}
+/* Hero script word-reveal (on-load entrance) */
+.hero__script .w{display:inline-block;will-change:transform,opacity}
+.hero__script.reveal .w{opacity:0;transform:translateY(30px)}
+
+section[data-section]{padding:var(--section-padding) 0}
+
+/* Editorial intro — alternating photo/text */
+.editorial{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;margin-bottom:96px}
+.editorial:last-child{margin-bottom:0}
+.editorial--reverse .editorial__media{order:2}
+.editorial__media{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-soft);aspect-ratio:4/5;position:relative}
+.editorial__media img{position:absolute;inset:0;width:100%;height:128%;top:-14%;object-fit:cover;object-position:center top;will-change:transform}
+.editorial__copy .eyebrow{margin-bottom:8px}
+.editorial__copy .script{font-size:40px;display:block;line-height:1;margin-bottom:12px}
+.editorial__copy h2{font-size:var(--heading-lg);margin-bottom:16px}
+.editorial__copy p{color:var(--color-muted);margin:0 0 16px}
+
+/* Why */
+.why{background:var(--color-band-warm)}
+.why .section-head{max-width:760px;margin-bottom:40px}
+.why .section-head .script{font-size:38px;display:block;line-height:1;margin-bottom:2px}
+.why .section-head h2{font-size:var(--heading-xl)}
+.why__lead{font-size:22px;color:#4a4433;max-width:60ch;margin:0 0 40px}
+.why__values{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:36px}
+.value{background:rgba(255,255,255,.65);border-radius:var(--radius);padding:28px}
+.value h3{font-size:var(--heading-md);margin-bottom:8px;color:var(--color-accent-deep)}
+.value p{margin:0;color:#4a4433;font-size:var(--body-sm)}
+.value--wide{grid-column:1/-1}/* closing statement spans the full card row so it reads as part of the set */
+.value .valuewords{color:var(--color-accent-deep);font-weight:600}
+
+/* Process */
+.process .section-head{text-align:center;max-width:760px;margin:0 auto 44px}
+.process .section-head .script{font-size:38px;display:block;line-height:1}
+.process .section-head h2{font-size:var(--heading-xl)}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;counter-reset:step}
+.step{background:var(--color-surface);border-radius:var(--radius);padding:32px;box-shadow:var(--shadow-card);transition:opacity .6s ease,transform .7s cubic-bezier(.16,1,.3,1)}
+.step.step--seq{opacity:0;transform:translateY(34px)}          /* applied by JS; sequential 1-2-3 reveal */
+.step.step--seq.in{opacity:1;transform:none}
+.step.step--seq .step__num{transform:scale(.6);transition:transform .5s cubic-bezier(.34,1.56,.64,1) .1s}
+.step.step--seq.in .step__num{transform:scale(1)}
+.step__num{counter-increment:step;font-family:var(--heading-font-family);font-weight:700;font-size:20px;
+  width:48px;height:48px;border-radius:999px;background:var(--color-band-sage);color:var(--color-accent-deep);
+  display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+.step__num::before{content:counter(step)}
+.step h3{font-size:var(--heading-md);margin-bottom:12px}
+.step p{color:var(--color-muted);font-size:var(--body-sm);margin:0 0 12px}
+.step p:last-child{margin-bottom:0}
+.process__cta{text-align:center;margin-top:48px}
+
+/* Proof */
+.proof{background:var(--color-band-sage)}
+.proof .section-head{text-align:center;max-width:760px;margin:0 auto 40px}
+.proof .section-head .script{font-size:40px;color:var(--color-accent-deep);display:block;line-height:1;margin-bottom:2px}
+.proof .section-head h2{font-size:var(--heading-xl)}
+.carousel{max-width:760px;margin:0 auto;position:relative}
+.carousel__viewport{overflow:hidden;border-radius:var(--radius);box-shadow:var(--shadow-soft)}
+.carousel__track{display:flex;align-items:stretch;transition:transform .55s cubic-bezier(.16,1,.3,1)}
+.testi{flex:0 0 100%;background:var(--color-surface);padding:40px 46px;display:flex;flex-direction:column;justify-content:center;margin:0}
+.testi .stars{color:#806515;letter-spacing:3px;font-size:18px;margin-bottom:14px}
+.testi p{font-size:16.5px;line-height:1.66;color:var(--color-fg);margin:0 0 18px;font-style:italic}
+.testi .who{font-weight:700;color:var(--color-accent-deep);font-style:normal;font-size:15px;letter-spacing:.04em}
+.carousel__nav{position:absolute;top:50%;transform:translateY(-50%);width:46px;height:46px;border-radius:999px;border:none;background:var(--color-surface);box-shadow:var(--shadow-card);color:var(--color-accent-deep);font-size:26px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s ease,color .2s ease;z-index:2}
+.carousel__nav:hover{background:#eef3ef}
+.carousel__prev{left:-23px}
+.carousel__next{right:-23px}
+.carousel__dots{display:flex;gap:9px;justify-content:center;margin-top:24px}
+.carousel__dots .dot{width:9px;height:9px;padding:0;border:none;border-radius:999px;background:#c3cdc7;cursor:pointer;transition:background .2s ease,transform .2s ease}
+.carousel__dots .dot.active{background:var(--color-accent-deep);transform:scale(1.3)}
+
+/* Contact */
+/* Contact — warm invitation (recolored: warm gold gradient + sage CTA) */
+.contact{background:linear-gradient(135deg,#f8e1af 0%,#eecb7f 100%);color:#1a1a17;text-align:center}
+.contact .script{font-size:46px;color:var(--color-accent-deep);display:block;line-height:1;margin-bottom:6px}
+.contact h2{font-size:var(--heading-xl);color:#1a1a17;margin-bottom:14px}
+.contact p{color:#4a4433;max-width:52ch;margin:0 auto 30px}
+.contact__row{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;align-items:center}
+.contact__phone{color:#3f574a;font-weight:700;font-size:var(--body)}
+
+/* Footer */
+/* Footer — grounded deep sage (recolored to pair with the warm contact band) */
+.site-footer{background:#445b4f;color:rgba(255,255,255,.82)}
+.site-footer .container{display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between;padding-top:32px;padding-bottom:32px}
+.site-footer .fcontact{display:flex;gap:22px;flex-wrap:wrap;align-items:center;font-size:var(--body-sm)}
+.site-footer a{color:#fff;font-weight:600}
+.site-footer a:hover{color:var(--color-gold)}
+.socials{display:flex;gap:12px;align-items:center}
+.socials a{width:34px;height:34px;border-radius:999px;background:rgba(255,255,255,.92);display:flex;align-items:center;justify-content:center}
+.socials img{width:18px;height:18px}
+
+@media (max-width:900px){
+  :root{--section-padding:64px}
+  .hero__script{font-size:56px}
+  .editorial{grid-template-columns:1fr;gap:28px;margin-bottom:56px}
+  .editorial--reverse .editorial__media{order:0}
+  .editorial__media{aspect-ratio:4/3}
+  .why__values,.steps{grid-template-columns:1fr}
+  .nav{display:none}
+  .nav-toggle{display:block}
+  .site-header.open .nav{display:flex;position:absolute;top:80px;left:0;right:0;flex-direction:column;background:var(--color-bg);padding:20px 24px;gap:16px;border-bottom:1px solid #eceee6}
+  .site-header.open{background:rgba(253,254,250,.98)}
+}
+@media (max-width:560px){
+  :root{--heading-xl:30px;--heading-lg:27px;--section-padding:56px}
+  .hero__script{font-size:46px}
+  .editorial__media{aspect-ratio:4/5}                 /* portrait crop for portrait-orientation photos */
+  .editorial__copy .script{font-size:32px}
+  .why .section-head .script,.process .section-head .script,.proof .section-head .script{font-size:31px}
+  .contact .script{font-size:36px}
+  .why__lead{font-size:19px}
+  .testi{padding:28px 24px}
+  .testi p{font-size:15.5px}
+  .carousel__nav{width:40px;height:40px;font-size:22px}
+  .carousel__prev{left:4px}
+  .carousel__next{right:4px}
+}
+
+/* Reduced-motion contract */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  html{scroll-behavior:auto}
+  [data-anim]{opacity:1!important;transform:none!important;filter:none!important}
+  .hero-marquee{transform:none!important}
+  .hero__inner{transform:none!important;opacity:1!important}
+  [data-parallax]{transform:none!important}
+  .editorial__media img{transform:none!important}
+  .hero__script .w{opacity:1!important;transform:none!important}
+  .scroll-cue{animation:none!important}
+}
+</style>
+</head>
+<body>
+
+<div class="read-progress" aria-hidden="true"><i></i></div>
+
+<header class="site-header scrolled" id="nav">
+  <div class="container">
+    <a class="brand" href="/" aria-label="Céline Knobloch — accueil">
+      <img src="assets/logo.svg" alt="Logo Céline Knobloch">
+      <span class="name">CÉLINE KNOBLOCH<span class="tagwrap"><span class="tag">Trier · Ranger · Optimiser</span></span></span>
+    </a>
+    <button class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="primary-nav">☰</button>
+    <nav class="nav" id="primary-nav" aria-label="Navigation principale">
+      <a href="/">Accueil</a>
+      <a href="/qui-suis-je">Qui suis-je ?</a>
+      <a href="/prestations-tarifs/">Prestations et Tarifs</a>
+      <a href="/realisations/">Mes Réalisations</a>
+      <a class="btn btn--gold" href="/contact">Contactez-moi</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO — full-bleed photo, parallax -->
+  <section class="hero" data-section="hero" data-intent="emotional hook" data-layout="full-bleed" data-media="image">
+    <div class="hero-marquee">
+      <img src="assets/hero-celine.webp" alt="Céline Knobloch, home organiser, dans un intérieur chaleureux et rangé">
+    </div>
+    <div class="hero__inner">
+      <div class="container">
+        <div class="hero__panel">
+          <p class="hero__script">Le rangement au service<br>de votre bien-être&nbsp;!</p>
+          <h1>Céline Knobloch, Home Organiser dans le Haut-Rhin</h1>
+          <div class="hero__cta">
+            <a class="btn btn--light" href="#concept">Découvrir le concept</a>
+            <a class="btn btn--ghost-light" href="#process">Comment ça se passe&nbsp;?</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-cue" aria-hidden="true">↓</div>
+  </section>
+
+  <!-- EDITORIAL INTRO / CONCEPT — alternating photo/text -->
+  <section id="concept" data-section="intro-concept" data-intent="value proposition" data-layout="two-column" data-items="2">
+    <div class="container">
+      <div class="editorial">
+        <div class="editorial__media" data-anim>
+          <img src="assets/celine-portrait-2.webp" alt="Céline Knobloch, coach en rangement" data-parallax>
+        </div>
+        <div class="editorial__copy">
+          <span class="eyebrow" data-anim>Qui suis-je</span>
+          <span class="script" data-anim>Je suis Céline,</span>
+          <h2 data-anim>Home organiser</h2>
+          <p data-anim>J'aide les personnes qui ont envie de trier, ranger, désencombrer leur maison et organiser leur lieu de vie.</p>
+          <p data-anim>Tout au long du processus de rangement, j'accompagne, soutiens, conseille et encourage. En tant que coach en rangement, je guide mes clients vers une organisation qui LEUR convient et qui est maintenable dans la durée.</p>
+          <a class="btn btn--ghost" href="/qui-suis-je" data-anim>En savoir plus</a>
+        </div>
+      </div>
+      <div class="editorial editorial--reverse">
+        <div class="editorial__media" data-anim>
+          <img src="assets/realisation-closet.webp" alt="Un dressing réorganisé, ordonné et apaisant" data-parallax>
+        </div>
+        <div class="editorial__copy">
+          <span class="eyebrow" data-anim>Le concept</span>
+          <span class="script" data-anim>Le home organising</span>
+          <h2 data-anim>Revenir à l'essentiel</h2>
+          <p data-anim>Être coach en rangement, c'est proposer un ensemble de méthodes de tri et d'organisation de la maison. Né il y a une vingtaine d'années dans les pays anglo-saxons, le home organising gagne à être popularisé grâce aux bienfaits qu'il apporte.</p>
+          <p data-anim>Parce que désencombrer sa maison et alléger son quotidien permet de revenir à l'essentiel, en toute simplicité, et de se faire du bien&nbsp;!</p>
+          <a class="btn btn--ghost" href="/bienfaits" data-anim>Découvrez les bienfaits</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY -->
+  <section class="why" data-section="why-values" data-intent="build trust" data-layout="full-bleed" data-items="3">
+    <div class="container">
+      <div class="section-head">
+        <span class="script" data-anim>Et si c'était le moment&nbsp;?</span>
+        <h2 data-anim>Pourquoi faire appel à une coach en rangement&nbsp;?</h2>
+      </div>
+      <p class="why__lead" data-anim>Combien de fois vous êtes-vous dit que ce week-end, vous vous y mettiez&nbsp;? Combien de fois avez-vous entrepris des sessions rangement mais finalement, malgré tous vos efforts, le bazar est rapidement revenu&nbsp;?</p>
+      <div class="why__values">
+        <div class="value" data-anim>
+          <h3>Le désordre pèse</h3>
+          <p>Par manque de temps, de motivation ou d'énergie, le désordre prend le dessus dans votre maison et vos placards. Une habitation qui ne correspond pas à ce que l'on souhaite génère du stress, pour vous et vos proches.</p>
+        </div>
+        <div class="value" data-anim>
+          <h3>Des résultats durables</h3>
+          <p>En faisant appel à mes compétences de professionnelle de l'organisation, vous mettez toutes les chances de votre côté pour atteindre vos objectifs et obtenir des résultats immédiats et durables.</p>
+        </div>
+        <div class="value" data-anim>
+          <h3>Douceur &amp; bienveillance</h3>
+          <p>Forte de mon expérience passée en tant qu'infirmière, c'est avec douceur et bienveillance que je vous accompagnerai dans la transformation de votre intérieur.</p>
+        </div>
+        <div class="value value--wide" data-anim>
+          <h3>Pour une maison agréable, désencombrée, sereine</h3>
+          <p>Mon sens de l'écoute et mes qualités relationnelles me permettent de vous aider à lever certains blocages psychologiques pour que vous puissiez retrouver une maison agréable où vous vous sentez bien&nbsp;! Je vous accompagne avec les valeurs qui font le cœur de mon métier&nbsp;: <span class="valuewords">respect, écoute et authenticité</span>. Pour que votre maison soit agréable, désencombrée et sereine.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process" id="process" data-section="process-steps" data-intent="explain how" data-layout="grid" data-items="3">
+    <div class="container">
+      <div class="section-head">
+        <span class="script" data-anim>Pas à pas, à votre rythme</span>
+        <h2 data-anim>Comment ça se passe&nbsp;?</h2>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step__num" aria-hidden="true"></div>
+          <h3>Faire connaissance</h3>
+          <p>Dans un premier temps, nous faisons connaissance par email ou téléphone et nous convenons ensemble d'une date pour la visite diagnostic.</p>
+          <p>Cette visite se passe à votre domicile et dure environ 1 heure. Faire appel à une professionnelle du rangement demande parfois du courage&nbsp;: je mets un point d'honneur à cette première rencontre, qui reste avant tout humaine.</p>
+        </div>
+        <div class="step">
+          <div class="step__num" aria-hidden="true"></div>
+          <h3>Envisager ensemble de trier, ranger, optimiser</h3>
+          <p>Ensemble, nous discutons de vos besoins et de vos attentes. Cette visite me permet de voir la/les pièce(s) concernée(s) et de cibler au mieux ma future mission.</p>
+          <p>Je vous explique mes méthodes de travail et je réponds à vos questions pour que vous puissiez aborder cette transformation en toute sérénité. Je vous prépare ensuite un devis.</p>
+        </div>
+        <div class="step">
+          <div class="step__num" aria-hidden="true"></div>
+          <h3>Désencombrer&nbsp;: mes astuces et conseils</h3>
+          <p>Le grand jour&nbsp;: j'arrive pour la mission à domicile. Ensemble, nous trions, désencombrons, rangeons et optimisons vos espaces. Vous avez le verdict final sur ce que vous gardez.</p>
+          <p>Je vous transmets mes astuces et mes conseils pour maintenir ce rangement. Après la mission, je reprends de vos nouvelles pour m'assurer que tout se passe bien.</p>
+        </div>
+      </div>
+      <div class="process__cta"><a class="btn btn--gold" href="/realisations/">Voir mes réalisations</a></div>
+    </div>
+  </section>
+
+  <!-- PROOF -->
+  <section class="proof" id="proof" data-section="testimonials" data-intent="build trust" data-layout="grid" data-items="4">
+    <div class="container">
+      <div class="section-head">
+        <span class="script" data-anim>Elles &amp; ils en parlent</span>
+        <h2 data-anim>Ils m'ont fait confiance</h2>
+      </div>
+      <div class="carousel" data-anim>
+        <div class="carousel__viewport">
+          <div class="carousel__track">
+            <figure class="testi">
+              <div class="stars" aria-label="5 étoiles sur 5">★★★★★</div>
+              <p>«&nbsp;Ranger ma maison était vraiment compliqué. Beaucoup d'objets avaient un poids émotionnel, une histoire… j'avais besoin de quelqu'un pour m'aider. Céline a été cette personne. Avec toute sa bienveillance et sa gentillesse, elle m'a patiemment fait prendre conscience de ce dont j'avais besoin et de ce qui me pesait. Elle est venue 2 fois chez moi&nbsp;; à chaque fois, je me suis sentie plus légère et libérée. Confier son intimité à quelqu'un était très dur pour moi, mais Céline ne juge personne. Merci Céline&nbsp;!!&nbsp;»</p>
+              <figcaption class="who">— Madame F</figcaption>
+            </figure>
+            <figure class="testi">
+              <div class="stars" aria-label="5 étoiles sur 5">★★★★★</div>
+              <p>«&nbsp;Céline est une professionnelle attentionnée et efficace&nbsp;! Grâce à son intervention, mon quotidien a changé&nbsp;: moins de superflu, juste l'essentiel et un réel gain de temps. J'ai apprécié son soutien, sa bienveillance, sa rapidité d'action, son énergie positive et son non-jugement. J'ai gagné en rangement, chaque chose a trouvé sa place. Je recommande les yeux fermés&nbsp;!&nbsp;»</p>
+              <figcaption class="who">— Agathe</figcaption>
+            </figure>
+            <figure class="testi">
+              <div class="stars" aria-label="5 étoiles sur 5">★★★★★</div>
+              <p>«&nbsp;Ce qui pour moi était une corvée et me décourageait s'est mué en un moment finalement agréable (incroyable&nbsp;!) et surtout a produit un résultat inespéré. Céline est professionnelle, efficace et d'une bonne humeur à toute épreuve. Je voulais du changement&nbsp;: Céline a pris les choses en main et m'a permis de totalement transformer mon espace de vie. N'hésitez pas à l'appeler pour faire entrer la lumière dans votre chez-vous&nbsp;!&nbsp;»</p>
+              <figcaption class="who">— Alban</figcaption>
+            </figure>
+            <figure class="testi">
+              <div class="stars" aria-label="5 étoiles sur 5">★★★★★</div>
+              <p>«&nbsp;J'entre dans ma cuisine ce matin, c'est un vrai bonheur&nbsp;! Elle me paraît plus spacieuse, plus lumineuse et je m'y sens bien. J'ai envie de continuer. Un grand merci Céline, tu m'as énormément aidée sur le plan pratique mais aussi sur le plan psychologique, tu m'as reboostée&nbsp;!&nbsp;»</p>
+              <figcaption class="who">— Joëlle</figcaption>
+            </figure>
+          </div>
+        </div>
+        <button class="carousel__nav carousel__prev" type="button" aria-label="Témoignage précédent">‹</button>
+        <button class="carousel__nav carousel__next" type="button" aria-label="Témoignage suivant">›</button>
+        <div class="carousel__dots" aria-label="Choisir un témoignage">
+          <button class="dot" type="button" aria-label="Témoignage 1"></button>
+          <button class="dot" type="button" aria-label="Témoignage 2"></button>
+          <button class="dot" type="button" aria-label="Témoignage 3"></button>
+          <button class="dot" type="button" aria-label="Témoignage 4"></button>
+        </div>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" data-section="contact-cta" data-intent="drive action" data-layout="full-bleed" data-interactive="link">
+    <div class="container">
+      <span class="script" data-anim>Et si on commençait&nbsp;?</span>
+      <h2 data-anim>Prêt(e) pour une maison plus sereine&nbsp;?</h2>
+      <p data-anim>Parlons de votre projet, sans engagement. Le premier échange se fait par email ou téléphone, en toute simplicité.</p>
+      <div class="contact__row" data-anim>
+        <a class="btn btn--deep" href="mailto:contact@celinek.org">Contactez-moi</a>
+        <a class="contact__phone" href="tel:+33632731898">📞 06 32 73 18 98</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer" data-section="footer" data-intent="wayfinding" data-layout="edge-to-edge">
+  <div class="container">
+    <div class="fcontact">
+      <span>© Céline Knobloch, 2025</span>
+      <a href="tel:+33632731898">Tél : 06 32 73 18 98</a>
+      <a href="mailto:contact@celinek.org">contact@celinek.org</a>
+    </div>
+    <div class="socials">
+      <a href="/" aria-label="Instagram"><img src="assets/instagram.svg" alt="Instagram"></a>
+      <a href="/" aria-label="Facebook"><img src="assets/facebook.svg" alt="Facebook"></a>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* mobile nav a11y toggle */
+(function(){
+  var h=document.getElementById('nav'),b=h.querySelector('.nav-toggle');
+  b.addEventListener('click',function(){var o=h.classList.toggle('open');b.setAttribute('aria-expanded',o?'true':'false');});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&h.classList.contains('open')){h.classList.remove('open');b.setAttribute('aria-expanded','false');}});
+})();
+
+/* testimonials carousel — single card, arrows + dots + swipe */
+(function(){
+  var c=document.querySelector('.carousel'); if(!c) return;
+  var track=c.querySelector('.carousel__track');
+  var slides=c.querySelectorAll('.testi');
+  var dots=c.querySelectorAll('.carousel__dots .dot');
+  var n=slides.length, i=0;
+  function go(k){
+    i=(k+n)%n;
+    track.style.transform='translateX('+(-i*100)+'%)';
+    for(var j=0;j<dots.length;j++) dots[j].classList.toggle('active', j===i);
+    for(var s=0;s<slides.length;s++) slides[s].setAttribute('aria-hidden', s===i?'false':'true');
+  }
+  var prev=c.querySelector('.carousel__prev'), next=c.querySelector('.carousel__next');
+  if(prev) prev.addEventListener('click',function(){go(i-1);});
+  if(next) next.addEventListener('click',function(){go(i+1);});
+  for(var d=0; d<dots.length; d++){ (function(j){ dots[j].addEventListener('click',function(){go(j);}); })(d); }
+  var x0=null;
+  c.addEventListener('pointerdown',function(e){x0=e.clientX;});
+  c.addEventListener('pointerup',function(e){ if(x0===null) return; var dx=e.clientX-x0; if(Math.abs(dx)>40) go(dx<0?i+1:i-1); x0=null; });
+  go(0);
+})();
+</script>
+</body>
+</html>

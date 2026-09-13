@@ -1,0 +1,40 @@
+{
+  "_provenance": {
+    "writtenBy": "stardust:extract (uplift Phase 1)",
+    "writtenAt": "2026-09-12",
+    "againstInput": "https://www.celinek.org",
+    "descriptive": true,
+    "readArtifacts": ["stardust/current/_brand-extraction.json", "stardust/current/pages/index.json"]
+  },
+  "colors": {
+    "background": "#fdfefa",
+    "text": "#000000",
+    "primary": "#728e7f",
+    "primaryDeep": "#6b8a7c",
+    "accent": "#eed366",
+    "accentGold": "#e8cf6c",
+    "surfaceWarm": "#f8e1af",
+    "surfaceSage": "rgb(114 142 127 / 70%)"
+  },
+  "typography": {
+    "heading": { "family": "Comfortaa", "scale": ["52px", "36px", "28px", "22px", "18px", "14px", "11px"] },
+    "body": { "family": "Comfortaa", "scale": ["40px", "32px", "28px", "22px", "18px", "14px"] },
+    "script": { "family": "Sacramento", "role": "display", "usageCount": 1 },
+    "mono": { "family": "Roboto Mono" }
+  },
+  "rounded": { "buttons": "pill", "cards": "12px" },
+  "components": ["header-nav", "hero-photo-script", "two-column-intro", "tinted-band", "process-steps", "testimonial-carousel", "footer"],
+  "extensions": {
+    "componentStyle": {
+      "buttons": "pill, sage fill or soft-gold fill, dark text",
+      "bands": "full-bleed tinted (#f8e1af gold, sage) for long-form segments",
+      "hero": "wide photo with Sacramento script tagline overlaid right"
+    },
+    "motifs": ["mascot-logo", "script-tagline", "warm-gold-band", "pill-button"],
+    "voice": {
+      "language": "fr-FR",
+      "dominantTone": "warm / caring / reassuring",
+      "underusedTone": "method / practical process"
+    }
+  }
+}

@@ -1,0 +1,138 @@
+.cine-hero.block {
+  position: relative;
+  min-height: 88vh;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  margin: 0;
+}
+
+.cine-hero__bg {
+  position: absolute;
+  inset: -16vh 0 0 0;
+  height: 132vh;
+  z-index: 0;
+  will-change: transform;
+  transform: scale(1.1);
+  transition: transform 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cine-hero.is-in .cine-hero__bg { transform: scale(1); }
+
+.cine-hero__bg picture,
+.cine-hero__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  display: block;
+}
+
+.cine-hero__bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgb(26 26 23 / 18%) 0%, rgb(26 26 23 / 5%) 34%, rgb(26 26 23 / 68%) 100%);
+}
+
+.cine-hero__inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 24px 72px;
+}
+
+/* reveal is gated behind .anim (JS-added) so no-JS renders visible */
+.cine-hero.anim .cine-hero__inner {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.8s ease 0.15s, transform 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.15s;
+}
+
+.cine-hero.anim.is-in .cine-hero__inner { opacity: 1; transform: none; }
+
+.cine-hero__panel { max-width: 540px; margin-left: auto; }
+
+.cine-hero__panel .script {
+  font-family: var(--script-font-family), cursive;
+  color: #fff;
+  font-weight: 400;
+  font-size: 76px;
+  line-height: 0.95;
+  margin: 0 0 12px;
+  text-shadow: 0 2px 20px rgb(26 26 23 / 35%);
+}
+
+.cine-hero__panel h1 {
+  font-size: 32px;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: -0.01em;
+  margin: 0 0 24px;
+  max-width: 22ch;
+  text-shadow: 0 2px 16px rgb(26 26 23 / 40%);
+}
+
+.cine-hero__cta {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.cine-hero__cta .button-container { margin: 0; }
+
+.cine-hero__cta a.button {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 14px 28px;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.18s ease, background 0.18s ease;
+}
+
+.cine-hero__cta a.button:hover { transform: translateY(-2px); }
+
+/* first CTA (bare link → .button): solid light */
+.cine-hero__cta a.button:not(.secondary) { background: #fff; color: #1a1a17; box-shadow: 0 6px 18px rgb(26 26 23 / 18%); }
+.cine-hero__cta a.button:not(.secondary):hover { background: #f4f1e8; }
+
+/* second CTA (em>a → .button.secondary): ghost */
+.cine-hero__cta a.button.secondary { background: rgb(255 255 255 / 10%); color: #fff; border: 1.5px solid rgb(255 255 255 / 72%); }
+.cine-hero__cta a.button.secondary:hover { background: rgb(255 255 255 / 22%); }
+
+.cine-hero__cue {
+  position: absolute;
+  bottom: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  color: #fff;
+  font-size: 22px;
+  opacity: 0.85;
+  animation: cine-bob 2.4s ease-in-out infinite;
+}
+
+@keyframes cine-bob { 0%, 100% { transform: translate(-50%, 0); } 50% { transform: translate(-50%, 8px); } }
+
+@media (width <= 900px) {
+  .cine-hero.block { min-height: 82vh; }
+  .cine-hero__panel { max-width: none; }
+  .cine-hero__panel .script { font-size: 56px; }
+}
+
+@media (width <= 560px) {
+  .cine-hero__panel .script { font-size: 46px; }
+  .cine-hero__panel h1 { font-size: 27px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cine-hero__bg { transform: none !important; transition: none; }
+  .cine-hero__inner,
+  .cine-hero.block[data-block-status] .cine-hero__inner { opacity: 1 !important; transform: none !important; transition: none; }
+  .cine-hero__cue { animation: none; }
+}

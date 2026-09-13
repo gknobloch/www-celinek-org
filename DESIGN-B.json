@@ -1,0 +1,12 @@
+{
+  "_provenance": { "writtenBy": "stardust:uplift (Phase 4)", "writtenAt": "2026-09-12", "variant": "B", "role": "one captured trait amplified", "inherits": "DESIGN.json" },
+  "variant": {
+    "id": "B",
+    "role": "What if we amplified the signature script (Sacramento)?",
+    "capturedTrait": "Sacramento display script (usageCount 1 in capture)",
+    "amplifies": "the brand's one moment of type personality, in service of the warm/human personality in PRODUCT.md",
+    "composition": "scripted Sacramento section openers throughout; prose 'why' band replaced by a scannable value grid; warm-gold accent lifted to carry the scripted moments; script pull-quote for the testimonial",
+    "motion": "static",
+    "differentiationVsA": ["type system rebuilt around scripted section openers (structural)", "why-band becomes a value grid (structural)", "testimonial rendered as a scripted pull-quote"]
+  }
+}

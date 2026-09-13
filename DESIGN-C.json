@@ -1,0 +1,22 @@
+{
+  "_provenance": { "writtenBy": "stardust:uplift (Phase 4)", "writtenAt": "2026-09-12", "variant": "C", "role": "cinematic — motion as identity", "inherits": "DESIGN.json" },
+  "variant": {
+    "id": "C",
+    "role": "What if motion was part of the identity?",
+    "capturedTrait": "identity photography (the trait editorial naturally amplifies)",
+    "composition": "identical IA to A; the bet is motion, not layout — hero portrait leads, editorial photo/text blocks alternate",
+    "motion": "cinematic"
+  },
+  "extensions": {
+    "motion": {
+      "register": "editorial",
+      "registerSource": "auto-picked",
+      "registerRationale": "PRODUCT.md Brand Personality is slow-paced, warm, care-led, photography-led — the publication/editorial register per motion-registers.md § Selection heuristic (editorial / slow-paced). Runner-up: arrival.",
+      "tokens": { "hero.bgTranslate": 18, "hero.bgScale": 0.12, "heroText.drift": 12, "media.driftRatio": 0.14, "cards.slide": 30, "cards.stagger": 0.16, "cards.mediaScale": 0.06 },
+      "behaviors": ["layered hero parallax: photo drifts 18vh + scales 1→1.12", "hero foreground text drifts up 12vh and fades (depth against bg)", "continuous parallax drift on editorial photos (±14% of frame — 'photos breathe')", "fade-and-rise reveals with soft scale-in on photo blocks"],
+      "amplified": "2026-09-13 — user asked for more animation/parallax; magnitudes increased and layered (hero bg+text depth, per-photo drift) while staying in the editorial register",
+      "showpiece": "2026-09-13 — 'show me something really cool': condensing nav on scroll (92→62px, logo shrinks, tagline collapses); sage→gold reading-progress bar; cinematic hero = on-load word-by-word script reveal + photo scale-settle intro, slow idle Ken Burns drift/zoom, and subtle pointer-parallax depth (photo and text counter-move). All pointer/idle effects gated to fine-pointer desktop and fully neutralized under prefers-reduced-motion.",
+      "refuses": ["count-ups", "tickers / live sweeps", "hard kinetic clip reveals / split-flap"]
+    }
+  }
+}

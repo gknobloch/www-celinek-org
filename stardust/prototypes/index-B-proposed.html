@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<!--
+  _provenance:
+    writtenBy: stardust:uplift (Phase 5 / prototype — variant B)
+    writtenAt: 2026-09-12
+    variant: B — "what if we amplified the signature script (Sacramento)?"
+    againstInput: https://www.celinek.org
+    mode: A (brand-faithful — palette + type pinned)
+    capturedTrait: Sacramento display script (usageCount 1 in capture) → structural voice
+    contentSource: stardust/current/pages/index.json (verbatim fr-FR)
+-->
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Céline Knobloch, Home Organiser — Haut-Rhin</title>
+<link rel="icon" href="assets/favicon.ico">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Trier, Ranger, Optimiser - Conseil et accompagnement par une Home Organiser dans le Haut-Rhin">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;600;700&family=Sacramento&display=swap');
+
+:root{
+  --heading-font-family:'Comfortaa','helvetica neue',helvetica,sans-serif;
+  --body-font-family:'Comfortaa','helvetica neue',helvetica,sans-serif;
+  --script-font-family:'Sacramento','Brush Script MT',cursive;
+
+  --heading-xxl:56px; --heading-xl:40px; --heading-lg:30px; --heading-md:22px;
+  --body:18px; --body-sm:15px;
+  --line-height-heading:1.15; --line-height-body:1.7;
+
+  --color-bg:#fdfefa; --color-surface:#ffffff; --color-fg:#1a1a17; --color-muted:#5a5a52;
+  --color-accent:#728e7f; --color-accent-deep:#4a6357; --color-script:#5f7a6c;
+  --color-gold:#eed366; --color-gold-deep:#806515;
+  --color-band-warm:#f8e1af; --color-band-sage:#e4ebe6; --color-contact:#445b4f;
+
+  --spacing-xs:4px; --spacing-sm:8px; --spacing-md:16px; --spacing-lg:24px; --spacing-xl:48px; --spacing-2xl:96px;
+  --section-padding:92px; --max-width:1120px; --radius:16px;
+  --shadow-soft:0 10px 30px rgba(90,90,82,.12); --shadow-card:0 6px 20px rgba(90,90,82,.10);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--color-bg);color:var(--color-fg);font-family:var(--body-font-family);
+  font-size:var(--body);line-height:var(--line-height-body);-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:var(--color-accent-deep);text-decoration:none}
+a:hover{color:var(--color-gold-deep)}
+h1,h2,h3{font-family:var(--heading-font-family);line-height:var(--line-height-heading);font-weight:700;margin:0}
+.container{max-width:var(--max-width);margin:0 auto;padding:0 24px}
+.eyebrow{font-size:var(--body-sm);letter-spacing:.14em;text-transform:uppercase;color:var(--color-accent-deep);font-weight:600;margin:0 0 6px}
+
+/* Scripted section-opener device — the amplified trait */
+.script-open{font-family:var(--script-font-family);color:var(--color-script);font-weight:400;
+  font-size:64px;line-height:.95;display:block;margin:0 0 6px}
+.script-sub{font-family:var(--heading-font-family);font-weight:600;font-size:var(--heading-md);
+  color:var(--color-fg);margin:0}
+.section-head{max-width:760px;margin-bottom:44px}
+
+.btn{display:inline-block;border:none;cursor:pointer;font-family:var(--heading-font-family);font-weight:600;
+  font-size:var(--body-sm);padding:14px 28px;border-radius:999px;transition:transform .18s ease}
+.btn:hover{transform:translateY(-2px)}
+.btn--primary{background:var(--color-accent);color:#fff}
+.btn--primary:hover{background:var(--color-accent-deep);color:#fff}
+.btn--gold{background:var(--color-gold);color:#1a1a17;box-shadow:0 6px 18px rgba(90,90,82,.20)}
+.btn--gold:hover{background:#f2dd80;color:#1a1a17}
+.btn--ghost{background:transparent;color:var(--color-accent-deep);border:1.5px solid var(--color-accent)}
+.btn--ghost:hover{background:#eef3ef;color:var(--color-accent-deep)}
+
+/* Header */
+.site-header{position:sticky;top:0;z-index:50;background:rgba(253,254,250,.92);backdrop-filter:blur(6px);border-bottom:1px solid #eceee6}
+.site-header .container{display:flex;align-items:center;justify-content:space-between;height:80px}
+.brand{display:flex;align-items:center;gap:12px}
+.brand img{height:52px;width:auto}
+.brand .name{font-family:var(--heading-font-family);font-weight:700;font-size:16px;line-height:1.1}
+.brand .tag{display:block;font-size:11px;letter-spacing:.12em;color:var(--color-accent-deep);text-transform:uppercase;font-weight:600}
+.nav{display:flex;gap:26px;align-items:center}
+.nav a{font-size:15px;color:var(--color-fg);font-weight:500}
+.nav a:hover{color:var(--color-accent-deep)}
+.nav .btn{padding:10px 20px}
+.nav-toggle{display:none;background:none;border:none;font-size:26px;color:var(--color-fg);cursor:pointer}
+
+/* Hero — script leads */
+.hero{padding:64px 0 40px;position:relative;overflow:hidden}
+.hero__grid{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center}
+.hero__script{font-family:var(--script-font-family);color:var(--color-script);font-weight:400;
+  font-size:104px;line-height:.9;margin:0 0 8px;letter-spacing:.01em}
+.hero h1{font-size:var(--heading-lg);font-weight:600;letter-spacing:-.01em;margin:0 0 18px}
+.hero h1 .accentword{color:var(--color-accent-deep)}
+.hero__copy p{color:var(--color-muted);margin:0 0 26px;max-width:44ch}
+.hero__cta{display:flex;gap:14px;flex-wrap:wrap}
+.hero__photo{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-soft);height:min(64vh,520px)}
+.hero__photo img{width:100%;height:100%;object-fit:cover;object-position:center top}
+
+section[data-section]{padding:var(--section-padding) 0}
+
+/* Intro — scripted openers, single flowing column with portrait accent */
+.intro__grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.intro__block{margin-bottom:40px}
+.intro__block:last-child{margin-bottom:0}
+.intro__block p{color:var(--color-muted);margin:0 0 16px}
+.intro__block .btn{margin-top:6px}
+.intro__aside{position:sticky;top:100px}
+.intro__aside img{border-radius:var(--radius);box-shadow:var(--shadow-card);width:100%;height:auto}
+
+/* Why — value grid with scripted labels */
+.why{background:var(--color-band-warm)}
+.why__lead{font-size:22px;color:#4a4433;max-width:60ch;margin:0 0 40px}
+.why__values{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:36px}
+.value{background:rgba(255,255,255,.65);border-radius:var(--radius);padding:28px}
+.value .vscript{font-family:var(--script-font-family);color:var(--color-gold-deep);font-size:38px;line-height:1;display:block;margin-bottom:6px}
+.value h3{font-size:var(--heading-md);margin-bottom:8px;color:var(--color-accent-deep)}
+.value p{margin:0;color:#4a4433;font-size:var(--body-sm)}
+.why__close{background:var(--color-surface);border-radius:var(--radius);padding:32px 36px;box-shadow:var(--shadow-card)}
+.why__close .vscript{font-family:var(--script-font-family);color:var(--color-script);font-size:40px;display:block;line-height:1;margin-bottom:6px}
+.why__close h3{font-size:var(--heading-md);margin-bottom:10px}
+.why__close p{margin:0;color:var(--color-muted)}
+.why__close .valuewords{color:var(--color-accent-deep);font-weight:600}
+
+/* Process — scripted step titles */
+.process .section-head{text-align:center;margin-left:auto;margin-right:auto}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.step{background:var(--color-surface);border-radius:var(--radius);padding:32px;box-shadow:var(--shadow-card)}
+.step .snum{font-family:var(--script-font-family);color:var(--color-script);font-size:52px;line-height:1;display:block;margin-bottom:6px}
+.step h3{font-size:var(--heading-md);margin-bottom:12px}
+.step p{color:var(--color-muted);font-size:var(--body-sm);margin:0 0 12px}
+.step p:last-child{margin-bottom:0}
+.process__cta{text-align:center;margin-top:48px}
+
+/* Testimonial as oversized scripted pull-quote */
+.proof{background:var(--color-band-sage)}
+.proof__wrap{max-width:920px;margin:0 auto;text-align:center}
+.proof__script{font-family:var(--script-font-family);color:var(--color-accent-deep);font-size:56px;line-height:1;margin-bottom:24px;display:block}
+.stars{color:var(--color-gold-deep);letter-spacing:4px;font-size:20px;margin-bottom:20px}
+.proof p{font-size:23px;line-height:1.6;color:var(--color-fg);margin:0 auto 22px;max-width:52ch;font-style:italic}
+.proof .who{font-weight:700;color:var(--color-accent-deep);font-style:normal}
+
+/* Contact */
+.contact{background:var(--color-contact);color:#fff;text-align:center}
+.contact .cscript{font-family:var(--script-font-family);font-size:64px;color:#fff;display:block;line-height:1;margin-bottom:6px;opacity:.97}
+.contact h2{font-size:var(--heading-xl);color:#fff;margin-bottom:14px}
+.contact p{color:rgba(255,255,255,.92);max-width:52ch;margin:0 auto 30px}
+.contact__row{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;align-items:center}
+.contact__phone{color:#fff;font-weight:600;font-size:var(--body)}
+
+/* Footer */
+.site-footer{background:var(--color-band-warm);color:#4a4433}
+.site-footer .container{display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between;padding-top:32px;padding-bottom:32px}
+.site-footer .fcontact{display:flex;gap:22px;flex-wrap:wrap;align-items:center;font-size:var(--body-sm)}
+.site-footer a{color:#4a4433;font-weight:600}
+.site-footer a:hover{color:var(--color-gold-deep)}
+.socials{display:flex;gap:12px;align-items:center}
+.socials a{width:34px;height:34px;border-radius:999px;background:rgba(255,255,255,.6);display:flex;align-items:center;justify-content:center}
+.socials img{width:18px;height:18px}
+
+@media (max-width:900px){
+  :root{--section-padding:64px}
+  .hero{padding:40px 0 24px}
+  .hero__grid{grid-template-columns:1fr;gap:24px}
+  .hero__script{font-size:76px}
+  .hero__photo{height:360px;order:-1}
+  .intro__grid,.why__values,.steps{grid-template-columns:1fr}
+  .intro__aside{position:static}
+  .nav{display:none}
+  .nav-toggle{display:block}
+  .site-header.open .nav{display:flex;position:absolute;top:80px;left:0;right:0;flex-direction:column;background:var(--color-bg);padding:20px 24px;gap:16px;border-bottom:1px solid #eceee6}
+}
+@media (max-width:560px){
+  .hero__script{font-size:60px}
+  .script-open{font-size:48px}
+  .proof__script,.contact .cscript{font-size:44px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header" id="site-header">
+  <div class="container">
+    <a class="brand" href="/" aria-label="Céline Knobloch — accueil">
+      <img src="assets/logo.svg" alt="Logo Céline Knobloch">
+      <span class="name">CÉLINE KNOBLOCH<span class="tag">Trier · Ranger · Optimiser</span></span>
+    </a>
+    <button class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="primary-nav">☰</button>
+    <nav class="nav" id="primary-nav" aria-label="Navigation principale">
+      <a href="/">Accueil</a>
+      <a href="/qui-suis-je">Qui suis-je ?</a>
+      <a href="/prestations-tarifs/">Prestations et Tarifs</a>
+      <a href="/realisations/">Mes Réalisations</a>
+      <a class="btn btn--gold" href="/contact">Contactez-moi</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO — script is the headline -->
+  <section class="hero" data-section="hero" data-intent="emotional hook" data-layout="split" data-media="image">
+    <div class="container">
+      <div class="hero__grid">
+        <div class="hero__copy">
+          <p class="hero__script">Le rangement<br>au service de<br>votre bien-être&nbsp;!</p>
+          <h1>Céline Knobloch, <span class="accentword">Home Organiser</span> dans le Haut-Rhin</h1>
+          <p>J'aide les personnes qui ont envie de trier, ranger, désencombrer leur maison et organiser leur lieu de vie — avec douceur et bienveillance.</p>
+          <div class="hero__cta">
+            <a class="btn btn--gold" href="/contact">Contactez-moi</a>
+            <a class="btn btn--ghost" href="#concept">Découvrir le concept</a>
+          </div>
+        </div>
+        <div class="hero__photo">
+          <img src="assets/hero-celine.webp" alt="Céline Knobloch, home organiser, dans un intérieur chaleureux et rangé">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTRO / CONCEPT — scripted openers -->
+  <section id="concept" data-section="intro-concept" data-intent="value proposition" data-layout="two-column" data-items="2">
+    <div class="container">
+      <div class="intro__grid">
+        <div>
+          <div class="intro__block">
+            <span class="eyebrow">Qui suis-je</span>
+            <h2 class="script-open">Je suis Céline,</h2>
+            <p class="script-sub">Home organiser</p>
+            <p style="margin-top:16px">Tout au long du processus de rangement, j'accompagne, soutiens, conseille et encourage. En tant que coach en rangement, je guide mes clients vers une organisation qui LEUR convient et qui est maintenable dans la durée.</p>
+            <a class="btn btn--ghost" href="/qui-suis-je">En savoir plus</a>
+          </div>
+          <div class="intro__block">
+            <span class="eyebrow">Le concept</span>
+            <h2 class="script-open">Le home organising</h2>
+            <p style="margin-top:12px">Être coach en rangement, c'est proposer un ensemble de méthodes de tri et d'organisation de la maison. Né il y a une vingtaine d'années dans les pays anglo-saxons, le home organising gagne à être popularisé grâce aux bienfaits qu'il apporte.</p>
+            <p>Parce que désencombrer sa maison et alléger son quotidien permet de revenir à l'essentiel, en toute simplicité, et de se faire du bien&nbsp;!</p>
+            <a class="btn btn--ghost" href="/bienfaits">Découvrez les bienfaits</a>
+          </div>
+        </div>
+        <div class="intro__aside">
+          <img src="assets/hero-celine.webp" alt="Céline Knobloch dans un intérieur chaleureux">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY -->
+  <section class="why" data-section="why-values" data-intent="build trust" data-layout="full-bleed" data-items="3">
+    <div class="container">
+      <div class="section-head">
+        <h2 class="script-open">Pourquoi faire appel&nbsp;?</h2>
+        <p class="script-sub">à une coach en rangement</p>
+      </div>
+      <p class="why__lead">Combien de fois vous êtes-vous dit que ce week-end, vous vous y mettiez&nbsp;? Combien de fois avez-vous entrepris des sessions rangement mais finalement, malgré tous vos efforts, le bazar est rapidement revenu&nbsp;?</p>
+      <div class="why__values">
+        <div class="value">
+          <span class="vscript">Le désordre pèse</span>
+          <p>Par manque de temps, de motivation ou d'énergie, le désordre prend le dessus dans votre maison et vos placards. Une habitation qui ne correspond pas à ce que l'on souhaite génère du stress, pour vous et vos proches.</p>
+        </div>
+        <div class="value">
+          <span class="vscript">Des résultats durables</span>
+          <p>En faisant appel à mes compétences de professionnelle de l'organisation, vous mettez toutes les chances de votre côté pour atteindre vos objectifs et obtenir des résultats immédiats et durables.</p>
+        </div>
+        <div class="value">
+          <span class="vscript">Douceur &amp; bienveillance</span>
+          <p>Forte de mon expérience passée en tant qu'infirmière, c'est avec douceur et bienveillance que je vous accompagnerai dans la transformation de votre intérieur.</p>
+        </div>
+      </div>
+      <div class="why__close">
+        <span class="vscript">Pour une maison agréable, désencombrée, sereine</span>
+        <p>Mon sens de l'écoute et mes qualités relationnelles me permettent de vous aider à lever certains blocages psychologiques pour que vous puissiez retrouver une maison agréable où vous vous sentez bien&nbsp;! Je vous accompagne avec les valeurs qui font le cœur de mon métier&nbsp;: <span class="valuewords">respect, écoute et authenticité</span>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process" data-section="process-steps" data-intent="explain how" data-layout="grid" data-items="3">
+    <div class="container">
+      <div class="section-head">
+        <h2 class="script-open">Comment ça se passe&nbsp;?</h2>
+        <p class="script-sub">Trois temps, à votre rythme</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <span class="snum">un</span>
+          <h3>Faire connaissance</h3>
+          <p>Dans un premier temps, nous faisons connaissance par email ou téléphone et nous convenons ensemble d'une date pour la visite diagnostic.</p>
+          <p>Cette visite se passe à votre domicile et dure environ 1 heure. Faire appel à une professionnelle du rangement demande parfois du courage&nbsp;: je mets un point d'honneur à cette première rencontre, qui reste avant tout humaine.</p>
+        </div>
+        <div class="step">
+          <span class="snum">deux</span>
+          <h3>Envisager ensemble de trier, ranger, optimiser</h3>
+          <p>Ensemble, nous discutons de vos besoins et de vos attentes. Cette visite me permet de voir la/les pièce(s) concernée(s) et de cibler au mieux ma future mission.</p>
+          <p>Je vous explique mes méthodes de travail et je réponds à vos questions pour que vous puissiez aborder cette transformation en toute sérénité. Je vous prépare ensuite un devis.</p>
+        </div>
+        <div class="step">
+          <span class="snum">trois</span>
+          <h3>Désencombrer&nbsp;: mes astuces et conseils</h3>
+          <p>Le grand jour&nbsp;: j'arrive pour la mission à domicile. Ensemble, nous trions, désencombrons, rangeons et optimisons vos espaces. Vous avez le verdict final sur ce que vous gardez.</p>
+          <p>Je vous transmets mes astuces et mes conseils pour maintenir ce rangement. Après la mission, je reprends de vos nouvelles pour m'assurer que tout se passe bien.</p>
+        </div>
+      </div>
+      <div class="process__cta">
+        <a class="btn btn--gold" href="/contact">Contactez-moi</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROOF as scripted pull-quote -->
+  <section class="proof" data-section="testimonials" data-intent="build trust" data-layout="centered" data-items="1">
+    <div class="container">
+      <div class="proof__wrap">
+        <h2 class="proof__script">Ils m'ont fait confiance</h2>
+        <div class="stars" aria-label="5 étoiles sur 5">★★★★★</div>
+        <p>«&nbsp;Ranger ma maison était vraiment compliqué. Beaucoup d'objets avaient un poids émotionnel, une histoire… j'avais besoin de quelqu'un pour m'aider. Céline a été cette personne. Avec toute sa bienveillance et sa gentillesse, elle m'a patiemment fait prendre conscience de ce dont j'avais besoin et de ce qui me pesait. Elle est venue 2 fois chez moi, c'était intense mais à chaque fois, je me suis sentie plus légère et libérée. Confier son intimité à quelqu'un était très dur pour moi, mais Céline ne juge personne. Merci Céline&nbsp;!!&nbsp;»</p>
+        <div class="who">— Madame F</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" data-section="contact-cta" data-intent="drive action" data-layout="full-bleed" data-interactive="link">
+    <div class="container">
+      <span class="cscript">Et si on commençait&nbsp;?</span>
+      <h2>Prêt(e) pour une maison plus sereine&nbsp;?</h2>
+      <p>Parlons de votre projet, sans engagement. Le premier échange se fait par email ou téléphone, en toute simplicité.</p>
+      <div class="contact__row">
+        <a class="btn btn--gold" href="mailto:contact@celinek.org">Écrire à Céline</a>
+        <a class="contact__phone" href="tel:+33632731898">📞 06 32 73 18 98</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer" data-section="footer" data-intent="wayfinding" data-layout="edge-to-edge">
+  <div class="container">
+    <div class="fcontact">
+      <span>© Céline Knobloch, 2025</span>
+      <a href="tel:+33632731898">Tél : 06 32 73 18 98</a>
+      <a href="mailto:contact@celinek.org">contact@celinek.org</a>
+    </div>
+    <div class="socials">
+      <a href="/" aria-label="Instagram"><img src="assets/instagram.svg" alt="Instagram"></a>
+      <a href="/" aria-label="Facebook"><img src="assets/facebook.svg" alt="Facebook"></a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var h=document.getElementById('site-header'),b=h.querySelector('.nav-toggle');
+  b.addEventListener('click',function(){var o=h.classList.toggle('open');b.setAttribute('aria-expanded',o?'true':'false');});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&h.classList.contains('open')){h.classList.remove('open');b.setAttribute('aria-expanded','false');}});
+})();
+</script>
+</body>
+</html>

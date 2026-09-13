@@ -345,3 +345,64 @@ main .section.benefit div.cards-card-body {
     margin-left: 96px;
   }
 }
+
+/* ══════════════════════════════════════════════════════════════════════
+   /redesign — variant C (cinematic) preview. SCOPED to redesign-only
+   section-style classes + the new block classes so the live homepage is
+   untouched. See stardust/eds-conversion-log.md.
+   ══════════════════════════════════════════════════════════════════════ */
+
+/* neutralize the site-wide strong-highlight inside redesign blocks */
+main .section :is(.cine-hero, .editorial-split, .value-grid, .steps-flow, .testimonials, .contact-band) strong::before { content: none; }
+main .section :is(.cine-hero, .editorial-split, .value-grid, .steps-flow, .testimonials, .contact-band) strong { position: static; }
+
+/* full-bleed sections: no section padding */
+main .section.cine-hero-container,
+main .section.contact-band-container { padding: 0; max-width: none; }
+main .section.cine-hero-container > div,
+main .section.contact-band-container > div { max-width: none; }
+
+/* editorial band spacing */
+main .section.editorial-split-container { padding: 104px 16px; }
+
+/* default-content section heads (redesign) */
+main .section.head-center .default-content-wrapper,
+main .section.why-band .default-content-wrapper { margin: 0 auto; }
+main .section.head-center { padding: 96px 16px; }
+main .section.head-center .default-content-wrapper { text-align: center; max-width: 760px; }
+main .section.head-center + .section.head-center,
+main .section.head-center .steps-flow-wrapper,
+main .section.head-center .testimonials-wrapper { margin-top: 40px; }
+
+main .section.why-band { background: #f8e1af; padding: 96px 16px; }
+main .section.why-band .default-content-wrapper { max-width: 1120px; padding: 0 24px; }
+main .section.why-band .value-grid-wrapper { margin-top: 8px; }
+
+main .section.testi-band { background: #e4ebe6; }
+
+/* scripted openers + headings in default-content heads */
+main .section:is(.head-center, .why-band) .script {
+  font-family: var(--script-font-family), cursive;
+  display: block; line-height: 1; margin: 0 0 2px; font-size: 40px; font-weight: 400;
+}
+main .section.head-center .script { color: #728e7f; }
+main .section.why-band .script { color: #4a6357; font-size: 38px; }
+main .section:is(.head-center, .why-band) h2 { font-size: 42px; color: #1a1a17; margin: 0 0 8px; letter-spacing: -0.01em; line-height: 1.15; }
+main .section.head-center h2 { margin-bottom: 40px; }
+main .section.why-band .lead { font-size: 22px; color: #4a4433; max-width: 60ch; margin: 16px 0 40px; line-height: 1.6; }
+
+/* process CTA (bare link → .button) styled as a gold pill */
+main .section.head-center .button-container a.button {
+  background: #eed366; color: #1a1a17; border: none; border-radius: 999px;
+  padding: 14px 28px; font-weight: 600; text-decoration: none; display: inline-flex;
+  box-shadow: 0 6px 18px rgb(90 90 82 / 20%);
+}
+main .section.head-center .button-container a.button::before { content: none; }
+main .section.head-center .button-container a.button:hover { background: #f2dd80; }
+
+@media (width <= 560px) {
+  main .section:is(.head-center, .why-band) h2 { font-size: 30px; }
+  main .section:is(.head-center, .why-band) .script { font-size: 31px; }
+  main .section.editorial-split-container { padding: 64px 16px; }
+  main .section.head-center, main .section.why-band { padding: 64px 16px; }
+}

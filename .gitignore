@@ -7,3 +7,11 @@ helix-importer-ui
 .DS_Store
 *.bak
 .idea
+
+# secrets / local QA
+.env
+.env.*
+qa/
+
+# copied skill QA scripts (not part of the site)
+skills/

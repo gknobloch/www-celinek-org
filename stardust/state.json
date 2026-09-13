@@ -1,0 +1,39 @@
+{
+  "_provenance": {
+    "writtenBy": "stardust:uplift",
+    "writtenAt": "2026-09-12T00:00:00Z"
+  },
+  "site": {
+    "originUrl": "https://www.celinek.org",
+    "extractedAt": "2026-09-12T00:00:00Z",
+    "pageCap": 1,
+    "totalDiscovered": 1,
+    "crawled": 1,
+    "mode": "uplift-single"
+  },
+  "uplift": {
+    "variants": ["A", "B", "C"],
+    "cinematicRegister": "editorial",
+    "registerSource": "auto-picked",
+    "improvementsCount": 7
+  },
+  "pages": [
+    {
+      "slug": "index",
+      "url": "https://www.celinek.org/",
+      "status": "prototyped",
+      "currentStatePath": "stardust/current/pages/index.json",
+      "prototypePaths": {
+        "A": "stardust/prototypes/index-A-proposed.html",
+        "B": "stardust/prototypes/index-B-proposed.html",
+        "C": "stardust/prototypes/index-C-proposed.html",
+        "C-cinematic": "stardust/prototypes/index-C-cinematic.html"
+      },
+      "migratedPath": "",
+      "history": [
+        { "at": "2026-09-12T00:00:00Z", "event": "extracted", "by": "stardust:uplift" },
+        { "at": "2026-09-12T00:00:00Z", "event": "prototyped", "by": "stardust:uplift", "variants": ["A", "B", "C"] }
+      ]
+    }
+  ]
+}

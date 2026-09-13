@@ -1,0 +1,44 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "low-contrast",
+        "value": "*",
+        "files": [
+          "stardust/current/brand-review.html"
+        ],
+        "createdAt": "2026-09-12T20:03:34.632Z",
+        "reason": "extract-required diagnostic: brand-review renders the captured brand in its OWN colors (sage on cream); the low contrast is documented as tension T6, not a defect to fix in this artifact"
+      },
+      {
+        "rule": "clipped-overflow-container",
+        "value": "*",
+        "files": [
+          "stardust/prototypes/index-C-cinematic.html"
+        ],
+        "createdAt": "2026-09-12T20:20:58.843Z",
+        "reason": "parallax hero intentionally uses overflow:hidden to clip its oversized (124vh) photo and the decorative aria-hidden scroll cue; no tooltip/menu/popover needs to escape — clipping is by design for the editorial parallax register"
+      },
+      {
+        "rule": "low-contrast",
+        "value": "*",
+        "files": [
+          "stardust/prototypes/index-C-cinematic.html"
+        ],
+        "createdAt": "2026-09-12T20:21:06.037Z",
+        "reason": "variant C editorial hero: white script/H1/CTA over Celine's full-bleed photo with dark gradient scrim (rgba .68) — the captured brand hero pattern; detector resolves white against page cream because it cannot see the photo. Body/section text reuses the exact AA-validated tokens from variant A (which passed the detector clean)."
+      },
+      {
+        "rule": "layout-transition",
+        "value": "*",
+        "files": [
+          "stardust/prototypes/index-C-cinematic.html"
+        ],
+        "createdAt": "2026-09-12T22:36:45.299Z",
+        "reason": "condensing nav: the ONLY remaining layout-prop transition is the fixed (out-of-flow) header container's height, toggled once when crossing the 40px scroll threshold — a discrete state change on one element, not a per-frame/scroll/hover loop, so no page reflow or thrash. Logo now shrinks via transform:scale and the tagline collapses via grid-template-rows per the rule's own recommendation."
+      }
+    ]
+  }
+}

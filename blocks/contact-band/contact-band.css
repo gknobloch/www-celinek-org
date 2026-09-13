@@ -1,0 +1,57 @@
+.contact-band.block {
+  background: linear-gradient(135deg, #f8e1af 0%, #eecb7f 100%);
+  margin: 0;
+  padding: 96px 0;
+}
+
+.contact-band__inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 24px;
+  text-align: center;
+}
+
+.contact-band__inner .script {
+  font-family: var(--script-font-family), cursive;
+  font-size: 46px;
+  color: #4a6357;
+  display: block;
+  line-height: 1;
+  margin: 0 0 6px;
+}
+
+.contact-band__inner h2 { font-size: 42px; color: #1a1a17; margin: 0 0 14px; }
+.contact-band__inner > p:not(.contact-band__row) { color: #4a4433; max-width: 52ch; margin: 0 auto 30px; line-height: 1.7; }
+
+.contact-band__row {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 0;
+}
+
+.contact-band__row a.button.primary,
+.contact-band__row strong a {
+  display: inline-flex;
+  align-items: center;
+  background: #445b4f;
+  color: #fff;
+  border-radius: 999px;
+  padding: 14px 28px;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.18s ease, transform 0.18s ease;
+}
+
+.contact-band__row a.button.primary:hover,
+.contact-band__row strong a:hover { background: #374b40; transform: translateY(-2px); }
+
+.contact-band__row a[href^="tel:"] { color: #3f574a; font-weight: 700; font-size: 18px; text-decoration: none; }
+
+@media (width <= 560px) {
+  .contact-band__inner .script { font-size: 36px; }
+  .contact-band__inner h2 { font-size: 30px; }
+}
