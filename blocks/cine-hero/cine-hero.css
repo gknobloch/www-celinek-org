@@ -74,12 +74,12 @@
 }
 
 .cine-hero__panel h1 {
-  font-size: 28px;
+  font-size: 24px;
   font-weight: 600;
   color: #fff;
   letter-spacing: -0.01em;
   margin: 0 0 24px;
-  max-width: 24ch;
+  max-width: none;      /* the <br> after the comma controls the 2-line break */
   text-align: left;
   text-shadow: 0 2px 16px rgb(26 26 23 / 40%);
 }
@@ -136,7 +136,7 @@
 
 @media (width <= 560px) {
   .cine-hero__panel .script { font-size: 42px; }
-  .cine-hero__panel h1 { font-size: 24px; }
+  .cine-hero__panel h1 { font-size: 21px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
