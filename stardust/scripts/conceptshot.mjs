@@ -1,0 +1,12 @@
+import { chromium } from 'playwright';
+const b=await chromium.launch();
+const p=await (await b.newContext({viewport:{width:1440,height:900}})).newPage();
+const errs=[]; p.on('pageerror',e=>errs.push(e.message));
+await p.goto('http://localhost:3000/redesign',{waitUntil:'networkidle',timeout:40000});
+await p.waitForTimeout(2000);
+const y=await p.evaluate(()=>{const els=document.querySelectorAll('.editorial');return Math.round(els[1].getBoundingClientRect().top+window.scrollY);});
+await p.evaluate(yy=>window.scrollTo(0,yy-60),y); await p.waitForTimeout(700);
+const ok=await p.evaluate(()=>{const img=document.querySelectorAll('.editorial')[1].querySelector('img');return {loaded:img.naturalWidth>0, src:img.currentSrc.split('/').pop().slice(0,30)};});
+console.log('concept image:',JSON.stringify(ok),'errors:',errs.length);
+await p.screenshot({path:'stardust/validation/eds/concept-new.png'});
+await b.close();
