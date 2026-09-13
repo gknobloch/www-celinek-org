@@ -424,6 +424,12 @@ main .section.head-center .button-container a.button:hover { background: #f2dd80
 
 /* ── /redesign fixes (round 2) ────────────────────────────────────────── */
 
+/* redesign reads left-aligned, not justified (scoped so the live site is untouched) */
+body:has(.cine-hero) p,
+body:has(.cine-hero) li,
+body:has(.cine-hero) dl,
+body:has(.cine-hero) blockquote { text-align: left; }
+
 /* head alignment: beat the global `p { text-align: justify }` by targeting p */
 main .section.head-center .default-content-wrapper p { text-align: center; }
 main .section.why-band .default-content-wrapper p { text-align: left; }

@@ -66,19 +66,21 @@
   font-family: var(--script-font-family), cursive;
   color: #fff;
   font-weight: 400;
-  font-size: 76px;
+  font-size: 64px;
   line-height: 0.95;
   margin: 0 0 12px;
+  text-align: left;
   text-shadow: 0 2px 20px rgb(26 26 23 / 35%);
 }
 
 .cine-hero__panel h1 {
-  font-size: 32px;
+  font-size: 28px;
   font-weight: 600;
   color: #fff;
   letter-spacing: -0.01em;
   margin: 0 0 24px;
-  max-width: 22ch;
+  max-width: 24ch;
+  text-align: left;
   text-shadow: 0 2px 16px rgb(26 26 23 / 40%);
 }
 
@@ -129,12 +131,12 @@
 @media (width <= 900px) {
   .cine-hero.block { min-height: 82vh; }
   .cine-hero__panel { max-width: none; }
-  .cine-hero__panel .script { font-size: 56px; }
+  .cine-hero__panel .script { font-size: 50px; }
 }
 
 @media (width <= 560px) {
-  .cine-hero__panel .script { font-size: 46px; }
-  .cine-hero__panel h1 { font-size: 27px; }
+  .cine-hero__panel .script { font-size: 42px; }
+  .cine-hero__panel h1 { font-size: 24px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
