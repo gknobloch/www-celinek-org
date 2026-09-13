@@ -448,11 +448,13 @@ body:has(.cine-hero) footer .default-content-wrapper { display: flex; align-item
 body:has(.cine-hero) footer .default-content-wrapper > ul { margin: 0; flex: 1 1 auto; }
 body:has(.cine-hero) footer .default-content-wrapper > p { margin: 0; flex: 0 0 auto; }
 body:has(.cine-hero) footer .footer a.button {
-  width: 36px; height: 36px; padding: 0; border-radius: 999px; background: #fff;
+  width: 40px; height: 40px; padding: 0; border-radius: 999px; background: #fff;
   display: inline-flex; align-items: center; justify-content: center;
 }
 body:has(.cine-hero) footer .footer a.button:hover { background: #eed366; }
-body:has(.cine-hero) footer span.icon img { filter: brightness(0); width: 18px; height: 18px; opacity: 1; }
+/* icons keep their natural brand sage (#728e7f); no filter */
+body:has(.cine-hero) footer span.icon { display: inline-flex; }
+body:has(.cine-hero) footer span.icon img { filter: none; width: 26px; height: 26px; opacity: 1; }
 
 /* trim the gap after the process CTA before the testimonials band */
 main .section.head-center.steps-flow-container { padding-bottom: 24px; }
