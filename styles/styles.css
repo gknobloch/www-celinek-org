@@ -428,16 +428,29 @@ main .section.head-center .button-container a.button:hover { background: #f2dd80
 main .section.head-center .default-content-wrapper p { text-align: center; }
 main .section.why-band .default-content-wrapper p { text-align: left; }
 
-/* hero starts at the very top: overlay the nav (scoped to the redesign page) */
-body:has(.cine-hero) header {
-  position: absolute; top: 0; left: 0; right: 0; z-index: 20;
-  height: auto; background: transparent; border: none;
-}
-body:has(.cine-hero) header .header { background: transparent; }
-body:has(.cine-hero) header .nav-sections a,
-body:has(.cine-hero) header .nav-brand,
-body:has(.cine-hero) header a { color: #fff; }
-body:has(.cine-hero) header .nav-brand a.button { color: #1a1a17; }
+/* hero starts at the very top: the fixed nav overlays the hero (redesign page) */
+body:has(.cine-hero) header { height: 0; }                        /* no flow reservation → hero at y=0 */
+body:has(.cine-hero) header .nav-wrapper,
+body:has(.cine-hero) header nav { background: transparent; transition: background 0.3s ease; }
+body:has(.cine-hero) header nav .nav-brand { display: none !important; }   /* redundant with the built-in logo */
+body:has(.cine-hero) header nav a:any-link,
+body:has(.cine-hero) header .nav-logo .logo-description p.name,
+body:has(.cine-hero) header .nav-logo .logo-description p.baseline span,
+body:has(.cine-hero) header .nav-logo .logo-description p.baseline span::first-letter { color: #fff; }
+body:has(.cine-hero) header .nav-logo .logo-description p.name { text-shadow: 0 1px 8px rgb(26 26 23 / 40%); }
+body:has(.cine-hero) header nav a:hover { text-decoration: none; color: #eed366; }
+/* Contactez-moi (nav-tools) as a gold pill */
+body:has(.cine-hero) header .nav-tools a { background: #eed366; color: #1a1a17; padding: 10px 20px; border-radius: 999px; font-weight: 600; }
+body:has(.cine-hero) header .nav-tools a:hover { background: #f2dd80; color: #1a1a17; }
+
+/* condensing / solidifying nav once scrolled (like the prototype) */
+body:has(.cine-hero) header.scrolled .nav-wrapper,
+body:has(.cine-hero) header.scrolled nav { background: rgb(253 254 250 / 96%); backdrop-filter: blur(6px); box-shadow: 0 4px 20px rgb(90 90 82 / 10%); }
+body:has(.cine-hero) header.scrolled nav a:any-link,
+body:has(.cine-hero) header.scrolled .nav-logo .logo-description p.name,
+body:has(.cine-hero) header.scrolled .nav-logo .logo-description p.baseline span { color: #1a1a17; text-shadow: none; }
+body:has(.cine-hero) header.scrolled .nav-logo .logo-description p.baseline span::first-letter { color: #728e7f; }
+body:has(.cine-hero) header.scrolled .nav-tools a { color: #1a1a17; }
 
 /* footer: smaller type, clean white monochrome icons (no dark blob on deep sage) */
 body:has(.cine-hero) footer { font-size: 14px; padding: 40px 2rem; }

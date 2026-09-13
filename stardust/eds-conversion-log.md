@@ -128,3 +128,21 @@ drift/fade, editorial image parallax + scale-in "settle", scroll-linked CSS head
 - **Footer socials** — white-circle chips (dark icon on white, like the prototype),
   right-aligned by forcing the footer content chain full-width (footer.css's nested
   `div{display:flex}` had shrink-wrapped it) + `ul { flex: 1 }`.
+
+## Header FIXED (2026-09-13) — real bug, not the aem-up race
+Root cause: the repo's refreshed header.js expects a 3-section nav
+(brand/sections/tools); the site's /nav has ONE section (bare link list), so
+`.nav-sections` was null and `toggleMenu` crashed (`querySelectorAll` on null).
+This would fail on the deployed preview too (the live site still runs the older
+deployed header.js, which is why it looked fine there).
+
+Fix (no shared-code change, no touching the live /nav):
+- `content/nav-redesign.html` — 3 sections (brand / links / tools = Contactez-moi).
+- redesign page metadata `nav: /nav-redesign` (per-page nav override).
+- Overlay + condensing nav styling scoped via `body:has(.cine-hero)`: transparent
+  over the hero with white links + gold CTA at top; solid cream + dark links once
+  scrolled (`header.scrolled`, toggled by the cine-hero scroll handler). Hidden the
+  redundant nav-brand.
+
+DEPLOY NOTE: `content/nav-redesign.html` MUST be deployed+published to DA alongside
+redesign.html (it's on the publish roster now) or the header 404s the fragment.

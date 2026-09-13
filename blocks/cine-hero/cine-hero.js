@@ -63,6 +63,8 @@ export default function decorate(block) {
   progress.setAttribute('aria-hidden', 'true');
   document.body.append(progress);
 
+  const header = document.querySelector('header');
+
   // scroll effects: bg parallax + slow scale, hero copy drift + fade, progress bar
   let ticking = false;
   const onScroll = () => {
@@ -73,6 +75,7 @@ export default function decorate(block) {
       const vh = window.innerHeight;
       const max = document.documentElement.scrollHeight - vh;
       progress.style.transform = `scaleX(${max > 0 ? Math.min(sy / max, 1) : 0})`;
+      if (header) header.classList.toggle('scrolled', sy > 40);
       if (window.innerWidth > 767 && sy > 2) {
         const p = Math.min(Math.max(sy / vh, 0), 1);
         bg.style.transform = `translateY(${-p * 12}vh) scale(${1 + p * 0.08})`;
