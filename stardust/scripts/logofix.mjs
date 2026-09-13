@@ -1,0 +1,13 @@
+import { chromium } from 'playwright';
+const b=await chromium.launch();
+const p=await (await b.newContext({viewport:{width:1440,height:900},deviceScaleFactor:2})).newPage();
+await p.goto('http://localhost:3000/redesign',{waitUntil:'networkidle',timeout:40000});
+await p.waitForTimeout(2500);
+const base=await p.evaluate(()=>{const b=document.querySelector('header .nav-logo p.baseline');return {lineH:getComputedStyle(b).lineHeight, h:Math.round(b.getBoundingClientRect().height), scrollH:b.scrollHeight};});
+console.log('baseline (top):',JSON.stringify(base),'(h should >= scrollH = not clipped)');
+await p.screenshot({path:'stardust/validation/eds/logo-fix-top.png',clip:{x:150,y:0,width:420,height:100}});
+await p.evaluate(()=>window.scrollTo(0,400)); await p.waitForTimeout(700);
+const sc=await p.evaluate(()=>{const img=document.querySelector('header .nav-logo img').getBoundingClientRect();const name=document.querySelector('header .nav-logo p.name').getBoundingClientRect();return {delta:Math.round((name.top+name.height/2)-(img.top+img.height/2))};});
+console.log('scrolled name vs img-center delta:',sc.delta,'px (target ~+4/5)');
+await p.screenshot({path:'stardust/validation/eds/logo-fix-scrolled.png',clip:{x:150,y:0,width:420,height:78}});
+await b.close();
