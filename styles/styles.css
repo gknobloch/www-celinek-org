@@ -437,12 +437,14 @@ body:has(.cine-hero) header nav .nav-brand { display: none !important; }
 
 /* logo lockup: mark + name/tag vertically centered (prototype .brand) */
 body:has(.cine-hero) header .nav-logo a { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-body:has(.cine-hero) header .nav-logo .logo-description { padding: 0; text-align: left; }
+body:has(.cine-hero) header .nav-logo .logo-description { padding: 0; text-align: left; position: relative; }
 body:has(.cine-hero) header .nav-logo img { height: 56px; transition: height 0.38s cubic-bezier(0.16, 1, 0.3, 1); }
 
 /* logo text — deep sage #4a6357 (prototype), name 16px/700, tag 11px/600 uppercase */
-body:has(.cine-hero) header .nav-logo .logo-description p.name { color: #4a6357; font-size: 16px; font-weight: 700; line-height: 1.1; letter-spacing: 0; text-align: left; margin: 0 0 2px; }
-body:has(.cine-hero) header .nav-logo .logo-description p.baseline { font-size: 11px; line-height: 1.35; letter-spacing: 0.12em; text-align: left; margin: 0; overflow: hidden; max-height: 22px; opacity: 1; transition: max-height 0.38s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease; }
+body:has(.cine-hero) header .nav-logo .logo-description p.name { color: #4a6357; font-size: 16px; font-weight: 700; line-height: 1.1; letter-spacing: 0; text-align: left; margin: 0; }
+/* tagline is OUT OF FLOW (absolute) so the NAME centers with the mark/links/CTA;
+   it hangs just below the name and fades out on scroll */
+body:has(.cine-hero) header .nav-logo .logo-description p.baseline { position: absolute; top: 100%; left: 0; margin: 2px 0 0; white-space: nowrap; font-size: 11px; line-height: 1.35; letter-spacing: 0.12em; text-align: left; opacity: 1; transition: opacity 0.3s ease; }
 body:has(.cine-hero) header .nav-logo .logo-description p.baseline span { color: #4a6357; font-weight: 600; }
 body:has(.cine-hero) header .nav-logo .logo-description p.baseline span::first-letter { color: #4a6357; }
 
@@ -458,10 +460,7 @@ body:has(.cine-hero) header .nav-tools a:hover { background: #f2dd80; color: #1a
 body:has(.cine-hero) header nav { height: 92px; transition: height 0.38s cubic-bezier(0.16, 1, 0.3, 1); }
 body:has(.cine-hero) header.scrolled nav { height: 62px; }
 body:has(.cine-hero) header.scrolled .nav-logo img { height: 38px; }
-body:has(.cine-hero) header.scrolled .nav-logo .logo-description p.baseline { max-height: 0; opacity: 0; }
-/* when the tagline is gone, drop the name ~5px to sit level with the logo mark */
-body:has(.cine-hero) header .nav-logo .logo-description p.name { transition: transform 0.38s cubic-bezier(0.16, 1, 0.3, 1); }
-body:has(.cine-hero) header.scrolled .nav-logo .logo-description p.name { transform: translateY(5px); }
+body:has(.cine-hero) header.scrolled .nav-logo .logo-description p.baseline { opacity: 0; }
 
 /* scrolled bar — solid cream (matches body) + hairline + shadow (prototype) */
 body:has(.cine-hero) header.scrolled .nav-wrapper { background: var(--background-color); border-bottom: 1px solid #eceee6; box-shadow: 0 6px 24px rgb(90 90 82 / 10%); }
