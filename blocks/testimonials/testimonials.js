@@ -7,10 +7,8 @@
  * Schema: stardust/eds-schema/redesign.json#testimonials
  */
 export default function decorate(block) {
-  if (block.dataset.anchor) {
-    const section = block.closest('.section');
-    if (section) section.id = block.dataset.anchor;
-  }
+  const sec = block.closest('.section');
+  if (sec && sec.dataset.anchor) sec.id = sec.dataset.anchor;
 
   const slides = [...block.children].map((row) => {
     const cell = row.firstElementChild || row;

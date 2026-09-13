@@ -16,13 +16,11 @@ export default function decorate(block) {
 
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   cards.forEach((c) => c.classList.add('reveal'));
-  const io = new IntersectionObserver((entries, obs) => {
-    entries.forEach((e) => {
-      if (!e.isIntersecting) return;
-      setTimeout(() => e.target.classList.add('in'), (Array.prototype.indexOf.call(cards, e.target) % 4) * 90);
-      obs.unobserve(e.target);
-    });
-  }, { threshold: 0, rootMargin: '0px 0px -8% 0px' });
-  cards.forEach((c) => io.observe(c));
-  setTimeout(() => cards.forEach((c) => c.classList.add('in')), 1800);
+  const reveal = () => {
+    const vh = window.innerHeight;
+    cards.forEach((c, i) => { if (c.getBoundingClientRect().top < vh * 0.88) setTimeout(() => c.classList.add('in'), (i % 3) * 90); });
+  };
+  window.addEventListener('scroll', reveal, { passive: true });
+  window.addEventListener('resize', reveal, { passive: true });
+  reveal();
 }

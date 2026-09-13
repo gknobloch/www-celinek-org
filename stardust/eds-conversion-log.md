@@ -65,3 +65,31 @@ Everything is built + validated. Remaining (one atomic step, needs the token):
   2. sanitise + PUT content/redesign.html → DA, POST /preview (org=gknobloch, repo=www-celinek-org).
   3. Preview URL: https://redesign-c-preview--www-celinek-org--gknobloch.aem.page/redesign
   (NO /live publish — branch preview only, per the locked scope.)
+
+## aem-up round (2026-09-13) — fixes from real-pipeline testing
+The build-harness gave false confidence (it doesn't strip classes). Testing via
+`aem up` (real pipeline) surfaced + fixed:
+- **Author classes are stripped** in block cells AND default content → re-apply
+  roles in block JS (script/eyebrow) and use POSITIONAL CSS for default-content
+  heads (`.default-content-wrapper > p:first-child` = script; `h2 + p` = lead).
+- **CTAs: one per paragraph** — two `<a>` in one cell fold into one `<p>` and
+  neither buttonizes. Hero + contact CTAs split into separate paragraphs; phone
+  un-buttonized in block JS.
+- **Carousel offset** — older boilerplate ships no global `box-sizing:border-box`;
+  slide padding overflowed 100% width. Added scoped border-box → slides align.
+- **Footer colors** — deep-sage footer scoped to the /redesign page via
+  `body:has(.cine-hero) footer` (live footer untouched).
+- **Reveals** — switched from IntersectionObserver (unreliable in testing, left
+  content hidden) to a scroll-driven check; fires reliably, animates, never
+  leaves content invisible. Verified: editorial/values/steps all reveal; hero
+  parallax + step 1-2-3 sequence fire.
+- **Section anchors** — `data-anchor` on the block div is stripped too; moved to
+  section-metadata (`anchor` key → `data-anchor` on the section, preserved).
+  Hero CTAs now scroll to #concept / #process.
+- **Header** — errors in the LOCAL aem-up context (loadFragment('/nav') returns
+  null); fails identically on the homepage `/` locally. `header.js` is unchanged
+  from main and the header works on live celinek.org, so this is an aem-up
+  local-render artifact — the header will render on the deployed preview.
+
+Verified on aem up: anchors resolve, parallax fires, all reveals fire, carousel
+aligns, footer deep-sage, 0 non-chrome console errors, one <h1>.

@@ -5,10 +5,8 @@
  * Schema: stardust/eds-schema/redesign.json#steps-flow
  */
 export default function decorate(block) {
-  if (block.dataset.anchor) {
-    const section = block.closest('.section');
-    if (section) section.id = block.dataset.anchor;
-  }
+  const sec = block.closest('.section');
+  if (sec && sec.dataset.anchor) sec.id = sec.dataset.anchor;
 
   const steps = [...block.children].map((row) => {
     const cell = row.firstElementChild || row;
@@ -26,9 +24,9 @@ export default function decorate(block) {
   steps.forEach((s) => s.classList.add('seq'));
   let fired = false;
   const run = () => { if (fired) return; fired = true; steps.forEach((s, i) => setTimeout(() => s.classList.add('in'), i * 320)); };
-  const io = new IntersectionObserver((entries, obs) => {
-    entries.forEach((e) => { if (e.isIntersecting) { run(); obs.disconnect(); } });
-  }, { threshold: 0, rootMargin: '0px 0px -8% 0px' });
-  io.observe(block);
-  setTimeout(run, 2200); // safety net: reveal even if the observer misses
+  // scroll-driven trigger — fires the 1-2-3 sequence when the block enters view
+  const check = () => { if (block.getBoundingClientRect().top < window.innerHeight * 0.82) run(); };
+  window.addEventListener('scroll', check, { passive: true });
+  window.addEventListener('resize', check, { passive: true });
+  check();
 }

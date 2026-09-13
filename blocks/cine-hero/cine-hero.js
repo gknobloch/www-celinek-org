@@ -12,10 +12,13 @@
  * Schema: stardust/eds-schema/redesign.json#cine-hero
  */
 export default function decorate(block) {
+  // pipeline strips author classes + unwraps cells → classify by role, not class
   const media = block.querySelector('picture, img');
-  const script = block.querySelector('p.script') || block.querySelector('p');
   const heading = block.querySelector('h1, h2');
-  const ctas = [...block.querySelectorAll('a')].map((a) => a.closest('p') || a);
+  const ps = [...block.querySelectorAll('p')];
+  const ctas = ps.filter((p) => p.querySelector('a'));
+  const script = ps.find((p) => !p.querySelector('a') && p.textContent.trim());
+  if (script) script.classList.add('script'); // re-apply (class was stripped)
 
   const bg = document.createElement('div');
   bg.className = 'cine-hero__bg';

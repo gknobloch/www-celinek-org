@@ -380,16 +380,31 @@ main .section.why-band .value-grid-wrapper { margin-top: 8px; }
 
 main .section.testi-band { background: #e4ebe6; }
 
-/* scripted openers + headings in default-content heads */
-main .section:is(.head-center, .why-band) .script {
+/* scripted openers + headings in default-content heads.
+   NB: the pipeline strips author classes, so these are POSITIONAL: the first
+   paragraph of the head is the script; in why-band the paragraph after the h2
+   is the lead. */
+main .section:is(.head-center, .why-band) .default-content-wrapper > p:first-child {
   font-family: var(--script-font-family), cursive;
   display: block; line-height: 1; margin: 0 0 2px; font-size: 40px; font-weight: 400;
 }
-main .section.head-center .script { color: #728e7f; }
-main .section.why-band .script { color: #4a6357; font-size: 38px; }
+main .section.head-center .default-content-wrapper > p:first-child { color: #728e7f; }
+main .section.why-band .default-content-wrapper > p:first-child { color: #4a6357; font-size: 38px; }
 main .section:is(.head-center, .why-band) h2 { font-size: 42px; color: #1a1a17; margin: 0 0 8px; letter-spacing: -0.01em; line-height: 1.15; }
 main .section.head-center h2 { margin-bottom: 40px; }
-main .section.why-band .lead { font-size: 22px; color: #4a4433; max-width: 60ch; margin: 16px 0 40px; line-height: 1.6; }
+main .section.why-band .default-content-wrapper > h2 + p { font-size: 22px; color: #4a4433; max-width: 60ch; margin: 16px 0 40px; line-height: 1.6; }
+
+/* box-sizing for redesign block subtrees (older boilerplate ships no global reset;
+   without this the carousel slide padding overflows its 100% width → offset) */
+main .section :is(.cine-hero, .editorial-split, .value-grid, .steps-flow, .testimonials, .contact-band) *,
+main .section :is(.cine-hero, .editorial-split, .value-grid, .steps-flow, .testimonials, .contact-band) *::before,
+main .section :is(.cine-hero, .editorial-split, .value-grid, .steps-flow, .testimonials, .contact-band) *::after { box-sizing: border-box; }
+
+/* redesign footer treatment (deep sage) — scoped to the /redesign page only via :has */
+body:has(.cine-hero) footer,
+body:has(.cine-hero) footer .footer { background: #445b4f; color: rgb(255 255 255 / 85%); }
+body:has(.cine-hero) footer a { color: #fff; }
+body:has(.cine-hero) footer a:hover { color: #eed366; }
 
 /* process CTA (bare link → .button) styled as a gold pill */
 main .section.head-center .button-container a.button {

@@ -8,11 +8,9 @@
  * Schema: stardust/eds-schema/redesign.json#editorial-split
  */
 export default function decorate(block) {
-  // section anchor for in-page hero CTAs
-  if (block.dataset.anchor) {
-    const section = block.closest('.section');
-    if (section) section.id = block.dataset.anchor;
-  }
+  // section anchor for in-page hero CTAs (section-metadata → data-anchor, preserved)
+  const section = block.closest('.section');
+  if (section && section.dataset.anchor) section.id = section.dataset.anchor;
 
   const rows = [...block.children];
   const bands = [];
@@ -32,6 +30,11 @@ export default function decorate(block) {
     const copy = document.createElement('div');
     copy.className = 'editorial__copy';
     if (copyCell) copy.append(...copyCell.childNodes);
+    // re-apply stripped classes: p's before the heading are eyebrow then script
+    const h = copy.querySelector('h2, h3');
+    const before = [...copy.querySelectorAll('p')].filter((el) => h && (h.compareDocumentPosition(el) & Node.DOCUMENT_POSITION_PRECEDING));
+    if (before[0]) before[0].classList.add('eyebrow');
+    if (before[1]) before[1].classList.add('script');
 
     band.append(media, copy);
     bands.push(band);
@@ -41,14 +44,15 @@ export default function decorate(block) {
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (reduced) return;
 
-  // fade-rise reveal
+  // fade-rise reveal — scroll-driven so it fires reliably on any real scroll
   bands.forEach((b) => b.classList.add('reveal'));
-  const io = new IntersectionObserver((entries, obs) => {
-    entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
-  }, { threshold: 0, rootMargin: '0px 0px -8% 0px' });
-  bands.forEach((b) => io.observe(b));
-  // safety net: never leave content hidden if the observer misses
-  setTimeout(() => bands.forEach((b) => b.classList.add('in')), 1800);
+  const reveal = () => {
+    const vh = window.innerHeight;
+    bands.forEach((b) => { if (b.getBoundingClientRect().top < vh * 0.88) b.classList.add('in'); });
+  };
+  window.addEventListener('scroll', reveal, { passive: true });
+  window.addEventListener('resize', reveal, { passive: true });
+  reveal();
 
   // continuous image parallax drift
   const imgs = [...block.querySelectorAll('[data-parallax]')];
