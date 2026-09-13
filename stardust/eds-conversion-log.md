@@ -116,3 +116,15 @@ Fixed from user testing at /redesign:
 Added scroll effects: reading-progress bar (sage→gold), hero bg parallax + scale + copy
 drift/fade, editorial image parallax + scale-in "settle", scroll-linked CSS head reveals
 (`animation-timeline: view()`), staggered card + sequential step reveals.
+
+## Round 3b (2026-09-13)
+- **Smooth-scroll** added to the cine-hero block: self-contained mini-Lenis
+  (wheel → rAF lerp, resync on keyboard/scrollbar, smooth in-page anchor jumps).
+  Desktop + fine-pointer only; native scroll on touch / reduced-motion. All the
+  scroll-driven effects stay in sync (it drives window.scrollTo).
+- **Contact script centered** — `.contact-band__inner p { text-align: center }`
+  (beat the global p justify).
+- **Process CTA gap** reduced (section padding-bottom 24px → ~66px gap).
+- **Footer socials** — white-circle chips (dark icon on white, like the prototype),
+  right-aligned by forcing the footer content chain full-width (footer.css's nested
+  `div{display:flex}` had shrink-wrapped it) + `ul { flex: 1 }`.

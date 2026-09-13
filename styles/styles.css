@@ -443,8 +443,19 @@ body:has(.cine-hero) header .nav-brand a.button { color: #1a1a17; }
 body:has(.cine-hero) footer { font-size: 14px; padding: 40px 2rem; }
 body:has(.cine-hero) footer .footer p,
 body:has(.cine-hero) footer .footer li { font-size: 14px; }
-body:has(.cine-hero) footer .footer a.button { color: #fff; }
-body:has(.cine-hero) footer span.icon img { filter: brightness(0) invert(1); width: 20px; height: 20px; opacity: 0.92; }
+/* social icons: white circle chips (like the prototype), pushed to the right */
+body:has(.cine-hero) footer .default-content-wrapper { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; }
+body:has(.cine-hero) footer .default-content-wrapper > ul { margin: 0; flex: 1 1 auto; }
+body:has(.cine-hero) footer .default-content-wrapper > p { margin: 0; flex: 0 0 auto; }
+body:has(.cine-hero) footer .footer a.button {
+  width: 36px; height: 36px; padding: 0; border-radius: 999px; background: #fff;
+  display: inline-flex; align-items: center; justify-content: center;
+}
+body:has(.cine-hero) footer .footer a.button:hover { background: #eed366; }
+body:has(.cine-hero) footer span.icon img { filter: brightness(0); width: 18px; height: 18px; opacity: 1; }
+
+/* trim the gap after the process CTA before the testimonials band */
+main .section.head-center.steps-flow-container { padding-bottom: 24px; }
 
 /* process CTA: reset the boilerplate button margin so the pill sits cleanly */
 main .section.head-center .button-container a.button { margin: 8px 0 0; }
@@ -471,3 +482,9 @@ body:has(.cine-hero) main > .section:empty,
 body:has(.cine-hero) main > .section:has(> .default-content-wrapper:empty:only-child) { display: none; }
 body:has(.cine-hero) main { padding-top: 0; }
 body:has(.cine-hero) main > .section.cine-hero-container { margin-top: 0; }
+
+/* footer: make the content chain full-width so socials reach the right edge
+   (footer.css sets `footer .footer div { display:flex }` which shrink-wraps them) */
+body:has(.cine-hero) footer .footer > div,
+body:has(.cine-hero) footer .footer > div > .section,
+body:has(.cine-hero) footer .default-content-wrapper { width: 100%; flex: 1 1 100%; }

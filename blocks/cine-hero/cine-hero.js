@@ -90,4 +90,41 @@ export default function decorate(block) {
   window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('resize', onScroll, { passive: true });
   onScroll();
+
+  // ── self-contained smooth-scroll (mini-Lenis) ───────────────────────────
+  // desktop + fine pointer only; native scroll everywhere else. All the
+  // scroll-driven effects above stay in sync because it drives window.scrollTo.
+  if (window.matchMedia('(pointer: fine)').matches && window.innerWidth > 767) {
+    const clampY = (v) => Math.max(0, Math.min(v, document.documentElement.scrollHeight - window.innerHeight));
+    let target = window.scrollY;
+    let current = target;
+    let running = false;
+    const lerp = 0.11;
+    const frame = () => {
+      current += (target - current) * lerp;
+      if (Math.abs(target - current) < 0.4) { current = target; running = false; }
+      window.scrollTo(0, Math.round(current));
+      if (running) requestAnimationFrame(frame);
+    };
+    const start = () => { if (!running) { running = true; requestAnimationFrame(frame); } };
+    window.addEventListener('wheel', (e) => {
+      if (e.ctrlKey) return; // let pinch-zoom through
+      e.preventDefault();
+      target = clampY(target + e.deltaY);
+      start();
+    }, { passive: false });
+    // resync when scroll comes from elsewhere (keyboard, scrollbar, anchor)
+    window.addEventListener('scroll', () => { if (!running) { target = window.scrollY; current = window.scrollY; } }, { passive: true });
+    window.addEventListener('resize', () => { target = clampY(target); }, { passive: true });
+    // smooth in-page anchor jumps (hero CTAs → #concept / #process)
+    document.querySelectorAll('a[href^="#"]').forEach((a) => {
+      a.addEventListener('click', (e) => {
+        const el = document.getElementById(a.getAttribute('href').slice(1));
+        if (!el) return;
+        e.preventDefault();
+        target = clampY(el.getBoundingClientRect().top + window.scrollY);
+        start();
+      });
+    });
+  }
 }

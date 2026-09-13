@@ -11,6 +11,9 @@
   text-align: center;
 }
 
+/* center every paragraph (beat the global p { text-align: justify }) */
+.contact-band__inner p { text-align: center; }
+
 .contact-band__inner .script {
   font-family: var(--script-font-family), cursive;
   font-size: 46px;
