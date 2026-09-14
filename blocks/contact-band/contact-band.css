@@ -1,7 +1,7 @@
 .contact-band.block {
   background: linear-gradient(135deg, #f8e1af 0%, #eecb7f 100%);
   margin: 0;
-  padding: 96px 0;
+  padding: 72px 0;
 }
 
 .contact-band__inner {
@@ -11,8 +11,9 @@
   text-align: center;
 }
 
-/* center every paragraph (beat the global p { text-align: justify }) */
-.contact-band__inner p { text-align: center; }
+/* center every paragraph — extra class specificity beats the foundation's
+   `body:has(.cine-hero) p { text-align: left }` (0,1,2) un-justify rule */
+.contact-band .contact-band__inner p { text-align: center; }
 
 .contact-band__inner .script {
   font-family: var(--script-font-family), cursive;
