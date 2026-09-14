@@ -29,6 +29,7 @@
 .testimonials .stars { color: #806515; letter-spacing: 3px; font-size: 18px; margin-bottom: 14px; }
 .testimonials .testi p { font-size: 16.5px; line-height: 1.66; color: #1a1a17; margin: 0 0 18px; font-style: italic; }
 .testimonials .testi p.who { font-style: normal; font-weight: 700; color: #4a6357; font-size: 15px; letter-spacing: 0.04em; margin: 0; }
+.testimonials .testi p.who::before { content: "— "; }   /* match prototype figcaption "— Name" */
 .testimonials .testi p.who strong { font-weight: 700; }
 
 .testimonials .carousel__nav {
