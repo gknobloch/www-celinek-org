@@ -25,7 +25,8 @@
 }
 
 .contact-band__inner h2 { font-size: 42px; color: #1a1a17; margin: 0 0 14px; }
-.contact-band__inner > p:not(.contact-band__row) { color: #4a4433; max-width: 52ch; margin: 0 auto 30px; line-height: 1.7; }
+/* body paragraph — exclude the script line so it keeps its tight line-height/margin */
+.contact-band__inner > p:not(.contact-band__row):not(.script) { color: #4a4433; max-width: 52ch; margin: 0 auto 30px; line-height: 1.7; }
 
 .contact-band__row {
   display: flex;
