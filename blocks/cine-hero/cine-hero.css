@@ -13,8 +13,9 @@
   height: 118vh;
   z-index: 0;
   will-change: transform;
-  transform: scale(1.1);
-  transition: transform 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: scale(1.06);   /* static rest crop for mobile / no-JS; JS drives desktop
+                               transform every frame (Ken Burns), so NO transition here —
+                               a transition would smear the per-frame parallax updates */
 }
 
 /* reading-progress bar (injected by the block) */
@@ -23,8 +24,6 @@
   transform: scaleX(0); transform-origin: left center;
   background: linear-gradient(90deg, #728e7f, #eed366);
 }
-
-.cine-hero.is-in .cine-hero__bg { transform: scale(1); }
 
 .cine-hero__bg picture,
 .cine-hero__bg img {
@@ -71,6 +70,20 @@
   margin: 0 0 12px;
   text-align: left;
   text-shadow: 0 2px 20px rgb(26 26 23 / 35%);
+}
+
+/* word-by-word script reveal (JS wraps each word in .w, sets per-word delay).
+   Default is visible; only .pre-reveal hides — so a JS failure still shows the line. */
+.cine-hero__panel .script .w {
+  display: inline-block;
+  will-change: transform, opacity;
+  transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cine-hero.pre-reveal .cine-hero__panel .script .w {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: none;
 }
 
 .cine-hero__panel h1 {
@@ -143,5 +156,6 @@
   .cine-hero__bg { transform: none !important; transition: none; }
   .cine-hero__inner,
   .cine-hero.block[data-block-status] .cine-hero__inner { opacity: 1 !important; transform: none !important; transition: none; }
+  .cine-hero__panel .script .w { opacity: 1 !important; transform: none !important; transition: none; }
   .cine-hero__cue { animation: none; }
 }

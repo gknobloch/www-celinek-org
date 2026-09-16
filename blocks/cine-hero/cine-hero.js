@@ -7,8 +7,11 @@
  *   3. headline — the page <h1>
  *   4. CTAs — bare <a> (light) + <em><a> (ghost); anchor to in-page sections
  *
- * Motion (block-owned, no shared runtime): scroll parallax + scale on the bg,
- * on-load settle + copy reveal. Neutralized under prefers-reduced-motion.
+ * Motion (block-owned, no shared runtime): bg scroll-drift + slow scale + idle
+ * Ken Burns breathe + on-load settle; hero copy drift + fade on scroll;
+ * word-by-word script reveal; reading-progress bar; header condense; mini-Lenis
+ * smooth-scroll. All neutralized under prefers-reduced-motion.
+ * @ew-exempt .script words — presentational .w spans (the <p> keeps its identity)
  * Schema: stardust/eds-schema/redesign.json#cine-hero
  */
 export default function decorate(block) {
@@ -57,6 +60,31 @@ export default function decorate(block) {
   block.classList.add('anim');
   requestAnimationFrame(() => block.classList.add('is-in'));
 
+  // hero script: word-by-word staggered reveal (matches prototype .hero__script,
+  // 95ms per word). The <p> element itself is preserved — only its text run is
+  // re-wrapped in .w spans — so it keeps its authored identity / prose-index;
+  // the spans are presentational and collapse harmlessly in the editor.
+  if (script) {
+    const frag = document.createDocumentFragment();
+    [...script.childNodes].forEach((node) => {
+      if (node.nodeType === 3) {
+        node.textContent.split(/(\s+)/).forEach((tok) => {
+          if (!tok) return;
+          if (/^\s+$/.test(tok)) { frag.append(tok); return; }
+          const s = document.createElement('span');
+          s.className = 'w';
+          s.textContent = tok;
+          frag.append(s);
+        });
+      } else { frag.append(node); }
+    });
+    script.replaceChildren(frag);
+    const words = [...script.querySelectorAll('.w')];
+    block.classList.add('pre-reveal');                       // words hidden, no transition
+    words.forEach((w, i) => { w.style.transitionDelay = `${i * 95}ms`; });
+    requestAnimationFrame(() => requestAnimationFrame(() => block.classList.remove('pre-reveal')));
+  }
+
   // reading-progress bar (fixed, spans the whole page)
   const progress = document.createElement('div');
   progress.className = 'cine-hero__progress';
@@ -65,34 +93,38 @@ export default function decorate(block) {
 
   const header = document.querySelector('header');
 
-  // scroll effects: bg parallax + slow scale, hero copy drift + fade, progress bar
-  let ticking = false;
-  const onScroll = () => {
-    if (ticking) return;
-    ticking = true;
-    requestAnimationFrame(() => {
-      const sy = window.scrollY;
-      const vh = window.innerHeight;
-      const max = document.documentElement.scrollHeight - vh;
-      progress.style.transform = `scaleX(${max > 0 ? Math.min(sy / max, 1) : 0})`;
-      if (header) header.classList.toggle('scrolled', sy > 40);
-      if (window.innerWidth > 767 && sy > 2) {
-        const p = Math.min(Math.max(sy / vh, 0), 1);
-        bg.style.transform = `translateY(${-p * 12}vh) scale(${1 + p * 0.08})`;
+  // Continuous rAF (always on, like the prototype): bg gets scroll-drift + slow
+  // scale + idle Ken Burns breathe + on-load settle — the breathe animates AT
+  // REST, which a scroll-only handler can't do. Hero copy drift + fade only
+  // takes over once scrolled (sy>2) so the CSS intro/word reveal plays at rest;
+  // progress bar + header condense update every frame.
+  const t0 = performance.now();
+  const tick = (now) => {
+    const sy = window.scrollY;
+    const vh = window.innerHeight;
+    const max = document.documentElement.scrollHeight - vh;
+    progress.style.transform = `scaleX(${max > 0 ? Math.min(sy / max, 1) : 0})`;
+    if (header) header.classList.toggle('scrolled', sy > 40);
+    if (window.innerWidth > 767) {
+      const p = Math.min(Math.max(sy / vh, 0), 1);
+      const kb = ((Math.sin(now / 9000) + 1) / 2) * 0.03;    // idle Ken Burns (scale only)
+      const intro = ((1 - Math.min((now - t0) / 1400, 1)) ** 3) * 0.1; // settle from +0.10
+      bg.style.transform = `translateY(${-p * 12}vh) scale(${1 + p * 0.08 + kb + intro})`;
+      if (sy > 2) {
         inner.style.transform = `translateY(${-p * 8}vh)`;
         inner.style.opacity = String(1 - Math.min(Math.max((sy - vh * 0.1) / (vh * 0.55), 0), 1));
       } else {
-        // at rest / mobile: let CSS handle the intro + entrance
-        bg.style.transform = '';
-        inner.style.transform = '';
+        inner.style.transform = '';   // at rest: let the CSS intro + word reveal play
         inner.style.opacity = '';
       }
-      ticking = false;
-    });
+    } else {
+      bg.style.transform = '';
+      inner.style.transform = '';
+      inner.style.opacity = '';
+    }
+    requestAnimationFrame(tick);
   };
-  window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('resize', onScroll, { passive: true });
-  onScroll();
+  requestAnimationFrame(tick);
 
   // ── self-contained smooth-scroll (mini-Lenis) ───────────────────────────
   // desktop + fine pointer only; native scroll everywhere else. All the
