@@ -50,14 +50,24 @@
   padding: 0 24px 72px;
 }
 
-/* reveal is gated behind .anim (JS-added) so no-JS renders visible */
-.cine-hero.anim .cine-hero__inner {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.8s ease 0.15s, transform 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.15s;
+/* signature entrance — the cinematic "frame opens": a letterbox unveils the
+   photo, then the panel lines rise in staggered. Gated behind .is-in (JS-added)
+   so with no JS the hero renders fully visible. Scroll motion is motion.js's. */
+@keyframes cine-open {
+  from { clip-path: inset(45% 0 45% 0); }
+  to   { clip-path: inset(0 0 0 0); }
 }
 
-.cine-hero.anim.is-in .cine-hero__inner { opacity: 1; transform: none; }
+@keyframes cine-enter-up {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.cine-hero.is-in .cine-hero__bg { animation: cine-open 1.15s cubic-bezier(0.19, 1, 0.22, 1) both; }
+.cine-hero.anim [data-enter] { opacity: 0; }   /* hidden until .is-in; no-JS stays visible */
+.cine-hero.is-in [data-enter] { animation: cine-enter-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.cine-hero.is-in [data-enter="2"] { animation-delay: 0.14s; }
+.cine-hero.is-in [data-enter="3"] { animation-delay: 0.26s; }
 
 .cine-hero__panel { max-width: 540px; margin-left: auto; }
 
@@ -153,9 +163,10 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .cine-hero__bg { transform: none !important; transition: none; }
+  .cine-hero__bg { transform: none !important; clip-path: none !important; animation: none !important; }
   .cine-hero__inner,
   .cine-hero.block[data-block-status] .cine-hero__inner { opacity: 1 !important; transform: none !important; transition: none; }
+  .cine-hero .cine-hero__panel [data-enter] { opacity: 1 !important; transform: none !important; animation: none !important; }
   .cine-hero__panel .script .w { opacity: 1 !important; transform: none !important; transition: none; }
   .cine-hero__cue { animation: none; }
 }

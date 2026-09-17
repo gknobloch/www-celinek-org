@@ -41,37 +41,11 @@ export default function decorate(block) {
   });
   block.replaceChildren(...bands);
 
-  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (reduced) return;
-
-  // fade-rise reveal — scroll-driven so it fires reliably on any real scroll
-  bands.forEach((b) => b.classList.add('reveal'));
-  const reveal = () => {
-    const vh = window.innerHeight;
-    bands.forEach((b) => { if (b.getBoundingClientRect().top < vh * 0.88) b.classList.add('in'); });
-  };
-  window.addEventListener('scroll', reveal, { passive: true });
-  window.addEventListener('resize', reveal, { passive: true });
-  reveal();
-
-  // continuous image parallax drift
-  const imgs = [...block.querySelectorAll('[data-parallax]')];
-  let ticking = false;
-  const onScroll = () => {
-    if (ticking) return; ticking = true;
-    requestAnimationFrame(() => {
-      const vh = window.innerHeight;
-      const desktop = window.innerWidth > 767;
-      imgs.forEach((img) => {
-        const frame = img.parentElement;
-        const rect = frame.getBoundingClientRect();
-        if (!desktop || rect.bottom < -60 || rect.top > vh + 60) { img.style.transform = ''; return; }
-        const progress = Math.min(Math.max((vh - rect.top) / (vh + rect.height), 0), 1);
-        img.style.transform = `translateY(${(0.5 - progress) * 2 * rect.height * 0.12}px)`;
-      });
-      ticking = false;
-    });
-  };
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
+  // Motion is centralized in scripts/motion.js: tag the reveal targets (media +
+  // copy of each band fade-rise on scroll) — the media <img> already carries
+  // data-parallax for the continuous drift. No per-block scroll listener.
+  bands.forEach((b) => {
+    b.querySelector('.editorial__media')?.setAttribute('data-anim', '');
+    b.querySelector('.editorial__copy')?.setAttribute('data-anim', '');
+  });
 }

@@ -127,6 +127,13 @@ async function loadLazy(doc) {
 
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
   loadFonts();
+
+  // centralized scroll choreography (hero parallax, reveals, progress, smooth wheel)
+  // — only on pages that carry the redesign motion surface, so the rest of the
+  // site keeps native scroll and no idle rAF loop.
+  if (main.querySelector('.cine-hero, [data-anim], [data-parallax]')) {
+    import('./motion.js').then(({ default: initMotion }) => initMotion());
+  }
 }
 
 /**

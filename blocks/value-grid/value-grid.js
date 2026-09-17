@@ -14,13 +14,7 @@ export default function decorate(block) {
   });
   block.replaceChildren(...cards);
 
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  cards.forEach((c) => c.classList.add('reveal'));
-  const reveal = () => {
-    const vh = window.innerHeight;
-    cards.forEach((c, i) => { if (c.getBoundingClientRect().top < vh * 0.88) setTimeout(() => c.classList.add('in'), (i % 3) * 90); });
-  };
-  window.addEventListener('scroll', reveal, { passive: true });
-  window.addEventListener('resize', reveal, { passive: true });
-  reveal();
+  // Motion is centralized in scripts/motion.js: tag each card as a reveal target;
+  // it applies the eased, per-section-staggered fade-rise on scroll.
+  cards.forEach((c) => c.setAttribute('data-anim', ''));
 }
