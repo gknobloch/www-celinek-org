@@ -22,11 +22,15 @@ export default function decorate(block) {
 
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   steps.forEach((s) => s.classList.add('seq'));
-  let fired = false;
-  const run = () => { if (fired) return; fired = true; steps.forEach((s, i) => setTimeout(() => s.classList.add('in'), i * 320)); };
-  // scroll-driven trigger — fires the 1-2-3 sequence when the block enters view
-  const check = () => { if (block.getBoundingClientRect().top < window.innerHeight * 0.82) run(); };
-  window.addEventListener('scroll', check, { passive: true });
-  window.addEventListener('resize', check, { passive: true });
-  check();
+  // Fire the 1-2-3 sequence ONLY when the grid genuinely scrolls into view.
+  // An IntersectionObserver (not a decorate-time getBoundingClientRect check) is
+  // required: at decorate the sections above haven't laid out, so the block's top
+  // is briefly near 0 and a scroll-position check fires + latches immediately —
+  // the sequence would finish off-screen before the user ever reaches it.
+  const io = new IntersectionObserver((entries, obs) => {
+    if (!entries.some((e) => e.isIntersecting)) return;
+    steps.forEach((s, i) => setTimeout(() => s.classList.add('in'), i * 320)); // 0 · 320 · 640ms
+    obs.disconnect();
+  }, { threshold: 0.3 });
+  io.observe(block);
 }
