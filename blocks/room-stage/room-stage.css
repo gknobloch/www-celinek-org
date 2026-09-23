@@ -204,7 +204,7 @@ main .section.room-stage-container > div { max-width: 1120px; margin: 0 auto; }
 
 @media (width <= 900px) {
   .room-stage__sticky { grid-template-columns: minmax(0, 1fr); gap: 18px; }
-  .room-stage.anim .room-stage__sticky { grid-template-rows: auto minmax(0, 1fr); align-items: start; gap: 14px; }
+  .room-stage.anim .room-stage__sticky { height: auto; align-items: start; gap: 14px; }   /* no dead band under the photo once the pin releases */
   .room-stage.anim .room-stage__pair { height: auto; width: 100%; max-height: calc(100vh - var(--stage-top) - 190px); }
   .room-stage__num,
   .room-stage__copy .count { display: none; }

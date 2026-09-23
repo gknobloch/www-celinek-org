@@ -523,3 +523,10 @@ body:has(.cine-hero) main > .section.cine-hero-container { margin-top: 0; }
 body:has(.cine-hero) footer .footer > div,
 body:has(.cine-hero) footer .footer > div > .section,
 body:has(.cine-hero) footer .default-content-wrapper { width: 100%; flex: 1 1 100%; }
+
+/* mobile header: the collapsed bar is ONE row (hamburger + logo, 62px). The tools
+   row ("Contactez-moi") otherwise hangs below the fixed bar and floats over the page
+   (and under the /realisations/ room rail) — show it only in the open menu. */
+@media (width < 900px) {
+  body:has(.cine-hero) header nav[aria-expanded="false"] .nav-tools { display: none; }
+}
