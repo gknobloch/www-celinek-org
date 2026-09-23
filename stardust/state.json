@@ -12,7 +12,11 @@
     "mode": "uplift-single"
   },
   "uplift": {
-    "variants": ["A", "B", "C"],
+    "variants": [
+      "A",
+      "B",
+      "C"
+    ],
     "cinematicRegister": "editorial",
     "registerSource": "auto-picked",
     "improvementsCount": 7
@@ -31,9 +35,91 @@
       },
       "migratedPath": "",
       "history": [
-        { "at": "2026-09-12T00:00:00Z", "event": "extracted", "by": "stardust:uplift" },
-        { "at": "2026-09-12T00:00:00Z", "event": "prototyped", "by": "stardust:uplift", "variants": ["A", "B", "C"] }
+        {
+          "at": "2026-09-12T00:00:00Z",
+          "event": "extracted",
+          "by": "stardust:uplift"
+        },
+        {
+          "at": "2026-09-12T00:00:00Z",
+          "event": "prototyped",
+          "by": "stardust:uplift",
+          "variants": [
+            "A",
+            "B",
+            "C"
+          ]
+        }
       ]
+    },
+    {
+      "slug": "realisations",
+      "url": "https://redesign-c-preview--celinek-org--gknobloch.aem.page/realisations/",
+      "sourceUrl": "https://www.celinek.org/realisations/",
+      "status": "prototyped",
+      "currentStatePath": "stardust/current/pages/realisations.json",
+      "brandSurface": "approved homepage canon (index-C-cinematic.html / DESIGN-C.json)",
+      "uplift": {
+        "variants": [
+          "A",
+          "B",
+          "C"
+        ],
+        "cinematicRegister": "editorial",
+        "registerSource": "inherited-canon",
+        "improvementsCount": 7,
+        "B": "audience-routing reframe (catalog #7) + testimony interludes (derived D1)",
+        "C": "photography re-foregrounding (catalog #2)",
+        "direction": "stardust/realisations-direction.md",
+        "generator": "stardust/scripts/realisations-prototypes.py"
+      },
+      "prototypePaths": {
+        "A": "stardust/prototypes/realisations-A-proposed.html",
+        "B": "stardust/prototypes/realisations-B-proposed.html",
+        "C": "stardust/prototypes/realisations-C-proposed.html",
+        "C-cinematic": "stardust/prototypes/realisations-C-cinematic.html"
+      },
+      "migratedPath": "",
+      "history": [
+        {
+          "at": "2026-09-23T00:00:00Z",
+          "event": "extracted",
+          "by": "stardust:uplift"
+        },
+        {
+          "at": "2026-09-23T00:00:00Z",
+          "event": "prototyped",
+          "by": "stardust:uplift",
+          "variants": [
+            "A",
+            "B",
+            "C"
+          ]
+        },
+        {
+          "at": "2026-09-23T00:00:00Z",
+          "event": "approved",
+          "variant": "C",
+          "by": "user"
+        },
+        {
+          "at": "2026-09-23T00:00:00Z",
+          "event": "converted-eds",
+          "by": "stardust:deploy"
+        }
+      ],
+      "approvedVariant": "C",
+      "eds": {
+        "content": "content/realisations/index.html",
+        "blocks": [
+          "cine-hero (wipe variant)",
+          "room-rail",
+          "room-stage",
+          "contact-band"
+        ],
+        "status": "converted-local",
+        "transport": "blocked: gdrive source + expired DA_TOKEN"
+      }
     }
   ]
 }

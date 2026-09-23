@@ -1,0 +1,761 @@
+{
+ "source": "http://localhost:8765/realisations-C-cinematic.html",
+ "width": 1280,
+ "profile": "eds",
+ "sections": [
+  {
+   "section": "hero",
+   "items": [
+    {
+     "role": "body",
+     "order": 0,
+     "text": "Avant, après"
+    },
+    {
+     "role": "heading",
+     "order": 1,
+     "text": "Mes Réalisations"
+    },
+    {
+     "role": "body",
+     "order": 2,
+     "text": "Les photos présentées sur ce site sont authentiques et donnent un aperçu de mon travail."
+    },
+    {
+     "role": "eyebrow",
+     "order": 3,
+     "text": "Avant"
+    },
+    {
+     "role": "eyebrow",
+     "order": 4,
+     "text": "Après"
+    },
+    {
+     "role": "eyebrow",
+     "order": 5,
+     "text": "Faites défiler"
+    }
+   ],
+   "imgCount": 2,
+   "editableTexts": 3,
+   "repeats": []
+  },
+  {
+   "section": "room-cellier",
+   "items": [
+    {
+     "role": "body",
+     "order": 0,
+     "text": "01 / 09"
+    },
+    {
+     "role": "body",
+     "order": 1,
+     "text": "avant, après"
+    },
+    {
+     "role": "heading",
+     "order": 2,
+     "text": "Cellier"
+    },
+    {
+     "role": "body",
+     "order": 3,
+     "text": "2 transformations"
+    },
+    {
+     "role": "eyebrow",
+     "order": 4,
+     "text": "Avant"
+    },
+    {
+     "role": "eyebrow",
+     "order": 5,
+     "text": "Après"
+    },
+    {
+     "role": "eyebrow",
+     "order": 6,
+     "text": "Avant"
+    },
+    {
+     "role": "eyebrow",
+     "order": 7,
+     "text": "Après"
+    },
+    {
+     "role": "body",
+     "order": 8,
+     "text": "‹›"
+    },
+    {
+     "role": "eyebrow",
+     "order": 9,
+     "text": "Avant"
+    },
+    {
+     "role": "eyebrow",
+     "order": 10,
+     "text": "Après"
+    }
+   ],
+   "imgCount": 4,
+   "editableTexts": 3,
+   "repeats": []
+  },
+  {
+   "section": "room-cuisine",
+   "items": [
+    {
+     "role": "body",
+     "order": 0,
+     "text": "02 / 09"
+    },
+    {
+     "role": "body",
+     "order": 1,
+     "text": "avant, après"
+    },
+    {
+     "role": "heading",
+     "order": 2,
+     "text": "Cuisine"
+    },
+    {
+     "role": "body",
+     "order": 3,
+     "text": "5 transformations"
+    },
+    {
+     "role": "eyebrow",
+     "order": 4,
+     "text": "Avant"
+    },
+    {
+     "role": "eyebrow",
+     "order": 5,
+     "text": "Après"
+    },
+    {
+     "role": "eyebrow",
+     "order": 6,
+     "text": "Avant"
+    },
+    {
+     "role": "eyebrow",
+     "order": 7,
+     "text": "Après"
+    },
+    {
+     "role": "body",
+     "order": 8,
+     "text": "‹›"
+    },
+    {
+     "role": "eyebrow",
+     "order": 9,
+     "text": "Avant"
+    },
+    {
+     "role": "eyebrow",
+     "order": 10,
+     "text": "Après"
+    },
+    {
+     "role": "body",
+     "order": 11,
+     "text": "‹›"
+    },
+    {
+     "role": "eyebrow",
+     "order": 12,
+     "text": "Avant"
+    },
+    {
+     "role": "eyebrow",
+     "order": 13,
+     "text": "Après"
+    },
+    {
+     "role": "body",
+     "order": 14,
+     "text": "‹›"
+    },
+    {
+     "role": "eyebrow",
+     "order": 15,
+     "text": "Avant"
+    },
+    {
+     "role": "eyebrow",
+     "order": 16,
+     "text": "Après"
+    },
+    {
+     "role": "body",
+     "order": 17,
+     "text": "‹›"
+    },
+    {
+     "role": "eyebrow",
+     "order": 18,
+     "text": "Avant"
+    },
+    {
+     "role": "eyebrow",
+     "order": 19,
+     "text": "Après"
+    }
+   ],
+   "imgCount": 10,
+   "editableTexts": 3,
+   "repeats": [
+    {
+     "unitSelector": "FIGURE.ba",
+     "count": 4,
+     "unit": {
+      "headings": 0,
+      "ctas": 0,
+      "imgs": 2,
+      "textRuns": 3
+     },
+     "uniform": true
+    }
+   ]
+  },
+  {
+   "section": "room-dressing",
+   "items": [
+    {
+     "role": "body",
+     "order": 0,
+     "text": "03 / 09"
+    },
+    {
+     "role": "body",
+     "order": 1,
+     "text": "avant, après"
+    },
+    {
+     "role": "heading",
+     "order": 2,
+     "text": "Dressing"
+    },
+    {
+     "role": "body",
+     "order": 3,
+     "text": "4 transformations"
+    },
+    {
+     "role": "eyebrow",
+     "order": 4,
+     "text": "Avant"
+    },
+    {
+     "role": "eyebrow",
+     "order": 5,
+     "text": "Après"
+    },
+    {
+     "role": "eyebrow",
+     "order": 6,
+     "text": "Avant"
+    },
+    {
+     "role": "eyebrow",
+     "order": 7,
+     "text": "Après"
+    },
+    {
+     "role": "body",
+     "order": 8,
+     "text": "‹›"
+    },
+    {
+     "role": "eyebrow",
+     "order": 9,
+     "text": "Avant"
+    },
+    {
+     "role": "eyebrow",
+     "order": 10,
+     "text": "Après"
+    },
+    {
+     "role": "body",
+     "order": 11,
+     "text": "‹›"
+    },
+    {
+     "role": "eyebrow",
+     "order": 12,
+     "text": "Avant"
+    },
+    {
+     "role": "eyebrow",
+     "order": 13,
+     "text": "Après"
+    },
+    {
+     "role": "body",
+     "order": 14,
+     "text": "‹›"
+    },
+    {
+     "role": "eyebrow",
+     "order": 15,
+     "text": "Avant"
+    },
+    {
+     "role": "eyebrow",
+     "order": 16,
+     "text": "Après"
+    }
+   ],
+   "imgCount": 8,
+   "editableTexts": 3,
+   "repeats": [
+    {
+     "unitSelector": "FIGURE.ba",
+     "count": 3,
+     "unit": {
+      "headings": 0,
+      "ctas": 0,
+      "imgs": 2,
+      "textRuns": 3
+     },
+     "uniform": true
+    }
+   ]
+  },
+  {
+   "section": "room-chambre",
+   "items": [
+    {
+     "role": "body",
+     "order": 0,
+     "text": "04 / 09"
+    },
+    {
+     "role": "body",
+     "order": 1,
+     "text": "avant, après"
+    },
+    {
+     "role": "heading",
+     "order": 2,
+     "text": "Chambre"
+    },
+    {
+     "role": "body",
+     "order": 3,
+     "text": "1 transformation"
+    },
+    {
+     "role": "eyebrow",
+     "order": 4,
+     "text": "Avant"
+    },
+    {
+     "role": "eyebrow",
+     "order": 5,
+     "text": "Après"
+    },
+    {
+     "role": "eyebrow",
+     "order": 6,
+     "text": "Avant"
+    },
+    {
+     "role": "eyebrow",
+     "order": 7,
+     "text": "Après"
+    }
+   ],
+   "imgCount": 2,
+   "editableTexts": 3,
+   "repeats": []
+  },
+  {
+   "section": "room-salle-de-bain",
+   "items": [
+    {
+     "role": "body",
+     "order": 0,
+     "text": "05 / 09"
+    },
+    {
+     "role": "body",
+     "order": 1,
+     "text": "avant, après"
+    },
+    {
+     "role": "heading",
+     "order": 2,
+     "text": "Salle de bain"
+    },
+    {
+     "role": "body",
+     "order": 3,
+     "text": "3 transformations"
+    },
+    {
+     "role": "eyebrow",
+     "order": 4,
+     "text": "Avant"
+    },
+    {
+     "role": "eyebrow",
+     "order": 5,
+     "text": "Après"
+    },
+    {
+     "role": "eyebrow",
+     "order": 6,
+     "text": "Avant"
+    },
+    {
+     "role": "eyebrow",
+     "order": 7,
+     "text": "Après"
+    },
+    {
+     "role": "body",
+     "order": 8,
+     "text": "‹›"
+    },
+    {
+     "role": "eyebrow",
+     "order": 9,
+     "text": "Avant"
+    },
+    {
+     "role": "eyebrow",
+     "order": 10,
+     "text": "Après"
+    },
+    {
+     "role": "body",
+     "order": 11,
+     "text": "‹›"
+    },
+    {
+     "role": "eyebrow",
+     "order": 12,
+     "text": "Avant"
+    },
+    {
+     "role": "eyebrow",
+     "order": 13,
+     "text": "Après"
+    }
+   ],
+   "imgCount": 6,
+   "editableTexts": 3,
+   "repeats": [
+    {
+     "unitSelector": "FIGURE.ba",
+     "count": 2,
+     "unit": {
+      "headings": 0,
+      "ctas": 0,
+      "imgs": 2,
+      "textRuns": 3
+     },
+     "uniform": true
+    }
+   ]
+  },
+  {
+   "section": "room-atelier",
+   "items": [
+    {
+     "role": "body",
+     "order": 0,
+     "text": "06 / 09"
+    },
+    {
+     "role": "body",
+     "order": 1,
+     "text": "avant, après"
+    },
+    {
+     "role": "heading",
+     "order": 2,
+     "text": "Atelier"
+    },
+    {
+     "role": "body",
+     "order": 3,
+     "text": "3 transformations"
+    },
+    {
+     "role": "eyebrow",
+     "order": 4,
+     "text": "Avant"
+    },
+    {
+     "role": "eyebrow",
+     "order": 5,
+     "text": "Après"
+    },
+    {
+     "role": "eyebrow",
+     "order": 6,
+     "text": "Avant"
+    },
+    {
+     "role": "eyebrow",
+     "order": 7,
+     "text": "Après"
+    },
+    {
+     "role": "body",
+     "order": 8,
+     "text": "‹›"
+    },
+    {
+     "role": "eyebrow",
+     "order": 9,
+     "text": "Avant"
+    },
+    {
+     "role": "eyebrow",
+     "order": 10,
+     "text": "Après"
+    },
+    {
+     "role": "body",
+     "order": 11,
+     "text": "‹›"
+    },
+    {
+     "role": "eyebrow",
+     "order": 12,
+     "text": "Avant"
+    },
+    {
+     "role": "eyebrow",
+     "order": 13,
+     "text": "Après"
+    }
+   ],
+   "imgCount": 6,
+   "editableTexts": 3,
+   "repeats": [
+    {
+     "unitSelector": "FIGURE.ba",
+     "count": 2,
+     "unit": {
+      "headings": 0,
+      "ctas": 0,
+      "imgs": 2,
+      "textRuns": 3
+     },
+     "uniform": true
+    }
+   ]
+  },
+  {
+   "section": "room-placard-mural",
+   "items": [
+    {
+     "role": "body",
+     "order": 0,
+     "text": "07 / 09"
+    },
+    {
+     "role": "body",
+     "order": 1,
+     "text": "avant, après"
+    },
+    {
+     "role": "heading",
+     "order": 2,
+     "text": "Placard mural"
+    },
+    {
+     "role": "body",
+     "order": 3,
+     "text": "1 transformation"
+    },
+    {
+     "role": "eyebrow",
+     "order": 4,
+     "text": "Avant"
+    },
+    {
+     "role": "eyebrow",
+     "order": 5,
+     "text": "Après"
+    },
+    {
+     "role": "eyebrow",
+     "order": 6,
+     "text": "Avant"
+    },
+    {
+     "role": "eyebrow",
+     "order": 7,
+     "text": "Après"
+    }
+   ],
+   "imgCount": 2,
+   "editableTexts": 3,
+   "repeats": []
+  },
+  {
+   "section": "room-chambres-damis",
+   "items": [
+    {
+     "role": "body",
+     "order": 0,
+     "text": "08 / 09"
+    },
+    {
+     "role": "body",
+     "order": 1,
+     "text": "avant, après"
+    },
+    {
+     "role": "heading",
+     "order": 2,
+     "text": "Chambres d'amis"
+    },
+    {
+     "role": "body",
+     "order": 3,
+     "text": "2 transformations"
+    },
+    {
+     "role": "eyebrow",
+     "order": 4,
+     "text": "Avant"
+    },
+    {
+     "role": "eyebrow",
+     "order": 5,
+     "text": "Après"
+    },
+    {
+     "role": "eyebrow",
+     "order": 6,
+     "text": "Avant"
+    },
+    {
+     "role": "eyebrow",
+     "order": 7,
+     "text": "Après"
+    },
+    {
+     "role": "body",
+     "order": 8,
+     "text": "‹›"
+    },
+    {
+     "role": "eyebrow",
+     "order": 9,
+     "text": "Avant"
+    },
+    {
+     "role": "eyebrow",
+     "order": 10,
+     "text": "Après"
+    }
+   ],
+   "imgCount": 4,
+   "editableTexts": 3,
+   "repeats": []
+  },
+  {
+   "section": "room-bureau",
+   "items": [
+    {
+     "role": "body",
+     "order": 0,
+     "text": "09 / 09"
+    },
+    {
+     "role": "body",
+     "order": 1,
+     "text": "avant, après"
+    },
+    {
+     "role": "heading",
+     "order": 2,
+     "text": "Bureau"
+    },
+    {
+     "role": "body",
+     "order": 3,
+     "text": "1 transformation"
+    },
+    {
+     "role": "eyebrow",
+     "order": 4,
+     "text": "Avant"
+    },
+    {
+     "role": "eyebrow",
+     "order": 5,
+     "text": "Après"
+    },
+    {
+     "role": "eyebrow",
+     "order": 6,
+     "text": "Avant"
+    },
+    {
+     "role": "eyebrow",
+     "order": 7,
+     "text": "Après"
+    }
+   ],
+   "imgCount": 2,
+   "editableTexts": 3,
+   "repeats": []
+  },
+  {
+   "section": "contact-cta",
+   "items": [
+    {
+     "role": "body",
+     "order": 0,
+     "text": "Et si on commençait ?"
+    },
+    {
+     "role": "heading",
+     "order": 1,
+     "text": "Prêt(e) pour une maison plus sereine ?"
+    },
+    {
+     "role": "body",
+     "order": 2,
+     "text": "Parlons de votre projet, sans engagement. Le premier échange se fait par email ou téléphone, en toute simplicité."
+    },
+    {
+     "role": "cta",
+     "order": 3,
+     "text": "Contactez-moi",
+     "href": "mailto:contact@celinek.org"
+    },
+    {
+     "role": "cta",
+     "order": 4,
+     "text": "📞 06 32 73 18 98",
+     "href": "tel:+33632731898"
+    },
+    {
+     "role": "cta",
+     "order": 5,
+     "text": "Comment ça se passe ?",
+     "href": "/#process"
+    }
+   ],
+   "imgCount": 0,
+   "editableTexts": 3,
+   "repeats": []
+  }
+ ]
+}

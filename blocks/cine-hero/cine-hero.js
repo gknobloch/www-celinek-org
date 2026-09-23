@@ -6,6 +6,12 @@
  *   2. script eyebrow tagline (p.script)
  *   3. headline — the page <h1>
  *   4. CTAs — bare <a> (light) + <em><a> (ghost); anchor to in-page sections
+ *   (optional) a lead paragraph after the headline.
+ *
+ * Variant `wipe` (auto, when TWO images are authored — /realisations/): image 1 =
+ * "avant", image 2 = "après". The hero pins for a scroll stretch while scripts/motion.js
+ * drives `--p` 0→1, dissolving avant into après with a feathered wipe. No-JS /
+ * reduced-motion: static, après shown.
  *
  * Motion (block-owned, no shared runtime): bg scroll-drift + slow scale + idle
  * Ken Burns breathe + on-load settle; hero copy drift + fade on scroll;
@@ -16,21 +22,35 @@
  */
 export default function decorate(block) {
   // pipeline strips author classes + unwraps cells → classify by role, not class
-  const media = block.querySelector('picture, img');
+  const media = [...block.querySelectorAll('img')].map((img) => img.closest('picture') || img);
   const heading = block.querySelector('h1, h2');
-  const ps = [...block.querySelectorAll('p')];
+  const ps = [...block.querySelectorAll('p')].filter((p) => !p.querySelector('picture, img'));
   const ctas = ps.filter((p) => p.querySelector('a'));
-  const script = ps.find((p) => !p.querySelector('a') && p.textContent.trim());
+  const texts = ps.filter((p) => !p.querySelector('a') && p.textContent.trim());
+  const before = (p) => heading
+    && (p.compareDocumentPosition(heading) & Node.DOCUMENT_POSITION_FOLLOWING);
+  const script = heading ? texts.find(before) : texts[0];
+  const lead = texts.find((p) => p !== script && !before(p));
   if (script) script.classList.add('script'); // re-apply (class was stripped)
+  const wipe = media.length >= 2;
 
   const bg = document.createElement('div');
   bg.className = 'cine-hero__bg';
-  if (media) {
-    const pic = media.closest('picture') || media;
-    bg.append(pic);
-    const img = bg.querySelector('img');
-    if (img) { img.loading = 'eager'; img.setAttribute('fetchpriority', 'high'); }
+  if (wipe) {
+    block.classList.add('wipe');
+    ['before', 'after'].forEach((k, i) => {
+      const layer = document.createElement('div');
+      layer.className = `cine-hero__layer cine-hero__layer--${k}`;
+      layer.append(media[i]);
+      bg.append(layer);
+    });
+  } else if (media[0]) {
+    bg.append(media[0]);
   }
+  bg.querySelectorAll('img').forEach((img, i) => {
+    img.loading = 'eager';
+    if (i === 0) img.setAttribute('fetchpriority', 'high');
+  });
 
   const inner = document.createElement('div');
   inner.className = 'cine-hero__inner';
@@ -38,6 +58,16 @@ export default function decorate(block) {
   panel.className = 'cine-hero__panel';
   if (script) panel.append(script);           // enters via its word-by-word reveal
   if (heading) { heading.dataset.enter = '2'; panel.append(heading); }
+  if (lead) { lead.classList.add('lead'); lead.dataset.enter = '3'; panel.append(lead); }
+  if (wipe) {
+    // avant / après state pill — labels are CSS generated content (no DOM words)
+    const state = document.createElement('div');
+    state.className = 'cine-hero__state';
+    state.dataset.enter = '3';
+    state.setAttribute('aria-hidden', 'true');
+    state.append(document.createElement('i'), document.createElement('i'));
+    panel.append(state);
+  }
   if (ctas.length) {
     const actions = document.createElement('div');
     actions.className = 'cine-hero__cta';
@@ -52,7 +82,14 @@ export default function decorate(block) {
   cue.setAttribute('aria-hidden', 'true');
   cue.textContent = '↓';
 
-  block.replaceChildren(bg, inner, cue);
+  if (wipe) {
+    const stage = document.createElement('div');
+    stage.className = 'cine-hero__stage';
+    stage.append(bg, inner, cue);
+    block.replaceChildren(stage);
+  } else {
+    block.replaceChildren(bg, inner, cue);
+  }
 
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (reduced) return;

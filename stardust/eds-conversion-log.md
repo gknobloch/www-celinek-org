@@ -146,3 +146,49 @@ Fix (no shared-code change, no touching the live /nav):
 
 DEPLOY NOTE: `content/nav-redesign.html` MUST be deployed+published to DA alongside
 redesign.html (it's on the publish roster now) or the header 404s the fragment.
+
+---
+
+# /realisations/ — variant C (uplift 2026-09-23) → EDS
+
+Source prototype: `stardust/prototypes/realisations-C-cinematic.html` (generator
+`stardust/scripts/realisations-prototypes.py`). Content page: `content/realisations/index.html`
+(folder index → `/realisations/`). Schema: `stardust/eds-schema/realisations.json`.
+
+## Section → block map
+| Prototype section | Triage | EDS |
+|---|---|---|
+| Hero — avant→après pinned wipe | bespoke + motion | **`cine-hero`** — NEW auto-variant `wipe` (2 authored images = avant, après; optional lead `<p>` after the h1). Homepage (1 image) path unchanged. |
+| Room rail (sticky, scroll-spy) | interactive widget (D1 🟡 justified) | NEW block **`room-rail`** — authored `<ul>` of `#anchor` links, moved into a `<nav>`; the SECTION is sticky (top 62px) |
+| Intro "Pièce par pièce" | prose | **default content**, section style `head-center` (existing) |
+| 9 room chapters | repeating, bespoke motion | NEW block **`room-stage`** ×9 — head (script / h2 / count) authored as DEFAULT CONTENT and reabsorbed; one row per pair (avant \| après). Lead pair = pinned dissolve stage; others = comparison sliders. Section-metadata `anchor` → id. |
+| Contact band | existing | **`contact-band`**, copy verbatim from the homepage |
+
+## Decisions
+- **Tier:** cine-hero + room-stage template-slotted (node-moving); room-rail reconstructive (list).
+- **Motion stays centralized** in `scripts/motion.js`: it now also drives `--p` for `.cine-hero.wipe.anim`
+  and every `.room-stage.anim` (hold avant → feathered 16% wipe → hold après, easeInOut). Blocks only add
+  `.anim` when motion is allowed; no-JS / reduced-motion = static (hero shows après, stages side by side).
+- **No DOM words from JS (#100):** "Avant"/"Après" tags + state pills, chapter numbers ("02 / 09" via CSS
+  counter + `data-total`), and the slider knob glyph are CSS generated content. This is why
+  `block-roundtrip` reports MISSING EYEBROW for "Avant"/"Après" and MISSING BODY for "NN / 09" / "‹›" —
+  by design, not drops. All headings, all 44 images, all authored texts round-trip; EW editable 36/36.
+- **Deliberate drop:** the prototype's "Comment ça se passe ?" link under the contact band — the shared
+  contact-band stays byte-identical to the homepage's.
+- Images authored as the live `www.celinek.org/realisations/media_*` URLs (same origin as the homepage
+  conversion; ingestible). og:image = chambres d'amis *après* via metadata `Image` (was a *before* photo).
+- Rooms merged in first-appearance order (Cuisine/Dressing/Salle de bain/Atelier duplicates → one chapter each).
+- Fixed in passing: `scripts/scripts.js` `buildHeroBlock` threw on fragments without an `<h1>` (nav/footer)
+  — `h1.closest` → `h1?.closest`.
+
+## Validation (local, aem up + qa/realisations.html)
+- davids-model-lint: PASS 0 🔴 (2 🟡 justified: room-rail widget, contact-band shared).
+- 1440 / 390 / 1440 reduced-motion: 1 h1, 0 overflow, 9 stages + 13 sliders, 0 broken / 0 zero-width imgs,
+  0 page errors (only the known harness header/`/nav` message). Hero `--p` 0 → .70 → 1; Cuisine stage
+  0 → .41 → 1 while pinned (pair top constant); rail scroll-spy tracks; slider drives `--pos`.
+- Homepage regression (qa/redesign.html): unchanged — 8 blocks loaded, hero 3 children, 1 h1.
+
+## Transport — BLOCKED (not code)
+- `/realisations/` on this site is sourced from **Google Drive** (admin status `gdrive:1ioMsOvc…`), not DA,
+  and the `.env` DA_TOKEN expired. Content must be authored into the Drive doc (tables per
+  `content/realisations/index.html`) — or staged to DA once the content-source cutover happens.

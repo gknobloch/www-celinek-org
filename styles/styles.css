@@ -353,8 +353,8 @@ main .section.benefit div.cards-card-body {
    ══════════════════════════════════════════════════════════════════════ */
 
 /* neutralize the site-wide strong-highlight inside redesign blocks */
-main .section :is(.cine-hero, .editorial-split, .value-grid, .steps-flow, .testimonials, .contact-band) strong::before { content: none; }
-main .section :is(.cine-hero, .editorial-split, .value-grid, .steps-flow, .testimonials, .contact-band) strong { position: static; }
+main .section :is(.cine-hero, .editorial-split, .value-grid, .steps-flow, .testimonials, .contact-band, .room-stage, .room-rail) strong::before { content: none; }
+main .section :is(.cine-hero, .editorial-split, .value-grid, .steps-flow, .testimonials, .contact-band, .room-stage, .room-rail) strong { position: static; }
 
 /* full-bleed sections: no section padding */
 main .section.cine-hero-container,

@@ -10,6 +10,8 @@
  *   - continuous image parallax on any [data-parallax]
  *   - scroll-progress reveals on any [data-anim] (stagger scoped per section)
  *   - self-contained smooth wheel (mini-Lenis), desktop + fine-pointer only
+ *   - avant → après wipes: the pinned `cine-hero.wipe` and every `.room-stage.anim`
+ *     get `--p` (0 = avant, 1 = après) from their pinned scroll stretch
  *
  * Parity: hidden states are ONLY ever set inline by this script, so with no JS the
  * page is fully visible; under prefers-reduced-motion every animated element is
@@ -26,6 +28,7 @@ export default function initMotion() {
 
   const clamp = (v, lo, hi) => (v < lo ? lo : (v > hi ? hi : v));
   const easeOut3 = (t) => 1 - (1 - t) ** 3;
+  const easeInOut = (t) => (t < 0.5 ? 2 * t * t : 1 - ((-2 * t + 2) ** 2) / 2);
   const docTop = (el) => el.getBoundingClientRect().top + window.scrollY;
 
   // reading-progress bar (only meaningful when the cinematic hero is on the page)
@@ -39,12 +42,14 @@ export default function initMotion() {
   const header = document.querySelector('header');
   const heroBg = document.querySelector('.cine-hero__bg');
   const heroInner = document.querySelector('.cine-hero__inner');
+  const heroWipe = document.querySelector('.cine-hero.wipe.anim');
 
   const cfg = { cards: { trigger: 0.85, range: 0.34, slide: 32, stagger: 0.1 }, media: { drift: 0.12 } };
 
   // scroll-progress reveals — measured lazily so lazy-loaded blocks are picked up
   const list = [];
   let paras = [];
+  let stages = [];
   function measure() {
     list.forEach(({ el }) => { el.style.opacity = ''; el.style.transform = ''; el.style.willChange = ''; });
     list.length = 0;
@@ -66,7 +71,15 @@ export default function initMotion() {
       list.push({ el, triggerTop: top, staggerDelay: stagger });
     });
     paras = [...document.querySelectorAll('[data-parallax]')].map((img) => ({ img, frame: img.parentElement }));
+    stages = [...document.querySelectorAll('.room-stage.anim')].map((block) => {
+      const stage = block.querySelector('.room-stage__stage');
+      const sticky = block.querySelector('.room-stage__sticky');
+      return { block, stage, top: sticky ? parseFloat(getComputedStyle(sticky).top) || 0 : 0 };
+    }).filter((x) => x.stage);
   }
+
+  // hold on avant, wipe across the middle of the pinned stretch, hold on après
+  const wipeP = (pinned) => easeInOut(clamp((pinned - 0.12) / 0.62, 0, 1));
 
   const t0 = performance.now();
   (function tick(now) {
@@ -78,8 +91,18 @@ export default function initMotion() {
     if (progress) progress.style.transform = `scaleX(${max > 0 ? Math.min(sy / max, 1) : 0})`;
     if (header) header.classList.toggle('scrolled', sy > 40);
 
-    // hero background: idle Ken Burns + scroll-drift + slow scale + on-load settle
-    if (heroBg) {
+    // avant → après hero: pinned stretch drives the wipe; bg only breathes (no drift)
+    if (heroWipe) {
+      const r = heroWipe.getBoundingClientRect();
+      const pinned = clamp(-r.top / Math.max(1, r.height - vh), 0, 1);
+      const p = wipeP(pinned);
+      heroWipe.style.setProperty('--p', p.toFixed(4));
+      heroWipe.classList.toggle('is-after', p >= 0.5);
+      if (heroBg) {
+        const intro = ((1 - Math.min((now - t0) / 1400, 1)) ** 3) * 0.08;
+        heroBg.style.transform = `scale(${1.02 + intro + pinned * 0.05})`;
+      }
+    } else if (heroBg) {
       if (desktop) {
         const p = clamp(sy / vh, 0, 1);
         const kb = ((Math.sin(now / 9000) + 1) / 2) * 0.03;
@@ -108,6 +131,16 @@ export default function initMotion() {
       }
     } else {
       for (let i = 0; i < paras.length; i += 1) paras[i].img.style.transform = '';
+    }
+
+    // room stages: pinned avant → après dissolve per chapter
+    for (let i = 0; i < stages.length; i += 1) {
+      const { block, stage, top } = stages[i];
+      const r = stage.getBoundingClientRect();
+      if (r.bottom < -vh || r.top > vh * 2) continue;
+      const p = wipeP(clamp((top - r.top) / Math.max(1, r.height - (vh - top)), 0, 1));
+      block.style.setProperty('--p', p.toFixed(4));
+      block.classList.toggle('is-after', p >= 0.5);
     }
 
     // scroll-progress reveals (fade + rise, eased, staggered per section)

@@ -98,3 +98,23 @@ Validated: motion + reduced-motion clean (0 hidden, hero transform none, 0 error
 5. **Testimonials** — reverted the 2×2 grid to a single-card carousel (all 4 real reviews) with prev/next arrows, dots, and pointer-swipe; content vertically centered so short quotes stay balanced. Carousel JS lives outside the motion runtime so it works in the static reference too.
 
 Validated: hero matrix X-translate = 0 (no h-drift); carousel advances (translateX + active dot); steps sequence 1→2→3; motion + reduced-motion clean (0 errors, hero neutralizes); no overflow at 390/768/1440.
+
+## 2026-09-23 · uplift /realisations/ (aligned with the redesign)
+
+**Prompt:** `/stardust:uplift` of the preview /realisations/, aligned with the redesigned homepage (preview `/`), content from www.celinek.org/realisations/.
+
+**Deviation (intentional):** brand surface = the approved homepage canon (variant C), not a fresh
+extract of the legacy site; register inherited (editorial). Root DESIGN-A/B/C.json (homepage) left
+untouched — page direction lives in `stardust/realisations-direction.md`.
+
+**Capture.** 22 before/after pairs, 14 h3 for 9 rooms, 44/44 `alt=""`, fixed-500px slider, no CTA,
+og:image = a *before* photo, legacy `/nav`. 44 images pulled to `prototypes/assets/realisations/`.
+
+**Variants** (generator: `stardust/scripts/realisations-prototypes.py`):
+- **A** — canon chrome + room chapters (merged, counted), chip index, sticky room heads, responsive labeled comparison slider, contact band.
+- **B** — "start from your room": sticky filter chips, après-first cards with avant flip, dialog comparison with prev/next, two real review interludes.
+- **C** — "the scroll turns avant into après": pinned hero feathered wipe (chambres d'amis), pinned per-room dissolve stages, room rail scroll-spy, canon word-reveal + progress + condensing nav. `-proposed` = side-by-side static (also the reduced-motion path).
+
+**Validation.** 390/768/1440: no overflow, 1 h1, 22 items, 0 empty alts, 0 errors on all four files.
+B: filter/flip/dialog/prev-next/slider verified. C: stage p 0→.17→.56→.9→1 across the pin, rail
+active tracks, hero wipe fires. Fixed during validation: mobile stage overflow (grid min-content), hero scrim contrast.

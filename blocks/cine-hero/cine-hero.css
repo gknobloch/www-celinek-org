@@ -144,7 +144,7 @@
   transform: translateX(-50%);
   z-index: 1;
   color: #fff;
-  font-size: 22px;
+  font-size: 36px;
   opacity: 0.85;
   animation: cine-bob 2.4s ease-in-out infinite;
 }
@@ -169,4 +169,86 @@
   .cine-hero .cine-hero__panel [data-enter] { opacity: 1 !important; transform: none !important; animation: none !important; }
   .cine-hero__panel .script .w { opacity: 1 !important; transform: none !important; transition: none; }
   .cine-hero__cue { animation: none; }
+}
+
+/* ── variant `wipe` — avant → après (/realisations/) ─────────────────────
+   Two authored images. Static (no JS / reduced motion): après shown, hero at
+   its normal height. With motion (.anim), the block grows to 210vh and the
+   stage pins while scripts/motion.js drives --p (0 = avant, 1 = après):
+   a FEATHERED wipe (16% soft edge — the editorial register refuses hard clips). */
+.cine-hero.wipe.block { display: block; overflow: clip; --p: 1; }
+.cine-hero.wipe.anim { height: 210vh; }
+
+.cine-hero__stage {
+  position: relative;
+  min-height: 88vh;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+}
+
+.cine-hero.wipe.anim .cine-hero__stage { position: sticky; top: 0; height: 100vh; min-height: 600px; }
+.cine-hero.wipe .cine-hero__bg { inset: -4vh 0; height: auto; transform: scale(1.02); }
+.cine-hero__layer { position: absolute; inset: 0; }
+.cine-hero__layer picture { display: block; }
+.cine-hero__layer img { object-position: center 40%; }
+
+.cine-hero__layer--after {
+  mask-image: linear-gradient(90deg, #000 0, #000 calc(var(--p) * 116% - 16%), transparent calc(var(--p) * 116%));
+}
+
+/* stronger scrim: bright interiors behind white type (panel sits bottom-right) */
+.cine-hero.wipe .cine-hero__bg::after {
+  z-index: 1;
+  background:
+    radial-gradient(ellipse 58% 62% at 80% 86%, rgb(26 26 23 / 62%) 0%, rgb(26 26 23 / 28%) 55%, rgb(26 26 23 / 0%) 100%),
+    linear-gradient(180deg, rgb(26 26 23 / 30%) 0%, rgb(26 26 23 / 6%) 22%, rgb(26 26 23 / 6%) 55%, rgb(26 26 23 / 50%) 100%);
+}
+
+.cine-hero.wipe .cine-hero__panel { max-width: 560px; }
+.cine-hero.wipe .cine-hero__panel .script { font-size: 80px; margin-bottom: 8px; }
+.cine-hero.wipe .cine-hero__panel h1 { font-size: 42px; font-weight: 700; margin: 0 0 14px; }
+
+.cine-hero__panel .lead {
+  color: rgb(255 255 255 / 92%);
+  font-size: 18px;
+  line-height: 1.6;
+  margin: 0 0 22px;
+  max-width: 46ch;
+  text-shadow: 0 1px 10px rgb(26 26 23 / 45%);
+}
+
+/* avant / après state pill — words are generated content, toggled via .is-after */
+.cine-hero__state {
+  display: inline-flex;
+  border-radius: 999px;
+  overflow: hidden;
+  background: rgb(26 26 23 / 45%);
+  backdrop-filter: blur(4px);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.cine-hero__state i { font-style: normal; padding: 7px 14px; color: rgb(255 255 255 / 70%); transition: background 0.35s ease, color 0.35s ease; }
+.cine-hero__state i:first-child::before { content: "Avant"; }
+.cine-hero__state i:last-child::before { content: "Après"; }
+.cine-hero.wipe:not(.is-after) .cine-hero__state i:first-child { background: rgb(255 255 255 / 18%); color: #fff; }
+.cine-hero.wipe.is-after .cine-hero__state i:last-child { background: #eed366; color: #1a1a17; }
+.cine-hero.wipe:not(.anim) .cine-hero__state { display: none; }
+
+@media (width <= 900px) {
+  .cine-hero.wipe .cine-hero__panel .script { font-size: 56px; }
+  .cine-hero.wipe .cine-hero__panel h1 { font-size: 32px; }
+}
+
+@media (width <= 560px) {
+  .cine-hero.wipe .cine-hero__panel .script { font-size: 46px; }
+  .cine-hero__panel .lead { font-size: 16px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cine-hero.wipe.block { height: auto; --p: 1 !important; }
+  .cine-hero.wipe .cine-hero__stage { position: relative; height: auto; }
 }

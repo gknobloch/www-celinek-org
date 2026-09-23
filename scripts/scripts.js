@@ -24,7 +24,7 @@ function buildHeroBlock(main) {
   // live inside an authored block (e.g. cine-hero), leave them alone — otherwise the
   // published pipeline (which wraps <img> in <picture>) steals them into a duplicate
   // hero block. At this point (pre-decorateSections) only block divs carry a class.
-  const inBlock = h1.closest('div[class]') || picture?.closest('div[class]');
+  const inBlock = h1?.closest('div[class]') || picture?.closest('div[class]');
   if (h1 && picture && !inBlock
     && (h1.compareDocumentPosition(picture) & Node.DOCUMENT_POSITION_PRECEDING)) {
     const section = document.createElement('div');
