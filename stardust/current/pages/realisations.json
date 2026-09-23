@@ -1,0 +1,191 @@
+{
+ "_provenance": {
+  "writtenBy": "stardust:uplift (Phase 1, single-page capture)",
+  "writtenAt": "2026-09-23",
+  "againstInput": "https://redesign-c-preview--celinek-org--gknobloch.aem.page/realisations/",
+  "contentSource": "https://www.celinek.org/realisations/"
+ },
+ "slug": "realisations",
+ "title": "Mes Réalisations",
+ "description": "Les photos présentées sur ce site sont authentiques et donnent un aperçu de mon travail.",
+ "h1": "Mes Réalisations",
+ "intro": "Les photos présentées sur ce site sont authentiques et donnent un aperçu de mon travail.",
+ "headings": {
+  "h1": 1,
+  "h2": 0,
+  "h3": 14
+ },
+ "pairs": 22,
+ "distinctRooms": 9,
+ "imagesWithEmptyAlt": 44,
+ "block": "before-after (fixed 500px width, unlabeled range input)",
+ "ogImage": "cellier-1 before",
+ "chrome": "legacy /nav (not nav-redesign)",
+ "cta": null,
+ "rooms": [
+  {
+   "id": "cellier",
+   "name": "Cellier",
+   "pairs": [
+    {
+     "slug": "cellier-1",
+     "w": 2048,
+     "h": 1638
+    },
+    {
+     "slug": "cellier-2",
+     "w": 1536,
+     "h": 2048
+    }
+   ]
+  },
+  {
+   "id": "cuisine",
+   "name": "Cuisine",
+   "pairs": [
+    {
+     "slug": "cuisine-1",
+     "w": 1536,
+     "h": 2048
+    },
+    {
+     "slug": "cuisine-2",
+     "w": 1536,
+     "h": 2048
+    },
+    {
+     "slug": "cuisine-3",
+     "w": 1536,
+     "h": 2048
+    },
+    {
+     "slug": "cuisine-4",
+     "w": 1536,
+     "h": 2048
+    },
+    {
+     "slug": "cuisine-5",
+     "w": 1536,
+     "h": 2048
+    }
+   ]
+  },
+  {
+   "id": "dressing",
+   "name": "Dressing",
+   "pairs": [
+    {
+     "slug": "dressing-1",
+     "w": 1536,
+     "h": 2048
+    },
+    {
+     "slug": "dressing-2",
+     "w": 1536,
+     "h": 2048
+    },
+    {
+     "slug": "dressing-3",
+     "w": 1362,
+     "h": 2048
+    },
+    {
+     "slug": "dressing-4",
+     "w": 2048,
+     "h": 1365
+    }
+   ]
+  },
+  {
+   "id": "chambre",
+   "name": "Chambre",
+   "pairs": [
+    {
+     "slug": "chambre-1",
+     "w": 1536,
+     "h": 2048
+    }
+   ]
+  },
+  {
+   "id": "salle-de-bain",
+   "name": "Salle de bain",
+   "pairs": [
+    {
+     "slug": "salle-de-bain-1",
+     "w": 1536,
+     "h": 2048
+    },
+    {
+     "slug": "salle-de-bain-2",
+     "w": 1536,
+     "h": 2048
+    },
+    {
+     "slug": "salle-de-bain-3",
+     "w": 2048,
+     "h": 1365
+    }
+   ]
+  },
+  {
+   "id": "atelier",
+   "name": "Atelier",
+   "pairs": [
+    {
+     "slug": "atelier-1",
+     "w": 1536,
+     "h": 2048
+    },
+    {
+     "slug": "atelier-2",
+     "w": 1536,
+     "h": 2048
+    },
+    {
+     "slug": "atelier-3",
+     "w": 1536,
+     "h": 2048
+    }
+   ]
+  },
+  {
+   "id": "placard-mural",
+   "name": "Placard mural",
+   "pairs": [
+    {
+     "slug": "placard-mural-1",
+     "w": 1536,
+     "h": 2048
+    }
+   ]
+  },
+  {
+   "id": "chambres-damis",
+   "name": "Chambres d'amis",
+   "pairs": [
+    {
+     "slug": "chambres-damis-1",
+     "w": 2048,
+     "h": 1365
+    },
+    {
+     "slug": "chambres-damis-2",
+     "w": 1536,
+     "h": 2048
+    }
+   ]
+  },
+  {
+   "id": "bureau",
+   "name": "Bureau",
+   "pairs": [
+    {
+     "slug": "bureau-1",
+     "w": 1365,
+     "h": 2048
+    }
+   ]
+  }
+ ]
+}
