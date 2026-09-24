@@ -82,3 +82,9 @@ main .section .panels .panel h3 { font-size: 20px; color: #4a6357; }
 
 .panels.chips .panel li:first-child { background: #4a6357; color: #fff; }
 .panels.chips .panel p a { color: #4a6357; font-weight: 700; text-decoration: underline; text-underline-offset: 4px; }
+
+/* tablets: two per row instead of one */
+@media (width > 600px) and (width <= 900px) {
+  .panels.block:not([data-count="1"], .chips),
+  .panels.concerns.block { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}

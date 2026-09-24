@@ -87,3 +87,14 @@
   .service-cards.block,
   .service-cards.compact.block { grid-template-columns: 1fr; }
 }
+
+/* phones: price above the link (side by side squeezed "À partir de 350 €" into 4 lines) */
+@media (width <= 560px) {
+  .service-cards:not(.compact) .svc__foot { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .service-cards .svc__body { padding: 22px 22px 24px; }
+}
+
+@media (width > 600px) and (width <= 900px) {
+  .service-cards.block { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .service-cards.compact.block { grid-template-columns: minmax(0, 1fr); }
+}

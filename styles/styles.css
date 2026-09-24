@@ -567,3 +567,44 @@ main .section.statement p { font-family: var(--script-font-family), cursive; fon
   main .section.statement p { font-size: 30px; }
 }
 main .section.why-band .default-content-wrapper > h2:last-child { margin-bottom: 32px; }
+
+/* ── responsive polish (breakpoint review 2026-09-24) ──────────────────────
+   balanced headings + scripted openers: no orphan French " ?" / " !" */
+body:has(.cine-hero) main :is(h2, h3),
+body:has(.cine-hero) main .default-content-wrapper > p:first-child,
+body:has(.cine-hero) main :is(.script, .editorial__copy .script) { text-wrap: balance; }
+
+/* hamburger: 44×44 tap target (icon unchanged) */
+body:has(.cine-hero) header nav .nav-hamburger { height: 44px; }
+body:has(.cine-hero) header nav .nav-hamburger button { width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; margin-left: -12px; background: transparent; }
+
+/* header 900–1199px (iPad landscape / small laptops): the desktop nav needs ~1150px,
+   so the gold CTA was cut off. Logo mark only, tighter 14px links, and the plain
+   "Contact" link hides (the "Contactez-moi" CTA beside it goes to the same page). */
+@media (width >= 900px) and (width < 1200px) {
+  body:has(.cine-hero) header nav { padding: 0 24px; gap: 0 20px; }
+  body:has(.cine-hero) header .nav-logo .logo-description { display: none; }
+  body:has(.cine-hero) header nav .nav-logo,
+  body:has(.cine-hero) header nav .nav-logo a { width: auto; flex: 0 0 auto; }
+  body:has(.cine-hero) header nav .nav-sections .default-content-wrapper > ul { gap: 18px; }
+  body:has(.cine-hero) header .nav-sections a:any-link { font-size: 14px; }
+  body:has(.cine-hero) header .nav-sections li:has(a[href="/contact"]) { display: none; }
+}
+
+/* footer on tablets / phones: contact lines on their own row, socials together below */
+@media (width < 1100px) {
+  body:has(.cine-hero) footer .default-content-wrapper > ul { flex: 1 1 100%; }
+}
+
+/* mobile menu open: the redesign header is transparent (it overlays the hero), so
+   the open menu needs its own solid cream sheet — otherwise the links sit on top of
+   the hero headline. Full-height, keeps the tagline, hairline under the top row. */
+@media (width < 900px) {
+  body:has(.cine-hero) header nav[aria-expanded="true"] {
+    height: auto;
+    min-height: 100dvh;
+    background: var(--background-color);
+  }
+  body:has(.cine-hero) header nav[aria-expanded="true"] .nav-sections { border-top: 1px solid #eceee6; }
+  body:has(.cine-hero) header nav[aria-expanded="true"] .nav-logo .logo-description p.baseline { opacity: 1; }
+}
