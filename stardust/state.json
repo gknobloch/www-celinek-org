@@ -235,6 +235,50 @@
           "target": "da:gknobloch/celinek-org (DA version 'Before redesign C' saved)"
         }
       ]
+    },
+    {
+      "slug": "qui-suis-je",
+      "url": "https://www.celinek.org/qui-suis-je",
+      "status": "deployed-preview",
+      "direction": "variant C canon (stardust/about-direction.md)",
+      "eds": {
+        "content": "content/qui-suis-je.html"
+      },
+      "history": [
+        {
+          "at": "2026-09-24T00:00:00Z",
+          "event": "converted-eds",
+          "by": "stardust:deploy"
+        },
+        {
+          "at": "2026-09-24T00:00:00Z",
+          "event": "deployed-preview",
+          "by": "stardust:deploy",
+          "target": "da:gknobloch/celinek-org (DA version 'Before redesign C' saved)"
+        }
+      ]
+    },
+    {
+      "slug": "contact",
+      "url": "https://www.celinek.org/contact",
+      "status": "deployed-preview",
+      "direction": "variant C canon (stardust/about-direction.md)",
+      "eds": {
+        "content": "content/contact.html"
+      },
+      "history": [
+        {
+          "at": "2026-09-24T00:00:00Z",
+          "event": "converted-eds",
+          "by": "stardust:deploy"
+        },
+        {
+          "at": "2026-09-24T00:00:00Z",
+          "event": "deployed-preview",
+          "by": "stardust:deploy",
+          "target": "da:gknobloch/celinek-org (DA version 'Before redesign C' saved)"
+        }
+      ]
     }
   ]
 }
