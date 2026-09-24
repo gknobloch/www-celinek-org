@@ -40,8 +40,9 @@ export default function initMotion() {
     document.body.append(progress);
   }
   const header = document.querySelector('header');
-  const heroBg = document.querySelector('.cine-hero__bg');
-  const heroInner = document.querySelector('.cine-hero__inner');
+  // the `split` hero frames its portrait: no background parallax / text fade
+  const heroBg = document.querySelector('.cine-hero:not(.split) .cine-hero__bg');
+  const heroInner = document.querySelector('.cine-hero:not(.split) .cine-hero__inner');
   const heroWipe = document.querySelector('.cine-hero.wipe.anim');
 
   const cfg = { cards: { trigger: 0.85, range: 0.34, slide: 32, stagger: 0.1 }, media: { drift: 0.12 } };

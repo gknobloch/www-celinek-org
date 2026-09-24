@@ -230,3 +230,18 @@ All 5 pages @1440/390: 1 h1, 0 overflow, 0 broken / 0 zero-width images, every g
 grid, counts = authored (index 4 cards; vivre 7 panels / 5 benefits / 2 prices / 3 cross-links; TRO 10
 panels; changement 1; gérer 12), crumb + price tag present on the 4 service pages, 0 page errors.
 davids-model-lint: 0 🔴 on all 5.
+
+---
+
+# /qui-suis-je + /contact — variant C → EDS (2026-09-24)
+
+Content: `content/{qui-suis-je,contact}.html` (generator `stardust/scripts/about-content.py`).
+- `cine-hero` gains variant **`split`** (authored `cine-hero (split)`): text left, framed 4:5 portrait
+  right on cream; motion.js skips hero parallax/fade for it (`:not(.split)`).
+- NEW block **`timeline`**: rows [year | story (+ blockquote)]; rail fills sage→gold on scroll, dots
+  turn gold when reached; items fade-rise via motion.js.
+- `panels` gains variant **`chips`** (list as pills; first pill highlighted).
+- Blockquotes in `timeline` / `editorial-split` reset the global blockquote italics + hanging indent.
+- contact: the phone is now a tel: link (primary CTA), email the secondary CTA.
+Validation (local): both pages @1440/390 — 1 h1, 0 overflow, 0 broken images, grids OK, 0 errors;
+davids-model-lint 0 🔴. Regression: homepage, realisations, 5 prestations pages unchanged.

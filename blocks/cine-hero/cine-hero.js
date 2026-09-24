@@ -10,6 +10,9 @@
  *   (`Pack … <strong>à partir de 350 €</strong>`); a link paragraph BEFORE the
  *   headline is a breadcrumb (un-buttonized).
  *
+ * Variant `split` (authored `cine-hero (split)` — qui-suis-je / contact): text left,
+ * framed portrait right on the cream ground; no scroll parallax (motion.js skips it).
+ *
  * Variant `wipe` (auto, when TWO images are authored — /realisations/): image 1 =
  * "avant", image 2 = "après". The hero pins for a scroll stretch while scripts/motion.js
  * drives `--p` 0→1, dissolving avant into après with a feathered wipe. No-JS /
@@ -96,7 +99,12 @@ export default function decorate(block) {
   cue.setAttribute('aria-hidden', 'true');
   cue.textContent = '↓';
 
-  if (wipe) {
+  if (block.classList.contains('split')) {
+    const grid = document.createElement('div');
+    grid.className = 'cine-hero__split';
+    grid.append(inner, bg);
+    block.replaceChildren(grid);
+  } else if (wipe) {
     const stage = document.createElement('div');
     stage.className = 'cine-hero__stage';
     stage.append(bg, inner, cue);

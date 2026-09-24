@@ -64,3 +64,21 @@ main .section .panels .panel h3 { font-size: 20px; color: #4a6357; }
   .panels.concerns.block { grid-template-columns: 1fr; }
   .panels .panel { padding: 26px; }
 }
+
+/* chips — a list rendered as pills (contact: secteurs d'intervention) */
+.panels.chips .panel { background: transparent; padding: 0; }
+.panels.chips .panel ul { list-style: none; display: flex; flex-wrap: wrap; gap: 12px; margin: 0 0 22px; padding: 0; }
+
+.panels.chips .panel li {
+  margin: 0;
+  padding: 11px 20px;
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: 0 6px 20px rgb(90 90 82 / 10%);
+  font-size: 16px;
+  font-weight: 600;
+  color: #4a6357;
+}
+
+.panels.chips .panel li:first-child { background: #4a6357; color: #fff; }
+.panels.chips .panel p a { color: #4a6357; font-weight: 700; text-decoration: underline; text-underline-offset: 4px; }

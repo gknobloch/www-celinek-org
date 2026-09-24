@@ -1,0 +1,100 @@
+/* timeline — "Mon histoire" chronology (variant C) */
+.timeline.block {
+  --tl-col: 124px;
+  --tl-gap: 48px;
+  --tl-p: 0;
+
+  position: relative;
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 8px 24px;
+}
+
+.timeline *,
+.timeline *::before,
+.timeline *::after { box-sizing: border-box; }
+
+/* rail: track + scroll-driven fill */
+.timeline.block::before,
+.timeline.block::after {
+  content: "";
+  position: absolute;
+  top: 16px;
+  bottom: 16px;
+  left: calc(24px + var(--tl-col) + var(--tl-gap) / 2 - 1px);
+  width: 2px;
+  border-radius: 2px;
+  background: #dfe5e1;
+}
+
+.timeline.block::after {
+  background: linear-gradient(180deg, #728e7f, #eed366);
+  transform: scaleY(var(--tl-p));
+  transform-origin: top center;
+}
+
+.timeline__item {
+  position: relative;
+  display: grid;
+  grid-template-columns: var(--tl-col) minmax(0, 1fr);
+  gap: var(--tl-gap);
+  padding-bottom: 52px;
+}
+
+.timeline__item:last-child { padding-bottom: 0; }
+
+/* dot on the rail */
+.timeline__item::before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  top: 10px;
+  left: calc(var(--tl-col) + var(--tl-gap) / 2 - 8px);
+  width: 16px;
+  height: 16px;
+  border-radius: 999px;
+  background: #fdfefa;
+  border: 2px solid #c9d3cd;
+  transition: background 0.4s ease, border-color 0.4s ease, transform 0.4s ease;
+}
+
+.timeline__item.reached::before { background: #eed366; border-color: #eed366; transform: scale(1.15); }
+
+/* scoped under main .section: beats the redesign-wide `p { text-align: left }` */
+main .section .timeline__year p {
+  margin: 0;
+  text-align: right;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #806515;
+}
+
+.timeline__body p { margin: 0 0 12px; font-size: 17px; line-height: 1.7; color: #4a4433; text-align: left; }
+.timeline__body strong { color: #1a1a17; }
+.timeline__body > :last-child { margin-bottom: 0; }
+.timeline__body blockquote { margin: 16px 0 0; padding: 0; font-style: normal; text-indent: 0; }
+
+.timeline__body blockquote p {
+  font-family: var(--script-font-family), cursive;
+  font-size: 32px;
+  line-height: 1.2;
+  color: #4a6357;
+  margin: 0;
+}
+
+.timeline__body blockquote p::before,
+.timeline__body blockquote p::after { content: none; }
+
+@media (width <= 700px) {
+  .timeline.block { --tl-col: 84px; --tl-gap: 28px; padding: 8px 16px; }
+  .timeline.block::before,
+  .timeline.block::after { left: calc(16px + var(--tl-col) + var(--tl-gap) / 2 - 1px); }
+  main .section .timeline__year p { font-size: 15px; }
+  .timeline__body p { font-size: 16px; }
+  .timeline__body blockquote p { font-size: 27px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .timeline__item::before { transition: none; }
+}

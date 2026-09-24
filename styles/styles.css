@@ -353,8 +353,8 @@ main .section.benefit div.cards-card-body {
    ══════════════════════════════════════════════════════════════════════ */
 
 /* neutralize the site-wide strong-highlight inside redesign blocks */
-main .section :is(.cine-hero, .editorial-split, .value-grid, .steps-flow, .testimonials, .contact-band, .room-stage, .room-rail, .service-cards, .panels, .benefit-icons, .price-cards) strong::before { content: none; }
-main .section :is(.cine-hero, .editorial-split, .value-grid, .steps-flow, .testimonials, .contact-band, .room-stage, .room-rail, .service-cards, .panels, .benefit-icons, .price-cards) strong { position: static; }
+main .section :is(.cine-hero, .editorial-split, .value-grid, .steps-flow, .testimonials, .contact-band, .room-stage, .room-rail, .service-cards, .panels, .benefit-icons, .price-cards, .timeline) strong::before { content: none; }
+main .section :is(.cine-hero, .editorial-split, .value-grid, .steps-flow, .testimonials, .contact-band, .room-stage, .room-rail, .service-cards, .panels, .benefit-icons, .price-cards, .timeline) strong { position: static; }
 
 /* full-bleed sections: no section padding */
 main .section.cine-hero-container,
@@ -396,9 +396,9 @@ main .section.why-band .default-content-wrapper > h2 + p { font-size: 22px; colo
 
 /* box-sizing for redesign block subtrees (older boilerplate ships no global reset;
    without this the carousel slide padding overflows its 100% width → offset) */
-main .section :is(.cine-hero, .editorial-split, .value-grid, .steps-flow, .testimonials, .contact-band, .service-cards, .panels, .benefit-icons, .price-cards) *,
-main .section :is(.cine-hero, .editorial-split, .value-grid, .steps-flow, .testimonials, .contact-band, .service-cards, .panels, .benefit-icons, .price-cards) *::before,
-main .section :is(.cine-hero, .editorial-split, .value-grid, .steps-flow, .testimonials, .contact-band, .service-cards, .panels, .benefit-icons, .price-cards) *::after { box-sizing: border-box; }
+main .section :is(.cine-hero, .editorial-split, .value-grid, .steps-flow, .testimonials, .contact-band, .service-cards, .panels, .benefit-icons, .price-cards, .timeline) *,
+main .section :is(.cine-hero, .editorial-split, .value-grid, .steps-flow, .testimonials, .contact-band, .service-cards, .panels, .benefit-icons, .price-cards, .timeline) *::before,
+main .section :is(.cine-hero, .editorial-split, .value-grid, .steps-flow, .testimonials, .contact-band, .service-cards, .panels, .benefit-icons, .price-cards, .timeline) *::after { box-sizing: border-box; }
 
 /* redesign footer treatment (deep sage) — scoped to the /redesign page only via :has */
 body:has(.cine-hero) footer,

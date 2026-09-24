@@ -291,3 +291,51 @@
 @media (width <= 560px) {
   .cine-hero__panel:has(.lead) h1 { font-size: 32px; }
 }
+
+/* ── variant `split` — text left, framed portrait right (qui-suis-je, contact) ── */
+.cine-hero.split.block { display: block; min-height: 0; overflow: visible; padding: 148px 24px 88px; }
+.cine-hero__split {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: 64px;
+  align-items: center;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.cine-hero.split .cine-hero__inner { padding: 0; max-width: none; margin: 0; }
+.cine-hero.split .cine-hero__panel { max-width: none; margin: 0; }
+
+.cine-hero.split .cine-hero__bg {
+  position: relative;
+  inset: auto;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  border-radius: 20px;
+  overflow: hidden;
+  transform: none;
+  box-shadow: 0 18px 44px rgb(90 90 82 / 18%);
+}
+
+.cine-hero.split .cine-hero__bg::after { content: none; }
+.cine-hero.split .cine-hero__bg img { object-position: center 20%; }
+.cine-hero.split .cine-hero__panel .script { color: #728e7f; text-shadow: none; font-size: 54px; line-height: 1.05; }
+.cine-hero__cta a.button { margin: 0; }
+.cine-hero.split .cine-hero__panel h1 { color: #1a1a17; text-shadow: none; font-size: 46px; font-weight: 700; margin: 0 0 16px; }
+.cine-hero.split .cine-hero__panel .lead { color: #5a5a52; text-shadow: none; font-size: 19px; max-width: 52ch; }
+.cine-hero.split .cine-hero__panel .crumb a { color: #4a6357; }
+.cine-hero.split .cine-hero__cta a.button:not(.secondary) { background: #4a6357; color: #fff; box-shadow: 0 6px 18px rgb(74 99 87 / 25%); }
+.cine-hero.split .cine-hero__cta a.button:not(.secondary):hover { background: #3f574a; }
+.cine-hero.split .cine-hero__cta a.button.secondary { background: transparent; color: #4a6357; border: 1.5px solid #728e7f; }
+.cine-hero.split .cine-hero__cta a.button.secondary:hover { background: #eef3ef; }
+
+@media (width <= 900px) {
+  .cine-hero.split.block { padding: 120px 20px 56px; }
+  .cine-hero__split { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .cine-hero.split .cine-hero__bg { max-height: 70vh; aspect-ratio: 4 / 5; }
+  .cine-hero.split .cine-hero__panel h1 { font-size: 34px; }
+}
+
+@media (width <= 560px) {
+  .cine-hero.split .cine-hero__panel .script { font-size: 40px; }
+}

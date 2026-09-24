@@ -96,7 +96,7 @@
 }
 
 /* a blockquote in the copy renders as the scripted pull-quote (service-page bio) */
-.editorial-split .editorial__copy blockquote { margin: 18px 0 0; padding: 0; }
+.editorial-split .editorial__copy blockquote { margin: 18px 0 0; padding: 0; font-style: normal; text-indent: 0; }
 
 .editorial-split .editorial__copy blockquote p {
   font-family: var(--script-font-family), cursive;
