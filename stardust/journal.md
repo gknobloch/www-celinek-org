@@ -137,3 +137,8 @@ rail), `panels (chips)` for secteurs; contact phone now a tel: link. Pushed 4458
 celinek-org (versions "Before redesign C"), previewed. Site sweep on redesign-c-preview: all 9 nav pages
 redesigned, 1 h1 / 0 broken / 0 overflow / 0 console errors each. Remaining old-design page: /bienfaits
 (linked from the homepage "Découvrez les bienfaits" CTA, not in the nav).
+
+## 2026-09-24 · /bienfaits — C → EDS → DA preview
+Split hero (réalisation spice drawer), 3 intro panels, 10 benefits as `benefit-icons (detailed)`,
+closer + contact band. Hero headlines now `text-wrap: balance` (no orphan French " ?").
+Site sweep: all 10 pages redesigned on redesign-c-preview — 1 h1, 0 broken, 0 overflow, 0 errors each.

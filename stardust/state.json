@@ -279,6 +279,23 @@
           "target": "da:gknobloch/celinek-org (DA version 'Before redesign C' saved)"
         }
       ]
+    },
+    {
+      "slug": "bienfaits",
+      "url": "https://www.celinek.org/bienfaits",
+      "status": "deployed-preview",
+      "direction": "variant C canon",
+      "eds": {
+        "content": "content/bienfaits.html"
+      },
+      "history": [
+        {
+          "at": "2026-09-24T00:00:00Z",
+          "event": "deployed-preview",
+          "by": "stardust:deploy",
+          "target": "da:gknobloch/celinek-org (DA version 'Before redesign C' saved)"
+        }
+      ]
     }
   ]
 }
