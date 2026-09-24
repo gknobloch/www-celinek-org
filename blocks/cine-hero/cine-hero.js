@@ -6,7 +6,9 @@
  *   2. script eyebrow tagline (p.script)
  *   3. headline — the page <h1>
  *   4. CTAs — bare <a> (light) + <em><a> (ghost); anchor to in-page sections
- *   (optional) a lead paragraph after the headline.
+ *   (optional) a lead paragraph after the headline, then a price-tag paragraph
+ *   (`Pack … <strong>à partir de 350 €</strong>`); a link paragraph BEFORE the
+ *   headline is a breadcrumb (un-buttonized).
  *
  * Variant `wipe` (auto, when TWO images are authored — /realisations/): image 1 =
  * "avant", image 2 = "après". The hero pins for a scroll stretch while scripts/motion.js
@@ -25,12 +27,22 @@ export default function decorate(block) {
   const media = [...block.querySelectorAll('img')].map((img) => img.closest('picture') || img);
   const heading = block.querySelector('h1, h2');
   const ps = [...block.querySelectorAll('p')].filter((p) => !p.querySelector('picture, img'));
-  const ctas = ps.filter((p) => p.querySelector('a'));
-  const texts = ps.filter((p) => !p.querySelector('a') && p.textContent.trim());
   const before = (p) => heading
     && (p.compareDocumentPosition(heading) & Node.DOCUMENT_POSITION_FOLLOWING);
+  const links = ps.filter((p) => p.querySelector('a'));
+  // a link paragraph BEFORE the headline is a breadcrumb (e.g. "← Prestations et tarifs")
+  const crumb = links.find(before) || null;
+  const ctas = links.filter((p) => p !== crumb);
+  const texts = ps.filter((p) => !p.querySelector('a') && p.textContent.trim());
   const script = heading ? texts.find(before) : texts[0];
-  const lead = texts.find((p) => p !== script && !before(p));
+  const after = texts.filter((p) => p !== script && !before(p));
+  const lead = after[0];
+  const price = after[1] || null; // optional price tag ("Pack … <strong>à partir de 350 €</strong>")
+  if (crumb) {
+    crumb.classList.add('crumb');
+    crumb.querySelectorAll('a').forEach((a) => a.classList.remove('button', 'primary', 'secondary'));
+    crumb.classList.remove('button-container');
+  }
   if (script) script.classList.add('script'); // re-apply (class was stripped)
   const wipe = media.length >= 2;
 
@@ -56,9 +68,11 @@ export default function decorate(block) {
   inner.className = 'cine-hero__inner';
   const panel = document.createElement('div');
   panel.className = 'cine-hero__panel';
+  if (crumb) { crumb.dataset.enter = '2'; panel.append(crumb); }
   if (script) panel.append(script);           // enters via its word-by-word reveal
   if (heading) { heading.dataset.enter = '2'; panel.append(heading); }
   if (lead) { lead.classList.add('lead'); lead.dataset.enter = '3'; panel.append(lead); }
+  if (price) { price.classList.add('price'); price.dataset.enter = '3'; panel.append(price); }
   if (wipe) {
     // avant / après state pill — labels are CSS generated content (no DOM words)
     const state = document.createElement('div');

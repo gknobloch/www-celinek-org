@@ -118,3 +118,11 @@ og:image = a *before* photo, legacy `/nav`. 44 images pulled to `prototypes/asse
 **Validation.** 390/768/1440: no overflow, 1 h1, 22 items, 0 empty alts, 0 errors on all four files.
 B: filter/flip/dialog/prev-next/slider verified. C: stage p 0→.17→.56→.9→1 across the pin, rail
 active tracks, hero wipe fires. Fixed during validation: mobile stage overflow (grid min-content), hero scrim contrast.
+
+## 2026-09-23 · /prestations-tarifs/ — C template + EDS
+
+- Fixed broken images on the celinek-org DA preview (7 pages: relative `./media_` → fully-qualified; versions saved).
+- Prototyped index + service template (vivre) in the C canon; approved.
+- Rolled the template to TRO / changement / gérer and converted all 5 to EDS: new blocks service-cards,
+  panels, benefit-icons, price-cards; cine-hero gains breadcrumb + price tag; value-grid `plain`.
+  Validated locally (see eds-conversion-log). Pending: push + DA write/preview.

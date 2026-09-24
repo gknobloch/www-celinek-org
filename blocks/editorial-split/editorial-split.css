@@ -94,3 +94,19 @@
 @media (prefers-reduced-motion: reduce) {
   .editorial-split .editorial__media img { transform: none !important; }
 }
+
+/* a blockquote in the copy renders as the scripted pull-quote (service-page bio) */
+.editorial-split .editorial__copy blockquote { margin: 18px 0 0; padding: 0; }
+
+.editorial-split .editorial__copy blockquote p {
+  font-family: var(--script-font-family), cursive;
+  font-size: 34px;
+  line-height: 1.15;
+  color: #4a6357;
+  margin: 0;
+  text-align: left;
+}
+
+.editorial-split .editorial__copy blockquote p::before,
+.editorial-split .editorial__copy blockquote p::after { content: none; }
+.editorial-split .editorial__copy p em { color: #3d3829; font-size: 18px; line-height: 1.7; }

@@ -353,8 +353,8 @@ main .section.benefit div.cards-card-body {
    ══════════════════════════════════════════════════════════════════════ */
 
 /* neutralize the site-wide strong-highlight inside redesign blocks */
-main .section :is(.cine-hero, .editorial-split, .value-grid, .steps-flow, .testimonials, .contact-band, .room-stage, .room-rail) strong::before { content: none; }
-main .section :is(.cine-hero, .editorial-split, .value-grid, .steps-flow, .testimonials, .contact-band, .room-stage, .room-rail) strong { position: static; }
+main .section :is(.cine-hero, .editorial-split, .value-grid, .steps-flow, .testimonials, .contact-band, .room-stage, .room-rail, .service-cards, .panels, .benefit-icons, .price-cards) strong::before { content: none; }
+main .section :is(.cine-hero, .editorial-split, .value-grid, .steps-flow, .testimonials, .contact-band, .room-stage, .room-rail, .service-cards, .panels, .benefit-icons, .price-cards) strong { position: static; }
 
 /* full-bleed sections: no section padding */
 main .section.cine-hero-container,
@@ -396,9 +396,9 @@ main .section.why-band .default-content-wrapper > h2 + p { font-size: 22px; colo
 
 /* box-sizing for redesign block subtrees (older boilerplate ships no global reset;
    without this the carousel slide padding overflows its 100% width → offset) */
-main .section :is(.cine-hero, .editorial-split, .value-grid, .steps-flow, .testimonials, .contact-band) *,
-main .section :is(.cine-hero, .editorial-split, .value-grid, .steps-flow, .testimonials, .contact-band) *::before,
-main .section :is(.cine-hero, .editorial-split, .value-grid, .steps-flow, .testimonials, .contact-band) *::after { box-sizing: border-box; }
+main .section :is(.cine-hero, .editorial-split, .value-grid, .steps-flow, .testimonials, .contact-band, .service-cards, .panels, .benefit-icons, .price-cards) *,
+main .section :is(.cine-hero, .editorial-split, .value-grid, .steps-flow, .testimonials, .contact-band, .service-cards, .panels, .benefit-icons, .price-cards) *::before,
+main .section :is(.cine-hero, .editorial-split, .value-grid, .steps-flow, .testimonials, .contact-band, .service-cards, .panels, .benefit-icons, .price-cards) *::after { box-sizing: border-box; }
 
 /* redesign footer treatment (deep sage) — scoped to the /redesign page only via :has */
 body:has(.cine-hero) footer,
@@ -530,3 +530,40 @@ body:has(.cine-hero) footer .default-content-wrapper { width: 100%; flex: 1 1 10
 @media (width < 900px) {
   body:has(.cine-hero) header nav[aria-expanded="false"] .nav-tools { display: none; }
 }
+
+/* ── prestations (variant C) — section styles, ONE style value per section ──
+   head-left   plain ground, left head (script + h2)
+   warm-center warm band, centered head
+   sage-band   sage band, left head
+   statement   centered display line (h2 or a scripted <p>)
+   Heads are default content; POSITIONAL rules (classes are stripped by the pipeline). */
+main .section:is(.head-left, .warm-center, .sage-band) { padding: 96px 16px; }
+main .section.warm-center { background: #f8e1af; }
+main .section.sage-band { background: #e4ebe6; }
+main .section:is(.head-left, .warm-center, .sage-band) .default-content-wrapper { max-width: 1120px; margin: 0 auto 40px; padding: 0 24px; }
+main .section.warm-center .default-content-wrapper { text-align: center; max-width: 760px; }
+main .section.warm-center .default-content-wrapper p { text-align: center; }
+main .section:is(.head-left, .warm-center, .sage-band) .default-content-wrapper > p:first-child:not(.button-container) {
+  font-family: var(--script-font-family), cursive;
+  display: block; line-height: 1; margin: 0 0 2px; font-size: 40px; font-weight: 400; color: #728e7f;
+}
+main .section:is(.head-left, .warm-center, .sage-band) h2 { font-size: 42px; color: #1a1a17; margin: 0; letter-spacing: -0.01em; line-height: 1.15; }
+/* default content that FOLLOWS a block (e.g. a closing line) */
+main .section:is(.head-left, .warm-center, .sage-band, .head-center, .why-band) .default-content-wrapper:not(:first-child) { margin: 28px auto 0; }
+main .section:is(.head-left, .warm-center, .sage-band, .head-center, .why-band) .default-content-wrapper:not(:first-child) > p:first-child { font-family: inherit; font-size: 15px; color: #5a5a52; }
+main .section:is(.head-left, .warm-center, .sage-band, .head-center, .why-band) .default-content-wrapper:not(:first-child) h3 { font-size: 22px; color: #4a6357; text-align: center; }
+
+main .section.statement { padding: 88px 16px; text-align: center; }
+main .section.statement .default-content-wrapper { max-width: 900px; margin: 0 auto; }
+main .section.statement h2 { font-size: 34px; line-height: 1.3; color: #4a6357; margin: 0 auto; max-width: 24ch; }
+main .section.statement p { font-family: var(--script-font-family), cursive; font-size: 40px; line-height: 1.15; color: #4a6357; text-align: center; margin: 0; }
+
+
+@media (width <= 560px) {
+  main .section:is(.head-left, .warm-center, .sage-band) { padding: 64px 16px; }
+  main .section:is(.head-left, .warm-center, .sage-band) h2 { font-size: 30px; }
+  main .section:is(.head-left, .warm-center, .sage-band) .default-content-wrapper > p:first-child:not(.button-container) { font-size: 31px; }
+  main .section.statement h2 { font-size: 26px; }
+  main .section.statement p { font-size: 30px; }
+}
+main .section.why-band .default-content-wrapper > h2:last-child { margin-bottom: 32px; }

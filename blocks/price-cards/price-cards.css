@@ -1,0 +1,64 @@
+/* price-cards — Tarifs (variant C service pages) */
+.price-cards.block {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.price-cards.block[data-count="1"] { grid-template-columns: minmax(0, 460px); justify-content: center; }
+
+.price-cards *,
+.price-cards *::before,
+.price-cards *::after { box-sizing: border-box; }
+
+.price-cards .price {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #fff;
+  border: 2px solid transparent;
+  border-radius: 20px;
+  padding: 34px 34px 30px;
+  box-shadow: 0 10px 30px rgb(90 90 82 / 12%);
+  text-align: center;
+}
+
+.price-cards .price--featured { border-color: #eed366; }
+.price-cards .price :is(h2, h3) { font-size: 22px; margin: 0 0 4px; color: #1a1a17; }
+.price-cards .price p { margin: 0 0 6px; color: #5a5a52; font-size: 15px; text-align: center; }
+.price-cards .price ul { list-style: none; margin: 8px 0 10px; padding: 0; }
+.price-cards .price li { margin: 0 0 4px; color: #5a5a52; font-size: 15px; }
+.price-cards .price li::before { content: "✓ "; color: #728e7f; font-weight: 700; }
+
+.price-cards .price .price__amount { margin: 2px 0 22px; }
+.price-cards .price .price__amount strong { font-size: 46px; line-height: 1.1; font-weight: 700; color: #1a1a17; }
+.price-cards .price .price__amount strong::before { content: none; }
+
+.price-cards .price .button-container { margin: auto 0 0; }
+
+/* scoped under main .section: beats the head-center gold process-CTA rule */
+main .section .price-cards .price a.button {
+  display: inline-flex;
+  border-radius: 999px;
+  padding: 14px 28px;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  background: transparent;
+  color: #4a6357;
+  border: 1.5px solid #728e7f;
+}
+
+main .section .price-cards .price a.button:hover { background: #eef3ef; }
+main .section .price-cards .price a.button::before { content: none; }
+main .section .price-cards .price--featured a.button,
+main .section .price-cards.block[data-count="1"] a.button { background: #eed366; color: #1a1a17; border-color: #eed366; }
+main .section .price-cards .price--featured a.button:hover,
+main .section .price-cards.block[data-count="1"] a.button:hover { background: #f2dd80; }
+
+@media (width <= 900px) {
+  .price-cards.block { grid-template-columns: 1fr; }
+}

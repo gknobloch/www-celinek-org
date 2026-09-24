@@ -1,0 +1,39 @@
+/* benefit-icons — "Les bienfaits" icon grid (variant C) */
+.benefit-icons.block {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 18px;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.benefit-icons *,
+.benefit-icons *::before,
+.benefit-icons *::after { box-sizing: border-box; }
+
+.benefit-icons .benefit {
+  background: rgb(255 255 255 / 72%);
+  border-radius: 16px;
+  padding: 26px 18px;
+  text-align: center;
+}
+
+.benefit-icons .benefit__icon { width: 52px; height: 52px; margin: 0 auto 14px; }
+.benefit-icons .benefit__icon picture,
+.benefit-icons .benefit__icon img { display: block; width: 100%; height: 100%; object-fit: contain; }
+
+.benefit-icons .benefit__label {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.35;
+  font-weight: 700;
+  color: #4a6357;
+  text-align: center;
+}
+
+.benefit-icons .benefit__label strong { font-weight: 700; }
+
+@media (width <= 900px) {
+  .benefit-icons.block { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+}

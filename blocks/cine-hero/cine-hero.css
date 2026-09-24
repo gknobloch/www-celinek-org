@@ -252,3 +252,42 @@
   .cine-hero.wipe.block { height: auto; --p: 1 !important; }
   .cine-hero.wipe .cine-hero__stage { position: relative; height: auto; }
 }
+
+/* ── inner-page additions (prestations): breadcrumb + price tag ─────────── */
+.cine-hero__panel .crumb { margin: 0 0 10px; text-align: left; }
+.cine-hero__panel .crumb a {
+  color: rgb(255 255 255 / 88%);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.cine-hero__panel .crumb a::before { content: "← "; }
+.cine-hero__panel .crumb a:hover { color: #eed366; }
+
+.cine-hero__panel .price {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+  margin: 0 0 20px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: rgb(26 26 23 / 45%);
+  backdrop-filter: blur(4px);
+  color: #fff;
+  font-size: 14px;
+}
+
+.cine-hero__panel .price strong { color: #eed366; font-size: 17px; font-weight: 700; }
+
+/* taller panels (crumb + lead + price + CTAs) must clear the overlay header */
+.cine-hero__inner { padding-top: 112px; }
+
+/* inner pages (a lead paragraph is present): the h1 is the title, not a tagline */
+.cine-hero__panel:has(.lead) h1 { font-size: 42px; font-weight: 700; margin: 0 0 12px; }
+
+@media (width <= 560px) {
+  .cine-hero__panel:has(.lead) h1 { font-size: 32px; }
+}

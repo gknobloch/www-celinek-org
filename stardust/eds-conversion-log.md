@@ -192,3 +192,41 @@ Source prototype: `stardust/prototypes/realisations-C-cinematic.html` (generator
 - `/realisations/` on this site is sourced from **Google Drive** (admin status `gdrive:1ioMsOvc…`), not DA,
   and the `.env` DA_TOKEN expired. Content must be authored into the Drive doc (tables per
   `content/realisations/index.html`) — or staged to DA once the content-source cutover happens.
+
+---
+
+# /prestations-tarifs/ — index + 4 services, variant C → EDS (2026-09-23)
+
+Prototypes: `stardust/prototypes/prestations-{index,vivre}-C.html` (generator
+`stardust/scripts/prestations-prototypes.py`). Template approved on the vivre page, rolled to the
+other three directly in EDS. Content: `content/prestations-tarifs/{index,<slug>}.html`
+(generator `stardust/scripts/prestations-content.py`, verbatim copy; labels listed in
+`stardust/prestations-direction.md`).
+
+## Blocks
+| Block | Kind | Notes |
+|---|---|---|
+| `cine-hero` (ext.) | bespoke | + breadcrumb (link `<p>` before the h1, un-buttonized), + price tag (2nd text `<p>` after the h1), inner-page h1 42px via `:has(.lead)`, inner padding-top clears the overlay header. Homepage + realisations unchanged (re-verified). |
+| `service-cards` NEW | repeating | image \| tag/h3/blurb/price(strong)/link; whole card = link (inner anchor unwrapped, EW6). Variant `compact` = cross-links. |
+| `panels` NEW | repeating | rich prose panels; grid by `data-count` (1/2/3/2×2). Variants `concerns`, `notes`, `stats`. D1 🟡 justified: grouped card units, not a single prose run. |
+| `benefit-icons` NEW | repeating | icon \| label. |
+| `price-cards` NEW | repeating | h3, details, `<p><strong>amount</strong></p>`, CTA link; last card featured when >1. D1 🟡 justified for single-offer pages (card treatment). |
+| `value-grid` (ext.) | repeating | + `plain` variant (no full-width last card). |
+| `editorial-split` (reuse) | bespoke | bio; a `<blockquote>` renders as the scripted pull-quote. |
+| `steps-flow`, `contact-band` | reuse | homepage steps reused as "Comment ça se passe ?" on index / TRO / changement. |
+
+## Section styles (styles.css, ONE value per section)
+`head-left` (plain, left head), `warm-center` (warm band, centered head), `sage-band` (sage, left head),
+`statement` (centered display h2 or scripted p) — plus existing `head-center`, `why-band`.
+
+## Decisions / fixes
+- Block CSS that must beat section-style rules is scoped `main .section .<block> …` (panel h2 vs the 42px
+  section h2; price-card buttons vs the head-center gold process-CTA rule).
+- Images authored as fully-qualified `https://www.celinek.org/prestations-tarifs/media_…` (already ingested
+  on celinek-org after the image-URL fix).
+
+## Validation (local aem up, qa/pt-h/*)
+All 5 pages @1440/390: 1 h1, 0 overflow, 0 broken / 0 zero-width images, every grid block computes
+grid, counts = authored (index 4 cards; vivre 7 panels / 5 benefits / 2 prices / 3 cross-links; TRO 10
+panels; changement 1; gérer 12), crumb + price tag present on the 4 service pages, 0 page errors.
+davids-model-lint: 0 🔴 on all 5.
