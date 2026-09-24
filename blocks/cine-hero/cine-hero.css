@@ -339,3 +339,6 @@
 @media (width <= 560px) {
   .cine-hero.split .cine-hero__panel .script { font-size: 40px; }
 }
+
+/* balanced headline lines — also keeps French " ?" / " !" from wrapping alone */
+.cine-hero__panel h1 { text-wrap: balance; }
