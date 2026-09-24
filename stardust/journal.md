@@ -126,3 +126,6 @@ active tracks, hero wipe fires. Fixed during validation: mobile stage overflow (
 - Rolled the template to TRO / changement / gérer and converted all 5 to EDS: new blocks service-cards,
   panels, benefit-icons, price-cards; cine-hero gains breadcrumb + price tag; value-grid `plain`.
   Validated locally (see eds-conversion-log). Pending: push + DA write/preview.
+- 2026-09-24: pushed (e032f93) and wrote the 5 pages to DA `celinek-org/prestations-tarifs/*` (versions
+  "Before redesign C" saved), previewed. Verified on redesign-c-preview: 1 h1, 0 about:error, all media
+  200, all grids compute grid, counts = authored, 0 console errors @1440/390.
