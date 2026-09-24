@@ -766,13 +766,14 @@ html:not(.motion) .state{display:none}
     return page(' (static)', prov, css, body, static_js)
 
 
-FILES = {
+if __name__ == '__main__':
+  FILES = {
     'realisations-A-proposed.html': variant_a(),
     'realisations-B-proposed.html': variant_b(),
     'realisations-C-proposed.html': variant_c(False),
     'realisations-C-cinematic.html': variant_c(True),
-}
-for name, html in FILES.items():
+  }
+  for name, html in FILES.items():
     with open(os.path.join(OUT, name), 'w') as fh:
         fh.write(html)
     print(name, len(html))
