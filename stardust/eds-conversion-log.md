@@ -245,3 +245,12 @@ Content: `content/{qui-suis-je,contact}.html` (generator `stardust/scripts/about
 - contact: the phone is now a tel: link (primary CTA), email the secondary CTA.
 Validation (local): both pages @1440/390 — 1 h1, 0 overflow, 0 broken images, grids OK, 0 errors;
 davids-model-lint 0 🔴. Regression: homepage, realisations, 5 prestations pages unchanged.
+
+---
+
+# /bienfaits — variant C → EDS (2026-09-24)
+Content `content/bienfaits.html` (about-content.py). Split hero (réalisation "après" photo: cuisine
+spice drawer, DA-hosted), 3 intro panels (why-band), 10 benefits as `benefit-icons (detailed)` — NEW
+variant: icon left + sentence, 2 columns; icons mapped by meaning from the site's own benefit set —
+closing line + "Mes prestations" CTA (head-center), contact band. Verbatim copy; labels: script
+"Se faire du bien" (fragment of the lead), "Pour vous, chez vous", h2 "Les bienfaits du home organising".

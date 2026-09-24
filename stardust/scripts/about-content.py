@@ -3,7 +3,7 @@
 
 Copy is VERBATIM from https://www.celinek.org/qui-suis-je and /contact; the timeline
 years are taken from the text itself. New words are structural labels only
-(listed in stardust/about-direction.md). Output: content/{qui-suis-je,contact}.html
+(listed in stardust/about-direction.md). Output: content/{qui-suis-je,contact,bienfaits}.html
 Run from the repo root:  python3 stardust/scripts/about-content.py
 """
 import importlib.util
@@ -78,8 +78,43 @@ def contact():
         ]), style='head-left'))
 
 
+def bienfaits():
+    ic = pc.IMG
+    items = [
+        ('interieur', 'Retrouver un intérieur bien rangé apporte <strong>sérénité</strong> et apaisement'),
+        ('temps', 'Quand chaque chose est à sa place on gagne du <strong>temps</strong> et de l’énergie'),
+        ('place', 'Ne garder que ce dont on a besoin permet de libérer de l’espace; on gagne alors en clarté visuelle et le ménage est plus facile'),
+        ('economies', 'Quand on sait exactement ce qu’on possède et ce dont on a réellement besoin, on a naturellement tendance à moins consommer et donc on fait des <strong>économies</strong>'),
+        ('aligner', 'Parce que nos besoins évoluent au fil de notre vie, désencombrer et trier c’est retrouver une harmonie entre ce qui nous entoure et ce qui se passe en nous.'),
+        ('dynamique', 'Lors d’un changement important au cours d’une vie, ranger permet de tourner une page et de prendre <strong>un nouveau départ</strong>.'),
+        ('quotidien', 'En choisissant les objets qui continueront à nous entourer on apprend à réviser ses choix, à revoir ses priorités et au fil du temps on se rend compte de ce qui est essentiel à nos yeux.'),
+        ('tete', 'Désencombrer allège la <strong>charge mentale</strong> liée aux objets, c’est donc aussi plus de liberté et plus de temps pour soi et ceux qui comptent pour nous.'),
+        ('plus', 'Une pièce où tout est agréable à regarder apporte beaucoup de joie !'),
+        ('domicile', 'Pour la personne âgée et/ou handicapée, un rangement adapté permet d’avoir accès confortablement et en toute sécurité aux objets dont elle a besoin. En libérant l’espace, les déplacements sont facilités et les risques de chutes ou blessures limités. Un acte libérateur pour le bénéficiaire, sa famille et même les aides à domicile !'),
+    ]
+    return doc(
+        meta('Les bienfaits du home organising — Céline Knobloch, Home Organiser',
+             'Sérénité, temps, espace, économies, charge mentale allégée : les bienfaits du home organising avec Céline Knobloch, coach en rangement dans le Haut-Rhin.'),
+        split_hero('https://content.da.live/gknobloch/celinek-org/realisations/.index/wp1574685244709.jpg',
+                   'Un tiroir à épices réorganisé, bocaux étiquetés à la main', 'Se faire du bien', 'Quels sont les bienfaits ?',
+                   'En home organising, on ne range pas juste pour ranger ou pour répondre à une norme sociale. On fait de l’ordre autour de soi avant tout pour <strong>se faire du bien</strong> !',
+                   ('<p><a href="/prestations-tarifs/">Mes prestations</a></p>', '<p><em><a href="/realisations/">Voir mes réalisations</a></em></p>')),
+        section(block('panels', [
+            ['<p>L’essor rapide de la société de consommation a apporté son lot de méfaits dans nos intérieurs : pollution visuelle, surcharge mentale, sensations de blocages par exemple…</p>'],
+            ['<p>Ce nouvel art de vivre nous propose au contraire de nous alléger et d’affiner nos choix pour revenir à l’essentiel en toute simplicité !</p>'],
+            ['<p>En tant que coach en rangement, je vous accompagne, soutiens, conseille et encourage. Ensemble, nous optimisons votre organisation, au quotidien, avec des solutions sur-mesure, durables.</p>'],
+        ]), style='why-band'),
+        section('<p>Pour vous, chez vous</p><h2>Les bienfaits du home organising</h2>',
+                block('benefit-icons detailed', [[f'<img src="{ic[k]}" alt="">', f'<p>{t}</p>'] for k, t in items]),
+                style='head-center'),
+        section('<h2>Trier, ranger, optimiser a bien d’autres bénéfices encore !</h2>'
+                '<p>Alors envie de profiter des bienfaits du home organising chez vous ?</p>'
+                '<p><a href="/prestations-tarifs/">Mes prestations</a></p>', style='head-center'),
+        pc.CONTACT)
+
+
 if __name__ == '__main__':
-    for name, html in {'qui-suis-je.html': qui_suis_je(), 'contact.html': contact()}.items():
+    for name, html in {'qui-suis-je.html': qui_suis_je(), 'contact.html': contact(), 'bienfaits.html': bienfaits()}.items():
         with open(os.path.join(ROOT, 'content', name), 'w') as fh:
             fh.write(html)
         print(name, len(html))
