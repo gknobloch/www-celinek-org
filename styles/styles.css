@@ -380,13 +380,14 @@ main .section.why-band .value-grid-wrapper { margin-top: 8px; }
 
 main .section.testi-band { background: #e4ebe6; }
 
-/* scripted openers + headings in default-content heads.
+/* scripted openers + headings in default-content heads (10px + 1.1 leading: the
+   script's descenders no longer touch the heading when the opener wraps on phones).
    NB: the pipeline strips author classes, so these are POSITIONAL: the first
    paragraph of the head is the script; in why-band the paragraph after the h2
    is the lead. */
 main .section:is(.head-center, .why-band) .default-content-wrapper > p:first-child:not(.button-container) {
   font-family: var(--script-font-family), cursive;
-  display: block; line-height: 1; margin: 0 0 2px; font-size: 40px; font-weight: 400;
+  display: block; line-height: 1.1; margin: 0 0 10px; font-size: 40px; font-weight: 400;
 }
 main .section.head-center .default-content-wrapper > p:first-child:not(.button-container) { color: #728e7f; }
 main .section.why-band .default-content-wrapper > p:first-child:not(.button-container) { color: #4a6357; font-size: 38px; }
@@ -556,12 +557,14 @@ main .section.warm-center .default-content-wrapper { text-align: center; max-wid
 main .section.warm-center .default-content-wrapper p { text-align: center; }
 main .section:is(.head-left, .warm-center, .sage-band) .default-content-wrapper > p:first-child:not(.button-container) {
   font-family: var(--script-font-family), cursive;
-  display: block; line-height: 1; margin: 0 0 2px; font-size: 40px; font-weight: 400; color: #728e7f;
+  display: block; line-height: 1.1; margin: 0 0 10px; font-size: 40px; font-weight: 400; color: #728e7f;
 }
 main .section:is(.head-left, .warm-center, .sage-band) h2 { font-size: 42px; color: #1a1a17; margin: 0; letter-spacing: -0.01em; line-height: 1.15; }
 /* default content that FOLLOWS a block (e.g. a closing line) */
 main .section:is(.head-left, .warm-center, .sage-band, .head-center, .why-band) .default-content-wrapper:not(:first-child) { margin: 28px auto 0; }
-main .section:is(.head-left, .warm-center, .sage-band, .head-center, .why-band) .default-content-wrapper:not(:first-child) > p:first-child { font-family: inherit; font-size: 15px; color: #5a5a52; }
+/* :not(.button-container) + the extra :not(:first-child) out-rank the script-opener rules
+   (incl. the 560px override), which otherwise leaked line-height 1 / 31px into closing lines */
+main .section:is(.head-left, .warm-center, .sage-band, .head-center, .why-band) .default-content-wrapper:not(:first-child) > p:first-child:not(.button-container) { font-family: inherit; font-size: 17px; line-height: 1.6; color: #5a5a52; }
 main .section:is(.head-left, .warm-center, .sage-band, .head-center, .why-band) .default-content-wrapper:not(:first-child) h3 { font-size: 22px; color: #4a6357; text-align: center; }
 
 main .section.statement { padding: 88px 16px; text-align: center; }

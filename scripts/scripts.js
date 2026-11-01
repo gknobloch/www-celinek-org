@@ -95,6 +95,30 @@ function decoratePhoneLinks(main) {
 }
 
 /**
+ * Hyphenated place names never break at their hyphen ("Haut-" / "Rhin" on phones).
+ * @param {Element} main The main element
+ */
+function keepPlaceNamesTogether(main) {
+  const walker = document.createTreeWalker(main, NodeFilter.SHOW_TEXT);
+  const hits = [];
+  while (walker.nextNode()) if (walker.currentNode.textContent.includes('Haut-Rhin')) hits.push(walker.currentNode);
+  hits.forEach((node) => {
+    const parts = node.textContent.split('Haut-Rhin');
+    const frag = document.createDocumentFragment();
+    parts.forEach((part, i) => {
+      if (i) {
+        const span = document.createElement('span');
+        span.style.whiteSpace = 'nowrap';
+        span.textContent = 'Haut-Rhin';
+        frag.append(span);
+      }
+      if (part) frag.append(part);
+    });
+    node.replaceWith(frag);
+  });
+}
+
+/**
  * Decorates the main element.
  * @param {Element} main The main element
  */
@@ -103,6 +127,7 @@ export function decorateMain(main) {
   decorateButtons(main);
   decorateIcons(main);
   decoratePhoneLinks(main);
+  keepPlaceNamesTogether(main);
   buildAutoBlocks(main);
   decorateSections(main);
   decorateBlocks(main);

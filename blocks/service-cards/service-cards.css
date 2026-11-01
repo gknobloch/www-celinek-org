@@ -92,6 +92,13 @@
 @media (width <= 560px) {
   .service-cards:not(.compact) .svc__foot { flex-direction: column; align-items: flex-start; gap: 10px; }
   .service-cards .svc__body { padding: 22px 22px 24px; }
+
+  /* the "pour qui" pill wraps to 2 lines here and sat on the faces: lift it out of
+     the photo (media box dissolves) and set it above the title instead */
+  .service-cards:not(.compact) .svc__media { display: contents; }
+  .service-cards:not(.compact) .svc__media picture { aspect-ratio: 16 / 10; overflow: hidden; }
+  .service-cards:not(.compact) .svc__for { position: static; align-self: flex-start; margin: 20px 22px 0; padding: 0; background: none; font-size: 11.5px; }
+  .service-cards:not(.compact) .svc:has(.svc__for) .svc__body { padding-top: 8px; }
 }
 
 @media (width > 600px) and (width <= 900px) {

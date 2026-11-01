@@ -80,7 +80,9 @@
    and flank the dots row */
 @media (width <= 900px) {
   .testimonials .carousel__nav { width: 44px; height: 44px; padding: 0; font-size: 22px; top: auto; bottom: 0; margin-block: 0; }
-  .testimonials .carousel__prev { left: calc(50% - 118px); }
-  .testimonials .carousel__next { right: calc(50% - 118px); }
+  /* pinned to the card edges: a fixed offset from centre overlapped the dots row
+     once there were 6 dots (6 × 33px) */
+  .testimonials .carousel__prev { left: 0; }
+  .testimonials .carousel__next { right: 0; }
   .testimonials .carousel__dots { margin-top: 18px; height: 44px; align-items: center; }
 }

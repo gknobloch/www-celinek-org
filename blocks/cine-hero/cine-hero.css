@@ -133,9 +133,10 @@
 .cine-hero__cta a.button:not(.secondary) { background: #fff; color: #1a1a17; box-shadow: 0 6px 18px rgb(26 26 23 / 18%); }
 .cine-hero__cta a.button:not(.secondary):hover { background: #f4f1e8; }
 
-/* second CTA (em>a → .button.secondary): ghost */
-.cine-hero__cta a.button.secondary { background: rgb(255 255 255 / 10%); color: #fff; border: 1.5px solid rgb(255 255 255 / 72%); }
-.cine-hero__cta a.button.secondary:hover { background: rgb(255 255 255 / 22%); }
+/* second CTA (em>a → .button.secondary): ghost on a smoky frosted fill, so the white
+   label and outline still read over bright photos */
+.cine-hero__cta a.button.secondary { background: rgb(26 26 23 / 28%); backdrop-filter: blur(6px); color: #fff; border: 1.5px solid rgb(255 255 255 / 85%); }
+.cine-hero__cta a.button.secondary:hover { background: rgb(26 26 23 / 40%); }
 
 .cine-hero__cue {
   position: absolute;
