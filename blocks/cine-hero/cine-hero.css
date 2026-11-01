@@ -205,6 +205,18 @@
     linear-gradient(180deg, rgb(26 26 23 / 30%) 0%, rgb(26 26 23 / 6%) 22%, rgb(26 26 23 / 6%) 55%, rgb(26 26 23 / 50%) 100%);
 }
 
+/* homepage hero (no lead, not split/wipe): cream veil at the top so the dark nav
+   reads over the photo, dark veil behind the white type (panel sits right of centre) */
+.cine-hero:not(.split, .wipe):not(:has(.lead)) .cine-hero__bg::after {
+  z-index: 1;
+  background:
+    linear-gradient(180deg, rgb(253 254 250 / 82%) 0%, rgb(253 254 250 / 60%) 6%, rgb(253 254 250 / 0%) 14%),
+    radial-gradient(ellipse 48% 36% at 68% 52%, rgb(26 26 23 / 62%) 0%, rgb(26 26 23 / 38%) 50%, rgb(26 26 23 / 0%) 100%),
+    linear-gradient(180deg, rgb(26 26 23 / 0%) 50%, rgb(26 26 23 / 45%) 75%);
+}
+
+.cine-hero:not(.split, .wipe):not(:has(.lead)) .cine-hero__panel :is(.script, h1) { text-shadow: 0 2px 18px rgb(26 26 23 / 55%); }
+
 .cine-hero.wipe .cine-hero__panel { max-width: 560px; }
 .cine-hero.wipe .cine-hero__panel .script { font-size: 80px; margin-bottom: 8px; }
 .cine-hero.wipe .cine-hero__panel h1 { font-size: 42px; font-weight: 700; margin: 0 0 14px; }
