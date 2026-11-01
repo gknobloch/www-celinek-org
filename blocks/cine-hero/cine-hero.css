@@ -324,6 +324,10 @@
 .cine-hero.split .cine-hero__panel h1 { color: #1a1a17; text-shadow: none; font-size: 46px; font-weight: 700; margin: 0 0 16px; }
 .cine-hero.split .cine-hero__panel .lead { color: #5a5a52; text-shadow: none; font-size: 19px; max-width: 52ch; }
 .cine-hero.split .cine-hero__panel .crumb a { color: #4a6357; }
+
+/* tag paragraph on the cream ground (e.g. contact hours): light sage chip, dark sage text */
+.cine-hero.split .cine-hero__panel .price { background: #eef3ef; backdrop-filter: none; color: #4a6357; }
+.cine-hero.split .cine-hero__panel .price strong { color: #3f574a; font-size: 16px; }
 .cine-hero.split .cine-hero__cta a.button:not(.secondary) { background: #4a6357; color: #fff; box-shadow: 0 6px 18px rgb(74 99 87 / 25%); }
 .cine-hero.split .cine-hero__cta a.button:not(.secondary):hover { background: #3f574a; }
 .cine-hero.split .cine-hero__cta a.button.secondary { background: transparent; color: #4a6357; border: 1.5px solid #728e7f; }
