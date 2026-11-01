@@ -38,7 +38,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgb(26 26 23 / 18%) 0%, rgb(26 26 23 / 5%) 34%, rgb(26 26 23 / 68%) 100%);
+  background: linear-gradient(180deg, rgb(26 26 23 / 0%) 0%, rgb(26 26 23 / 5%) 34%, rgb(26 26 23 / 68%) 100%);
 }
 
 .cine-hero__inner {
@@ -208,16 +208,25 @@
 }
 
 /* full-bleed heroes (not split; wipe has its own in the scrim): cream veil under the
-   overlay header so the dark nav reads over any photo. Fixed px so it hugs the header
-   and fades out before the panel's script line (panel padding-top 112px). */
+   overlay header so the dark nav reads over any photo. Fixed px so it hugs the header;
+   eased stops (no visible edge), mostly gone by the panel's script line (~112px). */
 .cine-hero:not(.split, .wipe)::before {
   content: "";
   position: absolute;
   inset: 0 0 auto;
-  height: 120px;
+  height: 190px;
   z-index: 1;
   pointer-events: none;
-  background: linear-gradient(180deg, rgb(253 254 250 / 85%) 0, rgb(253 254 250 / 65%) 55px, rgb(253 254 250 / 0%) 120px);
+  background: linear-gradient(
+    180deg,
+    rgb(253 254 250 / 86%) 0,
+    rgb(253 254 250 / 74%) 40px,
+    rgb(253 254 250 / 55%) 72px,
+    rgb(253 254 250 / 34%) 102px,
+    rgb(253 254 250 / 17%) 130px,
+    rgb(253 254 250 / 6%) 160px,
+    rgb(253 254 250 / 0%) 190px
+  );
 }
 
 .cine-hero:not(.split, .wipe) .cine-hero__inner { z-index: 2; }
