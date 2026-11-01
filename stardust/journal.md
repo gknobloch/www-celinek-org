@@ -148,3 +148,12 @@ Site sweep: all 10 pages redesigned on redesign-c-preview — 1 h1, 0 broken, 0 
 swodYdqWSGg, Unsplash License), last benefit shortened to one sentence echoing vivre-et-vieillir-chez-soi.
 /contact: 📞 emoji replaced site-wide by a sage phone glyph (icons/phone.svg, currentColor mask) — 1256ba8.
 New hero copy proposed for /contact ("Faisons connaissance" + practical lead), to be authored in DA by the user.
+
+## 2026-11-01 · nav veil, mobile review
+- Cream nav veil on every full-bleed hero (fixed 190px eased `::before`; base scrim starts clear) —
+  /realisations keeps its in-scrim veil. Home hero: sage-wall photo + dark veil behind the headline.
+- Phone review (iPhone 13): fixed closing-line leading (1.0 → 1.6), script/heading collision,
+  "Haut-Rhin" hyphen break, card labels over faces, carousel arrows over dots, ghost CTA contrast,
+  orphan " ?", condensed header cutting the logo (grid row stuck at 96px).
+- Phones: home + prestations heroes are now stacked (framed 16:10 photo on top, copy on cream).
+- Open from the review: page length (40px gutters + card padding), /realisations = 28 screens.
