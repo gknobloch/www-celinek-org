@@ -34,8 +34,11 @@
   transform-origin: top center;
 }
 
+/* z-index 1: the reveal (data-anim) gives each item an inline transform, i.e. its own
+   stacking context, which otherwise paints below the rail fill and lets it cut the dot */
 .timeline__item {
   position: relative;
+  z-index: 1;
   display: grid;
   grid-template-columns: var(--tl-col) minmax(0, 1fr);
   gap: var(--tl-gap);
