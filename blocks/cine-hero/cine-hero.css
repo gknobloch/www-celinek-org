@@ -231,7 +231,8 @@
     linear-gradient(180deg, rgb(26 26 23 / 0%) 50%, rgb(26 26 23 / 45%) 75%);
 }
 
-.cine-hero:not(.split, .wipe):not(:has(.lead)) .cine-hero__panel :is(.script, h1) { text-shadow: 0 2px 18px rgb(26 26 23 / 55%); }
+/* white script + headline on full-bleed photos: a firmer shadow for bright spots */
+.cine-hero:not(.split, .wipe) .cine-hero__panel :is(.script, h1) { text-shadow: 0 2px 18px rgb(26 26 23 / 55%); }
 
 /* phones: the panel spans the width from the left gutter — widen + recentre the dark veil */
 @media (width <= 600px) {
