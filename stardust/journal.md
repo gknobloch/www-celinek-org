@@ -142,3 +142,9 @@ redesigned, 1 h1 / 0 broken / 0 overflow / 0 console errors each. Remaining old-
 Split hero (réalisation spice drawer), 3 intro panels, 10 benefits as `benefit-icons (detailed)`,
 closer + contact band. Hero headlines now `text-wrap: balance` (no orphan French " ?").
 Site sweep: all 10 pages redesigned on redesign-c-preview — 1 h1, 0 broken, 0 overflow, 0 errors each.
+
+## 2026-11-01 · /bienfaits + /contact retouches
+/bienfaits (edited by the user in DA): eyebrow "Bien plus que du rangement", Unsplash hero (Helena Lopes,
+swodYdqWSGg, Unsplash License), last benefit shortened to one sentence echoing vivre-et-vieillir-chez-soi.
+/contact: 📞 emoji replaced site-wide by a sage phone glyph (icons/phone.svg, currentColor mask) — 1256ba8.
+New hero copy proposed for /contact ("Faisons connaissance" + practical lead), to be authored in DA by the user.
