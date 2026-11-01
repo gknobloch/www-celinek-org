@@ -74,6 +74,27 @@ function buildAutoBlocks(main) {
 }
 
 /**
+ * Phone links: the authored 📞 emoji (or :phone: icon) becomes the site's phone glyph,
+ * drawn as a CSS mask in currentColor so it reads on light text links and dark buttons.
+ * @param {Element} main The main element
+ */
+function decoratePhoneLinks(main) {
+  const strip = (text) => text.replace(/[\u{1F4DE}\u{260E}\u{FE0F}]/gu, '');
+  main.querySelectorAll('a[href^="tel:"]').forEach((a) => {
+    a.querySelectorAll('.icon-phone').forEach((icon) => icon.remove());
+    a.childNodes.forEach((node) => {
+      if (node.nodeType === Node.TEXT_NODE) node.textContent = strip(node.textContent);
+    });
+    if (a.firstChild?.nodeType === Node.TEXT_NODE) a.firstChild.textContent = a.firstChild.textContent.trimStart();
+    if (a.title) a.title = strip(a.title).trim();
+    const glyph = document.createElement('span');
+    glyph.className = 'phone-glyph';
+    glyph.setAttribute('aria-hidden', 'true');
+    a.prepend(glyph);
+  });
+}
+
+/**
  * Decorates the main element.
  * @param {Element} main The main element
  */
@@ -81,6 +102,7 @@ export function decorateMain(main) {
   // hopefully forward compatible button decoration
   decorateButtons(main);
   decorateIcons(main);
+  decoratePhoneLinks(main);
   buildAutoBlocks(main);
   decorateSections(main);
   decorateBlocks(main);
