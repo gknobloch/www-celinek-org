@@ -633,3 +633,21 @@ body:has(.cine-hero) header nav .nav-hamburger button { width: 44px; height: 44p
   body:has(.cine-hero) header nav[aria-expanded="true"] .nav-sections { border-top: 1px solid #eceee6; }
   body:has(.cine-hero) header nav[aria-expanded="true"] .nav-logo .logo-description p.baseline { opacity: 1; }
 }
+
+/* phones: one 20px gutter. Sections carried 16px and every block / default-content
+   wrapper another 24px (40px a side), and cards another 26–34px inside, leaving
+   ~250px of text: narrow columns, very tall cards, long pages. Full-bleed bands
+   (hero, contact band, room rail) keep their own edges; a section that only wraps
+   a nested section (fragments, e.g. the shared "Comment ça se passe ?") adds none.
+   Vertical rhythm 64px → 48px per band edge. */
+@media (width <= 600px) {
+  body:has(.cine-hero) main .section:not(:has(.section, .cine-hero, .contact-band, .room-rail)) { padding-left: 20px; padding-right: 20px; }
+  body:has(.cine-hero) main .section:has(.section) { padding-left: 0; padding-right: 0; }
+
+  body:has(.cine-hero) main .section > .default-content-wrapper,
+  body:has(.cine-hero) main .section > [class$='-wrapper'] > .block:not(.cine-hero, .contact-band, .room-rail) { padding-left: 0; padding-right: 0; }
+
+  body:has(.cine-hero) main :is(.panels .panel, .value-grid .value, .price-cards .price, .steps-flow .step, .benefit-icons .benefit) { padding-left: 20px; padding-right: 20px; }
+
+  body:has(.cine-hero) main .section:is(.head-left, .warm-center, .sage-band, .head-center, .why-band, .testi-band) { padding-top: 48px; padding-bottom: 48px; }
+}
