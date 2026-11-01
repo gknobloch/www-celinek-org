@@ -3,11 +3,12 @@
   --tl-col: 124px;
   --tl-gap: 48px;
   --tl-p: 0;
+  --tl-pad: 24px; /* side padding — the rail is positioned from it */
 
   position: relative;
   max-width: 880px;
   margin: 0 auto;
-  padding: 8px 24px;
+  padding: 8px var(--tl-pad);
 }
 
 .timeline *,
@@ -21,7 +22,7 @@
   position: absolute;
   top: 16px;
   bottom: 16px;
-  left: calc(24px + var(--tl-col) + var(--tl-gap) / 2 - 1px);
+  left: calc(var(--tl-pad) + var(--tl-col) + var(--tl-gap) / 2 - 1px);
   width: 2px;
   border-radius: 2px;
   background: #dfe5e1;
@@ -87,12 +88,16 @@ main .section .timeline__year p {
 .timeline__body blockquote p::after { content: none; }
 
 @media (width <= 700px) {
-  .timeline.block { --tl-col: 84px; --tl-gap: 28px; padding: 8px 16px; }
-  .timeline.block::before,
-  .timeline.block::after { left: calc(16px + var(--tl-col) + var(--tl-gap) / 2 - 1px); }
+  .timeline.block { --tl-col: 84px; --tl-gap: 28px; --tl-pad: 16px; }
   main .section .timeline__year p { font-size: 15px; }
   .timeline__body p { font-size: 16px; }
   .timeline__body blockquote p { font-size: 27px; }
+}
+
+/* phones: the section supplies the 20px gutter (block padding 0, see styles.css), so
+   the rail follows it; a narrower year column gives the text ~40px more */
+@media (width <= 600px) {
+  .timeline.block { --tl-col: 48px; --tl-gap: 26px; --tl-pad: 0px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
