@@ -217,6 +217,16 @@
 
 .cine-hero:not(.split, .wipe):not(:has(.lead)) .cine-hero__panel :is(.script, h1) { text-shadow: 0 2px 18px rgb(26 26 23 / 55%); }
 
+/* phones: the panel spans the width from the left gutter — widen + recentre the dark veil */
+@media (width <= 600px) {
+  .cine-hero:not(.split, .wipe):not(:has(.lead)) .cine-hero__bg::after {
+    background:
+      linear-gradient(180deg, rgb(253 254 250 / 82%) 0%, rgb(253 254 250 / 60%) 6%, rgb(253 254 250 / 0%) 14%),
+      radial-gradient(ellipse 95% 26% at 40% 46%, rgb(26 26 23 / 62%) 0%, rgb(26 26 23 / 38%) 55%, rgb(26 26 23 / 0%) 100%),
+      linear-gradient(180deg, rgb(26 26 23 / 0%) 50%, rgb(26 26 23 / 45%) 70%);
+  }
+}
+
 .cine-hero.wipe .cine-hero__panel { max-width: 560px; }
 .cine-hero.wipe .cine-hero__panel .script { font-size: 80px; margin-bottom: 8px; }
 .cine-hero.wipe .cine-hero__panel h1 { font-size: 42px; font-weight: 700; margin: 0 0 14px; }
