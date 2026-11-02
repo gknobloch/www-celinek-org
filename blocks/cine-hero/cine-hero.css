@@ -444,7 +444,7 @@
    The avant/après pairs follow right below, so no photo and no pin: just the
    script line, title and intro on cream, like the other phone heroes. */
 @media (width <= 600px) {
-  .cine-hero.wipe.copy-only.block { height: auto; overflow: visible; padding: 100px 0 0; background: #fdfefa; }
+  .cine-hero.wipe.copy-only.block { height: auto; min-height: 0; overflow: visible; padding: 100px 0 0; background: #fdfefa; }
   .cine-hero.wipe.copy-only .cine-hero__stage { position: relative; height: auto; min-height: 0; overflow: visible; }
   .cine-hero.wipe.copy-only :is(.cine-hero__bg, .cine-hero__cue, .cine-hero__state) { display: none; }
   .cine-hero.wipe.copy-only .cine-hero__inner { padding: 20px 20px 32px; }
