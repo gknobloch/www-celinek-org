@@ -1,28 +1,24 @@
 /* room-stage — one room chapter (/realisations/, variant C, editorial register).
    Every avant/après pair is a drag slider; the lead one sits beside the copy.
    Nothing pins or swaps on scroll. */
-main:has(.room-stage) { counter-reset: room; }
-
 main .section.room-stage-container { padding: 0 16px; max-width: none; scroll-margin-top: 110px; }
 main .section.room-stage-container + .section.room-stage-container { border-top: 1px solid #eceee6; }
 main .section.room-stage-container > div { max-width: 1120px; margin: 0 auto; }
 
-.room-stage.block { counter-increment: room; margin: 0; }
+.room-stage.block { margin: 0; }
 .room-stage *,
 .room-stage *::before,
 .room-stage *::after { box-sizing: border-box; }
 
 .room-stage__sticky {
   display: grid;
-  grid-template-columns: 300px minmax(0, 1fr);
+  grid-template-columns: 340px minmax(0, 1fr);
   gap: 56px;
   align-items: center;
   padding: 48px 8px;
 }
 
 /* ── copy column ── */
-.room-stage__num { display: block; font-size: 15px; font-weight: 700; color: #806515; letter-spacing: 0.1em; margin: 0 0 6px; }
-.room-stage__num::before { content: counter(room, decimal-leading-zero) " / " attr(data-total); }
 .room-stage__copy .script {
   font-family: var(--script-font-family), cursive;
   font-size: 40px;
@@ -33,7 +29,10 @@ main .section.room-stage-container > div { max-width: 1120px; margin: 0 auto; }
 }
 
 .room-stage__copy h2 { font-size: 32px; line-height: 1.14; color: #1a1a17; margin: 0 0 8px; }
-.room-stage__copy .count { font-size: 15px; color: #5a5a52; margin: 0 0 18px; text-align: left; }
+.room-stage__copy h2 + .room-stage__desc { margin-top: 14px; }
+.room-stage__desc { font-size: 16px; line-height: 1.6; color: #4a4433; margin: 0 0 12px; text-align: left; }
+.room-stage__desc.is-empty { display: none; }
+.room-stage__label { font-weight: 700; color: #4a6357; }
 
 /* Avant / Après tags — generated content */
 .room-stage__frame::before,
@@ -140,8 +139,6 @@ main .section.room-stage-container > div { max-width: 1120px; margin: 0 auto; }
 
 @media (width <= 900px) {
   .room-stage__sticky { grid-template-columns: minmax(0, 1fr); gap: 18px; }
-  .room-stage__num,
-  .room-stage__copy .count { display: none; }
   .room-stage__more { grid-template-columns: 1fr 1fr; }
 }
 

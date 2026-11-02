@@ -3,8 +3,10 @@
  *
  * Authoring:
  *   section head (DEFAULT CONTENT before the block): optional script <p>
- *     ("avant, après"), <h2> room name, <p> count ("5 transformations") —
- *     reabsorbed into the pinned copy column (children MOVED, wrapper removed);
+ *     ("avant, après"), <h2> room name, then any <p>s describing the job (e.g.
+ *     "La demande : …", "Mon intervention : …") — reabsorbed into the copy column
+ *     (children MOVED, wrapper removed). A "Label :" lead-in is set as a label; a
+ *     paragraph that is only its label (a placeholder still to be written) is hidden.
  *   block rows: one row per transformation — cell 1 = avant image, cell 2 = après image
  *   (an in-block copy row is still accepted as a decode fallback).
  * Section-metadata `anchor` → section id (room-rail target).
@@ -12,8 +14,7 @@
  * Render: every pair is a labeled, keyboard-operable comparison slider (drag the
  * ‹ › knob). The FIRST pair sits beside the copy column; the rest follow in a grid.
  * Nothing pins and nothing swaps on scroll (that read as the photo glitching).
- * Authored nodes are MOVED (EW1); "Avant"/"Après" labels and the chapter number
- * are CSS generated content (no DOM words).
+ * Authored nodes are MOVED (EW1); "Avant"/"Après" tags are CSS generated content.
  * Schema: stardust/eds-schema/realisations.json#room-stage
  */
 function ratio(img) {
@@ -32,6 +33,21 @@ function trackRatio(img, el, flagEl) {
   };
   apply();
   if (!img.getAttribute('width') && !img.complete) img.addEventListener('load', apply, { once: true });
+}
+
+// "La demande : …" → <span class="room-stage__label">La demande :</span> …
+function describe(p) {
+  p.classList.add('room-stage__desc');
+  const first = p.firstChild;
+  const m = first?.nodeType === Node.TEXT_NODE && first.textContent.match(/^\s*([^:\n]{2,40}?)\s*:\s*/);
+  if (m) {
+    const label = document.createElement('span');
+    label.className = 'room-stage__label';
+    label.textContent = `${m[1]} :`;
+    first.textContent = first.textContent.slice(m[0].length);
+    p.prepend(label, ' ');
+  }
+  if (!p.textContent.replace(/^[^:]*:/, '').trim()) p.classList.add('is-empty');
 }
 
 function frame(pic, className) {
@@ -89,13 +105,9 @@ export default function decorate(block) {
   // copy column
   const copy = document.createElement('div');
   copy.className = 'room-stage__copy';
-  const num = document.createElement('span');
-  num.className = 'room-stage__num';
-  num.setAttribute('aria-hidden', 'true');
-  copy.append(num);
   if (script) { script.classList.add('script'); copy.append(script); }
   if (heading) copy.append(heading);
-  rest.forEach((p) => { p.classList.add('count'); copy.append(p); });
+  rest.forEach((p) => { describe(p); copy.append(p); });
 
   // stage: lead pair
   const sticky = document.createElement('div');
@@ -116,7 +128,4 @@ export default function decorate(block) {
   }
   block.replaceChildren(...out);
   if (head && !head.children.length) head.remove();
-
-  // chapter number: CSS counter + total (generated content, no DOM words)
-  num.dataset.total = String(document.querySelectorAll('.room-stage').length).padStart(2, '0');
 }
