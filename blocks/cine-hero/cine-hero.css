@@ -440,92 +440,16 @@
   .cine-hero:not(.split, .wipe) .cine-hero__cta a.button.secondary { background: transparent; backdrop-filter: none; color: #4a6357; border: 1.5px solid #728e7f; }
 }
 
-/* ── phones: /realisations hero as a framed avant/après slider (`compare`, JS) ──
-   No pin and no scroll-driven swap: the photo sits framed above the copy and the
-   reader drags the ‹ › knob, like the room pairs below. */
+/* ── phones: /realisations hero is the copy alone (`copy-only`, JS) ──────
+   The avant/après pairs follow right below, so no photo and no pin: just the
+   script line, title and intro on cream, like the other phone heroes. */
 @media (width <= 600px) {
-  .cine-hero.wipe.compare.block { height: auto; overflow: visible; padding: 100px 0 8px; background: #fdfefa; --p: 1; }
-  .cine-hero.wipe.compare .cine-hero__stage { position: relative; display: flex; flex-direction: column; align-items: stretch; height: auto; min-height: 0; overflow: visible; }
-
-  .cine-hero.wipe.compare .cine-hero__bg {
-    --pos: 50%;
-
-    position: relative;
-    inset: auto;
-    height: auto;
-    aspect-ratio: 4 / 5;
-    margin: 0 16px;
-    border-radius: 20px;
-    overflow: hidden;
-    isolation: isolate;
-    transform: none !important;
-    box-shadow: 0 14px 34px rgb(90 90 82 / 16%);
-  }
-
-  .cine-hero.wipe.compare .cine-hero__layer--after { mask-image: none; clip-path: inset(0 0 0 var(--pos)); }
-
-  /* Avant / Après tags (generated content) */
-  .cine-hero.wipe.compare .cine-hero__bg::before,
-  .cine-hero.wipe.compare .cine-hero__bg::after {
-    position: absolute;
-    z-index: 3;
-    inset: 12px auto auto;
-    padding: 5px 12px;
-    border-radius: 999px;
-    background: none;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    line-height: 1.2;
-    text-transform: uppercase;
-    pointer-events: none;
-  }
-
-  .cine-hero.wipe.compare .cine-hero__bg::before { content: "Avant"; left: 12px; background: rgb(26 26 23 / 64%); color: #fff; }
-  .cine-hero.wipe.compare .cine-hero__bg::after { content: "Après"; left: auto; right: 12px; background: #eed366; color: #1a1a17; }
-
-  .cine-hero.wipe.compare .cine-hero__line {
-    position: absolute;
-    z-index: 2;
-    top: 0;
-    bottom: 0;
-    left: var(--pos);
-    width: 2px;
-    margin-left: -1px;
-    background: #fff;
-    box-shadow: 0 0 14px rgb(26 26 23 / 35%);
-    pointer-events: none;
-  }
-
-  /* knob: a circle with ‹ › drawn in CSS (no DOM glyphs) */
-  .cine-hero.wipe.compare .cine-hero__line::after {
-    content: "‹ ›";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 46px;
-    height: 46px;
-    margin: -23px 0 0 -23px;
-    border-radius: 999px;
-    background: #fff;
-    color: #4a6357;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-bottom: 3px;
-    font-size: 20px;
-    font-weight: 700;
-    line-height: 1;
-    box-shadow: 0 6px 18px rgb(26 26 23 / 25%);
-  }
-
-  .cine-hero.wipe.compare .cine-hero__range { position: absolute; z-index: 4; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: ew-resize; appearance: none; }
-  .cine-hero.wipe.compare .cine-hero__bg:has(.cine-hero__range:focus-visible) { outline: 3px solid #806515; outline-offset: 3px; }
-
-  .cine-hero.wipe.compare .cine-hero__inner { padding: 26px 20px 40px; }
-  .cine-hero.wipe.compare :is(.cine-hero__cue, .cine-hero__state) { display: none; }
-  .cine-hero.wipe.compare .cine-hero__panel :is(.script, h1, .lead) { text-shadow: none; }
-  .cine-hero.wipe.compare .cine-hero__panel .script { color: #728e7f; font-size: 38px; line-height: 1.05; }
-  .cine-hero.wipe.compare .cine-hero__panel h1 { color: #1a1a17; font-size: 28px; line-height: 1.2; margin: 0 0 14px; }
-  .cine-hero.wipe.compare .cine-hero__panel .lead { color: #5a5a52; font-size: 17px; }
+  .cine-hero.wipe.copy-only.block { height: auto; overflow: visible; padding: 100px 0 0; background: #fdfefa; }
+  .cine-hero.wipe.copy-only .cine-hero__stage { position: relative; height: auto; min-height: 0; overflow: visible; }
+  .cine-hero.wipe.copy-only :is(.cine-hero__bg, .cine-hero__cue, .cine-hero__state) { display: none; }
+  .cine-hero.wipe.copy-only .cine-hero__inner { padding: 20px 20px 32px; }
+  .cine-hero.wipe.copy-only .cine-hero__panel :is(.script, h1, .lead) { text-shadow: none; }
+  .cine-hero.wipe.copy-only .cine-hero__panel .script { color: #728e7f; font-size: 38px; line-height: 1.05; }
+  .cine-hero.wipe.copy-only .cine-hero__panel h1 { color: #1a1a17; font-size: 28px; line-height: 1.2; margin: 0 0 14px; }
+  .cine-hero.wipe.copy-only .cine-hero__panel .lead { color: #5a5a52; font-size: 17px; margin-bottom: 0; }
 }

@@ -9,12 +9,9 @@
  *   (an in-block copy row is still accepted as a decode fallback).
  * Section-metadata `anchor` → section id (room-rail target).
  *
- * Render: the FIRST pair is the stage — pinned while scripts/motion.js drives
- * `--p` 0→1 (feathered avant → après wipe). Every other pair becomes a
- * labeled, keyboard-operable comparison slider. No-JS / reduced motion: the
- * stage shows avant | après side by side, nothing pins. Phones (≤600px): no pin
- * either — the lead pair is a comparison slider too (a scroll-driven swap felt
- * like the photo glitching).
+ * Render: every pair is a labeled, keyboard-operable comparison slider (drag the
+ * ‹ › knob). The FIRST pair sits beside the copy column; the rest follow in a grid.
+ * Nothing pins and nothing swaps on scroll (that read as the photo glitching).
  * Authored nodes are MOVED (EW1); "Avant"/"Après" labels and the chapter number
  * are CSS generated content (no DOM words).
  * Schema: stardust/eds-schema/realisations.json#room-stage
@@ -99,27 +96,12 @@ export default function decorate(block) {
   if (script) { script.classList.add('script'); copy.append(script); }
   if (heading) copy.append(heading);
   rest.forEach((p) => { p.classList.add('count'); copy.append(p); });
-  const state = document.createElement('div');
-  state.className = 'room-stage__state';
-  state.setAttribute('aria-hidden', 'true');
-  state.append(document.createElement('i'), document.createElement('i'));
-  copy.append(state);
 
   // stage: lead pair
   const sticky = document.createElement('div');
   sticky.className = 'room-stage__sticky';
   sticky.append(copy);
-  const phone = window.matchMedia('(width <= 600px)').matches;
-  if (pairs[0] && phone) {
-    sticky.append(slider(pairs[0][0], pairs[0][1], heading ? heading.textContent : ''));
-  } else if (pairs[0]) {
-    const [b, a] = pairs[0];
-    const pair = document.createElement('div');
-    pair.className = 'room-stage__pair';
-    trackRatio(a.querySelector('img') || a, pair);
-    pair.append(frame(b, 'room-stage__side is-before'), frame(a, 'room-stage__side is-after'));
-    sticky.append(pair);
-  }
+  if (pairs[0]) sticky.append(slider(pairs[0][0], pairs[0][1], heading ? heading.textContent : ''));
   const stage = document.createElement('div');
   stage.className = 'room-stage__stage';
   stage.append(sticky);
@@ -137,6 +119,4 @@ export default function decorate(block) {
 
   // chapter number: CSS counter + total (generated content, no DOM words)
   num.dataset.total = String(document.querySelectorAll('.room-stage').length).padStart(2, '0');
-
-  if (!phone && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) block.classList.add('anim');
 }
