@@ -12,7 +12,9 @@
  * Render: the FIRST pair is the stage — pinned while scripts/motion.js drives
  * `--p` 0→1 (feathered avant → après wipe). Every other pair becomes a
  * labeled, keyboard-operable comparison slider. No-JS / reduced motion: the
- * stage shows avant | après side by side, nothing pins.
+ * stage shows avant | après side by side, nothing pins. Phones (≤600px): no pin
+ * either — the lead pair is a comparison slider too (a scroll-driven swap felt
+ * like the photo glitching).
  * Authored nodes are MOVED (EW1); "Avant"/"Après" labels and the chapter number
  * are CSS generated content (no DOM words).
  * Schema: stardust/eds-schema/realisations.json#room-stage
@@ -107,7 +109,10 @@ export default function decorate(block) {
   const sticky = document.createElement('div');
   sticky.className = 'room-stage__sticky';
   sticky.append(copy);
-  if (pairs[0]) {
+  const phone = window.matchMedia('(width <= 600px)').matches;
+  if (pairs[0] && phone) {
+    sticky.append(slider(pairs[0][0], pairs[0][1], heading ? heading.textContent : ''));
+  } else if (pairs[0]) {
     const [b, a] = pairs[0];
     const pair = document.createElement('div');
     pair.className = 'room-stage__pair';
@@ -133,5 +138,5 @@ export default function decorate(block) {
   // chapter number: CSS counter + total (generated content, no DOM words)
   num.dataset.total = String(document.querySelectorAll('.room-stage').length).padStart(2, '0');
 
-  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) block.classList.add('anim');
+  if (!phone && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) block.classList.add('anim');
 }

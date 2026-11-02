@@ -16,7 +16,8 @@
  * Variant `wipe` (auto, when TWO images are authored — /realisations/): image 1 =
  * "avant", image 2 = "après". The hero pins for a scroll stretch while scripts/motion.js
  * drives `--p` 0→1, dissolving avant into après with a feathered wipe. No-JS /
- * reduced-motion: static, après shown.
+ * reduced-motion: static, après shown. Phones (≤600px, `compare`): no pin — the photo
+ * is framed above the copy as a draggable avant/après slider (like the room pairs).
  *
  * Motion (block-owned, no shared runtime): bg scroll-drift + slow scale + idle
  * Ken Burns breathe + on-load settle; hero copy drift + fade on scroll;
@@ -111,6 +112,24 @@ export default function decorate(block) {
     block.replaceChildren(stage);
   } else {
     block.replaceChildren(bg, inner, cue);
+  }
+
+  // phones: swapping photos on scroll felt like a glitch — compare by dragging instead
+  if (wipe && window.matchMedia('(width <= 600px)').matches) {
+    block.classList.add('compare');
+    const line = document.createElement('span');
+    line.className = 'cine-hero__line';
+    line.setAttribute('aria-hidden', 'true');
+    const range = document.createElement('input');
+    range.type = 'range';
+    range.min = '0';
+    range.max = '100';
+    range.value = '50';
+    range.className = 'cine-hero__range';
+    range.setAttribute('aria-label', 'Comparer avant / après');
+    range.addEventListener('input', () => bg.style.setProperty('--pos', `${range.value}%`));
+    bg.append(line, range);
+    return; // no pin, no motion-driven wipe
   }
 
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
