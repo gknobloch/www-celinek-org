@@ -64,8 +64,10 @@ main .section .benefit-icons.detailed .benefit__label {
 .benefit-icons.detailed .benefit__label strong { color: #4a6357; font-weight: 700; }
 
 /* exactly three cards (e.g. /realisations intro): one row of three, not 2 + 1 */
-.benefit-icons.detailed.block:has(> .benefit:nth-child(3):last-child) { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-.benefit-icons.detailed.block:has(> .benefit:nth-child(3):last-child) .benefit { flex-direction: column; gap: 14px; }
+@media (width > 900px) {
+  .benefit-icons.detailed.block:has(> .benefit:nth-child(3):last-child) { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .benefit-icons.detailed.block:has(> .benefit:nth-child(3):last-child) .benefit { flex-direction: column; gap: 14px; }
+}
 
 @media (width <= 900px) {
   .benefit-icons.detailed.block { grid-template-columns: 1fr; }
