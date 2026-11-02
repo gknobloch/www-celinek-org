@@ -9,7 +9,7 @@
 
 .cine-hero__bg {
   position: absolute;
-  inset: 0 0 -18vh 0;   /* image top-aligned to the hero; headroom BELOW for parallax */
+  inset: 0 0 -18vh;   /* image top-aligned to the hero; headroom BELOW for parallax */
   height: 118vh;
   z-index: 0;
   will-change: transform;
@@ -47,7 +47,7 @@
   width: 100%;
   max-width: 1120px;
   margin: 0 auto;
-  padding: 0 24px 72px;
+  padding: 112px 24px 72px; /* top: taller panels (crumb + lead + price + CTAs) clear the overlay header */
 }
 
 /* signature entrance — the cinematic "frame opens": a letterbox unveils the
@@ -105,6 +105,7 @@
   max-width: none;      /* the <br> after the comma controls the 2-line break */
   text-align: left;
   text-shadow: 0 2px 16px rgb(26 26 23 / 40%);
+  text-wrap: balance; /* balanced lines — keeps French " ?" / " !" from wrapping alone */
 }
 
 .cine-hero__cta {
@@ -124,6 +125,7 @@
   font-size: 15px;
   font-weight: 600;
   text-decoration: none;
+  margin: 0;
   transition: transform 0.18s ease, background 0.18s ease;
 }
 
@@ -165,6 +167,7 @@
 
 @media (prefers-reduced-motion: reduce) {
   .cine-hero__bg { transform: none !important; clip-path: none !important; animation: none !important; }
+
   .cine-hero__inner,
   .cine-hero.block[data-block-status] .cine-hero__inner { opacity: 1 !important; transform: none !important; transition: none; }
   .cine-hero .cine-hero__panel [data-enter] { opacity: 1 !important; transform: none !important; animation: none !important; }
@@ -234,7 +237,7 @@
 
 /* homepage hero (no lead, not split/wipe): dark veil behind the white type
    (panel sits right of centre) */
-.cine-hero:not(.split, .wipe):not(:has(.lead)) .cine-hero__bg::after {
+.cine-hero:not(.split, .wipe, :has(.lead)) .cine-hero__bg::after {
   z-index: 1;
   background:
     radial-gradient(ellipse 48% 36% at 68% 52%, rgb(26 26 23 / 62%) 0%, rgb(26 26 23 / 38%) 50%, rgb(26 26 23 / 0%) 100%),
@@ -246,7 +249,7 @@
 
 /* phones: the panel spans the width from the left gutter — widen + recentre the dark veil */
 @media (width <= 600px) {
-  .cine-hero:not(.split, .wipe):not(:has(.lead)) .cine-hero__bg::after {
+  .cine-hero:not(.split, .wipe, :has(.lead)) .cine-hero__bg::after {
     background:
       radial-gradient(ellipse 95% 26% at 40% 46%, rgb(26 26 23 / 62%) 0%, rgb(26 26 23 / 38%) 55%, rgb(26 26 23 / 0%) 100%),
       linear-gradient(180deg, rgb(26 26 23 / 0%) 50%, rgb(26 26 23 / 45%) 70%);
@@ -303,6 +306,7 @@
 
 /* ── inner-page additions (prestations): breadcrumb + price tag ─────────── */
 .cine-hero__panel .crumb { margin: 0 0 10px; text-align: left; }
+
 .cine-hero__panel .crumb a {
   color: rgb(255 255 255 / 88%);
   font-size: 13px;
@@ -330,8 +334,6 @@
 
 .cine-hero__panel .price strong { color: #eed366; font-size: 17px; font-weight: 700; }
 
-/* taller panels (crumb + lead + price + CTAs) must clear the overlay header */
-.cine-hero__inner { padding-top: 112px; }
 
 /* inner pages (a lead paragraph is present): the h1 is the title, not a tagline */
 .cine-hero__panel:has(.lead) h1 { font-size: 42px; font-weight: 700; margin: 0 0 12px; }
@@ -342,6 +344,7 @@
 
 /* ── variant `split` — text left, framed portrait right (qui-suis-je, contact) ── */
 .cine-hero.split.block { display: block; min-height: 0; overflow: visible; padding: 148px 24px 88px; }
+
 .cine-hero__split {
   display: grid;
   grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
@@ -368,7 +371,6 @@
 .cine-hero.split .cine-hero__bg::after { content: none; }
 .cine-hero.split .cine-hero__bg img { object-position: center 20%; }
 .cine-hero.split .cine-hero__panel .script { color: #728e7f; text-shadow: none; font-size: 54px; line-height: 1.05; }
-.cine-hero__cta a.button { margin: 0; }
 .cine-hero.split .cine-hero__panel h1 { color: #1a1a17; text-shadow: none; font-size: 46px; font-weight: 700; margin: 0 0 16px; }
 .cine-hero.split .cine-hero__panel .lead { color: #5a5a52; text-shadow: none; font-size: 19px; max-width: 52ch; }
 .cine-hero.split .cine-hero__panel .crumb a { color: #4a6357; }
@@ -392,8 +394,6 @@
   .cine-hero.split .cine-hero__panel .script { font-size: 40px; }
 }
 
-/* balanced headline lines — also keeps French " ?" / " !" from wrapping alone */
-.cine-hero__panel h1 { text-wrap: balance; }
 
 /* ── phones: full-bleed photo heroes become stacked ───────────────────────
    A landscape photo cropped to a 390px-wide column, under the full panel, read as

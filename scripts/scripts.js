@@ -79,7 +79,7 @@ function buildAutoBlocks(main) {
  * @param {Element} main The main element
  */
 function decoratePhoneLinks(main) {
-  const strip = (text) => text.replace(/[\u{1F4DE}\u{260E}\u{FE0F}]/gu, '');
+  const strip = (text) => text.replace(/\u{1F4DE}|\u{260E}|\u{FE0F}/gu, '');
   main.querySelectorAll('a[href^="tel:"]').forEach((a) => {
     a.querySelectorAll('.icon-phone').forEach((icon) => icon.remove());
     a.childNodes.forEach((node) => {

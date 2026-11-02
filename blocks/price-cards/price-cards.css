@@ -54,8 +54,10 @@ main .section .price-cards .price a.button {
 
 main .section .price-cards .price a.button:hover { background: #eef3ef; }
 main .section .price-cards .price a.button::before { content: none; }
+
 main .section .price-cards .price--featured a.button,
 main .section .price-cards.block[data-count="1"] a.button { background: #eed366; color: #1a1a17; border-color: #eed366; }
+
 main .section .price-cards .price--featured a.button:hover,
 main .section .price-cards.block[data-count="1"] a.button:hover { background: #f2dd80; }
 

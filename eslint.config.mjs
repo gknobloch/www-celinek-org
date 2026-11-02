@@ -6,7 +6,9 @@ import globals from 'globals';
 export default [
   // Global ignores
   {
-    ignores: ['**/helix-importer-ui/**'],
+    // stardust/, qa/, skills/ = redesign tooling (Playwright capture/verify scripts,
+    // prototypes, agent skills), not site code
+    ignores: ['**/helix-importer-ui/**', 'stardust/**', 'qa/**', 'skills/**'],
   },
   
   // Recommended ESLint rules

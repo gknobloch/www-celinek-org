@@ -6,6 +6,7 @@ main .section.room-stage-container + .section.room-stage-container { border-top:
 main .section.room-stage-container > div { max-width: 1120px; margin: 0 auto; }
 
 .room-stage.block { margin: 0; }
+
 .room-stage *,
 .room-stage *::before,
 .room-stage *::after { box-sizing: border-box; }
@@ -54,6 +55,7 @@ main .section.room-stage-container > div { max-width: 1120px; margin: 0 auto; }
 .room-stage__frame::after { content: "Après"; right: 12px; background: #eed366; color: #1a1a17; }
 
 /* ── comparison sliders ── */
+
 /* lead pair beside the copy: portrait photos would run ~900px tall in the wide
    column — cap the height to the viewport and centre it */
 .room-stage__sticky .room-stage__frame { width: min(100%, calc(78vh * var(--ar))); margin: 0 auto; }

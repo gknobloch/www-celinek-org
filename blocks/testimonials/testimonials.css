@@ -37,7 +37,6 @@
   top: 0;
   bottom: 57px;   /* the dots row sits below the viewport — center on the card, not the whole carousel */
   margin-block: auto;
-  height: 46px;
   width: 46px;
   height: 46px;
   border-radius: 999px;
@@ -59,8 +58,8 @@
 .testimonials .carousel__prev { left: -23px; }
 .testimonials .carousel__next { right: -23px; }
 
-.testimonials .carousel__dots { display: flex; gap: 9px; justify-content: center; margin-top: 24px; }
-.testimonials .carousel__dots { gap: 0; }
+.testimonials .carousel__dots { display: flex; gap: 0; justify-content: center; margin-top: 24px; }
+
 /* 9px dot, 36px tap target: the padding is transparent (background clipped to the content box) */
 .testimonials .carousel__dots .dot { width: 33px; height: 33px; padding: 12px; border: none; border-radius: 999px; background: #c3cdc7; background-clip: content-box; cursor: pointer; transition: background 0.2s ease, transform 0.2s ease; }
 .testimonials .carousel__dots .dot.active { background-color: #4a6357; transform: scale(1.3); }
@@ -68,6 +67,7 @@
 @media (width <= 560px) {
   .testimonials .testi { padding: 28px 24px; }
   .testimonials .testi p { font-size: 15.5px; }
+
   /* phones: arrows leave the card (they covered the quote) and flank the dots row */
 
 }
@@ -80,6 +80,7 @@
    and flank the dots row */
 @media (width <= 900px) {
   .testimonials .carousel__nav { width: 44px; height: 44px; padding: 0; font-size: 22px; top: auto; bottom: 0; margin-block: 0; }
+
   /* pinned to the card edges: a fixed offset from centre overlapped the dots row
      once there were 6 dots (6 × 33px) */
   .testimonials .carousel__prev { left: 0; }
