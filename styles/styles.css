@@ -66,6 +66,12 @@ header {
   height: var(--nav-height);
 }
 
+/* the empty footer (padding only) would paint above the not-yet-shown sections,
+   then jump to the bottom: keep it out of the layout until its block has loaded */
+footer:not(:has(.footer[data-block-status='loaded'])) {
+  display: none;
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--heading-font-family);
   font-weight: 600;

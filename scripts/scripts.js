@@ -119,6 +119,52 @@ function keepPlaceNamesTogether(main) {
 }
 
 /**
+ * Site-wide machine-readable facts for search engines and answer engines: the business
+ * as a schema.org ProfessionalService (facts as stated on /contact), plus og:type.
+ */
+function addStructuredData() {
+  if (!document.querySelector('meta[property="og:type"]')) {
+    const meta = document.createElement('meta');
+    meta.setAttribute('property', 'og:type');
+    meta.content = 'website';
+    document.head.append(meta);
+  }
+  if (document.querySelector('script[type="application/ld+json"]')) return;
+  const origin = 'https://www.celinek.org';
+  const data = {
+    '@context': 'https://schema.org',
+    '@type': 'ProfessionalService',
+    '@id': `${origin}/#business`,
+    name: 'Céline Knobloch — Home Organiser',
+    description: 'Home organiser dans le Haut-Rhin : tri, rangement et désencombrement de la maison, avec douceur et bienveillance.',
+    url: `${origin}/`,
+    telephone: '+33632731898',
+    email: 'contact@celinek.org',
+    image: document.querySelector('meta[property="og:image"]')?.content,
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Riedisheim',
+      postalCode: '68400',
+      addressRegion: 'Haut-Rhin',
+      addressCountry: 'FR',
+    },
+    areaServed: [
+      {
+        '@type': 'GeoCircle',
+        geoMidpoint: { '@type': 'GeoCoordinates', latitude: 47.7489, longitude: 7.3683 },
+        geoRadius: 20000,
+      },
+      { '@type': 'AdministrativeArea', name: 'Haut-Rhin' },
+    ],
+    founder: { '@type': 'Person', name: 'Céline Knobloch', jobTitle: 'Home organiser' },
+  };
+  const script = document.createElement('script');
+  script.type = 'application/ld+json';
+  script.textContent = JSON.stringify(data);
+  document.head.append(script);
+}
+
+/**
  * Decorates the main element.
  * @param {Element} main The main element
  */
@@ -138,7 +184,7 @@ export function decorateMain(main) {
  * @param {Element} doc The container element
  */
 async function loadEager(doc) {
-  document.documentElement.lang = 'en';
+  document.documentElement.lang = 'fr';
   decorateTemplateAndTheme();
   const main = doc.querySelector('main');
   if (main) {
@@ -174,6 +220,7 @@ async function loadLazy(doc) {
 
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
   loadFonts();
+  addStructuredData();
 
   // centralized scroll choreography (hero parallax, reveals, progress, smooth wheel)
   // — only on pages that carry the redesign motion surface, so the rest of the
