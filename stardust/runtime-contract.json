@@ -1,0 +1,9 @@
+{
+  "runtime": "vanilla-eds",
+  "vintage": "older-aem-boilerplate (button-container era)",
+  "blockWrapperClass": "block",
+  "buttonClasses": ".button / .button.primary / .button.secondary, in p.button-container (no .accent)",
+  "buttonization": "bare-links-too (a alone in P/DIV → a.button; strong>a → primary; em>a → secondary)",
+  "fragmentScriptPolicy": "inert-innerHTML",
+  "emptySectionCollapse": false
+}

@@ -1,0 +1,26 @@
+.value-grid.block {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.value-grid .value {
+  background: rgb(255 255 255 / 65%);
+  border-radius: 16px;
+  padding: 28px;
+}
+
+.value-grid .value--wide { grid-column: 1 / -1; }
+
+.value-grid .value h3 { font-size: 22px; margin: 0 0 8px; color: #4a6357; }
+.value-grid .value p { margin: 0; color: #4a4433; font-size: 15px; line-height: 1.6; }
+.value-grid .value strong { color: #4a6357; font-weight: 700; }
+
+/* fade-rise reveal is centralized in scripts/motion.js (cards tagged [data-anim]). */
+
+@media (width <= 900px) {
+  .value-grid.block { grid-template-columns: 1fr; }
+}

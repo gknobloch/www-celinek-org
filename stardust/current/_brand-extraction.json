@@ -1,0 +1,96 @@
+{
+  "_provenance": {
+    "writtenBy": "stardust:extract (uplift Phase 1)",
+    "writtenAt": "2026-09-12T00:00:00Z",
+    "againstInput": "https://www.celinek.org",
+    "renderedBy": "playwright",
+    "readArtifacts": [
+      "stardust/current/pages/index.json",
+      "stardust/current/pages/index.html",
+      "stardust/current/assets/screenshots/index.png"
+    ],
+    "notes": "Single-page (uplift --single) capture. Tokens read from the live :root custom properties (aem-boilerplate styles.css) plus computed cross-section colors. Palette roles verified against the full-page screenshot."
+  },
+  "origins": [
+    { "origin": "https://www.celinek.org", "role": "primary", "pagesContributed": 1 }
+  ],
+  "logo": {
+    "kind": "svg",
+    "path": "stardust/current/assets/logo.svg",
+    "source": "img[alt='Logo Céline Knobloch'] /icons/logo.svg",
+    "notes": "Stylized mascot mark in two brand fills — gold #e8cf6c and sage #6b8a7c — beside the 'CÉLINE KNOBLOCH / Trier · Ranger · Optimiser' lockup."
+  },
+  "favicon": {
+    "path": "stardust/current/assets/favicon.ico",
+    "source": "https://www.celinek.org/favicon.ico"
+  },
+  "palette": {
+    "roles": {
+      "background": { "value": "#fdfefa", "source": "--background-color", "count": "dominant", "notes": "Warm near-white / cream page ground." },
+      "text": { "value": "#000000", "source": "--text-color", "count": "dominant" },
+      "primary": { "value": "#728e7f", "source": "--link-color", "notes": "Muted sage green — links, buttons, testimonial band." },
+      "primaryDeep": { "value": "#6b8a7c", "source": "logo.svg .cls-2 fill", "notes": "Slightly deeper sage used in the logo mark." },
+      "accent": { "value": "#eed366", "source": "--link-hover-color", "notes": "Golden yellow — link-hover only. Reserved, high-energy shade." },
+      "accentGold": { "value": "#e8cf6c", "source": "logo.svg .cls-1 fill", "notes": "Gold used in the logo mark." },
+      "surfaceWarm": { "value": "#f8e1af", "source": "--overlay-background-color / --highlight-background-color", "notes": "Soft warm gold band — the 'Pourquoi faire appel' section and footer pre-band. Used as a large surface twice." },
+      "surfaceSage": { "value": "rgb(114 142 127 / 70%)", "source": "--comment-background-color", "notes": "Translucent sage — testimonial card ground." }
+    },
+    "distinctColors": 6,
+    "notes": "Two-hue warm palette: sage green + golden yellow on cream. Gold appears both reserved (link-hover) and as a large calm surface (#f8e1af band). Green appears as the primary interactive + one large surface (testimonial)."
+  },
+  "type": {
+    "families": {
+      "body": { "name": "Comfortaa", "stack": "'Comfortaa', 'helvetica neue', helvetica, ubuntu, roboto, noto, sans-serif", "source": "--body-font-family", "role": "body + headings", "notes": "Rounded geometric sans — soft, friendly, low-contrast." },
+      "heading": { "name": "Comfortaa", "stack": "'Comfortaa', 'helvetica neue', helvetica, ubuntu, roboto, noto, sans-serif", "source": "--heading-font-family", "notes": "Same family as body — no display contrast in the type system except the script." },
+      "display": { "name": "Sacramento", "stack": "'Sacramento', 'Brush Script MT'", "source": "--script-font-family", "role": "SCRIPT / display", "usageCount": 1, "notes": "Flowing single-weight cursive script. Captured in exactly ONE place: the hero H1 tagline 'Le rangement au service de votre bien-être!'. Signature voice, radically underused." },
+      "fixed": { "name": "Roboto Mono", "stack": "'Roboto Mono', menlo, consolas, monospace", "source": "--fixed-font-family" }
+    },
+    "scaleAudit": {
+      "kind": "modular",
+      "headingScale": ["52px", "36px", "28px", "22px", "18px", "14px", "11px"],
+      "bodyScale": ["40px", "32px", "28px", "22px", "18px", "14px"],
+      "notes": "Standard aem-boilerplate modular scale. Heading and body share the Comfortaa family so hierarchy leans on size/weight alone."
+    }
+  },
+  "motifs": {
+    "borderRadius": { "buttons": "pill (fully rounded)", "cards": "~12px", "source": "screenshot + rendered CSS", "notes": "Pill buttons (En savoir plus, Contactez-moi) reinforce the rounded Comfortaa voice." },
+    "shadow": { "notes": "Minimal — soft or none; flat calm surfaces." },
+    "signatureGestures": [
+      "Script tagline in Sacramento over the hero photo (single use).",
+      "Mascot logo mark (gold + sage) — appears only in the header.",
+      "Warm gold full-bleed bands (#f8e1af) used to segment long-form 'why' content."
+    ],
+    "commonPatterns": ["hero-with-photo-and-script-overlay", "two-column-intro", "full-bleed-tinted-band", "numbered-process-steps (implicit)", "single-testimonial-carousel", "pill-button"]
+  },
+  "voice": {
+    "language": "fr-FR",
+    "heroHeadline": "Le rangement au service de votre bien-être !",
+    "samples": [
+      "J'aide les personnes qui ont envie de trier, ranger, désencombrer leur maison et organiser leur lieu de vie.",
+      "En tant que coach en rangement, je guide mes clients vers une organisation qui LEUR convient et qui est maintenable dans la durée.",
+      "Mon sens de l'écoute et mes qualités relationnelles me permettent de vous aider à lever certains blocages psychologiques...",
+      "Forte de mon expérience passée en tant qu'infirmière, c'est avec douceur et bienveillance que je vous accompagnerai."
+    ],
+    "ctaLabels": ["En savoir plus", "Découvrez les bienfaits", "Contactez-moi"],
+    "toneAxes": {
+      "dominant": "warm / caring / reassuring (bien-être, douceur, bienveillance, sérénité, écoute)",
+      "underused": "method / practical process (tri, méthodes de travail, visite diagnostic, devis, mission, maintenable dans la durée) — present in 'Comment ça se passe ?' but never foregrounded"
+    },
+    "heroImage": "stardust/current/assets/media/hero-celine.webp",
+    "heroMedium": null
+  },
+  "photography": {
+    "quality": "identity",
+    "assets": [
+      { "path": "stardust/current/assets/media/hero-celine.webp", "role": "hero", "naturalHint": "2000w source", "notes": "Real environmental portrait of Céline — smiling, in a styled warm living room (plant, teal cushions, cream sweater). Genuine brand identity photography, NOT generic stock." }
+    ],
+    "notes": "Exactly one high-quality identity photo captured; it carries the entire warmth of the brand yet the layout crops it into a single wide hero band and never reuses photography elsewhere on the page."
+  },
+  "systemComponents": {
+    "header": { "present": true, "notes": "Logo lockup + horizontal nav: Accueil · Qui suis-je ? · Prestations et Tarifs · Mes Réalisations · Contact. nav-height 96px." },
+    "footer": { "present": true, "notes": "© Céline Knobloch, 2025 · Tél 06 32 73 18 98 · Mail contact@celinek.org · Instagram + Facebook icons, on a warm gold band." },
+    "nav": ["/ (Accueil)", "/qui-suis-je", "/prestations-tarifs/", "/realisations/", "/contact"],
+    "persistentCTAs": ["Contactez-moi", "mailto:contact@celinek.org"]
+  },
+  "register": "brand"
+}

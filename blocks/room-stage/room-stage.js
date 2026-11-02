@@ -1,0 +1,131 @@
+/**
+ * room-stage — one room chapter of /realisations/ (variant C, editorial register).
+ *
+ * Authoring:
+ *   section head (DEFAULT CONTENT before the block): optional script <p>
+ *     ("avant, après"), <h2> room name, then any <p>s describing the job (e.g.
+ *     "La demande : …", "Mon intervention : …") — reabsorbed into the copy column
+ *     (children MOVED, wrapper removed). A "Label :" lead-in is set as a label; a
+ *     paragraph that is only its label (a placeholder still to be written) is hidden.
+ *   block rows: one row per transformation — cell 1 = avant image, cell 2 = après image
+ *   (an in-block copy row is still accepted as a decode fallback).
+ * Section-metadata `anchor` → section id (room-rail target).
+ *
+ * Render: every pair is a labeled, keyboard-operable comparison slider (drag the
+ * ‹ › knob). The FIRST pair sits beside the copy column; the rest follow in a grid.
+ * Nothing pins and nothing swaps on scroll (that read as the photo glitching).
+ * Authored nodes are MOVED (EW1); "Avant"/"Après" tags are CSS generated content.
+ * Schema: stardust/eds-schema/realisations.json#room-stage
+ */
+function ratio(img) {
+  const w = Number(img.getAttribute('width')) || img.naturalWidth;
+  const h = Number(img.getAttribute('height')) || img.naturalHeight;
+  return w && h ? w / h : 0.75;
+}
+
+// keep --ar (and the `wide` flag) true to the photo once it has loaded — the
+// pipeline emits width/height, raw <img> (harness, pasted URLs) does not
+function trackRatio(img, el, flagEl) {
+  const apply = () => {
+    const r = ratio(img);
+    el.style.setProperty('--ar', r.toFixed(4));
+    if (flagEl) flagEl.classList.toggle('wide', r > 1.1);
+  };
+  apply();
+  if (!img.getAttribute('width') && !img.complete) img.addEventListener('load', apply, { once: true });
+}
+
+// "La demande : …" → <span class="room-stage__label">La demande :</span> …
+function describe(p) {
+  p.classList.add('room-stage__desc');
+  const first = p.firstChild;
+  const m = first?.nodeType === Node.TEXT_NODE && first.textContent.match(/^\s*([^:\n]{2,40}?)\s*:\s*/);
+  if (m) {
+    const label = document.createElement('span');
+    label.className = 'room-stage__label';
+    label.textContent = `${m[1]} :`;
+    first.textContent = first.textContent.slice(m[0].length);
+    p.prepend(label, ' ');
+  }
+  if (!p.textContent.replace(/^[^:]*:/, '').trim()) p.classList.add('is-empty');
+}
+
+function frame(pic, className) {
+  const f = document.createElement('div');
+  f.className = className;
+  f.append(pic);
+  return f;
+}
+
+function slider(before, after, label) {
+  const fig = document.createElement('figure');
+  fig.className = 'room-stage__ba';
+  fig.dataset.anim = '';
+  const box = document.createElement('div');
+  box.className = 'room-stage__frame';
+  trackRatio(after.querySelector('img') || after, box, fig);
+  const line = document.createElement('span');
+  line.className = 'room-stage__line';
+  line.setAttribute('aria-hidden', 'true');
+  const range = document.createElement('input');
+  range.type = 'range';
+  range.min = '0';
+  range.max = '100';
+  range.value = '50';
+  range.className = 'room-stage__range';
+  range.setAttribute('aria-label', `Comparer avant / après — ${label}`);
+  range.addEventListener('input', () => box.style.setProperty('--pos', `${range.value}%`));
+  box.append(frame(after, 'room-stage__after'), frame(before, 'room-stage__before'), line, range);
+  fig.append(box);
+  return fig;
+}
+
+export default function decorate(block) {
+  const section = block.closest('.section');
+  if (section && section.dataset.anchor) section.id = section.dataset.anchor;
+
+  // reabsorb the section head (default content just before the block wrapper)
+  const headWrap = block.parentElement?.previousElementSibling;
+  const head = headWrap?.classList.contains('default-content-wrapper') ? headWrap : null;
+  const scope = [head, block].filter(Boolean);
+  const all = (sel) => scope.flatMap((el) => [...el.querySelectorAll(sel)]);
+
+  const pics = [...block.querySelectorAll('img')].map((img) => img.closest('picture') || img);
+  const heading = all('h1, h2, h3')[0] || null;
+  const texts = all('p')
+    .filter((p) => !p.querySelector('picture, img') && p.textContent.trim());
+  const precedes = (p) => heading
+    && (p.compareDocumentPosition(heading) & Node.DOCUMENT_POSITION_FOLLOWING);
+  const script = heading ? texts.find(precedes) : null;
+  const rest = texts.filter((p) => p !== script);
+
+  const pairs = [];
+  for (let i = 0; i + 1 < pics.length; i += 2) pairs.push([pics[i], pics[i + 1]]);
+
+  // copy column
+  const copy = document.createElement('div');
+  copy.className = 'room-stage__copy';
+  if (script) { script.classList.add('script'); copy.append(script); }
+  if (heading) copy.append(heading);
+  rest.forEach((p) => { describe(p); copy.append(p); });
+
+  // stage: lead pair
+  const sticky = document.createElement('div');
+  sticky.className = 'room-stage__sticky';
+  sticky.append(copy);
+  if (pairs[0]) sticky.append(slider(pairs[0][0], pairs[0][1], heading ? heading.textContent : ''));
+  const stage = document.createElement('div');
+  stage.className = 'room-stage__stage';
+  stage.append(sticky);
+
+  const out = [stage];
+  if (pairs.length > 1) {
+    const label = heading ? heading.textContent : '';
+    const more = document.createElement('div');
+    more.className = 'room-stage__more';
+    pairs.slice(1).forEach(([b, a]) => more.append(slider(b, a, label)));
+    out.push(more);
+  }
+  block.replaceChildren(...out);
+  if (head && !head.children.length) head.remove();
+}

@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<!--
+  _provenance:
+    writtenBy: stardust:uplift (Phase 5 / prototype — variant B)
+    writtenAt: 2026-09-23
+    variant: B — "what if visitors started from their own room?" (catalog #7 audience-routing + derived D1 testimony interludes)
+    motion: static
+    quotes: verbatim excerpts from homepage reviews (Agathe, Alban) — never attributed to a room
+    againstInput: https://redesign-c-preview--celinek-org--gknobloch.aem.page/realisations/
+    brandSurface: approved homepage canon (stardust/prototypes/index-C-cinematic.html, DESIGN-C.json)
+    mode: A (brand-faithful — palette + type pinned to the redesign)
+    contentSource: stardust/current/pages/realisations.json (verbatim fr-FR; 22 real pairs)
+    generatedBy: stardust/scripts/realisations-prototypes.py
+-->
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Mes Réalisations — Céline Knobloch, Home Organiser</title>
+<link rel="icon" href="assets/favicon.ico">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Les photos présentées sur ce site sont authentiques et donnent un aperçu de mon travail.">
+<meta property="og:image" content="assets/realisations/chambres-damis-1-after.webp">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;600;700&family=Sacramento&display=swap');
+:root{
+  --heading-font-family:'Comfortaa','helvetica neue',helvetica,sans-serif;
+  --body-font-family:'Comfortaa','helvetica neue',helvetica,sans-serif;
+  --script-font-family:'Sacramento','Brush Script MT',cursive;
+  --heading-xxl:60px; --heading-xl:42px; --heading-lg:32px; --heading-md:22px;
+  --body:18px; --body-sm:15px; --line-height-heading:1.14; --line-height-body:1.75;
+  --color-bg:#fdfefa; --color-surface:#ffffff; --color-fg:#1a1a17; --color-muted:#5a5a52;
+  --color-accent:#728e7f; --color-accent-deep:#4a6357;
+  --color-gold:#eed366; --color-gold-deep:#806515;
+  --color-band-warm:#f8e1af; --color-band-sage:#e4ebe6; --color-contact:#445b4f;
+  --section-padding:104px; --max-width:1120px; --radius:16px;
+  --shadow-soft:0 10px 30px rgba(90,90,82,.12); --shadow-card:0 6px 20px rgba(90,90,82,.10);
+  --ease-out-cubic:cubic-bezier(0.25,0.46,0.45,0.94); --ease-expo:cubic-bezier(0.16,1,0.3,1);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--color-bg);color:var(--color-fg);font-family:var(--body-font-family);
+  font-size:var(--body);line-height:var(--line-height-body);-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:var(--color-accent-deep);text-decoration:none}
+a:hover{color:var(--color-gold-deep)}
+h1,h2,h3{font-family:var(--heading-font-family);line-height:var(--line-height-heading);font-weight:700;margin:0}
+.container{max-width:var(--max-width);margin:0 auto;padding:0 24px}
+.script{font-family:var(--script-font-family);color:var(--color-accent);font-weight:400}
+.eyebrow{font-size:var(--body-sm);letter-spacing:.14em;text-transform:uppercase;color:var(--color-accent-deep);font-weight:600;margin:0 0 12px}
+.btn{display:inline-block;border:none;cursor:pointer;font-family:var(--heading-font-family);font-weight:600;
+  font-size:var(--body-sm);padding:14px 28px;border-radius:999px;transition:transform .18s ease,background .18s ease}
+.btn:hover{transform:translateY(-2px)}
+.btn--gold{background:var(--color-gold);color:#1a1a17;box-shadow:0 6px 18px rgba(90,90,82,.20)}
+.btn--gold:hover{background:#f2dd80;color:#1a1a17}
+.btn--ghost{background:transparent;color:var(--color-accent-deep);border:1.5px solid var(--color-accent)}
+.btn--ghost:hover{background:#eef3ef;color:var(--color-accent-deep)}
+.btn--deep{background:#445b4f;color:#fff}
+.btn--deep:hover{background:#374b40;color:#fff}
+:focus-visible{outline:3px solid var(--color-gold-deep);outline-offset:3px}
+
+/* Header — canon condensing nav */
+.site-header{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(253,254,250,0);border-bottom:1px solid transparent;transition:background .3s ease,border-color .3s ease,box-shadow .3s ease}
+.site-header.solid,.site-header.scrolled{background:rgba(253,254,250,.94);backdrop-filter:blur(8px);border-bottom-color:#eceee6}
+.site-header.scrolled{box-shadow:0 6px 24px rgba(90,90,82,.10)}
+.site-header .container{display:flex;align-items:center;justify-content:space-between;height:92px;transition:height .38s var(--ease-out-cubic)}
+.site-header.scrolled .container{height:62px}
+.brand{display:flex;align-items:center;gap:12px;color:var(--color-fg)}
+.brand img{height:56px;width:auto;transform-origin:left center;transition:transform .38s var(--ease-out-cubic)}
+.site-header.scrolled .brand img{transform:scale(.68)}
+.brand .name{font-family:var(--heading-font-family);font-weight:700;font-size:16px;line-height:1.1}
+.brand .tagwrap{display:grid;grid-template-rows:1fr;transition:grid-template-rows .38s var(--ease-out-cubic)}
+.site-header.scrolled .brand .tagwrap{grid-template-rows:0fr}
+.brand .tag{display:block;min-height:0;overflow:hidden;font-size:11px;letter-spacing:.12em;color:var(--color-accent-deep);text-transform:uppercase;font-weight:600;transition:opacity .3s ease}
+.site-header.scrolled .brand .tag{opacity:0}
+.nav{display:flex;gap:26px;align-items:center}
+.nav a{font-size:15px;color:var(--color-fg);font-weight:500}
+.nav a[aria-current]{color:var(--color-accent-deep);font-weight:700;box-shadow:inset 0 -2px 0 var(--color-gold)}
+.nav a:hover{color:var(--color-accent-deep)}
+.nav .btn{padding:10px 20px}
+.nav-toggle{display:none;background:none;border:none;font-size:26px;color:var(--color-fg);cursor:pointer}
+/* over-photo state (C hero) */
+.site-header.over:not(.scrolled) .brand,.site-header.over:not(.scrolled) .nav a:not(.btn),
+.site-header.over:not(.scrolled) .brand .tag,.site-header.over:not(.scrolled) .nav-toggle{color:#fff}
+.site-header.over:not(.scrolled) .nav a[aria-current]{box-shadow:inset 0 -2px 0 var(--color-gold)}
+.site-header.over:not(.scrolled) .brand img{filter:brightness(0) invert(1)}
+
+/* Before / after comparison — responsive, labeled, keyboard-operable */
+.ba{margin:0}
+.ba__frame{--pos:50%;position:relative;aspect-ratio:var(--ar,3/4);border-radius:var(--radius);overflow:hidden;
+  box-shadow:var(--shadow-card);background:#eceee6;isolation:isolate}
+.ba__frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ba__before{clip-path:inset(0 calc(100% - var(--pos)) 0 0);z-index:1}
+.ba__line{position:absolute;z-index:2;top:0;bottom:0;left:var(--pos);width:2px;margin-left:-1px;background:#fff;
+  box-shadow:0 0 14px rgba(26,26,23,.35);pointer-events:none}
+.ba__knob{position:absolute;z-index:3;top:50%;left:var(--pos);width:46px;height:46px;margin:-23px 0 0 -23px;border-radius:999px;
+  background:#fff;color:var(--color-accent-deep);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700;
+  letter-spacing:-2px;box-shadow:0 6px 18px rgba(26,26,23,.25);pointer-events:none;transition:transform .2s ease}
+.ba__frame:hover .ba__knob{transform:scale(1.08)}
+.ba__tag{position:absolute;z-index:3;top:12px;padding:5px 12px;border-radius:999px;font-size:11px;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;pointer-events:none;line-height:1.2}
+.ba__tag--before{left:12px;background:rgba(26,26,23,.64);color:#fff}
+.ba__tag--after{right:12px;background:var(--color-gold);color:#1a1a17}
+.ba__range{position:absolute;z-index:4;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize;-webkit-appearance:none;appearance:none}
+.ba__frame:has(.ba__range:focus-visible){outline:3px solid var(--color-gold-deep);outline-offset:3px}
+.ba figcaption{font-size:var(--body-sm);color:var(--color-muted);margin-top:10px}
+
+/* Contact — canon warm gold band */
+.contact{background:linear-gradient(135deg,#f8e1af 0%,#eecb7f 100%);color:#1a1a17;text-align:center;padding:var(--section-padding) 0}
+.contact .script{font-size:46px;color:var(--color-accent-deep);display:block;line-height:1;margin-bottom:6px}
+.contact h2{font-size:var(--heading-xl);color:#1a1a17;margin-bottom:14px}
+.contact p{color:#4a4433;max-width:52ch;margin:0 auto 30px}
+.contact__row{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;align-items:center}
+.contact__phone{color:#3f574a;font-weight:700;font-size:var(--body)}
+.contact__more{margin-top:22px;font-size:var(--body-sm)}
+.contact__more a{color:#3f574a;font-weight:700;text-decoration:underline;text-underline-offset:4px}
+
+/* Footer — canon deep sage */
+.site-footer{background:#445b4f;color:rgba(255,255,255,.82)}
+.site-footer .container{display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between;padding-top:32px;padding-bottom:32px}
+.site-footer .fcontact{display:flex;gap:22px;flex-wrap:wrap;align-items:center;font-size:var(--body-sm)}
+.site-footer a{color:#fff;font-weight:600}
+.site-footer a:hover{color:var(--color-gold)}
+.socials{display:flex;gap:12px;align-items:center}
+.socials a{width:34px;height:34px;border-radius:999px;background:rgba(255,255,255,.92);display:flex;align-items:center;justify-content:center}
+.socials img{width:18px;height:18px}
+
+@media (max-width:900px){
+  :root{--section-padding:64px}
+  .nav{display:none}
+  .nav-toggle{display:block}
+  .site-header.open .nav{display:flex;position:absolute;top:100%;left:0;right:0;flex-direction:column;background:var(--color-bg);padding:20px 24px;gap:16px;border-bottom:1px solid #eceee6}
+  .site-header.open .nav a:not(.btn){color:var(--color-fg)!important}
+  .site-header.open{background:rgba(253,254,250,.98)}
+}
+@media (max-width:560px){
+  :root{--heading-xl:30px;--heading-lg:27px;--section-padding:56px}
+  .contact .script{font-size:36px}
+  .brand .name{font-size:14px}
+  .brand img{height:46px}
+}
+
+.page-head{padding:150px 0 36px;text-align:center}
+.page-head .script{font-size:48px;display:block;line-height:1;margin-bottom:4px}
+.page-head h1{font-size:var(--heading-xl);margin-bottom:14px}
+.page-head .lead{font-size:19px;color:var(--color-muted);max-width:52ch;margin:0 auto}
+.filter{position:sticky;top:62px;z-index:20;background:rgba(253,254,250,.95);backdrop-filter:blur(8px);border-bottom:1px solid #eceee6;padding:14px 0}
+.filter .container{display:flex;align-items:center;gap:18px}
+@media (min-width:901px){.chips{flex-wrap:wrap;overflow:visible}}
+.filter__label{font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--color-accent-deep);white-space:nowrap}
+.chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:2px}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:0 0 auto;font:600 var(--body-sm)/1 var(--body-font-family);padding:10px 16px;border-radius:999px;border:1.5px solid #dfe5e1;
+  background:var(--color-surface);color:var(--color-fg);cursor:pointer;display:inline-flex;gap:8px;align-items:center;transition:all .2s ease}
+.chip .n{font-size:12px;color:var(--color-accent-deep)}
+.chip:hover{border-color:var(--color-accent)}
+.chip[aria-pressed="true"]{background:var(--color-accent-deep);border-color:var(--color-accent-deep);color:#fff}
+.chip[aria-pressed="true"] .n{color:var(--color-gold)}
+.results{padding:40px 0 var(--section-padding)}
+.results__status{font-size:var(--body-sm);color:var(--color-muted);margin:0 0 22px}
+.results__status strong{color:var(--color-fg)}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.card{margin:0;position:relative}
+.card[hidden]{display:none}
+.card__media{position:relative;display:block;width:100%;aspect-ratio:4/5;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-card);
+  border:0;padding:0;cursor:zoom-in;background:#eceee6}
+.card__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .5s ease,transform .8s var(--ease-expo)}
+.card__media .before{opacity:0}
+.card.show-before .card__media .before{opacity:1}
+.card__media:hover img{transform:scale(1.03)}
+.card__state{position:absolute;top:12px;left:12px;padding:5px 12px;border-radius:999px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  background:var(--color-gold);color:#1a1a17;transition:background .3s ease,color .3s ease}
+.card.show-before .card__state{background:rgba(26,26,23,.64);color:#fff}
+.card figcaption{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:12px}
+.card__room{font-weight:700;font-size:16px}
+.card__room small{font-weight:500;color:var(--color-muted);font-size:13px;margin-left:6px}
+.card__toggle{font:600 13px/1 var(--body-font-family);border:1.5px solid var(--color-accent);color:var(--color-accent-deep);background:transparent;
+  padding:8px 13px;border-radius:999px;cursor:pointer;white-space:nowrap}
+.card__toggle:hover{background:#eef3ef}
+.interlude{grid-column:1/-1;background:var(--color-band-warm);border-radius:var(--radius);padding:40px 48px;display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center;margin:8px 0}
+.interlude[hidden]{display:none}
+.interlude .mark{font-family:var(--script-font-family);font-size:120px;line-height:.6;color:var(--color-accent-deep)}
+.interlude blockquote{margin:0;font-size:22px;line-height:1.5;font-style:italic;color:#3d3829}
+.interlude cite{display:block;margin-top:10px;font-style:normal;font-weight:700;font-size:var(--body-sm);color:var(--color-accent-deep);letter-spacing:.04em}
+dialog.viewer{border:0;padding:0;border-radius:20px;width:min(92vw,980px);max-height:94vh;background:var(--color-bg);box-shadow:0 30px 80px rgba(26,26,23,.35);overflow:auto}
+dialog.viewer::backdrop{background:rgba(26,26,23,.72);backdrop-filter:blur(3px)}
+.viewer__bar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 22px}
+.viewer__title{font-weight:700;font-size:20px}
+.viewer__title small{font-weight:500;color:var(--color-muted);font-size:14px;margin-left:8px}
+.viewer__btns{display:flex;gap:8px}
+.viewer__btns button{width:42px;height:42px;border-radius:999px;border:0;background:var(--color-surface);box-shadow:var(--shadow-card);color:var(--color-accent-deep);font-size:20px;cursor:pointer}
+.viewer__btns button:hover{background:#eef3ef}
+.viewer__stage{padding:0 22px 22px;display:flex;justify-content:center}
+.viewer__stage .ba{width:100%}
+.viewer__stage .ba__frame{max-height:74vh;margin:0 auto}
+@media (max-width:900px){
+  .cards{grid-template-columns:1fr 1fr;gap:18px}
+  .filter__label{display:none}
+  .interlude{padding:28px;grid-template-columns:1fr;gap:6px}
+  .interlude .mark{font-size:80px}
+}
+@media (max-width:560px){
+  .page-head{padding:120px 0 28px}
+  .page-head .script{font-size:38px}
+  .cards{grid-template-columns:1fr 1fr;gap:14px}
+  .card figcaption{flex-direction:column;align-items:flex-start;gap:8px}
+  .card__room{font-size:14px}
+  .interlude blockquote{font-size:18px}
+}
+</style>
+</head>
+<body>
+<header class="site-header solid" id="nav">
+  <div class="container">
+    <a class="brand" href="/" aria-label="Céline Knobloch — accueil">
+      <img src="assets/logo.svg" alt="Logo Céline Knobloch">
+      <span class="name">CÉLINE KNOBLOCH<span class="tagwrap"><span class="tag">Trier · Ranger · Optimiser</span></span></span>
+    </a>
+    <button class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="primary-nav">☰</button>
+    <nav class="nav" id="primary-nav" aria-label="Navigation principale">
+      <a href="/">Accueil</a>
+      <a href="/qui-suis-je">Qui suis-je ?</a>
+      <a href="/prestations-tarifs/">Prestations et Tarifs</a>
+      <a href="/realisations/" aria-current="page">Mes Réalisations</a>
+      <a class="btn btn--gold" href="/contact">Contactez-moi</a>
+    </nav>
+  </div>
+</header>
+<main>
+  <section class="page-head" data-section="page-head" data-intent="orient" data-layout="centered">
+    <div class="container">
+      <span class="script">Pièce par pièce</span>
+      <h1>Mes Réalisations</h1>
+      <p class="lead">Les photos présentées sur ce site sont authentiques et donnent un aperçu de mon travail.</p>
+    </div>
+  </section>
+  <div class="filter" data-section="room-filter" data-intent="route" data-layout="sticky-bar" data-interactive="filter">
+    <div class="container">
+      <span class="filter__label" id="flabel">Choisissez une pièce</span>
+      <div class="chips" role="group" aria-labelledby="flabel">
+        <button class="chip" type="button" data-filter="all" aria-pressed="true">Toutes <span class="n">22</span></button>
+<button class="chip" type="button" data-filter="cellier" aria-pressed="false">Cellier <span class="n">2</span></button>
+<button class="chip" type="button" data-filter="cuisine" aria-pressed="false">Cuisine <span class="n">5</span></button>
+<button class="chip" type="button" data-filter="dressing" aria-pressed="false">Dressing <span class="n">4</span></button>
+<button class="chip" type="button" data-filter="chambre" aria-pressed="false">Chambre <span class="n">1</span></button>
+<button class="chip" type="button" data-filter="salle-de-bain" aria-pressed="false">Salle de bain <span class="n">3</span></button>
+<button class="chip" type="button" data-filter="atelier" aria-pressed="false">Atelier <span class="n">3</span></button>
+<button class="chip" type="button" data-filter="placard-mural" aria-pressed="false">Placard mural <span class="n">1</span></button>
+<button class="chip" type="button" data-filter="chambres-damis" aria-pressed="false">Chambres d'amis <span class="n">2</span></button>
+<button class="chip" type="button" data-filter="bureau" aria-pressed="false">Bureau <span class="n">1</span></button>
+      </div>
+    </div>
+  </div>
+  <section class="results" data-section="gallery" data-intent="proof" data-layout="grid" data-items="22">
+    <div class="container">
+      <p class="results__status" aria-live="polite"><strong>22 transformations</strong> · toutes les pièces</p>
+      <div class="cards">
+<figure class="card" data-room="cellier" data-slug="cellier-1" data-ar="2048/1638" data-name="Cellier" data-i="1" data-n="2">
+  <button class="card__media" type="button" aria-label="Agrandir et comparer — Cellier 1/2">
+    <img class="after" src="assets/realisations/cellier-1-after.webp" alt="Cellier — après le rangement">
+    <img class="before" src="assets/realisations/cellier-1-before.webp" alt="Cellier — avant le rangement">
+    <span class="card__state" aria-hidden="true">Après</span>
+  </button>
+  <figcaption><span class="card__room">Cellier<small>1/2</small></span><button class="card__toggle" type="button" aria-pressed="false">Voir l'avant</button></figcaption>
+</figure>
+<figure class="card" data-room="cellier" data-slug="cellier-2" data-ar="1536/2048" data-name="Cellier" data-i="2" data-n="2">
+  <button class="card__media" type="button" aria-label="Agrandir et comparer — Cellier 2/2">
+    <img class="after" src="assets/realisations/cellier-2-after.webp" alt="Cellier — après le rangement">
+    <img class="before" src="assets/realisations/cellier-2-before.webp" alt="Cellier — avant le rangement">
+    <span class="card__state" aria-hidden="true">Après</span>
+  </button>
+  <figcaption><span class="card__room">Cellier<small>2/2</small></span><button class="card__toggle" type="button" aria-pressed="false">Voir l'avant</button></figcaption>
+</figure>
+<figure class="card" data-room="cuisine" data-slug="cuisine-1" data-ar="1536/2048" data-name="Cuisine" data-i="1" data-n="5">
+  <button class="card__media" type="button" aria-label="Agrandir et comparer — Cuisine 1/5">
+    <img class="after" src="assets/realisations/cuisine-1-after.webp" alt="Cuisine — après le rangement">
+    <img class="before" src="assets/realisations/cuisine-1-before.webp" alt="Cuisine — avant le rangement">
+    <span class="card__state" aria-hidden="true">Après</span>
+  </button>
+  <figcaption><span class="card__room">Cuisine<small>1/5</small></span><button class="card__toggle" type="button" aria-pressed="false">Voir l'avant</button></figcaption>
+</figure>
+<figure class="card" data-room="cuisine" data-slug="cuisine-2" data-ar="1536/2048" data-name="Cuisine" data-i="2" data-n="5">
+  <button class="card__media" type="button" aria-label="Agrandir et comparer — Cuisine 2/5">
+    <img class="after" src="assets/realisations/cuisine-2-after.webp" alt="Cuisine — après le rangement" loading="lazy">
+    <img class="before" src="assets/realisations/cuisine-2-before.webp" alt="Cuisine — avant le rangement" loading="lazy">
+    <span class="card__state" aria-hidden="true">Après</span>
+  </button>
+  <figcaption><span class="card__room">Cuisine<small>2/5</small></span><button class="card__toggle" type="button" aria-pressed="false">Voir l'avant</button></figcaption>
+</figure>
+<figure class="card" data-room="cuisine" data-slug="cuisine-3" data-ar="1536/2048" data-name="Cuisine" data-i="3" data-n="5">
+  <button class="card__media" type="button" aria-label="Agrandir et comparer — Cuisine 3/5">
+    <img class="after" src="assets/realisations/cuisine-3-after.webp" alt="Cuisine — après le rangement" loading="lazy">
+    <img class="before" src="assets/realisations/cuisine-3-before.webp" alt="Cuisine — avant le rangement" loading="lazy">
+    <span class="card__state" aria-hidden="true">Après</span>
+  </button>
+  <figcaption><span class="card__room">Cuisine<small>3/5</small></span><button class="card__toggle" type="button" aria-pressed="false">Voir l'avant</button></figcaption>
+</figure>
+<figure class="card" data-room="cuisine" data-slug="cuisine-4" data-ar="1536/2048" data-name="Cuisine" data-i="4" data-n="5">
+  <button class="card__media" type="button" aria-label="Agrandir et comparer — Cuisine 4/5">
+    <img class="after" src="assets/realisations/cuisine-4-after.webp" alt="Cuisine — après le rangement" loading="lazy">
+    <img class="before" src="assets/realisations/cuisine-4-before.webp" alt="Cuisine — avant le rangement" loading="lazy">
+    <span class="card__state" aria-hidden="true">Après</span>
+  </button>
+  <figcaption><span class="card__room">Cuisine<small>4/5</small></span><button class="card__toggle" type="button" aria-pressed="false">Voir l'avant</button></figcaption>
+</figure>
+<aside class="interlude" data-interlude>
+  <span class="mark" aria-hidden="true">“</span>
+  <div><blockquote>Grâce à son intervention, mon quotidien a changé : moins de superflu, juste l'essentiel et un réel gain de temps.</blockquote><cite>— Agathe</cite></div>
+</aside>
+<figure class="card" data-room="cuisine" data-slug="cuisine-5" data-ar="1536/2048" data-name="Cuisine" data-i="5" data-n="5">
+  <button class="card__media" type="button" aria-label="Agrandir et comparer — Cuisine 5/5">
+    <img class="after" src="assets/realisations/cuisine-5-after.webp" alt="Cuisine — après le rangement" loading="lazy">
+    <img class="before" src="assets/realisations/cuisine-5-before.webp" alt="Cuisine — avant le rangement" loading="lazy">
+    <span class="card__state" aria-hidden="true">Après</span>
+  </button>
+  <figcaption><span class="card__room">Cuisine<small>5/5</small></span><button class="card__toggle" type="button" aria-pressed="false">Voir l'avant</button></figcaption>
+</figure>
+<figure class="card" data-room="dressing" data-slug="dressing-1" data-ar="1536/2048" data-name="Dressing" data-i="1" data-n="4">
+  <button class="card__media" type="button" aria-label="Agrandir et comparer — Dressing 1/4">
+    <img class="after" src="assets/realisations/dressing-1-after.webp" alt="Dressing — après le rangement" loading="lazy">
+    <img class="before" src="assets/realisations/dressing-1-before.webp" alt="Dressing — avant le rangement" loading="lazy">
+    <span class="card__state" aria-hidden="true">Après</span>
+  </button>
+  <figcaption><span class="card__room">Dressing<small>1/4</small></span><button class="card__toggle" type="button" aria-pressed="false">Voir l'avant</button></figcaption>
+</figure>
+<figure class="card" data-room="dressing" data-slug="dressing-2" data-ar="1536/2048" data-name="Dressing" data-i="2" data-n="4">
+  <button class="card__media" type="button" aria-label="Agrandir et comparer — Dressing 2/4">
+    <img class="after" src="assets/realisations/dressing-2-after.webp" alt="Dressing — après le rangement" loading="lazy">
+    <img class="before" src="assets/realisations/dressing-2-before.webp" alt="Dressing — avant le rangement" loading="lazy">
+    <span class="card__state" aria-hidden="true">Après</span>
+  </button>
+  <figcaption><span class="card__room">Dressing<small>2/4</small></span><button class="card__toggle" type="button" aria-pressed="false">Voir l'avant</button></figcaption>
+</figure>
+<figure class="card" data-room="dressing" data-slug="dressing-3" data-ar="1362/2048" data-name="Dressing" data-i="3" data-n="4">
+  <button class="card__media" type="button" aria-label="Agrandir et comparer — Dressing 3/4">
+    <img class="after" src="assets/realisations/dressing-3-after.webp" alt="Dressing — après le rangement" loading="lazy">
+    <img class="before" src="assets/realisations/dressing-3-before.webp" alt="Dressing — avant le rangement" loading="lazy">
+    <span class="card__state" aria-hidden="true">Après</span>
+  </button>
+  <figcaption><span class="card__room">Dressing<small>3/4</small></span><button class="card__toggle" type="button" aria-pressed="false">Voir l'avant</button></figcaption>
+</figure>
+<figure class="card" data-room="dressing" data-slug="dressing-4" data-ar="2048/1365" data-name="Dressing" data-i="4" data-n="4">
+  <button class="card__media" type="button" aria-label="Agrandir et comparer — Dressing 4/4">
+    <img class="after" src="assets/realisations/dressing-4-after.webp" alt="Dressing — après le rangement" loading="lazy">
+    <img class="before" src="assets/realisations/dressing-4-before.webp" alt="Dressing — avant le rangement" loading="lazy">
+    <span class="card__state" aria-hidden="true">Après</span>
+  </button>
+  <figcaption><span class="card__room">Dressing<small>4/4</small></span><button class="card__toggle" type="button" aria-pressed="false">Voir l'avant</button></figcaption>
+</figure>
+<figure class="card" data-room="chambre" data-slug="chambre-1" data-ar="1536/2048" data-name="Chambre" data-i="1" data-n="1">
+  <button class="card__media" type="button" aria-label="Agrandir et comparer — Chambre">
+    <img class="after" src="assets/realisations/chambre-1-after.webp" alt="Chambre — après le rangement" loading="lazy">
+    <img class="before" src="assets/realisations/chambre-1-before.webp" alt="Chambre — avant le rangement" loading="lazy">
+    <span class="card__state" aria-hidden="true">Après</span>
+  </button>
+  <figcaption><span class="card__room">Chambre</span><button class="card__toggle" type="button" aria-pressed="false">Voir l'avant</button></figcaption>
+</figure>
+<figure class="card" data-room="salle-de-bain" data-slug="salle-de-bain-1" data-ar="1536/2048" data-name="Salle de bain" data-i="1" data-n="3">
+  <button class="card__media" type="button" aria-label="Agrandir et comparer — Salle de bain 1/3">
+    <img class="after" src="assets/realisations/salle-de-bain-1-after.webp" alt="Salle de bain — après le rangement" loading="lazy">
+    <img class="before" src="assets/realisations/salle-de-bain-1-before.webp" alt="Salle de bain — avant le rangement" loading="lazy">
+    <span class="card__state" aria-hidden="true">Après</span>
+  </button>
+  <figcaption><span class="card__room">Salle de bain<small>1/3</small></span><button class="card__toggle" type="button" aria-pressed="false">Voir l'avant</button></figcaption>
+</figure>
+<figure class="card" data-room="salle-de-bain" data-slug="salle-de-bain-2" data-ar="1536/2048" data-name="Salle de bain" data-i="2" data-n="3">
+  <button class="card__media" type="button" aria-label="Agrandir et comparer — Salle de bain 2/3">
+    <img class="after" src="assets/realisations/salle-de-bain-2-after.webp" alt="Salle de bain — après le rangement" loading="lazy">
+    <img class="before" src="assets/realisations/salle-de-bain-2-before.webp" alt="Salle de bain — avant le rangement" loading="lazy">
+    <span class="card__state" aria-hidden="true">Après</span>
+  </button>
+  <figcaption><span class="card__room">Salle de bain<small>2/3</small></span><button class="card__toggle" type="button" aria-pressed="false">Voir l'avant</button></figcaption>
+</figure>
+<figure class="card" data-room="salle-de-bain" data-slug="salle-de-bain-3" data-ar="2048/1365" data-name="Salle de bain" data-i="3" data-n="3">
+  <button class="card__media" type="button" aria-label="Agrandir et comparer — Salle de bain 3/3">
+    <img class="after" src="assets/realisations/salle-de-bain-3-after.webp" alt="Salle de bain — après le rangement" loading="lazy">
+    <img class="before" src="assets/realisations/salle-de-bain-3-before.webp" alt="Salle de bain — avant le rangement" loading="lazy">
+    <span class="card__state" aria-hidden="true">Après</span>
+  </button>
+  <figcaption><span class="card__room">Salle de bain<small>3/3</small></span><button class="card__toggle" type="button" aria-pressed="false">Voir l'avant</button></figcaption>
+</figure>
+<aside class="interlude" data-interlude>
+  <span class="mark" aria-hidden="true">“</span>
+  <div><blockquote>N'hésitez pas à l'appeler pour faire entrer la lumière dans votre chez-vous !</blockquote><cite>— Alban</cite></div>
+</aside>
+<figure class="card" data-room="atelier" data-slug="atelier-1" data-ar="1536/2048" data-name="Atelier" data-i="1" data-n="3">
+  <button class="card__media" type="button" aria-label="Agrandir et comparer — Atelier 1/3">
+    <img class="after" src="assets/realisations/atelier-1-after.webp" alt="Atelier — après le rangement" loading="lazy">
+    <img class="before" src="assets/realisations/atelier-1-before.webp" alt="Atelier — avant le rangement" loading="lazy">
+    <span class="card__state" aria-hidden="true">Après</span>
+  </button>
+  <figcaption><span class="card__room">Atelier<small>1/3</small></span><button class="card__toggle" type="button" aria-pressed="false">Voir l'avant</button></figcaption>
+</figure>
+<figure class="card" data-room="atelier" data-slug="atelier-2" data-ar="1536/2048" data-name="Atelier" data-i="2" data-n="3">
+  <button class="card__media" type="button" aria-label="Agrandir et comparer — Atelier 2/3">
+    <img class="after" src="assets/realisations/atelier-2-after.webp" alt="Atelier — après le rangement" loading="lazy">
+    <img class="before" src="assets/realisations/atelier-2-before.webp" alt="Atelier — avant le rangement" loading="lazy">
+    <span class="card__state" aria-hidden="true">Après</span>
+  </button>
+  <figcaption><span class="card__room">Atelier<small>2/3</small></span><button class="card__toggle" type="button" aria-pressed="false">Voir l'avant</button></figcaption>
+</figure>
+<figure class="card" data-room="atelier" data-slug="atelier-3" data-ar="1536/2048" data-name="Atelier" data-i="3" data-n="3">
+  <button class="card__media" type="button" aria-label="Agrandir et comparer — Atelier 3/3">
+    <img class="after" src="assets/realisations/atelier-3-after.webp" alt="Atelier — après le rangement" loading="lazy">
+    <img class="before" src="assets/realisations/atelier-3-before.webp" alt="Atelier — avant le rangement" loading="lazy">
+    <span class="card__state" aria-hidden="true">Après</span>
+  </button>
+  <figcaption><span class="card__room">Atelier<small>3/3</small></span><button class="card__toggle" type="button" aria-pressed="false">Voir l'avant</button></figcaption>
+</figure>
+<figure class="card" data-room="placard-mural" data-slug="placard-mural-1" data-ar="1536/2048" data-name="Placard mural" data-i="1" data-n="1">
+  <button class="card__media" type="button" aria-label="Agrandir et comparer — Placard mural">
+    <img class="after" src="assets/realisations/placard-mural-1-after.webp" alt="Placard mural — après le rangement" loading="lazy">
+    <img class="before" src="assets/realisations/placard-mural-1-before.webp" alt="Placard mural — avant le rangement" loading="lazy">
+    <span class="card__state" aria-hidden="true">Après</span>
+  </button>
+  <figcaption><span class="card__room">Placard mural</span><button class="card__toggle" type="button" aria-pressed="false">Voir l'avant</button></figcaption>
+</figure>
+<figure class="card" data-room="chambres-damis" data-slug="chambres-damis-1" data-ar="2048/1365" data-name="Chambres d'amis" data-i="1" data-n="2">
+  <button class="card__media" type="button" aria-label="Agrandir et comparer — Chambres d'amis 1/2">
+    <img class="after" src="assets/realisations/chambres-damis-1-after.webp" alt="Chambres d'amis — après le rangement" loading="lazy">
+    <img class="before" src="assets/realisations/chambres-damis-1-before.webp" alt="Chambres d'amis — avant le rangement" loading="lazy">
+    <span class="card__state" aria-hidden="true">Après</span>
+  </button>
+  <figcaption><span class="card__room">Chambres d'amis<small>1/2</small></span><button class="card__toggle" type="button" aria-pressed="false">Voir l'avant</button></figcaption>
+</figure>
+<figure class="card" data-room="chambres-damis" data-slug="chambres-damis-2" data-ar="1536/2048" data-name="Chambres d'amis" data-i="2" data-n="2">
+  <button class="card__media" type="button" aria-label="Agrandir et comparer — Chambres d'amis 2/2">
+    <img class="after" src="assets/realisations/chambres-damis-2-after.webp" alt="Chambres d'amis — après le rangement" loading="lazy">
+    <img class="before" src="assets/realisations/chambres-damis-2-before.webp" alt="Chambres d'amis — avant le rangement" loading="lazy">
+    <span class="card__state" aria-hidden="true">Après</span>
+  </button>
+  <figcaption><span class="card__room">Chambres d'amis<small>2/2</small></span><button class="card__toggle" type="button" aria-pressed="false">Voir l'avant</button></figcaption>
+</figure>
+<figure class="card" data-room="bureau" data-slug="bureau-1" data-ar="1365/2048" data-name="Bureau" data-i="1" data-n="1">
+  <button class="card__media" type="button" aria-label="Agrandir et comparer — Bureau">
+    <img class="after" src="assets/realisations/bureau-1-after.webp" alt="Bureau — après le rangement" loading="lazy">
+    <img class="before" src="assets/realisations/bureau-1-before.webp" alt="Bureau — avant le rangement" loading="lazy">
+    <span class="card__state" aria-hidden="true">Après</span>
+  </button>
+  <figcaption><span class="card__room">Bureau</span><button class="card__toggle" type="button" aria-pressed="false">Voir l'avant</button></figcaption>
+</figure>
+      </div>
+    </div>
+  </section>
+<section class="contact" data-section="contact-cta" data-intent="drive action" data-layout="full-bleed" data-interactive="link">
+  <div class="container">
+    <span class="script" data-anim>Et si on commençait&nbsp;?</span>
+    <h2 data-anim>Prêt(e) pour une maison plus sereine&nbsp;?</h2>
+    <p data-anim>Parlons de votre projet, sans engagement. Le premier échange se fait par email ou téléphone, en toute simplicité.</p>
+    <div class="contact__row" data-anim>
+      <a class="btn btn--deep" href="mailto:contact@celinek.org">Contactez-moi</a>
+      <a class="contact__phone" href="tel:+33632731898">📞 06 32 73 18 98</a>
+    </div>
+    <p class="contact__more" data-anim><a href="/#process">Comment ça se passe&nbsp;?</a></p>
+  </div>
+</section>
+</main>
+<footer class="site-footer" data-section="footer" data-intent="wayfinding" data-layout="edge-to-edge">
+  <div class="container">
+    <div class="fcontact">
+      <span>© Céline Knobloch, 2025</span>
+      <a href="tel:+33632731898">Tél : 06 32 73 18 98</a>
+      <a href="mailto:contact@celinek.org">contact@celinek.org</a>
+    </div>
+    <div class="socials">
+      <a href="/" aria-label="Instagram"><img src="assets/instagram.svg" alt="Instagram"></a>
+      <a href="/" aria-label="Facebook"><img src="assets/facebook.svg" alt="Facebook"></a>
+    </div>
+  </div>
+</footer>
+<dialog class="viewer" aria-labelledby="vtitle">
+  <div class="viewer__bar">
+    <span class="viewer__title" id="vtitle"></span>
+    <div class="viewer__btns">
+      <button type="button" data-step="-1" aria-label="Précédente">‹</button>
+      <button type="button" data-step="1" aria-label="Suivante">›</button>
+      <button type="button" data-close aria-label="Fermer">✕</button>
+    </div>
+  </div>
+  <div class="viewer__stage"></div>
+</dialog>
+
+<script>
+/* mobile nav + condensing header (canon) */
+(function(){
+  var h=document.getElementById('nav'),b=h.querySelector('.nav-toggle');
+  b.addEventListener('click',function(){var o=h.classList.toggle('open');b.setAttribute('aria-expanded',o?'true':'false');});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&h.classList.contains('open')){h.classList.remove('open');b.setAttribute('aria-expanded','false');b.focus();}});
+  function s(){h.classList.toggle('scrolled',window.scrollY>40);} s(); window.addEventListener('scroll',s,{passive:true});
+})();
+/* before/after comparison: range drives --pos */
+document.querySelectorAll('.ba__frame').forEach(function(f){
+  var r=f.querySelector('.ba__range'); if(!r) return;
+  function u(){f.style.setProperty('--pos',r.value+'%');} r.addEventListener('input',u); u();
+});
+
+(function(){
+  var chips=[].slice.call(document.querySelectorAll('.chip'));
+  var cards=[].slice.call(document.querySelectorAll('.card'));
+  var inter=[].slice.call(document.querySelectorAll('[data-interlude]'));
+  var status=document.querySelector('.results__status');
+  function apply(f){
+    chips.forEach(function(c){c.setAttribute('aria-pressed',c.dataset.filter===f?'true':'false');});
+    var n=0,name='';
+    cards.forEach(function(c){var on=f==='all'||c.dataset.room===f;c.hidden=!on;if(on){n++;name=c.dataset.name;}});
+    inter.forEach(function(q){q.hidden=f!=='all';});
+    status.innerHTML='<strong>'+n+' transformation'+(n>1?'s':'')+'</strong> · '+(f==='all'?'toutes les pièces':name);
+  }
+  chips.forEach(function(c){c.addEventListener('click',function(){apply(c.dataset.filter);
+    var top=document.querySelector('.results').getBoundingClientRect().top+window.scrollY-140;
+    if(window.scrollY>top) window.scrollTo({top:top,behavior:'smooth'});});});
+  cards.forEach(function(c){
+    var t=c.querySelector('.card__toggle'),s=c.querySelector('.card__state');
+    t.addEventListener('click',function(){var b=c.classList.toggle('show-before');t.setAttribute('aria-pressed',b?'true':'false');
+      t.textContent=b?"Voir l'après":"Voir l'avant";s.textContent=b?'Avant':'Après';});
+  });
+  /* viewer dialog with a large comparison, prev/next within the current filter */
+  var dlg=document.querySelector('dialog.viewer'),stage=dlg.querySelector('.viewer__stage'),title=dlg.querySelector('#vtitle'),cur=null;
+  function show(c){
+    cur=c; var d=c.dataset;
+    title.innerHTML=d.name+(d.n>1?'<small>'+d.i+'/'+d.n+'</small>':'');
+    stage.innerHTML='<figure class="ba"><div class="ba__frame" style="--ar:'+d.ar+';width:min(100%,calc(74vh*('+d.ar+')))">'+
+      '<img class="ba__after" src="assets/realisations/'+d.slug+'-after.webp" alt="'+d.name+' — après le rangement">'+
+      '<img class="ba__before" src="assets/realisations/'+d.slug+'-before.webp" alt="'+d.name+' — avant le rangement">'+
+      '<span class="ba__line" aria-hidden="true"></span><span class="ba__knob" aria-hidden="true">‹›</span>'+
+      '<span class="ba__tag ba__tag--before" aria-hidden="true">Avant</span><span class="ba__tag ba__tag--after" aria-hidden="true">Après</span>'+
+      '<input class="ba__range" type="range" min="0" max="100" value="50" aria-label="Comparer avant / après — '+d.name+'"></div></figure>';
+    var f=stage.querySelector('.ba__frame'),r=f.querySelector('.ba__range');
+    r.addEventListener('input',function(){f.style.setProperty('--pos',r.value+'%');});
+  }
+  cards.forEach(function(c){c.querySelector('.card__media').addEventListener('click',function(){show(c);dlg.showModal();stage.querySelector('.ba__range').focus();});});
+  dlg.querySelectorAll('[data-step]').forEach(function(b){b.addEventListener('click',function(){
+    var vis=cards.filter(function(c){return !c.hidden;}),k=vis.indexOf(cur);
+    show(vis[(k+Number(b.dataset.step)+vis.length)%vis.length]);});});
+  dlg.querySelector('[data-close]').addEventListener('click',function(){dlg.close();});
+  dlg.addEventListener('click',function(e){if(e.target===dlg)dlg.close();});
+})();
+</script>
+</body>
+</html>

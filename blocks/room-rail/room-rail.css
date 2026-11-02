@@ -1,0 +1,44 @@
+/* room-rail — sticky chapter index (/realisations/, variant C).
+   The SECTION sticks (its parent is <main>, tall enough to pin through every chapter). */
+main .section.room-rail-container {
+  position: sticky;
+  top: 62px;               /* condensed header height (body:has(.cine-hero) header.scrolled nav) */
+  z-index: 20;
+  padding: 0;
+  max-width: none;
+  background: rgb(253 254 250 / 95%);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid #eceee6;
+}
+
+main .section.room-rail-container > div { max-width: none; }
+.room-rail.block { margin: 0; }
+
+.room-rail__nav ul {
+  list-style: none;
+  margin: 0 auto;
+  padding: 12px 24px;
+  max-width: 1120px;
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.room-rail__nav ul::-webkit-scrollbar { display: none; }
+.room-rail__nav li { margin: 0; flex: 0 0 auto; }
+
+.room-rail__nav a:any-link {
+  display: block;
+  white-space: nowrap;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #5a5a52;
+  text-decoration: none;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.room-rail__nav a:hover { color: #1a1a17; }
+.room-rail__nav a.active { background: #e4ebe6; color: #4a6357; }

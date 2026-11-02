@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<!--
+  _provenance:
+    writtenBy: stardust:extract (uplift Phase 1)
+    writtenAt: 2026-09-12
+    againstInput: https://www.celinek.org
+    readArtifacts:
+      - stardust/current/_brand-extraction.json
+      - stardust/current/pages/index.json
+      - stardust/current/assets/screenshots/index.png
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Brand review — celinek.org</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;700&family=Sacramento&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#fdfefa; --text:#000; --primary:#728e7f; --accent:#eed366;
+    --gold:#f8e1af; --sage:rgb(114 142 127 / 70%); --deep:#6b8a7c;
+    --body:'Comfortaa','helvetica neue',helvetica,sans-serif; --script:'Sacramento',cursive;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:var(--body);line-height:1.6;font-size:16px}
+  .wrap{max-width:960px;margin:0 auto;padding:48px 24px 96px}
+  header.rev{border-bottom:2px solid var(--primary);padding-bottom:24px;margin-bottom:32px}
+  header.rev h1{font-size:32px;margin:0 0 4px}
+  header.rev .sub{color:var(--primary);font-weight:700}
+  .cov{background:var(--gold);border-radius:12px;padding:16px 20px;margin:24px 0;font-size:14px}
+  h2.sec{font-size:24px;margin:48px 0 16px;border-left:6px solid var(--primary);padding-left:12px}
+  .swatches{display:flex;flex-wrap:wrap;gap:12px}
+  .sw{width:120px;border-radius:12px;overflow:hidden;box-shadow:0 1px 4px rgb(0 0 0 / .1);font-size:12px}
+  .sw .chip{height:64px}
+  .sw .lab{padding:6px 8px;background:#fff}
+  .type-demo .script{font-family:var(--script);font-size:52px;color:var(--primary);line-height:1.1}
+  .type-demo .head{font-family:var(--body);font-weight:700;font-size:28px}
+  .type-demo .body{font-family:var(--body);font-size:16px;max-width:60ch}
+  table{border-collapse:collapse;width:100%;font-size:14px;margin-top:12px}
+  th,td{text-align:left;padding:8px 10px;border-bottom:1px solid #e6e6df;vertical-align:top}
+  th{color:var(--primary)}
+  .tension{border:1px solid var(--gold);border-left:6px solid var(--accent);border-radius:8px;padding:16px 20px;margin:16px 0;background:#fffdf6}
+  .tension h3{margin:0 0 6px;font-size:18px}
+  .tension .id{font-family:'Roboto Mono',monospace;font-size:12px;color:var(--deep);background:var(--gold);padding:2px 8px;border-radius:6px}
+  .tension .fix{margin-top:8px;font-size:14px}
+  .tension .fix b{color:var(--primary)}
+  figure{margin:16px 0}
+  figure img{max-width:100%;border-radius:12px;box-shadow:0 2px 12px rgb(0 0 0 / .12)}
+  figcaption{font-size:12px;color:#4a4a44;margin-top:6px}
+  .cite{font-size:12px;color:#4a4a44;font-style:italic}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="rev">
+    <h1>Brand review — <span style="font-family:var(--script);font-size:40px;color:var(--primary)">celinek.org</span></h1>
+    <div class="sub">Céline Knobloch · Home Organiser · Haut-Rhin</div>
+  </header>
+
+  <div class="cov">
+    <b>Coverage.</b> Single-page capture (homepage) via <code>uplift --single</code>. Live Playwright render, HTTP 200, waitMs 2500.
+    Tokens read from live <code>:root</code> custom properties + computed section colors. Multi-page brand aggregation not run (uplift is single-surface by design).
+  </div>
+
+  <h2 class="sec">Palette</h2>
+  <div class="swatches">
+    <div class="sw"><div class="chip" style="background:#fdfefa;border:1px solid #eee"></div><div class="lab">background<br>#fdfefa</div></div>
+    <div class="sw"><div class="chip" style="background:#728e7f"></div><div class="lab">primary sage<br>#728e7f</div></div>
+    <div class="sw"><div class="chip" style="background:#f8e1af"></div><div class="lab">warm gold band<br>#f8e1af</div></div>
+    <div class="sw"><div class="chip" style="background:#eed366"></div><div class="lab">accent (hover only)<br>#eed366</div></div>
+    <div class="sw"><div class="chip" style="background:#6b8a7c"></div><div class="lab">deep sage (logo)<br>#6b8a7c</div></div>
+    <div class="sw"><div class="chip" style="background:#000"></div><div class="lab">text<br>#000</div></div>
+  </div>
+  <p class="cite">Source: _brand-extraction.json § palette (from --link-color, --overlay-background-color, --link-hover-color, logo.svg fills).</p>
+
+  <h2 class="sec">Typography</h2>
+  <div class="type-demo">
+    <div class="script">Le rangement au service de votre bien-être&nbsp;!</div>
+    <div class="head">Comfortaa — headings &amp; body (one family)</div>
+    <div class="body">Comfortaa carries both headings and body copy, so hierarchy rests on size and weight alone. Sacramento (the script above) is the one signature voice — and it appears in exactly one place on the whole page.</div>
+  </div>
+  <p class="cite">Source: _brand-extraction.json § type.families. Sacramento usageCount: 1.</p>
+
+  <h2 class="sec">Captured hero photography</h2>
+  <figure>
+    <img src="assets/media/hero-celine.webp" alt="Céline in a styled warm living room">
+    <figcaption>The single identity photo — genuine, warm, high quality (2000w source). It appears once, as a wide hero band, and is never reused across a long page.</figcaption>
+  </figure>
+
+  <h2 class="sec">System components</h2>
+  <table>
+    <tr><th>Component</th><th>Observed</th></tr>
+    <tr><td>Header</td><td>Mascot logo lockup + nav: Accueil · Qui suis-je ? · Prestations et Tarifs · Mes Réalisations · Contact</td></tr>
+    <tr><td>Footer</td><td>© Céline Knobloch 2025 · Tél 06 32 73 18 98 · contact@celinek.org · Instagram + Facebook, on a warm-gold band</td></tr>
+    <tr><td>Sections (IA order)</td><td>Hero → Je suis Céline / Le concept → Pourquoi faire appel (gold band) → Comment ça se passe (3 steps) → Ils m'ont fait confiance (testimonial) → footer</td></tr>
+  </table>
+
+  <h2 class="sec">Tensions surfaced</h2>
+
+  <div class="tension">
+    <span class="id">T1 · display-underuse</span>
+    <h3>The signature script is used exactly once</h3>
+    <p>Sacramento — a distinctive flowing script and the brand's one moment of personality in type — is confined to the hero tagline. Everywhere else, one rounded sans (Comfortaa) does both headings and body, so the page reads as a single flat voice with a decorative flourish stapled on top.</p>
+    <p class="fix"><b>Fix →</b> give the script a defined, repeatable role (section openers / pull-quotes) so it becomes structural voice, not a one-off.</p>
+  </div>
+
+  <div class="tension">
+    <span class="id">T2 · photo-underscale</span>
+    <h3>One excellent photo, shown once, cropped to a band</h3>
+    <p>The identity portrait is the strongest trust asset on the page, yet it lives in a single wide hero band and photography never returns — the rest of the page is text on cream. The asset is under-shared relative to its quality (2000w source).</p>
+    <p class="fix"><b>Fix →</b> let the portrait breathe at editorial scale and reuse photography (or portrait crops) in the concept / process / testimonial sections.</p>
+  </div>
+
+  <div class="tension">
+    <span class="id">T3 · text-wall</span>
+    <h3>Reassurance copy is delivered as paragraph walls</h3>
+    <p>The gold "Pourquoi faire appel à une coach en rangement ?" band is a dense block of prose; "Comment ça se passe ?" is a genuine 3-step method (Faire connaissance → Envisager → Désencombrer) rendered as running paragraphs rather than a legible numbered sequence.</p>
+    <p class="fix"><b>Fix →</b> break the "why" into scannable value points; render the "how" as an explicit numbered 3-step process.</p>
+  </div>
+
+  <div class="tension">
+    <span class="id">T4 · h1-semantics</span>
+    <h3>The H1 is a decorative script string with broken spacing</h3>
+    <p>The captured H1 text is <code>"Lerangementauservicedevotrebien-être!"</code> — spaces collapse in the script rendering, which is poor for SEO and screen readers, and the page's true value proposition ("Home organiser in the Haut-Rhin") is not the primary heading.</p>
+    <p class="fix"><b>Fix →</b> keep the script visual but back it with a properly spaced, semantically meaningful H1; make the who/what/where legible to machines.</p>
+  </div>
+
+  <div class="tension">
+    <span class="id">T5 · proof-buried</span>
+    <h3>Social proof is one quote, behind arrows, at the very bottom</h3>
+    <p>"Ils m'ont fait confiance" holds a single testimonial in a carousel at the foot of the page — the strongest conversion lever (an emotional, specific client story) is the last thing seen and mostly hidden.</p>
+    <p class="fix"><b>Fix →</b> surface testimonial evidence higher and show more than one at a time.</p>
+  </div>
+
+  <div class="tension">
+    <span class="id">T6 · accent-reserved</span>
+    <h3>The vivid gold never helps the CTA</h3>
+    <p>The high-energy gold <code>#eed366</code> is spent entirely on link-hover states, while primary CTAs ("En savoir plus", "Contactez-moi") sit in muted sage. The one color that could pull the eye toward conversion is invisible until you already hover a link.</p>
+    <p class="fix"><b>Fix →</b> promote gold to the primary conversion CTA so the contact action is the brightest thing on the page.</p>
+  </div>
+
+</div>
+</body>
+</html>

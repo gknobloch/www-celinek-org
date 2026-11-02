@@ -1,3 +1,11 @@
 {
-  "extends": ["stylelint-config-standard"]
+  "extends": ["stylelint-config-standard"],
+  "rules": {
+    "selector-class-pattern": [
+      "^[a-z][a-z0-9]*(-[a-z0-9]+)*(__[a-z0-9]+(-[a-z0-9]+)*)?(--[a-z0-9]+(-[a-z0-9]+)*)?$",
+      { "message": "Expected kebab-case or BEM (block__element--modifier) class" }
+    ],
+    "declaration-block-single-line-max-declarations": null,
+    "no-descending-specificity": null
+  }
 }

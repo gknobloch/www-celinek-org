@@ -1,0 +1,301 @@
+{
+  "_provenance": {
+    "writtenBy": "stardust:uplift",
+    "writtenAt": "2026-09-12T00:00:00Z"
+  },
+  "site": {
+    "originUrl": "https://www.celinek.org",
+    "extractedAt": "2026-09-12T00:00:00Z",
+    "pageCap": 1,
+    "totalDiscovered": 1,
+    "crawled": 1,
+    "mode": "uplift-single"
+  },
+  "uplift": {
+    "variants": [
+      "A",
+      "B",
+      "C"
+    ],
+    "cinematicRegister": "editorial",
+    "registerSource": "auto-picked",
+    "improvementsCount": 7
+  },
+  "pages": [
+    {
+      "slug": "index",
+      "url": "https://www.celinek.org/",
+      "status": "prototyped",
+      "currentStatePath": "stardust/current/pages/index.json",
+      "prototypePaths": {
+        "A": "stardust/prototypes/index-A-proposed.html",
+        "B": "stardust/prototypes/index-B-proposed.html",
+        "C": "stardust/prototypes/index-C-proposed.html",
+        "C-cinematic": "stardust/prototypes/index-C-cinematic.html"
+      },
+      "migratedPath": "",
+      "history": [
+        {
+          "at": "2026-09-12T00:00:00Z",
+          "event": "extracted",
+          "by": "stardust:uplift"
+        },
+        {
+          "at": "2026-09-12T00:00:00Z",
+          "event": "prototyped",
+          "by": "stardust:uplift",
+          "variants": [
+            "A",
+            "B",
+            "C"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "realisations",
+      "url": "https://redesign-c-preview--celinek-org--gknobloch.aem.page/realisations/",
+      "sourceUrl": "https://www.celinek.org/realisations/",
+      "status": "prototyped",
+      "currentStatePath": "stardust/current/pages/realisations.json",
+      "brandSurface": "approved homepage canon (index-C-cinematic.html / DESIGN-C.json)",
+      "uplift": {
+        "variants": [
+          "A",
+          "B",
+          "C"
+        ],
+        "cinematicRegister": "editorial",
+        "registerSource": "inherited-canon",
+        "improvementsCount": 7,
+        "B": "audience-routing reframe (catalog #7) + testimony interludes (derived D1)",
+        "C": "photography re-foregrounding (catalog #2)",
+        "direction": "stardust/realisations-direction.md",
+        "generator": "stardust/scripts/realisations-prototypes.py"
+      },
+      "prototypePaths": {
+        "A": "stardust/prototypes/realisations-A-proposed.html",
+        "B": "stardust/prototypes/realisations-B-proposed.html",
+        "C": "stardust/prototypes/realisations-C-proposed.html",
+        "C-cinematic": "stardust/prototypes/realisations-C-cinematic.html"
+      },
+      "migratedPath": "",
+      "history": [
+        {
+          "at": "2026-09-23T00:00:00Z",
+          "event": "extracted",
+          "by": "stardust:uplift"
+        },
+        {
+          "at": "2026-09-23T00:00:00Z",
+          "event": "prototyped",
+          "by": "stardust:uplift",
+          "variants": [
+            "A",
+            "B",
+            "C"
+          ]
+        },
+        {
+          "at": "2026-09-23T00:00:00Z",
+          "event": "approved",
+          "variant": "C",
+          "by": "user"
+        },
+        {
+          "at": "2026-09-23T00:00:00Z",
+          "event": "converted-eds",
+          "by": "stardust:deploy"
+        }
+      ],
+      "approvedVariant": "C",
+      "eds": {
+        "content": "content/realisations/index.html",
+        "blocks": [
+          "cine-hero (wipe variant)",
+          "room-rail",
+          "room-stage",
+          "contact-band"
+        ],
+        "status": "converted-local",
+        "transport": "blocked: gdrive source + expired DA_TOKEN"
+      }
+    },
+    {
+      "slug": "prestations-tarifs/index",
+      "url": "https://www.celinek.org/prestations-tarifs/",
+      "status": "deployed-preview",
+      "direction": "variant C canon (stardust/prestations-direction.md)",
+      "prototype": "stardust/prototypes/prestations-index-C.html",
+      "eds": {
+        "content": "content/prestations-tarifs/index.html"
+      },
+      "history": [
+        {
+          "at": "2026-09-23T00:00:00Z",
+          "event": "converted-eds",
+          "by": "stardust:deploy"
+        },
+        {
+          "at": "2026-09-24T00:00:00Z",
+          "event": "deployed-preview",
+          "by": "stardust:deploy",
+          "target": "da:gknobloch/celinek-org (DA version 'Before redesign C' saved)"
+        }
+      ]
+    },
+    {
+      "slug": "prestations-tarifs/vivre-et-vieillir-chez-soi",
+      "url": "https://www.celinek.org/prestations-tarifs/vivre-et-vieillir-chez-soi",
+      "status": "deployed-preview",
+      "direction": "variant C canon (stardust/prestations-direction.md)",
+      "prototype": "stardust/prototypes/prestations-vivre-C.html",
+      "eds": {
+        "content": "content/prestations-tarifs/vivre-et-vieillir-chez-soi.html"
+      },
+      "history": [
+        {
+          "at": "2026-09-23T00:00:00Z",
+          "event": "converted-eds",
+          "by": "stardust:deploy"
+        },
+        {
+          "at": "2026-09-24T00:00:00Z",
+          "event": "deployed-preview",
+          "by": "stardust:deploy",
+          "target": "da:gknobloch/celinek-org (DA version 'Before redesign C' saved)"
+        }
+      ]
+    },
+    {
+      "slug": "prestations-tarifs/tri-rangement-et-optimisation",
+      "url": "https://www.celinek.org/prestations-tarifs/tri-rangement-et-optimisation",
+      "status": "deployed-preview",
+      "direction": "variant C canon (stardust/prestations-direction.md)",
+      "prototype": "template: prestations-vivre-C",
+      "eds": {
+        "content": "content/prestations-tarifs/tri-rangement-et-optimisation.html"
+      },
+      "history": [
+        {
+          "at": "2026-09-23T00:00:00Z",
+          "event": "converted-eds",
+          "by": "stardust:deploy"
+        },
+        {
+          "at": "2026-09-24T00:00:00Z",
+          "event": "deployed-preview",
+          "by": "stardust:deploy",
+          "target": "da:gknobloch/celinek-org (DA version 'Before redesign C' saved)"
+        }
+      ]
+    },
+    {
+      "slug": "prestations-tarifs/changement-de-vie",
+      "url": "https://www.celinek.org/prestations-tarifs/changement-de-vie",
+      "status": "deployed-preview",
+      "direction": "variant C canon (stardust/prestations-direction.md)",
+      "prototype": "template: prestations-vivre-C",
+      "eds": {
+        "content": "content/prestations-tarifs/changement-de-vie.html"
+      },
+      "history": [
+        {
+          "at": "2026-09-23T00:00:00Z",
+          "event": "converted-eds",
+          "by": "stardust:deploy"
+        },
+        {
+          "at": "2026-09-24T00:00:00Z",
+          "event": "deployed-preview",
+          "by": "stardust:deploy",
+          "target": "da:gknobloch/celinek-org (DA version 'Before redesign C' saved)"
+        }
+      ]
+    },
+    {
+      "slug": "prestations-tarifs/gerer-sa-maison-pas-a-pas",
+      "url": "https://www.celinek.org/prestations-tarifs/gerer-sa-maison-pas-a-pas",
+      "status": "deployed-preview",
+      "direction": "variant C canon (stardust/prestations-direction.md)",
+      "prototype": "template: prestations-vivre-C",
+      "eds": {
+        "content": "content/prestations-tarifs/gerer-sa-maison-pas-a-pas.html"
+      },
+      "history": [
+        {
+          "at": "2026-09-23T00:00:00Z",
+          "event": "converted-eds",
+          "by": "stardust:deploy"
+        },
+        {
+          "at": "2026-09-24T00:00:00Z",
+          "event": "deployed-preview",
+          "by": "stardust:deploy",
+          "target": "da:gknobloch/celinek-org (DA version 'Before redesign C' saved)"
+        }
+      ]
+    },
+    {
+      "slug": "qui-suis-je",
+      "url": "https://www.celinek.org/qui-suis-je",
+      "status": "deployed-preview",
+      "direction": "variant C canon (stardust/about-direction.md)",
+      "eds": {
+        "content": "content/qui-suis-je.html"
+      },
+      "history": [
+        {
+          "at": "2026-09-24T00:00:00Z",
+          "event": "converted-eds",
+          "by": "stardust:deploy"
+        },
+        {
+          "at": "2026-09-24T00:00:00Z",
+          "event": "deployed-preview",
+          "by": "stardust:deploy",
+          "target": "da:gknobloch/celinek-org (DA version 'Before redesign C' saved)"
+        }
+      ]
+    },
+    {
+      "slug": "contact",
+      "url": "https://www.celinek.org/contact",
+      "status": "deployed-preview",
+      "direction": "variant C canon (stardust/about-direction.md)",
+      "eds": {
+        "content": "content/contact.html"
+      },
+      "history": [
+        {
+          "at": "2026-09-24T00:00:00Z",
+          "event": "converted-eds",
+          "by": "stardust:deploy"
+        },
+        {
+          "at": "2026-09-24T00:00:00Z",
+          "event": "deployed-preview",
+          "by": "stardust:deploy",
+          "target": "da:gknobloch/celinek-org (DA version 'Before redesign C' saved)"
+        }
+      ]
+    },
+    {
+      "slug": "bienfaits",
+      "url": "https://www.celinek.org/bienfaits",
+      "status": "deployed-preview",
+      "direction": "variant C canon",
+      "eds": {
+        "content": "content/bienfaits.html"
+      },
+      "history": [
+        {
+          "at": "2026-09-24T00:00:00Z",
+          "event": "deployed-preview",
+          "by": "stardust:deploy",
+          "target": "da:gknobloch/celinek-org (DA version 'Before redesign C' saved)"
+        }
+      ]
+    }
+  ]
+}

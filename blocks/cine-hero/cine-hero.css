@@ -1,0 +1,455 @@
+.cine-hero.block {
+  position: relative;
+  min-height: 88vh;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  margin: 0;
+}
+
+.cine-hero__bg {
+  position: absolute;
+  inset: 0 0 -18vh;   /* image top-aligned to the hero; headroom BELOW for parallax */
+  height: 118vh;
+  z-index: 0;
+  will-change: transform;
+  transform: scale(1.06);   /* static rest crop for mobile / no-JS; JS drives desktop
+                               transform every frame (Ken Burns), so NO transition here —
+                               a transition would smear the per-frame parallax updates */
+}
+
+/* reading-progress bar (injected by the block) */
+.cine-hero__progress {
+  position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 60; pointer-events: none;
+  transform: scaleX(0); transform-origin: left center;
+  background: linear-gradient(90deg, #728e7f, #eed366);
+}
+
+.cine-hero__bg picture,
+.cine-hero__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  display: block;
+}
+
+.cine-hero__bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgb(26 26 23 / 0%) 0%, rgb(26 26 23 / 5%) 34%, rgb(26 26 23 / 68%) 100%);
+}
+
+.cine-hero__inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 112px 24px 72px; /* top: taller panels (crumb + lead + price + CTAs) clear the overlay header */
+}
+
+/* signature entrance — the cinematic "frame opens": a letterbox unveils the
+   photo, then the panel lines rise in staggered. Gated behind .is-in (JS-added)
+   so with no JS the hero renders fully visible. Scroll motion is motion.js's. */
+@keyframes cine-open {
+  from { clip-path: inset(45% 0 45% 0); }
+  to   { clip-path: inset(0 0 0 0); }
+}
+
+@keyframes cine-enter-up {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.cine-hero.is-in .cine-hero__bg { animation: cine-open 1.15s cubic-bezier(0.19, 1, 0.22, 1) both; }
+.cine-hero.anim [data-enter] { opacity: 0; }   /* hidden until .is-in; no-JS stays visible */
+.cine-hero.is-in [data-enter] { animation: cine-enter-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.cine-hero.is-in [data-enter="2"] { animation-delay: 0.14s; }
+.cine-hero.is-in [data-enter="3"] { animation-delay: 0.26s; }
+
+.cine-hero__panel { max-width: 540px; margin-left: auto; }
+
+.cine-hero__panel .script {
+  font-family: var(--script-font-family), cursive;
+  color: #fff;
+  font-weight: 400;
+  font-size: 64px;
+  line-height: 0.95;
+  margin: 0 0 12px;
+  text-align: left;
+  text-shadow: 0 2px 20px rgb(26 26 23 / 35%);
+}
+
+/* word-by-word script reveal (JS wraps each word in .w, sets per-word delay).
+   Default is visible; only .pre-reveal hides — so a JS failure still shows the line. */
+.cine-hero__panel .script .w {
+  display: inline-block;
+  will-change: transform, opacity;
+  transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cine-hero.pre-reveal .cine-hero__panel .script .w {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: none;
+}
+
+.cine-hero__panel h1 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: -0.01em;
+  margin: 0 0 24px;
+  max-width: none;      /* the <br> after the comma controls the 2-line break */
+  text-align: left;
+  text-shadow: 0 2px 16px rgb(26 26 23 / 40%);
+  text-wrap: balance; /* balanced lines — keeps French " ?" / " !" from wrapping alone */
+}
+
+.cine-hero__cta {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.cine-hero__cta .button-container { margin: 0; }
+
+.cine-hero__cta a.button {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 14px 28px;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  margin: 0;
+  transition: transform 0.18s ease, background 0.18s ease;
+}
+
+.cine-hero__cta a.button:hover { transform: translateY(-2px); }
+
+/* first CTA (bare link → .button): solid light */
+.cine-hero__cta a.button:not(.secondary) { background: #fff; color: #1a1a17; box-shadow: 0 6px 18px rgb(26 26 23 / 18%); }
+.cine-hero__cta a.button:not(.secondary):hover { background: #f4f1e8; }
+
+/* second CTA (em>a → .button.secondary): ghost on a smoky frosted fill, so the white
+   label and outline still read over bright photos */
+.cine-hero__cta a.button.secondary { background: rgb(26 26 23 / 28%); backdrop-filter: blur(6px); color: #fff; border: 1.5px solid rgb(255 255 255 / 85%); }
+.cine-hero__cta a.button.secondary:hover { background: rgb(26 26 23 / 40%); }
+
+.cine-hero__cue {
+  position: absolute;
+  bottom: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  color: #fff;
+  font-size: 36px;
+  opacity: 0.85;
+  animation: cine-bob 2.4s ease-in-out infinite;
+}
+
+@keyframes cine-bob { 0%, 100% { transform: translate(-50%, 0); } 50% { transform: translate(-50%, 8px); } }
+
+@media (width <= 900px) {
+  .cine-hero.block { min-height: 82vh; }
+  .cine-hero__panel { max-width: none; }
+  .cine-hero__panel .script { font-size: 50px; }
+}
+
+@media (width <= 560px) {
+  .cine-hero__panel .script { font-size: 42px; }
+  .cine-hero__panel h1 { font-size: 21px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cine-hero__bg { transform: none !important; clip-path: none !important; animation: none !important; }
+
+  .cine-hero__inner,
+  .cine-hero.block[data-block-status] .cine-hero__inner { opacity: 1 !important; transform: none !important; transition: none; }
+  .cine-hero .cine-hero__panel [data-enter] { opacity: 1 !important; transform: none !important; animation: none !important; }
+  .cine-hero__panel .script .w { opacity: 1 !important; transform: none !important; transition: none; }
+  .cine-hero__cue { animation: none; }
+}
+
+/* ── variant `wipe` — avant → après (/realisations/) ─────────────────────
+   Two authored images. Static (no JS / reduced motion): après shown, hero at
+   its normal height. With motion (.anim), the block grows to 210vh and the
+   stage pins while scripts/motion.js drives --p (0 = avant, 1 = après):
+   a FEATHERED wipe (16% soft edge — the editorial register refuses hard clips). */
+.cine-hero.wipe.block { display: block; overflow: clip; --p: 1; }
+.cine-hero.wipe.anim { height: 210vh; }
+
+.cine-hero__stage {
+  position: relative;
+  min-height: 88vh;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+}
+
+.cine-hero.wipe.anim .cine-hero__stage { position: sticky; top: 0; height: 100vh; min-height: 600px; }
+.cine-hero.wipe .cine-hero__bg { inset: -4vh 0; height: auto; transform: scale(1.02); }
+.cine-hero__layer { position: absolute; inset: 0; }
+.cine-hero__layer picture { display: block; }
+.cine-hero__layer img { object-position: center 40%; }
+
+.cine-hero__layer--after {
+  mask-image: linear-gradient(90deg, #000 0, #000 calc(var(--p) * 116% - 16%), transparent calc(var(--p) * 116%));
+}
+
+/* stronger scrim: bright interiors behind white type (panel sits bottom-right);
+   cream veil at the top so the dark nav reads over a cluttered "avant" photo */
+.cine-hero.wipe .cine-hero__bg::after {
+  z-index: 1;
+  background:
+    linear-gradient(180deg, rgb(253 254 250 / 88%) 0%, rgb(253 254 250 / 72%) 10%, rgb(253 254 250 / 0%) 21%),
+    radial-gradient(ellipse 58% 62% at 80% 86%, rgb(26 26 23 / 62%) 0%, rgb(26 26 23 / 28%) 55%, rgb(26 26 23 / 0%) 100%),
+    linear-gradient(180deg, rgb(26 26 23 / 0%) 22%, rgb(26 26 23 / 6%) 55%, rgb(26 26 23 / 50%) 100%);
+}
+
+/* full-bleed heroes (not split; wipe has its own in the scrim): cream veil under the
+   overlay header so the dark nav reads over any photo. Fixed px so it hugs the header;
+   eased stops (no visible edge), mostly gone by the panel's script line (~112px). */
+.cine-hero:not(.split, .wipe)::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 190px;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgb(253 254 250 / 86%) 0,
+    rgb(253 254 250 / 74%) 40px,
+    rgb(253 254 250 / 55%) 72px,
+    rgb(253 254 250 / 34%) 102px,
+    rgb(253 254 250 / 17%) 130px,
+    rgb(253 254 250 / 6%) 160px,
+    rgb(253 254 250 / 0%) 190px
+  );
+}
+
+.cine-hero:not(.split, .wipe) .cine-hero__inner { z-index: 2; }
+
+/* homepage hero (no lead, not split/wipe): dark veil behind the white type
+   (panel sits right of centre) */
+.cine-hero:not(.split, .wipe, :has(.lead)) .cine-hero__bg::after {
+  z-index: 1;
+  background:
+    radial-gradient(ellipse 48% 36% at 68% 52%, rgb(26 26 23 / 62%) 0%, rgb(26 26 23 / 38%) 50%, rgb(26 26 23 / 0%) 100%),
+    linear-gradient(180deg, rgb(26 26 23 / 0%) 50%, rgb(26 26 23 / 45%) 75%);
+}
+
+/* white script + headline on full-bleed photos: a firmer shadow for bright spots */
+.cine-hero:not(.split, .wipe) .cine-hero__panel :is(.script, h1) { text-shadow: 0 2px 18px rgb(26 26 23 / 55%); }
+
+/* phones: the panel spans the width from the left gutter — widen + recentre the dark veil */
+@media (width <= 600px) {
+  .cine-hero:not(.split, .wipe, :has(.lead)) .cine-hero__bg::after {
+    background:
+      radial-gradient(ellipse 95% 26% at 40% 46%, rgb(26 26 23 / 62%) 0%, rgb(26 26 23 / 38%) 55%, rgb(26 26 23 / 0%) 100%),
+      linear-gradient(180deg, rgb(26 26 23 / 0%) 50%, rgb(26 26 23 / 45%) 70%);
+  }
+}
+
+.cine-hero.wipe .cine-hero__panel { max-width: 560px; }
+.cine-hero.wipe .cine-hero__panel .script { font-size: 80px; margin-bottom: 8px; }
+.cine-hero.wipe .cine-hero__panel h1 { font-size: 42px; font-weight: 700; margin: 0 0 14px; }
+
+.cine-hero__panel .lead {
+  color: rgb(255 255 255 / 92%);
+  font-size: 18px;
+  line-height: 1.6;
+  margin: 0 0 22px;
+  max-width: 46ch;
+  text-shadow: 0 1px 10px rgb(26 26 23 / 45%);
+}
+
+/* avant / après state pill — words are generated content, toggled via .is-after */
+.cine-hero__state {
+  display: inline-flex;
+  border-radius: 999px;
+  overflow: hidden;
+  background: rgb(26 26 23 / 45%);
+  backdrop-filter: blur(4px);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.cine-hero__state i { font-style: normal; padding: 7px 14px; color: rgb(255 255 255 / 70%); transition: background 0.35s ease, color 0.35s ease; }
+.cine-hero__state i:first-child::before { content: "Avant"; }
+.cine-hero__state i:last-child::before { content: "Après"; }
+.cine-hero.wipe:not(.is-after) .cine-hero__state i:first-child { background: rgb(255 255 255 / 18%); color: #fff; }
+.cine-hero.wipe.is-after .cine-hero__state i:last-child { background: #eed366; color: #1a1a17; }
+.cine-hero.wipe:not(.anim) .cine-hero__state { display: none; }
+
+@media (width <= 900px) {
+  .cine-hero.wipe .cine-hero__panel .script { font-size: 56px; }
+  .cine-hero.wipe .cine-hero__panel h1 { font-size: 32px; }
+}
+
+@media (width <= 560px) {
+  .cine-hero.wipe .cine-hero__panel .script { font-size: 46px; }
+  .cine-hero__panel .lead { font-size: 16px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cine-hero.wipe.block { height: auto; --p: 1 !important; }
+  .cine-hero.wipe .cine-hero__stage { position: relative; height: auto; }
+}
+
+/* ── inner-page additions (prestations): breadcrumb + price tag ─────────── */
+.cine-hero__panel .crumb { margin: 0 0 10px; text-align: left; }
+
+.cine-hero__panel .crumb a {
+  color: rgb(255 255 255 / 88%);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.cine-hero__panel .crumb a::before { content: "← "; }
+.cine-hero__panel .crumb a:hover { color: #eed366; }
+
+.cine-hero__panel .price {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+  margin: 0 0 20px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: rgb(26 26 23 / 45%);
+  backdrop-filter: blur(4px);
+  color: #fff;
+  font-size: 14px;
+}
+
+.cine-hero__panel .price strong { color: #eed366; font-size: 17px; font-weight: 700; }
+
+
+/* inner pages (a lead paragraph is present): the h1 is the title, not a tagline */
+.cine-hero__panel:has(.lead) h1 { font-size: 42px; font-weight: 700; margin: 0 0 12px; }
+
+@media (width <= 560px) {
+  .cine-hero__panel:has(.lead) h1 { font-size: 32px; }
+}
+
+/* ── variant `split` — text left, framed portrait right (qui-suis-je, contact) ── */
+.cine-hero.split.block { display: block; min-height: 0; overflow: visible; padding: 148px 24px 88px; }
+
+.cine-hero__split {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: 64px;
+  align-items: center;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.cine-hero.split .cine-hero__inner { padding: 0; max-width: none; margin: 0; }
+.cine-hero.split .cine-hero__panel { max-width: none; margin: 0; }
+
+.cine-hero.split .cine-hero__bg {
+  position: relative;
+  inset: auto;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  border-radius: 20px;
+  overflow: hidden;
+  transform: none;
+  box-shadow: 0 18px 44px rgb(90 90 82 / 18%);
+}
+
+.cine-hero.split .cine-hero__bg::after { content: none; }
+.cine-hero.split .cine-hero__bg img { object-position: center 20%; }
+.cine-hero.split .cine-hero__panel .script { color: #728e7f; text-shadow: none; font-size: 54px; line-height: 1.05; }
+.cine-hero.split .cine-hero__panel h1 { color: #1a1a17; text-shadow: none; font-size: 46px; font-weight: 700; margin: 0 0 16px; }
+.cine-hero.split .cine-hero__panel .lead { color: #5a5a52; text-shadow: none; font-size: 19px; max-width: 52ch; }
+.cine-hero.split .cine-hero__panel .crumb a { color: #4a6357; }
+
+/* tag paragraph on the cream ground (e.g. contact hours): light sage chip, dark sage text */
+.cine-hero.split .cine-hero__panel .price { background: #eef3ef; backdrop-filter: none; color: #4a6357; }
+.cine-hero.split .cine-hero__panel .price strong { color: #3f574a; font-size: 16px; }
+.cine-hero.split .cine-hero__cta a.button:not(.secondary) { background: #4a6357; color: #fff; box-shadow: 0 6px 18px rgb(74 99 87 / 25%); }
+.cine-hero.split .cine-hero__cta a.button:not(.secondary):hover { background: #3f574a; }
+.cine-hero.split .cine-hero__cta a.button.secondary { background: transparent; color: #4a6357; border: 1.5px solid #728e7f; }
+.cine-hero.split .cine-hero__cta a.button.secondary:hover { background: #eef3ef; }
+
+@media (width <= 900px) {
+  .cine-hero.split.block { padding: 120px 20px 56px; }
+  .cine-hero__split { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .cine-hero.split .cine-hero__bg { max-height: 70vh; aspect-ratio: 4 / 5; }
+  .cine-hero.split .cine-hero__panel h1 { font-size: 34px; }
+}
+
+@media (width <= 560px) {
+  .cine-hero.split .cine-hero__panel .script { font-size: 40px; }
+}
+
+
+/* ── phones: full-bleed photo heroes become stacked ───────────────────────
+   A landscape photo cropped to a 390px-wide column, under the full panel, read as
+   texture (faces under the copy). On phones the photo is framed on top (16:10) and
+   the copy sits below on cream, styled like the split variant. Tablets/desktop keep
+   the cinematic full-bleed hero; /realisations (wipe) keeps its avant/après. */
+@media (width <= 600px) {
+  .cine-hero:not(.split, .wipe).block {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    min-height: 0;
+    padding: 100px 0 8px;
+    background: #fdfefa;
+  }
+
+  .cine-hero:not(.split, .wipe)::before { content: none; }
+
+  .cine-hero:not(.split, .wipe) .cine-hero__bg {
+    position: relative;
+    inset: auto;
+    height: auto;
+    aspect-ratio: 16 / 10;
+    margin: 0 16px;
+    border-radius: 20px;
+    overflow: hidden;
+    transform: none !important;
+    box-shadow: 0 14px 34px rgb(90 90 82 / 16%);
+  }
+
+  .cine-hero:not(.split, .wipe) .cine-hero__bg::after { content: none; }
+  .cine-hero:not(.split, .wipe) .cine-hero__bg img { object-position: center 35%; }
+  .cine-hero:not(.split, .wipe) .cine-hero__inner { padding: 26px 20px 40px; }
+  .cine-hero:not(.split, .wipe) .cine-hero__cue { display: none; }
+
+  .cine-hero:not(.split, .wipe) .cine-hero__panel :is(.script, h1, .lead) { text-shadow: none; }
+  .cine-hero:not(.split, .wipe) .cine-hero__panel .script { color: #728e7f; font-size: 38px; line-height: 1.05; }
+  .cine-hero:not(.split, .wipe) .cine-hero__panel h1 { color: #1a1a17; font-size: 28px; font-weight: 700; line-height: 1.2; margin: 0 0 14px; }
+  .cine-hero:not(.split, .wipe) .cine-hero__panel .lead { color: #5a5a52; font-size: 17px; }
+  .cine-hero:not(.split, .wipe) .cine-hero__panel .crumb a { color: #4a6357; }
+  .cine-hero:not(.split, .wipe) .cine-hero__panel .price { background: #eef3ef; backdrop-filter: none; color: #4a6357; }
+  .cine-hero:not(.split, .wipe) .cine-hero__panel .price strong { color: #3f574a; }
+  .cine-hero:not(.split, .wipe) .cine-hero__cta a.button:not(.secondary) { background: #4a6357; color: #fff; box-shadow: 0 6px 18px rgb(74 99 87 / 25%); }
+  .cine-hero:not(.split, .wipe) .cine-hero__cta a.button.secondary { background: transparent; backdrop-filter: none; color: #4a6357; border: 1.5px solid #728e7f; }
+}
+
+/* ── phones: /realisations hero is the copy alone (`copy-only`, JS) ──────
+   The avant/après pairs follow right below, so no photo and no pin: just the
+   script line, title and intro on cream, like the other phone heroes. */
+@media (width <= 600px) {
+  .cine-hero.wipe.copy-only.block { height: auto; min-height: 0; overflow: visible; padding: 100px 0 0; background: #fdfefa; }
+  .cine-hero.wipe.copy-only .cine-hero__stage { position: relative; height: auto; min-height: 0; overflow: visible; }
+  .cine-hero.wipe.copy-only :is(.cine-hero__bg, .cine-hero__cue, .cine-hero__state) { display: none; }
+  .cine-hero.wipe.copy-only .cine-hero__inner { padding: 20px 20px 32px; }
+  .cine-hero.wipe.copy-only .cine-hero__panel :is(.script, h1, .lead) { text-shadow: none; }
+  .cine-hero.wipe.copy-only .cine-hero__panel .script { color: #728e7f; font-size: 38px; line-height: 1.05; }
+  .cine-hero.wipe.copy-only .cine-hero__panel h1 { color: #1a1a17; font-size: 28px; line-height: 1.2; margin: 0 0 14px; }
+  .cine-hero.wipe.copy-only .cine-hero__panel .lead { color: #5a5a52; font-size: 17px; margin-bottom: 0; }
+}

@@ -1,0 +1,53 @@
+{
+  "_provenance": {
+    "writtenBy": "stardust:uplift (Phase 4 / direct — Mode A brand-faithful)",
+    "writtenAt": "2026-09-12",
+    "againstInput": "https://www.celinek.org",
+    "target": true
+  },
+  "colors": {
+    "background": "#fdfefa",
+    "surface": "#ffffff",
+    "text": "#1a1a17",
+    "primary": "#728e7f",
+    "primaryDeep": "#4a6357",
+    "accent": "#eed366",
+    "accentDeep": "#b8912a",
+    "surfaceWarm": "#f8e1af",
+    "surfaceSage": "#e4ebe6"
+  },
+  "typography": {
+    "heading": { "family": "Comfortaa" },
+    "body": { "family": "Comfortaa" },
+    "script": { "family": "Sacramento", "role": "display" },
+    "mono": { "family": "Roboto Mono" },
+    "ratio": 1.25
+  },
+  "rounded": { "buttons": "pill", "cards": "16px" },
+  "components": ["header-nav", "hero", "intro-split", "why-values", "process-steps", "testimonials", "contact-cta", "footer"],
+  "extensions": {
+    "mode": "A",
+    "componentStyle": {
+      "buttons": "pill; primary = sage fill / dark text; conversion = gold fill / dark text",
+      "cards": "16px radius, soft warm shadow, cream/white surface",
+      "bands": "full-bleed tinted (#f8e1af gold, #e4ebe6 sage)"
+    },
+    "systemComponentRoles": [
+      { "role": "header", "purpose": "brand + primary nav", "position": "sticky-top" },
+      { "role": "footer", "purpose": "contact + social + legal", "position": "page-end" },
+      { "role": "cta-band", "purpose": "drive contact", "position": "pre-footer", "constraint": "conversion CTA uses gold accent" }
+    ],
+    "iaPriorities": [
+      { "signal": "commercial-conversion", "evidence": "pages/index.json.ctas — Contactez-moi + mailto:contact@celinek.org", "preserveAs": "first-viewport + pre-footer", "scope": "site-wide", "mutability": "movable" }
+    ],
+    "voice": {
+      "language": "fr-FR",
+      "dos": ["warm, reassuring, first-person", "name the emotional weight of clutter", "non-judgmental"],
+      "donts": ["clinical productivity tone", "hype", "invent stats/quotes"]
+    },
+    "divergence": {
+      "anti_toolbox_hits": [],
+      "notes": "Mode A brand-faithful: palette and type pinned to captured surface (sage #728e7f, gold #eed366/#f8e1af, Comfortaa, Sacramento). Captured text color was pure #000; softened to warm near-black #1a1a17 as a Mode A+ legibility refinement on the cream ground (documented per proposed-file-shell § brand-faithful pure-black inheritance). Captured background #fdfefa is already near-white (not pure). Darker sage/gold tokens added ONLY to meet WCAG AA on small text/borders; hero/large uses stay on the captured hues."
+    }
+  }
+}

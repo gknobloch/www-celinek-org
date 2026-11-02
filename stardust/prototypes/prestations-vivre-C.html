@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<!--
+  _provenance:
+    writtenBy: stardust:prototype (variant C canon) — service template, instance: vivre-et-vieillir-chez-soi
+    writtenAt: 2026-09-23
+    brandSurface: approved homepage canon (index-C-cinematic.html, DESIGN-C.json) — register editorial
+    contentSource: https://www.celinek.org/prestations-tarifs/** (verbatim fr-FR)
+    generatedBy: stardust/scripts/prestations-prototypes.py
+-->
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Vivre et vieillir chez soi — Céline Knobloch, Home Organiser</title>
+<link rel="icon" href="assets/favicon.ico">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Rangement et organisation d’intérieurs adaptés aux séniors pour rester chez soi en sécurité : Pack Tranquillité dès 350 €, Pack Sérénité dès 550 €.">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;600;700&family=Sacramento&display=swap');
+:root{
+  --heading-font-family:'Comfortaa','helvetica neue',helvetica,sans-serif;
+  --body-font-family:'Comfortaa','helvetica neue',helvetica,sans-serif;
+  --script-font-family:'Sacramento','Brush Script MT',cursive;
+  --heading-xxl:60px; --heading-xl:42px; --heading-lg:32px; --heading-md:22px;
+  --body:18px; --body-sm:15px; --line-height-heading:1.14; --line-height-body:1.75;
+  --color-bg:#fdfefa; --color-surface:#ffffff; --color-fg:#1a1a17; --color-muted:#5a5a52;
+  --color-accent:#728e7f; --color-accent-deep:#4a6357;
+  --color-gold:#eed366; --color-gold-deep:#806515;
+  --color-band-warm:#f8e1af; --color-band-sage:#e4ebe6; --color-contact:#445b4f;
+  --section-padding:104px; --max-width:1120px; --radius:16px;
+  --shadow-soft:0 10px 30px rgba(90,90,82,.12); --shadow-card:0 6px 20px rgba(90,90,82,.10);
+  --ease-out-cubic:cubic-bezier(0.25,0.46,0.45,0.94); --ease-expo:cubic-bezier(0.16,1,0.3,1);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--color-bg);color:var(--color-fg);font-family:var(--body-font-family);
+  font-size:var(--body);line-height:var(--line-height-body);-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:var(--color-accent-deep);text-decoration:none}
+a:hover{color:var(--color-gold-deep)}
+h1,h2,h3{font-family:var(--heading-font-family);line-height:var(--line-height-heading);font-weight:700;margin:0}
+.container{max-width:var(--max-width);margin:0 auto;padding:0 24px}
+.script{font-family:var(--script-font-family);color:var(--color-accent);font-weight:400}
+.eyebrow{font-size:var(--body-sm);letter-spacing:.14em;text-transform:uppercase;color:var(--color-accent-deep);font-weight:600;margin:0 0 12px}
+.btn{display:inline-block;border:none;cursor:pointer;font-family:var(--heading-font-family);font-weight:600;
+  font-size:var(--body-sm);padding:14px 28px;border-radius:999px;transition:transform .18s ease,background .18s ease}
+.btn:hover{transform:translateY(-2px)}
+.btn--gold{background:var(--color-gold);color:#1a1a17;box-shadow:0 6px 18px rgba(90,90,82,.20)}
+.btn--gold:hover{background:#f2dd80;color:#1a1a17}
+.btn--ghost{background:transparent;color:var(--color-accent-deep);border:1.5px solid var(--color-accent)}
+.btn--ghost:hover{background:#eef3ef;color:var(--color-accent-deep)}
+.btn--deep{background:#445b4f;color:#fff}
+.btn--deep:hover{background:#374b40;color:#fff}
+:focus-visible{outline:3px solid var(--color-gold-deep);outline-offset:3px}
+
+/* Header — canon condensing nav */
+.site-header{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(253,254,250,0);border-bottom:1px solid transparent;transition:background .3s ease,border-color .3s ease,box-shadow .3s ease}
+.site-header.solid,.site-header.scrolled{background:rgba(253,254,250,.94);backdrop-filter:blur(8px);border-bottom-color:#eceee6}
+.site-header.scrolled{box-shadow:0 6px 24px rgba(90,90,82,.10)}
+.site-header .container{display:flex;align-items:center;justify-content:space-between;height:92px;transition:height .38s var(--ease-out-cubic)}
+.site-header.scrolled .container{height:62px}
+.brand{display:flex;align-items:center;gap:12px;color:var(--color-fg)}
+.brand img{height:56px;width:auto;transform-origin:left center;transition:transform .38s var(--ease-out-cubic)}
+.site-header.scrolled .brand img{transform:scale(.68)}
+.brand .name{font-family:var(--heading-font-family);font-weight:700;font-size:16px;line-height:1.1}
+.brand .tagwrap{display:grid;grid-template-rows:1fr;transition:grid-template-rows .38s var(--ease-out-cubic)}
+.site-header.scrolled .brand .tagwrap{grid-template-rows:0fr}
+.brand .tag{display:block;min-height:0;overflow:hidden;font-size:11px;letter-spacing:.12em;color:var(--color-accent-deep);text-transform:uppercase;font-weight:600;transition:opacity .3s ease}
+.site-header.scrolled .brand .tag{opacity:0}
+.nav{display:flex;gap:26px;align-items:center}
+.nav a{font-size:15px;color:var(--color-fg);font-weight:500}
+.nav a[aria-current]{color:var(--color-accent-deep);font-weight:700;box-shadow:inset 0 -2px 0 var(--color-gold)}
+.nav a:hover{color:var(--color-accent-deep)}
+.nav .btn{padding:10px 20px}
+.nav-toggle{display:none;background:none;border:none;font-size:26px;color:var(--color-fg);cursor:pointer}
+/* over-photo state (C hero) */
+.site-header.over:not(.scrolled) .brand,.site-header.over:not(.scrolled) .nav a:not(.btn),
+.site-header.over:not(.scrolled) .brand .tag,.site-header.over:not(.scrolled) .nav-toggle{color:#fff}
+.site-header.over:not(.scrolled) .nav a[aria-current]{box-shadow:inset 0 -2px 0 var(--color-gold)}
+.site-header.over:not(.scrolled) .brand img{filter:brightness(0) invert(1)}
+
+/* Before / after comparison — responsive, labeled, keyboard-operable */
+.ba{margin:0}
+.ba__frame{--pos:50%;position:relative;aspect-ratio:var(--ar,3/4);border-radius:var(--radius);overflow:hidden;
+  box-shadow:var(--shadow-card);background:#eceee6;isolation:isolate}
+.ba__frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ba__before{clip-path:inset(0 calc(100% - var(--pos)) 0 0);z-index:1}
+.ba__line{position:absolute;z-index:2;top:0;bottom:0;left:var(--pos);width:2px;margin-left:-1px;background:#fff;
+  box-shadow:0 0 14px rgba(26,26,23,.35);pointer-events:none}
+.ba__knob{position:absolute;z-index:3;top:50%;left:var(--pos);width:46px;height:46px;margin:-23px 0 0 -23px;border-radius:999px;
+  background:#fff;color:var(--color-accent-deep);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700;
+  letter-spacing:-2px;box-shadow:0 6px 18px rgba(26,26,23,.25);pointer-events:none;transition:transform .2s ease}
+.ba__frame:hover .ba__knob{transform:scale(1.08)}
+.ba__tag{position:absolute;z-index:3;top:12px;padding:5px 12px;border-radius:999px;font-size:11px;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;pointer-events:none;line-height:1.2}
+.ba__tag--before{left:12px;background:rgba(26,26,23,.64);color:#fff}
+.ba__tag--after{right:12px;background:var(--color-gold);color:#1a1a17}
+.ba__range{position:absolute;z-index:4;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize;-webkit-appearance:none;appearance:none}
+.ba__frame:has(.ba__range:focus-visible){outline:3px solid var(--color-gold-deep);outline-offset:3px}
+.ba figcaption{font-size:var(--body-sm);color:var(--color-muted);margin-top:10px}
+
+/* Contact — canon warm gold band */
+.contact{background:linear-gradient(135deg,#f8e1af 0%,#eecb7f 100%);color:#1a1a17;text-align:center;padding:var(--section-padding) 0}
+.contact .script{font-size:46px;color:var(--color-accent-deep);display:block;line-height:1;margin-bottom:6px}
+.contact h2{font-size:var(--heading-xl);color:#1a1a17;margin-bottom:14px}
+.contact p{color:#4a4433;max-width:52ch;margin:0 auto 30px}
+.contact__row{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;align-items:center}
+.contact__phone{color:#3f574a;font-weight:700;font-size:var(--body)}
+.contact__more{margin-top:22px;font-size:var(--body-sm)}
+.contact__more a{color:#3f574a;font-weight:700;text-decoration:underline;text-underline-offset:4px}
+
+/* Footer — canon deep sage */
+.site-footer{background:#445b4f;color:rgba(255,255,255,.82)}
+.site-footer .container{display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between;padding-top:32px;padding-bottom:32px}
+.site-footer .fcontact{display:flex;gap:22px;flex-wrap:wrap;align-items:center;font-size:var(--body-sm)}
+.site-footer a{color:#fff;font-weight:600}
+.site-footer a:hover{color:var(--color-gold)}
+.socials{display:flex;gap:12px;align-items:center}
+.socials a{width:34px;height:34px;border-radius:999px;background:rgba(255,255,255,.92);display:flex;align-items:center;justify-content:center}
+.socials img{width:18px;height:18px}
+
+@media (max-width:900px){
+  :root{--section-padding:64px}
+  .nav{display:none}
+  .nav-toggle{display:block}
+  .site-header.open .nav{display:flex;position:absolute;top:100%;left:0;right:0;flex-direction:column;background:var(--color-bg);padding:20px 24px;gap:16px;border-bottom:1px solid #eceee6}
+  .site-header.open .nav a:not(.btn){color:var(--color-fg)!important}
+  .site-header.open{background:rgba(253,254,250,.98)}
+}
+@media (max-width:560px){
+  :root{--heading-xl:30px;--heading-lg:27px;--section-padding:56px}
+  .contact .script{font-size:36px}
+  .brand .name{font-size:14px}
+  .brand img{height:46px}
+}
+
+/* Hero — full-bleed editorial photo (canon), shorter for inner pages */
+.hero{position:relative;min-height:max(560px,78vh);padding-top:128px;overflow:hidden;display:flex;align-items:flex-end}
+.hero__bg{position:absolute;top:-12vh;left:0;right:0;bottom:0;will-change:transform}
+.hero__bg img{width:100%;height:100%;object-fit:cover;object-position:center 35%}
+.hero__bg::after{content:"";position:absolute;inset:0;background:
+  radial-gradient(ellipse 60% 64% at 78% 86%,rgba(26,26,23,.62) 0%,rgba(26,26,23,.26) 55%,rgba(26,26,23,0) 100%),
+  linear-gradient(180deg,rgba(26,26,23,.34) 0%,rgba(26,26,23,.06) 26%,rgba(26,26,23,.5) 100%)}
+.hero__inner{position:relative;z-index:1;width:100%;padding-bottom:64px;will-change:transform,opacity}
+.hero__panel{max-width:600px;margin-left:auto}
+.crumb{display:inline-block;color:rgba(255,255,255,.85);font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;margin:0 0 10px}
+.crumb:hover{color:var(--color-gold)}
+.hero__script{font-family:var(--script-font-family);color:#fff;font-size:64px;line-height:.95;margin:0 0 6px;text-shadow:0 2px 20px rgba(26,26,23,.35)}
+.hero__script .w{display:inline-block}
+.hero h1{font-size:var(--heading-xl);color:#fff;margin:0 0 12px;text-shadow:0 2px 16px rgba(26,26,23,.4)}
+.hero .lead{color:rgba(255,255,255,.92);font-size:18px;margin:0 0 22px;max-width:48ch;text-shadow:0 1px 10px rgba(26,26,23,.45)}
+.hero__cta{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.btn--light{background:#fff;color:#1a1a17;box-shadow:0 6px 18px rgba(26,26,23,.18)}
+.btn--light:hover{background:#f4f1e8;color:#1a1a17}
+.btn--ghost-light{background:rgba(255,255,255,.10);color:#fff;border:1.5px solid rgba(255,255,255,.72)}
+.btn--ghost-light:hover{background:rgba(255,255,255,.22);color:#fff}
+.price-chip{display:inline-flex;align-items:baseline;gap:8px;background:rgba(26,26,23,.45);backdrop-filter:blur(4px);color:#fff;border-radius:999px;padding:8px 16px;font-size:14px;margin:0 0 20px}
+.price-chip strong{color:var(--color-gold);font-size:17px}
+.read-progress{position:fixed;top:0;left:0;right:0;height:3px;z-index:60;pointer-events:none}
+.read-progress i{display:block;height:100%;transform:scaleX(0);transform-origin:left;background:linear-gradient(90deg,var(--color-accent),var(--color-gold))}
+
+section.band{padding:var(--section-padding) 0}
+.band--warm{background:var(--color-band-warm)}
+.band--sage{background:var(--color-band-sage)}
+.head{max-width:760px;margin:0 0 40px}
+.head--center{text-align:center;margin:0 auto 44px}
+.head .script{font-size:40px;display:block;line-height:1;margin-bottom:2px}
+.head h2{font-size:var(--heading-xl)}
+.head p{color:var(--color-muted);margin:12px 0 0}
+.head--center p{margin-left:auto;margin-right:auto;max-width:56ch}
+
+/* steps (canon) */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;counter-reset:step}
+.step{background:var(--color-surface);border-radius:var(--radius);padding:32px;box-shadow:var(--shadow-card)}
+.step__num{counter-increment:step;font-weight:700;font-size:20px;width:48px;height:48px;border-radius:999px;background:var(--color-band-sage);color:var(--color-accent-deep);display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+.step__num::before{content:counter(step)}
+.step h3{font-size:var(--heading-md);margin-bottom:10px}
+.step p{color:var(--color-muted);font-size:var(--body-sm);margin:0}
+
+/* benefits (icons) */
+.benefits{display:grid;grid-template-columns:repeat(5,1fr);gap:18px}
+.benefit{background:rgba(255,255,255,.7);border-radius:var(--radius);padding:26px 18px;text-align:center}
+.benefit img{width:52px;height:52px;margin:0 auto 14px;object-fit:contain}
+.benefit h3{font-size:16px;line-height:1.35;color:var(--color-accent-deep);font-weight:700}
+
+@media (max-width:900px){
+  .hero{min-height:max(520px,70vh);padding-top:112px}
+  .hero__script{font-size:50px}
+  .steps{grid-template-columns:1fr}
+  .benefits{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:560px){
+  .hero__script{font-size:42px}
+  .head .script{font-size:32px}
+  .benefits{grid-template-columns:1fr 1fr;gap:12px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+  [data-anim]{opacity:1!important;transform:none!important}
+  .hero__bg,.hero__inner{transform:none!important;opacity:1!important}
+}
+
+.concerns{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.concern{background:var(--color-surface);border-radius:var(--radius);padding:28px;box-shadow:var(--shadow-card);position:relative}
+.concern::before{content:"";display:block;width:36px;height:3px;border-radius:3px;background:var(--color-gold);margin-bottom:16px}
+.concern p{margin:0;color:var(--color-muted);font-size:16px}
+.concern strong{color:#1a1a17}
+.pillars{display:grid;grid-template-columns:repeat(2,1fr);gap:28px}
+.pillar{background:rgba(255,255,255,.7);border-radius:var(--radius);padding:34px}
+.pillar h2{font-size:26px;margin:0 0 14px}
+.pillar p{color:#4a4433;font-size:16px;margin:0 0 12px}
+.statement{padding:88px 0;text-align:center}
+.statement h2{font-size:34px;line-height:1.3;max-width:24ch;margin:0 auto;color:var(--color-accent-deep)}
+.bio{display:grid;grid-template-columns:.8fr 1.2fr;gap:64px;align-items:center}
+.bio__media{border-radius:var(--radius);overflow:hidden;aspect-ratio:4/5;box-shadow:var(--shadow-soft)}
+.bio__media img{width:100%;height:100%;object-fit:cover;object-position:center 20%}
+.bio .eyebrow{margin-bottom:10px}
+.bio blockquote{margin:0 0 22px;font-size:19px;line-height:1.7;font-style:italic;color:#3d3829}
+.bio .script{font-size:34px;line-height:1.15;display:block;color:var(--color-accent-deep)}
+.notes{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-top:28px}
+.note{border:1.5px dashed #c9d3cd;border-radius:var(--radius);padding:20px 22px;font-size:15px;color:var(--color-muted)}
+.note strong{display:block;color:var(--color-accent-deep);font-size:13px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px}
+.prices{display:grid;grid-template-columns:repeat(2,1fr);gap:28px;max-width:860px;margin:0 auto}
+.price{background:var(--color-surface);border-radius:20px;padding:34px 34px 30px;box-shadow:var(--shadow-soft);text-align:center;border:2px solid transparent}
+.price--featured{border-color:var(--color-gold)}
+.price h3{font-size:22px;margin:0 0 4px}
+.price .rooms{color:var(--color-muted);font-size:15px;margin:0 0 18px}
+.price .from{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--color-accent-deep);font-weight:700;margin:0}
+.price .amount{font-size:46px;font-weight:700;line-height:1.1;margin:2px 0 22px;color:#1a1a17}
+.price-foot{text-align:center;color:var(--color-muted);font-size:15px;margin:22px 0 0}
+.others{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.other{display:flex;gap:16px;align-items:center;background:var(--color-surface);border-radius:var(--radius);padding:14px;box-shadow:var(--shadow-card);color:inherit;transition:transform .3s var(--ease-expo)}
+.other:hover{transform:translateY(-3px);color:inherit}
+.other img{width:84px;height:84px;border-radius:12px;object-fit:cover;flex:0 0 auto}
+.other h3{font-size:16px;margin:0 0 4px}
+.other span{font-size:14px;color:var(--color-accent-deep);font-weight:700}
+@media (max-width:900px){
+  .concerns,.pillars,.bio,.notes,.prices,.others{grid-template-columns:1fr}
+  .bio{gap:28px}.bio__media{aspect-ratio:4/3}
+  .statement h2{font-size:26px}
+}
+</style>
+</head>
+<body>
+<div class="read-progress" aria-hidden="true"><i></i></div>
+<header class="site-header over" id="nav">
+  <div class="container">
+    <a class="brand" href="/" aria-label="Céline Knobloch — accueil">
+      <img src="assets/logo.svg" alt="Logo Céline Knobloch">
+      <span class="name">CÉLINE KNOBLOCH<span class="tagwrap"><span class="tag">Trier · Ranger · Optimiser</span></span></span>
+    </a>
+    <button class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="primary-nav">☰</button>
+    <nav class="nav" id="primary-nav" aria-label="Navigation principale">
+      <a href="/">Accueil</a>
+      <a href="/qui-suis-je">Qui suis-je ?</a>
+      <a href="/prestations-tarifs/" aria-current="page">Prestations et Tarifs</a>
+      <a href="/realisations/" >Mes Réalisations</a>
+      <a class="btn btn--gold" href="/contact">Contactez-moi</a>
+    </nav>
+  </div>
+</header>
+<main>
+<section class="hero" data-section="hero" data-intent="orient" data-layout="full-bleed" data-media="image">
+  <div class="hero__bg"><img src="assets/prestations/service-vivre.webp" alt="Une femme âgée souriante, assise dans son salon" fetchpriority="high"></div>
+  <div class="hero__inner"><div class="container"><div class="hero__panel">
+    <a class="crumb" href="/prestations-tarifs/">← Prestations et tarifs</a>
+    <p class="hero__script">En toute sérénité</p>
+    <h1>Vivre et vieillir chez soi</h1>
+    <p class="lead">Une prestation en rangement et en organisation d’intérieurs spécifiquement adaptée aux séniors.</p>
+    <p class="price-chip"><span>Pack Tranquillité</span> <strong>à partir de 350 €</strong></p>
+    <div class="hero__cta"><a class="btn btn--light" href="#tarifs">Voir les tarifs</a><a class="btn btn--ghost-light" href="/contact">Contactez-moi</a></div>
+  </div></div></div>
+</section>
+  <section class="band" data-section="concerns" data-intent="recognise" data-layout="grid" data-items="3">
+    <div class="container">
+      <div class="head" data-anim><span class="script">Vous vous reconnaissez ?</span><h2>Pour qui ?</h2></div>
+      <div class="concerns">
+        <div class="concern" data-anim><p>Vous éprouvez des <strong>difficultés à gérer le ménage et le rangement</strong> de votre lieu de vie à cause de problèmes de santé.</p></div>
+        <div class="concern" data-anim><p>Votre souhait est de <strong>rester dans votre maison</strong> ou votre appartement le plus longtemps possible sans pour autant vous mettre en danger.</p></div>
+        <div class="concern" data-anim><p>Vos proches ressentent de l’inquiétude par rapport aux <strong>problématiques de maintien à domicile</strong> ce qui crée certaines fois des tensions au sein de votre entourage.</p></div>
+      </div>
+    </div>
+  </section>
+  <section class="band band--warm" data-section="pillars" data-intent="explain value" data-layout="two-column" data-items="2">
+    <div class="container">
+      <div class="pillars">
+        <div class="pillar" data-anim>
+          <h2>Rester chez soi dans de bonnes conditions</h2>
+          <p>Imaginez que chaque objet dont vous avez besoin trouve sa place chez vous suivant des critères d’ergonomie, de fonctionnalité et de confort. Votre bien-être s’en retrouverait rapidement augmenté !</p>
+          <p>En faisant appel à une professionnelle de l’organisation, <strong>vos affaires seront triées, rangées, et vos espaces de vie réorganisés</strong> en fonction de vos capacités physiques et psychiques actuelles.</p>
+          <p>Le rangement de vos placards sera repensé en fonction de ce qui est existant, il n’y a pas de travaux à prévoir. Le but est de faire <strong>simple</strong> et <strong>efficace</strong> pour que vous puissiez rapidement vous sentir bien chez vous tout en respectant votre confort.</p>
+        </div>
+        <div class="pillar" data-anim>
+          <h2>Éviter au maximum les risques de chutes</h2>
+          <p>Fluidifier la circulation dans votre logement, améliorer l’accessibilité aux objets dont vous avez besoin, trier ce dont vous ne vous servez plus a un impact direct sur vos déplacements chez vous.</p>
+          <p>En repensant vos rangements et en vous libérant du superflu, vos gestes du quotidien et l’entretien au sein de votre domicile seront facilités. L’objectif est de sécuriser vos déplacements pour réduire au maximum les risques de chute.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="statement" data-section="statement" data-intent="promise" data-layout="centered">
+    <div class="container"><h2 data-anim>Une organisation efficace de votre intérieur vous permettra de rester chez vous plus longtemps en toute sérénité !</h2></div>
+  </section>
+  <section class="band band--sage" data-section="bio" data-intent="build trust" data-layout="two-column" data-media="image">
+    <div class="container">
+      <div class="bio">
+        <div class="bio__media" data-anim><img src="assets/prestations/bio-vivre.webp" alt="Céline Knobloch, home organiser" loading="lazy"></div>
+        <div data-anim>
+          <p class="eyebrow">Une approche de soignante</p>
+          <blockquote>Infirmière pendant 14 ans en milieu hospitalier avant de créer mon entreprise en organisation d’intérieurs, mon accompagnement se veut avant tout personnalisé et adaptable à vos problématiques physiques et/ou psychologiques actuelles. Mon expérience en tant que soignante me permet une approche douce et respectueuse tout en garantissant discrétion et neutralité.</blockquote>
+          <span class="script">Respecter votre choix et votre envie de rester chez vous est capital, faisons-le dans les meilleures conditions possibles !</span>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="band" data-section="benefits" data-intent="build desire" data-layout="grid" data-items="5">
+    <div class="container">
+      <div class="head head--center" data-anim><span class="script">Pour vous et vos proches</span><h2>Les bienfaits</h2></div>
+      <div class="benefits">
+        <div class="benefit" data-anim><img src="assets/prestations/ic-quotidien.webp" alt=""><h3>Faciliter le quotidien</h3></div>
+        <div class="benefit" data-anim><img src="assets/prestations/ic-deplacements.webp" alt=""><h3>Sécuriser les déplacements</h3></div>
+        <div class="benefit" data-anim><img src="assets/prestations/ic-tete.webp" alt=""><h3>Décharger les proches</h3></div>
+        <div class="benefit" data-anim><img src="assets/prestations/ic-domicile.webp" alt=""><h3>Favoriser le maintien à domicile</h3></div>
+        <div class="benefit" data-anim><img src="assets/prestations/ic-economies.webp" alt=""><h3>Faire des économies</h3></div>
+      </div>
+    </div>
+  </section>
+  <section class="band band--warm" data-section="process" data-intent="explain how" data-layout="grid" data-items="3">
+    <div class="container">
+      <div class="head head--center" data-anim><span class="script">La prestation se décompose en plusieurs étapes</span><h2>Déroulement de la prestation</h2></div>
+      <div class="steps">
+<div class="step" data-anim><div class="step__num"></div><h3>Prise de contact</h3><p>Une prise de contact et une 1ère rencontre à votre domicile</p></div>
+<div class="step" data-anim><div class="step__num"></div><h3>Sessions de rangement</h3><p>Plusieurs sessions de rangement et de réorganisation planifiées en fonction de vos besoins et de vos contraintes de santé (en moyenne créneaux de 2h pour respecter la fatigabilité du bénéficiaire)</p></div>
+<div class="step" data-anim><div class="step__num"></div><h3>Suivi</h3><p>Une visite de suivi et de réajustement quelques temps après les sessions de rangement.</p></div>
+</div>
+      <div class="notes">
+        <p class="note" data-anim><strong>Une personne de confiance</strong>Cette prestation peut être sollicitée par une personne de confiance. Dans tous les cas, le consentement du bénéficiaire sera indispensable pour garantir la réussite de l’accompagnement.</p>
+        <p class="note" data-anim><strong>Bon à savoir</strong>Je n’ai pas les équipements nécessaires pour intervenir au domicile de personnes atteintes de Syndrome de Diogène.</p>
+      </div>
+    </div>
+  </section>
+  <section class="band" id="tarifs" data-section="pricing" data-intent="convert" data-layout="grid" data-items="2">
+    <div class="container">
+      <div class="head head--center" data-anim><span class="script">Des packs clairs</span><h2>Tarifs</h2></div>
+      <div class="prices">
+        <div class="price" data-anim><h3>Pack Tranquillité</h3><p class="rooms">2 pièces</p><p class="from">à partir de</p><p class="amount">350 €</p><a class="btn btn--ghost" href="/contact">Demander un devis</a></div>
+        <div class="price price--featured" data-anim><h3>Pack Sérénité</h3><p class="rooms">4 pièces</p><p class="from">à partir de</p><p class="amount">550 €</p><a class="btn btn--gold" href="/contact">Demander un devis</a></div>
+      </div>
+      <p class="price-foot" data-anim>Devis gratuit, frais de déplacements en fonction de la localisation</p>
+    </div>
+  </section>
+  <section class="band band--sage" data-section="other-services" data-intent="route" data-layout="grid" data-items="3">
+    <div class="container">
+      <div class="head" data-anim><span class="script">Et aussi</span><h2>Les autres prestations</h2></div>
+      <div class="others">
+        <a class="other" href="/prestations-tarifs/tri-rangement-et-optimisation" data-anim><img src="assets/prestations/service-tro.webp" alt="" loading="lazy"><div><h3>Mission Tri, Rangement et Optimisation</h3><span>Sur devis</span></div></a>
+        <a class="other" href="/prestations-tarifs/changement-de-vie" data-anim><img src="assets/prestations/service-changement.webp" alt="" loading="lazy"><div><h3>Mission Changement de vie</h3><span>Sur devis</span></div></a>
+        <a class="other" href="/prestations-tarifs/gerer-sa-maison-pas-a-pas" data-anim><img src="assets/prestations/service-gerer.webp" alt="" loading="lazy"><div><h3>Gérer sa maison pas à pas</h3><span>99 €</span></div></a>
+      </div>
+    </div>
+  </section>
+<section class="contact" data-section="contact-cta" data-intent="drive action" data-layout="full-bleed" data-interactive="link">
+  <div class="container">
+    <span class="script" data-anim>Et si on commençait&nbsp;?</span>
+    <h2 data-anim>Prêt(e) pour une maison plus sereine&nbsp;?</h2>
+    <p data-anim>Parlons de votre projet, sans engagement. Le premier échange se fait par email ou téléphone, en toute simplicité.</p>
+    <div class="contact__row" data-anim>
+      <a class="btn btn--deep" href="mailto:contact@celinek.org">Contactez-moi</a>
+      <a class="contact__phone" href="tel:+33632731898">📞 06 32 73 18 98</a>
+    </div>
+    <p class="contact__more" data-anim><a href="/#process">Comment ça se passe&nbsp;?</a></p>
+  </div>
+</section>
+</main>
+<footer class="site-footer" data-section="footer" data-intent="wayfinding" data-layout="edge-to-edge">
+  <div class="container">
+    <div class="fcontact">
+      <span>© Céline Knobloch, 2025</span>
+      <a href="tel:+33632731898">Tél : 06 32 73 18 98</a>
+      <a href="mailto:contact@celinek.org">contact@celinek.org</a>
+    </div>
+    <div class="socials">
+      <a href="/" aria-label="Instagram"><img src="assets/instagram.svg" alt="Instagram"></a>
+      <a href="/" aria-label="Facebook"><img src="assets/facebook.svg" alt="Facebook"></a>
+    </div>
+  </div>
+</footer>
+<script>
+/* mobile nav + condensing header (canon) */
+(function(){
+  var h=document.getElementById('nav'),b=h.querySelector('.nav-toggle');
+  b.addEventListener('click',function(){var o=h.classList.toggle('open');b.setAttribute('aria-expanded',o?'true':'false');});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&h.classList.contains('open')){h.classList.remove('open');b.setAttribute('aria-expanded','false');b.focus();}});
+  function s(){h.classList.toggle('scrolled',window.scrollY>40);} s(); window.addEventListener('scroll',s,{passive:true});
+})();
+/* before/after comparison: range drives --pos */
+document.querySelectorAll('.ba__frame').forEach(function(f){
+  var r=f.querySelector('.ba__range'); if(!r) return;
+  function u(){f.style.setProperty('--pos',r.value+'%');} r.addEventListener('input',u); u();
+});
+
+/* editorial motion runtime (canon, trimmed): hero parallax + word reveal,
+   fade-rise reveals, reading progress. Hidden states are set by JS only. */
+(function(){
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var prog=document.querySelector('.read-progress i');
+  var clamp=function(v,a,b){return v<a?a:v>b?b:v;},e3=function(t){return 1-Math.pow(1-t,3);};
+  if(reduce){addEventListener('scroll',function(){var m=document.documentElement.scrollHeight-innerHeight;prog.style.transform='scaleX('+(m>0?scrollY/m:0)+')';},{passive:true});return;}
+  var hs=document.querySelector('.hero__script');
+  if(hs){hs.innerHTML=hs.textContent.split(/(\s+)/).map(function(t){return /^\s+$/.test(t)?t:'<span class="w">'+t+'</span>';}).join('');
+    var ws=hs.querySelectorAll('.w');ws.forEach(function(w,i){w.style.opacity=0;w.style.transform='translateY(26px)';w.style.transition='opacity .8s ease '+(150+i*110)+'ms, transform .8s cubic-bezier(.16,1,.3,1) '+(150+i*110)+'ms';});
+    requestAnimationFrame(function(){requestAnimationFrame(function(){ws.forEach(function(w){w.style.opacity=1;w.style.transform='none';});});});}
+  var anims=[].slice.call(document.querySelectorAll('[data-anim]'));
+  anims.forEach(function(el){if(el.getBoundingClientRect().top>innerHeight*.9){el.style.opacity=0;el.style.transform='translateY(28px)';}});
+  var bg=document.querySelector('.hero__bg'),inner=document.querySelector('.hero__inner'),t0=performance.now();
+  (function tick(now){
+    var sy=scrollY,vh=innerHeight,max=document.documentElement.scrollHeight-vh;
+    prog.style.transform='scaleX('+(max>0?clamp(sy/max,0,1):0)+')';
+    if(bg&&innerWidth>767){var p=clamp(sy/vh,0,1),intro=Math.pow(1-Math.min((now-t0)/1400,1),3)*.08;
+      bg.style.transform='translateY('+(p*14)+'vh) scale('+(1.02+p*.08+intro)+')';
+      inner.style.transform='translateY('+(-p*8)+'vh)';inner.style.opacity=String(1-clamp((sy-vh*.12)/(vh*.5),0,1));}
+    var nb=clamp((sy-(max-vh*.6))/(vh*.6),0,1);
+    anims.forEach(function(el){if(el.style.opacity==='')return;var r=el.getBoundingClientRect();
+      var k=e3(Math.max(clamp((vh*.92-r.top)/(vh*.3),0,1),nb));el.style.opacity=k;el.style.transform='translateY('+((1-k)*28)+'px)';
+      if(k>=1){el.style.opacity='';el.style.transform='';}});
+    requestAnimationFrame(tick);
+  })(performance.now());
+})();
+</script>
+</body>
+</html>

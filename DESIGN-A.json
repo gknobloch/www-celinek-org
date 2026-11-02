@@ -1,0 +1,18 @@
+{
+  "_provenance": { "writtenBy": "stardust:uplift (Phase 4)", "writtenAt": "2026-09-12", "variant": "A", "role": "faithful + improvements", "inherits": "DESIGN.json" },
+  "variant": {
+    "id": "A",
+    "role": "Faithful + improvements — 'tomorrow's version of the site you have today'",
+    "composition": "same IA as captured (hero → intro/concept → why → how → proof → contact/footer)",
+    "motion": "static",
+    "improvementsApplied": [
+      "why-band prose → scannable value points",
+      "portrait reused beyond single hero band",
+      "Sacramento given a light restrained role",
+      "'Comment ça se passe' → explicit numbered 3-step process",
+      "gold promoted to conversion CTA; contact affordance lifted out of footer",
+      "testimonial surfaced higher, shown without carousel arrows",
+      "semantic spaced H1 (home organiser, Haut-Rhin) behind the script visual"
+    ]
+  }
+}

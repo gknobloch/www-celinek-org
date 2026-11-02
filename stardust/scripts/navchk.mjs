@@ -1,0 +1,14 @@
+import { chromium } from 'playwright';
+const file='/Users/gknob/dev/github/gknobloch/www-celinek-org/stardust/prototypes/index-C-cinematic.html';
+const b=await chromium.launch();
+const p=await (await b.newContext({viewport:{width:1440,height:900}})).newPage();
+const errs=[]; p.on('pageerror',e=>errs.push(e.message));
+await p.goto('file://'+file,{waitUntil:'networkidle'}); await p.waitForTimeout(1500);
+const top=await p.evaluate(()=>({h:getComputedStyle(document.querySelector('.site-header .container')).height, tag:getComputedStyle(document.querySelector('.tagwrap')).gridTemplateRows, logo:getComputedStyle(document.querySelector('.brand img')).transform}));
+await p.evaluate(()=>window.__lenis.scrollTo(700,{immediate:true})); await p.waitForTimeout(700);
+const scr=await p.evaluate(()=>({h:getComputedStyle(document.querySelector('.site-header .container')).height, tag:getComputedStyle(document.querySelector('.tagwrap')).gridTemplateRows, logo:getComputedStyle(document.querySelector('.brand img')).transform, tagOpacity:getComputedStyle(document.querySelector('.tag')).opacity}));
+await p.screenshot({path:'stardust/validation/index-C/fx-condensed-nav.png'});
+console.log('TOP    :',JSON.stringify(top));
+console.log('SCROLLED:',JSON.stringify(scr));
+console.log('pageerrors:',errs.length);
+await b.close();

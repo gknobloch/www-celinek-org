@@ -345,3 +345,321 @@ main .section.benefit div.cards-card-body {
     margin-left: 96px;
   }
 }
+
+/* ══════════════════════════════════════════════════════════════════════
+   /redesign — variant C (cinematic) preview. SCOPED to redesign-only
+   section-style classes + the new block classes so the live homepage is
+   untouched. See stardust/eds-conversion-log.md.
+   ══════════════════════════════════════════════════════════════════════ */
+
+/* neutralize the site-wide strong-highlight inside redesign blocks */
+main .section :is(.cine-hero, .editorial-split, .value-grid, .steps-flow, .testimonials, .contact-band, .room-stage, .room-rail, .service-cards, .panels, .benefit-icons, .price-cards, .timeline) strong::before { content: none; }
+main .section :is(.cine-hero, .editorial-split, .value-grid, .steps-flow, .testimonials, .contact-band, .room-stage, .room-rail, .service-cards, .panels, .benefit-icons, .price-cards, .timeline) strong { position: static; }
+
+/* full-bleed sections: no section padding */
+main .section.cine-hero-container,
+main .section.contact-band-container { padding: 0; max-width: none; }
+
+main .section.cine-hero-container > div,
+main .section.contact-band-container > div { max-width: none; }
+
+/* editorial band spacing */
+main .section.editorial-split-container { padding: 104px 16px; }
+
+/* default-content section heads (redesign) */
+main .section.head-center .default-content-wrapper,
+main .section.why-band .default-content-wrapper { margin: 0 auto; }
+main .section.head-center { padding: 96px 16px; }
+main .section.head-center .default-content-wrapper { text-align: center; max-width: 760px; }
+
+main .section.head-center + .section.head-center,
+main .section.head-center .steps-flow-wrapper,
+main .section.head-center .testimonials-wrapper { margin-top: 40px; }
+
+main .section.why-band { background: #f8e1af; padding: 96px 16px; }
+main .section.why-band .default-content-wrapper { max-width: 1120px; padding: 0 24px; }
+main .section.why-band .value-grid-wrapper { margin-top: 8px; }
+
+main .section.testi-band { background: #e4ebe6; }
+
+/* scripted openers + headings in default-content heads (10px + 1.1 leading: the
+   script's descenders no longer touch the heading when the opener wraps on phones).
+   NB: the pipeline strips author classes, so these are POSITIONAL: the first
+   paragraph of the head is the script; in why-band the paragraph after the h2
+   is the lead. */
+main .section:is(.head-center, .why-band) .default-content-wrapper > p:first-child:not(.button-container) {
+  font-family: var(--script-font-family), cursive;
+  display: block; line-height: 1.1; margin: 0 0 10px; font-size: 40px; font-weight: 400;
+}
+main .section.head-center .default-content-wrapper > p:first-child:not(.button-container) { color: #728e7f; }
+main .section.why-band .default-content-wrapper > p:first-child:not(.button-container) { color: #4a6357; font-size: 38px; }
+main .section:is(.head-center, .why-band) h2 { font-size: 42px; color: #1a1a17; margin: 0 0 8px; letter-spacing: -0.01em; line-height: 1.15; }
+main .section.head-center h2 { margin-bottom: 40px; }
+main .section.why-band .default-content-wrapper > h2 + p { font-size: 22px; color: #4a4433; max-width: 60ch; margin: 16px 0 40px; line-height: 1.6; }
+
+/* box-sizing for redesign block subtrees (older boilerplate ships no global reset;
+   without this the carousel slide padding overflows its 100% width → offset) */
+main .section :is(.cine-hero, .editorial-split, .value-grid, .steps-flow, .testimonials, .contact-band, .service-cards, .panels, .benefit-icons, .price-cards, .timeline) *,
+main .section :is(.cine-hero, .editorial-split, .value-grid, .steps-flow, .testimonials, .contact-band, .service-cards, .panels, .benefit-icons, .price-cards, .timeline) *::before,
+main .section :is(.cine-hero, .editorial-split, .value-grid, .steps-flow, .testimonials, .contact-band, .service-cards, .panels, .benefit-icons, .price-cards, .timeline) *::after { box-sizing: border-box; }
+
+/* redesign footer treatment (deep sage) — scoped to the /redesign page only via :has */
+body:has(.cine-hero) footer,
+body:has(.cine-hero) footer .footer { background: #445b4f; color: rgb(255 255 255 / 85%); }
+body:has(.cine-hero) footer a { color: #fff; }
+body:has(.cine-hero) footer a:hover { color: #eed366; }
+
+/* process CTA (bare link → .button) styled as a gold pill */
+main .section.head-center .button-container a.button {
+  background: #eed366; color: #1a1a17; border: none; border-radius: 999px;
+  padding: 14px 28px; font-weight: 600; text-decoration: none; display: inline-flex;
+  box-shadow: 0 6px 18px rgb(90 90 82 / 20%); margin: 8px 0 0;
+}
+main .section.head-center .button-container a.button::before { content: none; }
+main .section.head-center .button-container a.button:hover { background: #f2dd80; }
+
+@media (width <= 560px) {
+  main .section:is(.head-center, .why-band) h2 { font-size: 30px; }
+  main .section:is(.head-center, .why-band) .script { font-size: 31px; }
+  main .section.editorial-split-container { padding: 64px 16px; }
+  main .section.head-center, main .section.why-band { padding: 64px 16px; }
+}
+
+/* ── /redesign fixes (round 2) ────────────────────────────────────────── */
+
+/* redesign reads left-aligned, not justified (scoped so the live site is untouched) */
+body:has(.cine-hero) p,
+body:has(.cine-hero) li,
+body:has(.cine-hero) dl,
+body:has(.cine-hero) blockquote { text-align: left; }
+
+/* head alignment: beat the global `p { text-align: justify }` by targeting p */
+main .section.head-center .default-content-wrapper p { text-align: center; }
+main .section.why-band .default-content-wrapper p { text-align: left; }
+
+/* ── redesign header — matched to the variant C prototype ─────────────── */
+
+/* hero starts at y=0: fixed nav overlays it. DARK text over the light hero top */
+body:has(.cine-hero) header { height: 0; }
+
+body:has(.cine-hero) header .nav-wrapper,
+body:has(.cine-hero) header nav { background: transparent; transition: background 0.3s ease; }
+body:has(.cine-hero) header nav .nav-brand { display: none !important; }
+
+/* logo lockup: mark + name/tag vertically centered (prototype .brand) */
+body:has(.cine-hero) header .nav-logo a { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+body:has(.cine-hero) header .nav-logo .logo-description { padding: 0; text-align: left; position: relative; }
+body:has(.cine-hero) header .nav-logo img { height: 56px; transition: height 0.38s cubic-bezier(0.16, 1, 0.3, 1); }
+
+/* logo text — deep sage #4a6357 (prototype), name 16px/700, tag 11px/600 uppercase */
+body:has(.cine-hero) header .nav-logo .logo-description p.name { color: var(--link-color); font-size: 16px; font-weight: 700; line-height: 1.1; letter-spacing: 0; text-align: left; margin: 0; }
+
+/* tagline is OUT OF FLOW (absolute) so the NAME centers with the mark/links/CTA;
+   it hangs just below the name and fades out on scroll */
+body:has(.cine-hero) header .nav-logo .logo-description p.baseline { position: absolute; top: 100%; left: 0; margin: 2px 0 0; white-space: nowrap; font-size: 11px; line-height: 1.35; letter-spacing: 0.12em; text-align: left; opacity: 1; transition: opacity 0.3s ease; }
+body:has(.cine-hero) header .nav-logo .logo-description p.baseline span { color: var(--link-color); font-weight: 600; }
+body:has(.cine-hero) header .nav-logo .logo-description p.baseline span::first-letter { color: var(--link-color); }
+
+/* nav links — dark #1a1a17, 15px, weight 500 (prototype), sage on hover */
+body:has(.cine-hero) header .nav-sections a:any-link { color: #1a1a17; font-size: 15px; font-weight: 500; }
+body:has(.cine-hero) header .nav-sections a:hover { text-decoration: none; color: #4a6357; }
+
+/* Contactez-moi — gold pill, 10px 20px, 15px (prototype) */
+body:has(.cine-hero) header .nav-tools a { background: #eed366; color: #1a1a17; padding: 10px 20px; border-radius: 999px; font-weight: 600; font-size: 15px; }
+body:has(.cine-hero) header .nav-tools a:hover { background: #f2dd80; color: #1a1a17; }
+
+/* condensing nav: 92px -> 62px, logo 56 -> 38, tagline collapses (prototype) */
+body:has(.cine-hero) header nav { height: 92px; transition: height 0.38s cubic-bezier(0.16, 1, 0.3, 1); }
+body:has(.cine-hero) header.scrolled nav { height: 62px; background: transparent; box-shadow: none; }
+body:has(.cine-hero) header.scrolled .nav-logo img { height: 38px; }
+body:has(.cine-hero) header.scrolled .nav-logo .logo-description p.baseline { opacity: 0; }
+
+/* phones/tablets: the nav is a grid whose first row (hamburger + logo) was fixed at
+   --nav-height (96px), so when the bar condensed to 62px the logo stayed centred at
+   48px and hung below it. The row now follows the bar height. */
+@media (width < 900px) {
+  body:has(.cine-hero) header nav { grid-template-rows: 92px auto 1fr var(--nav-height); transition: height 0.38s cubic-bezier(0.16, 1, 0.3, 1), grid-template-rows 0.38s cubic-bezier(0.16, 1, 0.3, 1); }
+  body:has(.cine-hero) header.scrolled nav { grid-template-rows: 62px auto 1fr var(--nav-height); }
+}
+
+/* scrolled bar — solid cream (matches body) + hairline + shadow (prototype) */
+body:has(.cine-hero) header.scrolled .nav-wrapper { background: var(--background-color); border-bottom: 1px solid #eceee6; box-shadow: 0 6px 24px rgb(90 90 82 / 10%); }
+
+/* footer: smaller type, clean white monochrome icons (no dark blob on deep sage) */
+body:has(.cine-hero) footer { font-size: 14px; padding: 40px 2rem; }
+
+body:has(.cine-hero) footer .footer p,
+body:has(.cine-hero) footer .footer li { font-size: 14px; }
+
+/* social icons: white circle chips (like the prototype), pushed to the right */
+body:has(.cine-hero) footer .default-content-wrapper { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; }
+body:has(.cine-hero) footer .default-content-wrapper > ul { margin: 0; flex: 1 1 auto; }
+body:has(.cine-hero) footer .default-content-wrapper > p { margin: 0; flex: 0 0 auto; }
+
+body:has(.cine-hero) footer .footer a.button {
+  width: 40px; height: 40px; padding: 0; border-radius: 999px; background: #fff;
+  display: inline-flex; align-items: center; justify-content: center;
+}
+body:has(.cine-hero) footer .footer a.button:hover { background: #eed366; }
+
+/* icons keep their natural brand sage (#728e7f); no filter */
+body:has(.cine-hero) footer span.icon { display: inline-flex; }
+body:has(.cine-hero) footer span.icon img { filter: none; width: 26px; height: 26px; opacity: 1; }
+
+/* phone links: the site's phone glyph in the link's own color (replaces the 📞 emoji) */
+main a[href^="tel:"] { display: inline-flex; align-items: center; gap: 0.5em; }
+
+main a[href^="tel:"] .phone-glyph {
+  flex: none;
+  width: 1.1em;
+  height: 1.1em;
+  background: currentcolor;
+  mask: url("/icons/phone.svg") center / contain no-repeat;
+}
+
+/* trim the gap after the process CTA before the testimonials band */
+main .section.head-center.steps-flow-container { padding-bottom: 24px; }
+
+/* process CTA: reset the boilerplate button margin so the pill sits cleanly */
+
+/* scroll-linked head reveals — script + heading rise/fade as the section enters
+   (native scroll-driven animation; gracefully ignored where unsupported) */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    main .section:is(.head-center, .why-band) .default-content-wrapper > *,
+    main .section.editorial-split-container .default-content-wrapper > * {
+      animation: redesign-rise linear both;
+      animation-timeline: view();
+      animation-range: entry 5% entry 45%;
+    }
+
+    @keyframes redesign-rise {
+      from { opacity: 0; transform: translateY(26px); }
+      to { opacity: 1; transform: none; }
+    }
+  }
+}
+
+/* the metadata block leaves an empty first section — collapse it (redesign page) */
+body:has(.cine-hero) main > .section:empty,
+body:has(.cine-hero) main > .section:has(> .default-content-wrapper:empty:only-child) { display: none; }
+body:has(.cine-hero) main { padding-top: 0; }
+body:has(.cine-hero) main > .section.cine-hero-container { margin-top: 0; }
+
+/* footer: make the content chain full-width so socials reach the right edge
+   (footer.css sets `footer .footer div { display:flex }` which shrink-wraps them) */
+body:has(.cine-hero) footer .footer > div,
+body:has(.cine-hero) footer .footer > div > .section,
+body:has(.cine-hero) footer .default-content-wrapper { width: 100%; flex: 1 1 100%; }
+
+/* mobile header: the collapsed bar is ONE row (hamburger + logo, 62px). The tools
+   row ("Contactez-moi") otherwise hangs below the fixed bar and floats over the page
+   (and under the /realisations/ room rail) — show it only in the open menu. */
+@media (width < 900px) {
+  body:has(.cine-hero) header nav[aria-expanded="false"] .nav-tools { display: none; }
+}
+
+/* ── prestations (variant C) — section styles, ONE style value per section ──
+   head-left   plain ground, left head (script + h2)
+   warm-center warm band, centered head
+   sage-band   sage band, left head
+   statement   centered display line (h2 or a scripted <p>)
+   Heads are default content; POSITIONAL rules (classes are stripped by the pipeline). */
+main .section:is(.head-left, .warm-center, .sage-band) { padding: 96px 16px; }
+main .section.warm-center { background: #f8e1af; }
+main .section.sage-band { background: #e4ebe6; }
+main .section:is(.head-left, .warm-center, .sage-band) .default-content-wrapper { max-width: 1120px; margin: 0 auto 40px; padding: 0 24px; }
+main .section.warm-center .default-content-wrapper { text-align: center; max-width: 760px; }
+main .section.warm-center .default-content-wrapper p { text-align: center; }
+
+main .section:is(.head-left, .warm-center, .sage-band) .default-content-wrapper > p:first-child:not(.button-container) {
+  font-family: var(--script-font-family), cursive;
+  display: block; line-height: 1.1; margin: 0 0 10px; font-size: 40px; font-weight: 400; color: #728e7f;
+}
+main .section:is(.head-left, .warm-center, .sage-band) h2 { font-size: 42px; color: #1a1a17; margin: 0; letter-spacing: -0.01em; line-height: 1.15; }
+
+/* default content that FOLLOWS a block (e.g. a closing line) */
+main .section:is(.head-left, .warm-center, .sage-band, .head-center, .why-band) .default-content-wrapper:not(:first-child) { margin: 28px auto 0; }
+
+/* :not(.button-container) + the extra :not(:first-child) out-rank the script-opener rules
+   (incl. the 560px override), which otherwise leaked line-height 1 / 31px into closing lines */
+main .section:is(.head-left, .warm-center, .sage-band, .head-center, .why-band) .default-content-wrapper:not(:first-child) > p:first-child:not(.button-container) { font-family: inherit; font-size: 17px; line-height: 1.6; color: #5a5a52; }
+main .section:is(.head-left, .warm-center, .sage-band, .head-center, .why-band) .default-content-wrapper:not(:first-child) h3 { font-size: 22px; color: #4a6357; text-align: center; }
+
+main .section.statement { padding: 88px 16px; text-align: center; }
+main .section.statement .default-content-wrapper { max-width: 900px; margin: 0 auto; }
+main .section.statement h2 { font-size: 34px; line-height: 1.3; color: #4a6357; margin: 0 auto; max-width: 24ch; }
+main .section.statement p { font-family: var(--script-font-family), cursive; font-size: 40px; line-height: 1.15; color: #4a6357; text-align: center; margin: 0; }
+
+
+@media (width <= 560px) {
+  main .section:is(.head-left, .warm-center, .sage-band) { padding: 64px 16px; }
+  main .section:is(.head-left, .warm-center, .sage-band) h2 { font-size: 30px; }
+  main .section:is(.head-left, .warm-center, .sage-band) .default-content-wrapper > p:first-child:not(.button-container) { font-size: 31px; }
+  main .section.statement h2 { font-size: 26px; }
+  main .section.statement p { font-size: 30px; }
+}
+main .section.why-band .default-content-wrapper > h2:last-child { margin-bottom: 32px; }
+
+/* ── responsive polish (breakpoint review 2026-09-24) ──────────────────────
+   balanced headings + scripted openers: no orphan French " ?" / " !" */
+body:has(.cine-hero) main :is(h2, h3),
+body:has(.cine-hero) main .default-content-wrapper > p:first-child,
+body:has(.cine-hero) main :is(.script, .editorial__copy .script) { text-wrap: balance; }
+
+/* body copy: no lone word or French " ?" / " !" on the last line */
+body:has(.cine-hero) main :is(p, li) { text-wrap: pretty; }
+
+/* hamburger: 44×44 tap target (icon unchanged) */
+body:has(.cine-hero) header nav .nav-hamburger { height: 44px; }
+body:has(.cine-hero) header nav .nav-hamburger button { width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; margin-left: -12px; background: transparent; }
+
+/* header 900–1199px (iPad landscape / small laptops): the desktop nav needs ~1150px,
+   so the gold CTA was cut off. Logo mark only, tighter 14px links, and the plain
+   "Contact" link hides (the "Contactez-moi" CTA beside it goes to the same page). */
+@media (width >= 900px) and (width < 1200px) {
+  body:has(.cine-hero) header nav { padding: 0 24px; gap: 0 20px; }
+  body:has(.cine-hero) header .nav-logo .logo-description { display: none; }
+
+  body:has(.cine-hero) header nav .nav-logo,
+  body:has(.cine-hero) header nav .nav-logo a { width: auto; flex: 0 0 auto; }
+  body:has(.cine-hero) header nav .nav-sections .default-content-wrapper > ul { gap: 18px; }
+  body:has(.cine-hero) header .nav-sections a:any-link { font-size: 14px; }
+  body:has(.cine-hero) header .nav-sections li:has(a[href="/contact"]) { display: none; }
+}
+
+/* footer on tablets / phones: contact lines on their own row, socials together below */
+@media (width < 1100px) {
+  body:has(.cine-hero) footer .default-content-wrapper > ul { flex: 1 1 100%; }
+}
+
+/* mobile menu open: the redesign header is transparent (it overlays the hero), so
+   the open menu needs its own solid cream sheet — otherwise the links sit on top of
+   the hero headline. Full-height, keeps the tagline, hairline under the top row. */
+@media (width < 900px) {
+  body:has(.cine-hero) header nav[aria-expanded="true"] {
+    height: auto;
+    min-height: 100dvh;
+    background: var(--background-color);
+  }
+  body:has(.cine-hero) header nav[aria-expanded="true"] .nav-sections { border-top: 1px solid #eceee6; }
+  body:has(.cine-hero) header nav[aria-expanded="true"] .nav-logo .logo-description p.baseline { opacity: 1; }
+}
+
+/* phones: one 20px gutter. Sections carried 16px and every block / default-content
+   wrapper another 24px (40px a side), and cards another 26–34px inside, leaving
+   ~250px of text: narrow columns, very tall cards, long pages. Full-bleed bands
+   (hero, contact band, room rail) keep their own edges; a section that only wraps
+   a nested section (fragments, e.g. the shared "Comment ça se passe ?") adds none.
+   Vertical rhythm 64px → 48px per band edge. */
+@media (width <= 600px) {
+  body:has(.cine-hero) main .section:not(:has(.section, .cine-hero, .contact-band, .room-rail)) { padding-left: 20px; padding-right: 20px; }
+  body:has(.cine-hero) main .section:has(.section) { padding-left: 0; padding-right: 0; }
+
+  body:has(.cine-hero) main .section > .default-content-wrapper,
+  body:has(.cine-hero) main .section > [class$='-wrapper'] > .block:not(.cine-hero, .contact-band, .room-rail) { padding-left: 0; padding-right: 0; }
+
+  body:has(.cine-hero) main :is(.panels .panel, .value-grid .value, .price-cards .price, .steps-flow .step, .benefit-icons .benefit) { padding-left: 20px; padding-right: 20px; }
+
+  body:has(.cine-hero) main .section:is(.head-left, .warm-center, .sage-band, .head-center, .why-band, .testi-band) { padding-top: 48px; padding-bottom: 48px; }
+}

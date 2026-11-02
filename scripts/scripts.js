@@ -20,7 +20,13 @@ import {
 function buildHeroBlock(main) {
   const h1 = main.querySelector('h1');
   const picture = main.querySelector('picture');
-  if (h1 && picture && (h1.compareDocumentPosition(picture) & Node.DOCUMENT_POSITION_PRECEDING)) {
+  // Only auto-build a hero from genuine default content. If the h1/picture already
+  // live inside an authored block (e.g. cine-hero), leave them alone — otherwise the
+  // published pipeline (which wraps <img> in <picture>) steals them into a duplicate
+  // hero block. At this point (pre-decorateSections) only block divs carry a class.
+  const inBlock = h1?.closest('div[class]') || picture?.closest('div[class]');
+  if (h1 && picture && !inBlock
+    && (h1.compareDocumentPosition(picture) & Node.DOCUMENT_POSITION_PRECEDING)) {
     const section = document.createElement('div');
     section.append(buildBlock('hero', { elems: [picture, h1] }));
     main.prepend(section);
@@ -68,6 +74,51 @@ function buildAutoBlocks(main) {
 }
 
 /**
+ * Phone links: the authored 📞 emoji (or :phone: icon) becomes the site's phone glyph,
+ * drawn as a CSS mask in currentColor so it reads on light text links and dark buttons.
+ * @param {Element} main The main element
+ */
+function decoratePhoneLinks(main) {
+  const strip = (text) => text.replace(/\u{1F4DE}|\u{260E}|\u{FE0F}/gu, '');
+  main.querySelectorAll('a[href^="tel:"]').forEach((a) => {
+    a.querySelectorAll('.icon-phone').forEach((icon) => icon.remove());
+    a.childNodes.forEach((node) => {
+      if (node.nodeType === Node.TEXT_NODE) node.textContent = strip(node.textContent);
+    });
+    if (a.firstChild?.nodeType === Node.TEXT_NODE) a.firstChild.textContent = a.firstChild.textContent.trimStart();
+    if (a.title) a.title = strip(a.title).trim();
+    const glyph = document.createElement('span');
+    glyph.className = 'phone-glyph';
+    glyph.setAttribute('aria-hidden', 'true');
+    a.prepend(glyph);
+  });
+}
+
+/**
+ * Hyphenated place names never break at their hyphen ("Haut-" / "Rhin" on phones).
+ * @param {Element} main The main element
+ */
+function keepPlaceNamesTogether(main) {
+  const walker = document.createTreeWalker(main, NodeFilter.SHOW_TEXT);
+  const hits = [];
+  while (walker.nextNode()) if (walker.currentNode.textContent.includes('Haut-Rhin')) hits.push(walker.currentNode);
+  hits.forEach((node) => {
+    const parts = node.textContent.split('Haut-Rhin');
+    const frag = document.createDocumentFragment();
+    parts.forEach((part, i) => {
+      if (i) {
+        const span = document.createElement('span');
+        span.style.whiteSpace = 'nowrap';
+        span.textContent = 'Haut-Rhin';
+        frag.append(span);
+      }
+      if (part) frag.append(part);
+    });
+    node.replaceWith(frag);
+  });
+}
+
+/**
  * Decorates the main element.
  * @param {Element} main The main element
  */
@@ -75,6 +126,8 @@ export function decorateMain(main) {
   // hopefully forward compatible button decoration
   decorateButtons(main);
   decorateIcons(main);
+  decoratePhoneLinks(main);
+  keepPlaceNamesTogether(main);
   buildAutoBlocks(main);
   decorateSections(main);
   decorateBlocks(main);
@@ -121,6 +174,13 @@ async function loadLazy(doc) {
 
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
   loadFonts();
+
+  // centralized scroll choreography (hero parallax, reveals, progress, smooth wheel)
+  // — only on pages that carry the redesign motion surface, so the rest of the
+  // site keeps native scroll and no idle rAF loop.
+  if (main.querySelector('.cine-hero, [data-anim], [data-parallax]')) {
+    import('./motion.js').then(({ default: initMotion }) => initMotion());
+  }
 }
 
 /**

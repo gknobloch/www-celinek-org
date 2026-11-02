@@ -16,5 +16,13 @@ export default async function decorate(block) {
   const footer = document.createElement('div');
   while (fragment.firstElementChild) footer.append(fragment.firstElementChild);
 
+  // icon-only links (social icons) get an accessible name from their icon
+  footer.querySelectorAll('a').forEach((a) => {
+    const icon = a.querySelector('.icon');
+    if (!icon || a.textContent.trim() || a.getAttribute('aria-label')) return;
+    const name = [...icon.classList].find((c) => c.startsWith('icon-'))?.slice(5);
+    if (name) a.setAttribute('aria-label', name.charAt(0).toUpperCase() + name.slice(1));
+  });
+
   block.append(footer);
 }

@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<!--
+  _provenance:
+    writtenBy: stardust:uplift (Phase 5 / prototype — variant A)
+    writtenAt: 2026-09-23
+    variant: A — faithful + improvements (static)
+    improvementsApplied: [1,2,3,4,5,6,7]
+    againstInput: https://redesign-c-preview--celinek-org--gknobloch.aem.page/realisations/
+    brandSurface: approved homepage canon (stardust/prototypes/index-C-cinematic.html, DESIGN-C.json)
+    mode: A (brand-faithful — palette + type pinned to the redesign)
+    contentSource: stardust/current/pages/realisations.json (verbatim fr-FR; 22 real pairs)
+    generatedBy: stardust/scripts/realisations-prototypes.py
+-->
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Mes Réalisations — Céline Knobloch, Home Organiser</title>
+<link rel="icon" href="assets/favicon.ico">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Les photos présentées sur ce site sont authentiques et donnent un aperçu de mon travail.">
+<meta property="og:image" content="assets/realisations/chambres-damis-1-after.webp">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;600;700&family=Sacramento&display=swap');
+:root{
+  --heading-font-family:'Comfortaa','helvetica neue',helvetica,sans-serif;
+  --body-font-family:'Comfortaa','helvetica neue',helvetica,sans-serif;
+  --script-font-family:'Sacramento','Brush Script MT',cursive;
+  --heading-xxl:60px; --heading-xl:42px; --heading-lg:32px; --heading-md:22px;
+  --body:18px; --body-sm:15px; --line-height-heading:1.14; --line-height-body:1.75;
+  --color-bg:#fdfefa; --color-surface:#ffffff; --color-fg:#1a1a17; --color-muted:#5a5a52;
+  --color-accent:#728e7f; --color-accent-deep:#4a6357;
+  --color-gold:#eed366; --color-gold-deep:#806515;
+  --color-band-warm:#f8e1af; --color-band-sage:#e4ebe6; --color-contact:#445b4f;
+  --section-padding:104px; --max-width:1120px; --radius:16px;
+  --shadow-soft:0 10px 30px rgba(90,90,82,.12); --shadow-card:0 6px 20px rgba(90,90,82,.10);
+  --ease-out-cubic:cubic-bezier(0.25,0.46,0.45,0.94); --ease-expo:cubic-bezier(0.16,1,0.3,1);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--color-bg);color:var(--color-fg);font-family:var(--body-font-family);
+  font-size:var(--body);line-height:var(--line-height-body);-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:var(--color-accent-deep);text-decoration:none}
+a:hover{color:var(--color-gold-deep)}
+h1,h2,h3{font-family:var(--heading-font-family);line-height:var(--line-height-heading);font-weight:700;margin:0}
+.container{max-width:var(--max-width);margin:0 auto;padding:0 24px}
+.script{font-family:var(--script-font-family);color:var(--color-accent);font-weight:400}
+.eyebrow{font-size:var(--body-sm);letter-spacing:.14em;text-transform:uppercase;color:var(--color-accent-deep);font-weight:600;margin:0 0 12px}
+.btn{display:inline-block;border:none;cursor:pointer;font-family:var(--heading-font-family);font-weight:600;
+  font-size:var(--body-sm);padding:14px 28px;border-radius:999px;transition:transform .18s ease,background .18s ease}
+.btn:hover{transform:translateY(-2px)}
+.btn--gold{background:var(--color-gold);color:#1a1a17;box-shadow:0 6px 18px rgba(90,90,82,.20)}
+.btn--gold:hover{background:#f2dd80;color:#1a1a17}
+.btn--ghost{background:transparent;color:var(--color-accent-deep);border:1.5px solid var(--color-accent)}
+.btn--ghost:hover{background:#eef3ef;color:var(--color-accent-deep)}
+.btn--deep{background:#445b4f;color:#fff}
+.btn--deep:hover{background:#374b40;color:#fff}
+:focus-visible{outline:3px solid var(--color-gold-deep);outline-offset:3px}
+
+/* Header — canon condensing nav */
+.site-header{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(253,254,250,0);border-bottom:1px solid transparent;transition:background .3s ease,border-color .3s ease,box-shadow .3s ease}
+.site-header.solid,.site-header.scrolled{background:rgba(253,254,250,.94);backdrop-filter:blur(8px);border-bottom-color:#eceee6}
+.site-header.scrolled{box-shadow:0 6px 24px rgba(90,90,82,.10)}
+.site-header .container{display:flex;align-items:center;justify-content:space-between;height:92px;transition:height .38s var(--ease-out-cubic)}
+.site-header.scrolled .container{height:62px}
+.brand{display:flex;align-items:center;gap:12px;color:var(--color-fg)}
+.brand img{height:56px;width:auto;transform-origin:left center;transition:transform .38s var(--ease-out-cubic)}
+.site-header.scrolled .brand img{transform:scale(.68)}
+.brand .name{font-family:var(--heading-font-family);font-weight:700;font-size:16px;line-height:1.1}
+.brand .tagwrap{display:grid;grid-template-rows:1fr;transition:grid-template-rows .38s var(--ease-out-cubic)}
+.site-header.scrolled .brand .tagwrap{grid-template-rows:0fr}
+.brand .tag{display:block;min-height:0;overflow:hidden;font-size:11px;letter-spacing:.12em;color:var(--color-accent-deep);text-transform:uppercase;font-weight:600;transition:opacity .3s ease}
+.site-header.scrolled .brand .tag{opacity:0}
+.nav{display:flex;gap:26px;align-items:center}
+.nav a{font-size:15px;color:var(--color-fg);font-weight:500}
+.nav a[aria-current]{color:var(--color-accent-deep);font-weight:700;box-shadow:inset 0 -2px 0 var(--color-gold)}
+.nav a:hover{color:var(--color-accent-deep)}
+.nav .btn{padding:10px 20px}
+.nav-toggle{display:none;background:none;border:none;font-size:26px;color:var(--color-fg);cursor:pointer}
+/* over-photo state (C hero) */
+.site-header.over:not(.scrolled) .brand,.site-header.over:not(.scrolled) .nav a:not(.btn),
+.site-header.over:not(.scrolled) .brand .tag,.site-header.over:not(.scrolled) .nav-toggle{color:#fff}
+.site-header.over:not(.scrolled) .nav a[aria-current]{box-shadow:inset 0 -2px 0 var(--color-gold)}
+.site-header.over:not(.scrolled) .brand img{filter:brightness(0) invert(1)}
+
+/* Before / after comparison — responsive, labeled, keyboard-operable */
+.ba{margin:0}
+.ba__frame{--pos:50%;position:relative;aspect-ratio:var(--ar,3/4);border-radius:var(--radius);overflow:hidden;
+  box-shadow:var(--shadow-card);background:#eceee6;isolation:isolate}
+.ba__frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ba__before{clip-path:inset(0 calc(100% - var(--pos)) 0 0);z-index:1}
+.ba__line{position:absolute;z-index:2;top:0;bottom:0;left:var(--pos);width:2px;margin-left:-1px;background:#fff;
+  box-shadow:0 0 14px rgba(26,26,23,.35);pointer-events:none}
+.ba__knob{position:absolute;z-index:3;top:50%;left:var(--pos);width:46px;height:46px;margin:-23px 0 0 -23px;border-radius:999px;
+  background:#fff;color:var(--color-accent-deep);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700;
+  letter-spacing:-2px;box-shadow:0 6px 18px rgba(26,26,23,.25);pointer-events:none;transition:transform .2s ease}
+.ba__frame:hover .ba__knob{transform:scale(1.08)}
+.ba__tag{position:absolute;z-index:3;top:12px;padding:5px 12px;border-radius:999px;font-size:11px;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;pointer-events:none;line-height:1.2}
+.ba__tag--before{left:12px;background:rgba(26,26,23,.64);color:#fff}
+.ba__tag--after{right:12px;background:var(--color-gold);color:#1a1a17}
+.ba__range{position:absolute;z-index:4;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize;-webkit-appearance:none;appearance:none}
+.ba__frame:has(.ba__range:focus-visible){outline:3px solid var(--color-gold-deep);outline-offset:3px}
+.ba figcaption{font-size:var(--body-sm);color:var(--color-muted);margin-top:10px}
+
+/* Contact — canon warm gold band */
+.contact{background:linear-gradient(135deg,#f8e1af 0%,#eecb7f 100%);color:#1a1a17;text-align:center;padding:var(--section-padding) 0}
+.contact .script{font-size:46px;color:var(--color-accent-deep);display:block;line-height:1;margin-bottom:6px}
+.contact h2{font-size:var(--heading-xl);color:#1a1a17;margin-bottom:14px}
+.contact p{color:#4a4433;max-width:52ch;margin:0 auto 30px}
+.contact__row{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;align-items:center}
+.contact__phone{color:#3f574a;font-weight:700;font-size:var(--body)}
+.contact__more{margin-top:22px;font-size:var(--body-sm)}
+.contact__more a{color:#3f574a;font-weight:700;text-decoration:underline;text-underline-offset:4px}
+
+/* Footer — canon deep sage */
+.site-footer{background:#445b4f;color:rgba(255,255,255,.82)}
+.site-footer .container{display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between;padding-top:32px;padding-bottom:32px}
+.site-footer .fcontact{display:flex;gap:22px;flex-wrap:wrap;align-items:center;font-size:var(--body-sm)}
+.site-footer a{color:#fff;font-weight:600}
+.site-footer a:hover{color:var(--color-gold)}
+.socials{display:flex;gap:12px;align-items:center}
+.socials a{width:34px;height:34px;border-radius:999px;background:rgba(255,255,255,.92);display:flex;align-items:center;justify-content:center}
+.socials img{width:18px;height:18px}
+
+@media (max-width:900px){
+  :root{--section-padding:64px}
+  .nav{display:none}
+  .nav-toggle{display:block}
+  .site-header.open .nav{display:flex;position:absolute;top:100%;left:0;right:0;flex-direction:column;background:var(--color-bg);padding:20px 24px;gap:16px;border-bottom:1px solid #eceee6}
+  .site-header.open .nav a:not(.btn){color:var(--color-fg)!important}
+  .site-header.open{background:rgba(253,254,250,.98)}
+}
+@media (max-width:560px){
+  :root{--heading-xl:30px;--heading-lg:27px;--section-padding:56px}
+  .contact .script{font-size:36px}
+  .brand .name{font-size:14px}
+  .brand img{height:46px}
+}
+
+.page-head{padding:164px 0 56px}
+.page-head .script{font-size:48px;display:block;line-height:1;margin-bottom:4px}
+.page-head h1{font-size:var(--heading-xl);margin-bottom:16px}
+.page-head .lead{font-size:20px;color:var(--color-muted);max-width:56ch;margin:0 0 8px}
+.page-head .meta{font-size:var(--body-sm);color:var(--color-accent-deep);font-weight:600;letter-spacing:.04em;margin:0 0 32px}
+.room-index{display:flex;flex-wrap:wrap;gap:10px;margin:0;padding:0;list-style:none}
+.room-index a{display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:999px;background:var(--color-surface);
+  border:1.5px solid #dfe5e1;color:var(--color-fg);font-size:var(--body-sm);font-weight:600;transition:border-color .2s ease,background .2s ease}
+.room-index a:hover{border-color:var(--color-accent);background:#f3f6f4;color:var(--color-fg)}
+.room-index .n{font-size:12px;min-width:22px;height:22px;border-radius:999px;background:var(--color-band-sage);color:var(--color-accent-deep);display:inline-flex;align-items:center;justify-content:center}
+.rooms{padding:24px 0 var(--section-padding)}
+.room{display:grid;grid-template-columns:250px 1fr;gap:48px;padding:56px 0;border-top:1px solid #eceee6;scroll-margin-top:72px}
+.room__head{position:sticky;top:96px;align-self:start}
+.room__num{font-size:var(--body-sm);font-weight:700;color:var(--color-gold-deep);letter-spacing:.1em;margin:0 0 6px}
+.room__head h2{font-size:var(--heading-lg);margin-bottom:6px}
+.room__count{font-size:var(--body-sm);color:var(--color-muted);margin:0 0 14px}
+.room__top{font-size:14px;font-weight:600}
+.ba-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
+.ba--wide{grid-column:1/-1}
+.hint{font-size:14px;color:var(--color-muted);margin:14px 0 0;display:flex;gap:8px;align-items:center}
+@media (max-width:900px){
+  .page-head{padding:128px 0 40px}
+  .room{grid-template-columns:1fr;gap:20px;padding:40px 0}
+  .room__head{position:static}
+}
+@media (max-width:560px){
+  .page-head .script{font-size:38px}
+  .ba-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<header class="site-header solid" id="nav">
+  <div class="container">
+    <a class="brand" href="/" aria-label="Céline Knobloch — accueil">
+      <img src="assets/logo.svg" alt="Logo Céline Knobloch">
+      <span class="name">CÉLINE KNOBLOCH<span class="tagwrap"><span class="tag">Trier · Ranger · Optimiser</span></span></span>
+    </a>
+    <button class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="primary-nav">☰</button>
+    <nav class="nav" id="primary-nav" aria-label="Navigation principale">
+      <a href="/">Accueil</a>
+      <a href="/qui-suis-je">Qui suis-je ?</a>
+      <a href="/prestations-tarifs/">Prestations et Tarifs</a>
+      <a href="/realisations/" aria-current="page">Mes Réalisations</a>
+      <a class="btn btn--gold" href="/contact">Contactez-moi</a>
+    </nav>
+  </div>
+</header>
+<main>
+  <section class="page-head" id="pieces" data-section="page-head" data-intent="orient" data-layout="stacked">
+    <div class="container">
+      <span class="script">Avant, après</span>
+      <h1>Mes Réalisations</h1>
+      <p class="lead">Les photos présentées sur ce site sont authentiques et donnent un aperçu de mon travail.</p>
+      <p class="meta">22 transformations · 9 pièces</p>
+      <nav aria-label="Pièces">
+        <ul class="room-index">
+<li><a href="#cellier">Cellier <span class="n">2</span></a></li>
+<li><a href="#cuisine">Cuisine <span class="n">5</span></a></li>
+<li><a href="#dressing">Dressing <span class="n">4</span></a></li>
+<li><a href="#chambre">Chambre <span class="n">1</span></a></li>
+<li><a href="#salle-de-bain">Salle de bain <span class="n">3</span></a></li>
+<li><a href="#atelier">Atelier <span class="n">3</span></a></li>
+<li><a href="#placard-mural">Placard mural <span class="n">1</span></a></li>
+<li><a href="#chambres-damis">Chambres d'amis <span class="n">2</span></a></li>
+<li><a href="#bureau">Bureau <span class="n">1</span></a></li>
+        </ul>
+      </nav>
+      <p class="hint">↔ Faites glisser sur chaque photo pour comparer avant et après.</p>
+    </div>
+  </section>
+  <div class="rooms"><div class="container">
+<section class="room" id="cellier" data-section="room-cellier" data-intent="proof" data-layout="split" data-items="2">
+  <div class="room__head">
+    <p class="room__num">01 / 09</p>
+    <h2>Cellier</h2>
+    <p class="room__count">2 transformations</p>
+    <a class="room__top" href="#pieces">↑ Toutes les pièces</a>
+  </div>
+  <div class="ba-grid">
+<figure class="ba ba--wide" data-room="cellier">
+  <div class="ba__frame" style="--ar:2048/1638">
+    <img class="ba__after" src="assets/realisations/cellier-1-after.webp" alt="Cellier — après le rangement">
+    <img class="ba__before" src="assets/realisations/cellier-1-before.webp" alt="Cellier — avant le rangement">
+    <span class="ba__line" aria-hidden="true"></span><span class="ba__knob" aria-hidden="true">‹›</span>
+    <span class="ba__tag ba__tag--before" aria-hidden="true">Avant</span><span class="ba__tag ba__tag--after" aria-hidden="true">Après</span>
+    <input class="ba__range" type="range" min="0" max="100" value="50" aria-label="Comparer avant / après — Cellier — 1/2">
+  </div>
+</figure>
+<figure class="ba " data-room="cellier">
+  <div class="ba__frame" style="--ar:1536/2048">
+    <img class="ba__after" src="assets/realisations/cellier-2-after.webp" alt="Cellier — après le rangement">
+    <img class="ba__before" src="assets/realisations/cellier-2-before.webp" alt="Cellier — avant le rangement">
+    <span class="ba__line" aria-hidden="true"></span><span class="ba__knob" aria-hidden="true">‹›</span>
+    <span class="ba__tag ba__tag--before" aria-hidden="true">Avant</span><span class="ba__tag ba__tag--after" aria-hidden="true">Après</span>
+    <input class="ba__range" type="range" min="0" max="100" value="50" aria-label="Comparer avant / après — Cellier — 2/2">
+  </div>
+</figure>
+  </div>
+</section>
+<section class="room" id="cuisine" data-section="room-cuisine" data-intent="proof" data-layout="split" data-items="5">
+  <div class="room__head">
+    <p class="room__num">02 / 09</p>
+    <h2>Cuisine</h2>
+    <p class="room__count">5 transformations</p>
+    <a class="room__top" href="#pieces">↑ Toutes les pièces</a>
+  </div>
+  <div class="ba-grid">
+<figure class="ba " data-room="cuisine">
+  <div class="ba__frame" style="--ar:1536/2048">
+    <img class="ba__after" src="assets/realisations/cuisine-1-after.webp" alt="Cuisine — après le rangement" loading="lazy">
+    <img class="ba__before" src="assets/realisations/cuisine-1-before.webp" alt="Cuisine — avant le rangement" loading="lazy">
+    <span class="ba__line" aria-hidden="true"></span><span class="ba__knob" aria-hidden="true">‹›</span>
+    <span class="ba__tag ba__tag--before" aria-hidden="true">Avant</span><span class="ba__tag ba__tag--after" aria-hidden="true">Après</span>
+    <input class="ba__range" type="range" min="0" max="100" value="50" aria-label="Comparer avant / après — Cuisine — 1/5">
+  </div>
+</figure>
+<figure class="ba " data-room="cuisine">
+  <div class="ba__frame" style="--ar:1536/2048">
+    <img class="ba__after" src="assets/realisations/cuisine-2-after.webp" alt="Cuisine — après le rangement" loading="lazy">
+    <img class="ba__before" src="assets/realisations/cuisine-2-before.webp" alt="Cuisine — avant le rangement" loading="lazy">
+    <span class="ba__line" aria-hidden="true"></span><span class="ba__knob" aria-hidden="true">‹›</span>
+    <span class="ba__tag ba__tag--before" aria-hidden="true">Avant</span><span class="ba__tag ba__tag--after" aria-hidden="true">Après</span>
+    <input class="ba__range" type="range" min="0" max="100" value="50" aria-label="Comparer avant / après — Cuisine — 2/5">
+  </div>
+</figure>
+<figure class="ba " data-room="cuisine">
+  <div class="ba__frame" style="--ar:1536/2048">
+    <img class="ba__after" src="assets/realisations/cuisine-3-after.webp" alt="Cuisine — après le rangement" loading="lazy">
+    <img class="ba__before" src="assets/realisations/cuisine-3-before.webp" alt="Cuisine — avant le rangement" loading="lazy">
+    <span class="ba__line" aria-hidden="true"></span><span class="ba__knob" aria-hidden="true">‹›</span>
+    <span class="ba__tag ba__tag--before" aria-hidden="true">Avant</span><span class="ba__tag ba__tag--after" aria-hidden="true">Après</span>
+    <input class="ba__range" type="range" min="0" max="100" value="50" aria-label="Comparer avant / après — Cuisine — 3/5">
+  </div>
+</figure>
+<figure class="ba " data-room="cuisine">
+  <div class="ba__frame" style="--ar:1536/2048">
+    <img class="ba__after" src="assets/realisations/cuisine-4-after.webp" alt="Cuisine — après le rangement" loading="lazy">
+    <img class="ba__before" src="assets/realisations/cuisine-4-before.webp" alt="Cuisine — avant le rangement" loading="lazy">
+    <span class="ba__line" aria-hidden="true"></span><span class="ba__knob" aria-hidden="true">‹›</span>
+    <span class="ba__tag ba__tag--before" aria-hidden="true">Avant</span><span class="ba__tag ba__tag--after" aria-hidden="true">Après</span>
+    <input class="ba__range" type="range" min="0" max="100" value="50" aria-label="Comparer avant / après — Cuisine — 4/5">
+  </div>
+</figure>
+<figure class="ba " data-room="cuisine">
+  <div class="ba__frame" style="--ar:1536/2048">
+    <img class="ba__after" src="assets/realisations/cuisine-5-after.webp" alt="Cuisine — après le rangement" loading="lazy">
+    <img class="ba__before" src="assets/realisations/cuisine-5-before.webp" alt="Cuisine — avant le rangement" loading="lazy">
+    <span class="ba__line" aria-hidden="true"></span><span class="ba__knob" aria-hidden="true">‹›</span>
+    <span class="ba__tag ba__tag--before" aria-hidden="true">Avant</span><span class="ba__tag ba__tag--after" aria-hidden="true">Après</span>
+    <input class="ba__range" type="range" min="0" max="100" value="50" aria-label="Comparer avant / après — Cuisine — 5/5">
+  </div>
+</figure>
+  </div>
+</section>
+<section class="room" id="dressing" data-section="room-dressing" data-intent="proof" data-layout="split" data-items="4">
+  <div class="room__head">
+    <p class="room__num">03 / 09</p>
+    <h2>Dressing</h2>
+    <p class="room__count">4 transformations</p>
+    <a class="room__top" href="#pieces">↑ Toutes les pièces</a>
+  </div>
+  <div class="ba-grid">
+<figure class="ba " data-room="dressing">
+  <div class="ba__frame" style="--ar:1536/2048">
+    <img class="ba__after" src="assets/realisations/dressing-1-after.webp" alt="Dressing — après le rangement" loading="lazy">
+    <img class="ba__before" src="assets/realisations/dressing-1-before.webp" alt="Dressing — avant le rangement" loading="lazy">
+    <span class="ba__line" aria-hidden="true"></span><span class="ba__knob" aria-hidden="true">‹›</span>
+    <span class="ba__tag ba__tag--before" aria-hidden="true">Avant</span><span class="ba__tag ba__tag--after" aria-hidden="true">Après</span>
+    <input class="ba__range" type="range" min="0" max="100" value="50" aria-label="Comparer avant / après — Dressing — 1/4">
+  </div>
+</figure>
+<figure class="ba " data-room="dressing">
+  <div class="ba__frame" style="--ar:1536/2048">
+    <img class="ba__after" src="assets/realisations/dressing-2-after.webp" alt="Dressing — après le rangement" loading="lazy">
+    <img class="ba__before" src="assets/realisations/dressing-2-before.webp" alt="Dressing — avant le rangement" loading="lazy">
+    <span class="ba__line" aria-hidden="true"></span><span class="ba__knob" aria-hidden="true">‹›</span>
+    <span class="ba__tag ba__tag--before" aria-hidden="true">Avant</span><span class="ba__tag ba__tag--after" aria-hidden="true">Après</span>
+    <input class="ba__range" type="range" min="0" max="100" value="50" aria-label="Comparer avant / après — Dressing — 2/4">
+  </div>
+</figure>
+<figure class="ba " data-room="dressing">
+  <div class="ba__frame" style="--ar:1362/2048">
+    <img class="ba__after" src="assets/realisations/dressing-3-after.webp" alt="Dressing — après le rangement" loading="lazy">
+    <img class="ba__before" src="assets/realisations/dressing-3-before.webp" alt="Dressing — avant le rangement" loading="lazy">
+    <span class="ba__line" aria-hidden="true"></span><span class="ba__knob" aria-hidden="true">‹›</span>
+    <span class="ba__tag ba__tag--before" aria-hidden="true">Avant</span><span class="ba__tag ba__tag--after" aria-hidden="true">Après</span>
+    <input class="ba__range" type="range" min="0" max="100" value="50" aria-label="Comparer avant / après — Dressing — 3/4">
+  </div>
+</figure>
+<figure class="ba ba--wide" data-room="dressing">
+  <div class="ba__frame" style="--ar:2048/1365">
+    <img class="ba__after" src="assets/realisations/dressing-4-after.webp" alt="Dressing — après le rangement" loading="lazy">
+    <img class="ba__before" src="assets/realisations/dressing-4-before.webp" alt="Dressing — avant le rangement" loading="lazy">
+    <span class="ba__line" aria-hidden="true"></span><span class="ba__knob" aria-hidden="true">‹›</span>
+    <span class="ba__tag ba__tag--before" aria-hidden="true">Avant</span><span class="ba__tag ba__tag--after" aria-hidden="true">Après</span>
+    <input class="ba__range" type="range" min="0" max="100" value="50" aria-label="Comparer avant / après — Dressing — 4/4">
+  </div>
+</figure>
+  </div>
+</section>
+<section class="room" id="chambre" data-section="room-chambre" data-intent="proof" data-layout="split" data-items="1">
+  <div class="room__head">
+    <p class="room__num">04 / 09</p>
+    <h2>Chambre</h2>
+    <p class="room__count">1 transformation</p>
+    <a class="room__top" href="#pieces">↑ Toutes les pièces</a>
+  </div>
+  <div class="ba-grid">
+<figure class="ba " data-room="chambre">
+  <div class="ba__frame" style="--ar:1536/2048">
+    <img class="ba__after" src="assets/realisations/chambre-1-after.webp" alt="Chambre — après le rangement" loading="lazy">
+    <img class="ba__before" src="assets/realisations/chambre-1-before.webp" alt="Chambre — avant le rangement" loading="lazy">
+    <span class="ba__line" aria-hidden="true"></span><span class="ba__knob" aria-hidden="true">‹›</span>
+    <span class="ba__tag ba__tag--before" aria-hidden="true">Avant</span><span class="ba__tag ba__tag--after" aria-hidden="true">Après</span>
+    <input class="ba__range" type="range" min="0" max="100" value="50" aria-label="Comparer avant / après — Chambre">
+  </div>
+</figure>
+  </div>
+</section>
+<section class="room" id="salle-de-bain" data-section="room-salle-de-bain" data-intent="proof" data-layout="split" data-items="3">
+  <div class="room__head">
+    <p class="room__num">05 / 09</p>
+    <h2>Salle de bain</h2>
+    <p class="room__count">3 transformations</p>
+    <a class="room__top" href="#pieces">↑ Toutes les pièces</a>
+  </div>
+  <div class="ba-grid">
+<figure class="ba " data-room="salle-de-bain">
+  <div class="ba__frame" style="--ar:1536/2048">
+    <img class="ba__after" src="assets/realisations/salle-de-bain-1-after.webp" alt="Salle de bain — après le rangement" loading="lazy">
+    <img class="ba__before" src="assets/realisations/salle-de-bain-1-before.webp" alt="Salle de bain — avant le rangement" loading="lazy">
+    <span class="ba__line" aria-hidden="true"></span><span class="ba__knob" aria-hidden="true">‹›</span>
+    <span class="ba__tag ba__tag--before" aria-hidden="true">Avant</span><span class="ba__tag ba__tag--after" aria-hidden="true">Après</span>
+    <input class="ba__range" type="range" min="0" max="100" value="50" aria-label="Comparer avant / après — Salle de bain — 1/3">
+  </div>
+</figure>
+<figure class="ba " data-room="salle-de-bain">
+  <div class="ba__frame" style="--ar:1536/2048">
+    <img class="ba__after" src="assets/realisations/salle-de-bain-2-after.webp" alt="Salle de bain — après le rangement" loading="lazy">
+    <img class="ba__before" src="assets/realisations/salle-de-bain-2-before.webp" alt="Salle de bain — avant le rangement" loading="lazy">
+    <span class="ba__line" aria-hidden="true"></span><span class="ba__knob" aria-hidden="true">‹›</span>
+    <span class="ba__tag ba__tag--before" aria-hidden="true">Avant</span><span class="ba__tag ba__tag--after" aria-hidden="true">Après</span>
+    <input class="ba__range" type="range" min="0" max="100" value="50" aria-label="Comparer avant / après — Salle de bain — 2/3">
+  </div>
+</figure>
+<figure class="ba ba--wide" data-room="salle-de-bain">
+  <div class="ba__frame" style="--ar:2048/1365">
+    <img class="ba__after" src="assets/realisations/salle-de-bain-3-after.webp" alt="Salle de bain — après le rangement" loading="lazy">
+    <img class="ba__before" src="assets/realisations/salle-de-bain-3-before.webp" alt="Salle de bain — avant le rangement" loading="lazy">
+    <span class="ba__line" aria-hidden="true"></span><span class="ba__knob" aria-hidden="true">‹›</span>
+    <span class="ba__tag ba__tag--before" aria-hidden="true">Avant</span><span class="ba__tag ba__tag--after" aria-hidden="true">Après</span>
+    <input class="ba__range" type="range" min="0" max="100" value="50" aria-label="Comparer avant / après — Salle de bain — 3/3">
+  </div>
+</figure>
+  </div>
+</section>
+<section class="room" id="atelier" data-section="room-atelier" data-intent="proof" data-layout="split" data-items="3">
+  <div class="room__head">
+    <p class="room__num">06 / 09</p>
+    <h2>Atelier</h2>
+    <p class="room__count">3 transformations</p>
+    <a class="room__top" href="#pieces">↑ Toutes les pièces</a>
+  </div>
+  <div class="ba-grid">
+<figure class="ba " data-room="atelier">
+  <div class="ba__frame" style="--ar:1536/2048">
+    <img class="ba__after" src="assets/realisations/atelier-1-after.webp" alt="Atelier — après le rangement" loading="lazy">
+    <img class="ba__before" src="assets/realisations/atelier-1-before.webp" alt="Atelier — avant le rangement" loading="lazy">
+    <span class="ba__line" aria-hidden="true"></span><span class="ba__knob" aria-hidden="true">‹›</span>
+    <span class="ba__tag ba__tag--before" aria-hidden="true">Avant</span><span class="ba__tag ba__tag--after" aria-hidden="true">Après</span>
+    <input class="ba__range" type="range" min="0" max="100" value="50" aria-label="Comparer avant / après — Atelier — 1/3">
+  </div>
+</figure>
+<figure class="ba " data-room="atelier">
+  <div class="ba__frame" style="--ar:1536/2048">
+    <img class="ba__after" src="assets/realisations/atelier-2-after.webp" alt="Atelier — après le rangement" loading="lazy">
+    <img class="ba__before" src="assets/realisations/atelier-2-before.webp" alt="Atelier — avant le rangement" loading="lazy">
+    <span class="ba__line" aria-hidden="true"></span><span class="ba__knob" aria-hidden="true">‹›</span>
+    <span class="ba__tag ba__tag--before" aria-hidden="true">Avant</span><span class="ba__tag ba__tag--after" aria-hidden="true">Après</span>
+    <input class="ba__range" type="range" min="0" max="100" value="50" aria-label="Comparer avant / après — Atelier — 2/3">
+  </div>
+</figure>
+<figure class="ba " data-room="atelier">
+  <div class="ba__frame" style="--ar:1536/2048">
+    <img class="ba__after" src="assets/realisations/atelier-3-after.webp" alt="Atelier — après le rangement" loading="lazy">
+    <img class="ba__before" src="assets/realisations/atelier-3-before.webp" alt="Atelier — avant le rangement" loading="lazy">
+    <span class="ba__line" aria-hidden="true"></span><span class="ba__knob" aria-hidden="true">‹›</span>
+    <span class="ba__tag ba__tag--before" aria-hidden="true">Avant</span><span class="ba__tag ba__tag--after" aria-hidden="true">Après</span>
+    <input class="ba__range" type="range" min="0" max="100" value="50" aria-label="Comparer avant / après — Atelier — 3/3">
+  </div>
+</figure>
+  </div>
+</section>
+<section class="room" id="placard-mural" data-section="room-placard-mural" data-intent="proof" data-layout="split" data-items="1">
+  <div class="room__head">
+    <p class="room__num">07 / 09</p>
+    <h2>Placard mural</h2>
+    <p class="room__count">1 transformation</p>
+    <a class="room__top" href="#pieces">↑ Toutes les pièces</a>
+  </div>
+  <div class="ba-grid">
+<figure class="ba " data-room="placard-mural">
+  <div class="ba__frame" style="--ar:1536/2048">
+    <img class="ba__after" src="assets/realisations/placard-mural-1-after.webp" alt="Placard mural — après le rangement" loading="lazy">
+    <img class="ba__before" src="assets/realisations/placard-mural-1-before.webp" alt="Placard mural — avant le rangement" loading="lazy">
+    <span class="ba__line" aria-hidden="true"></span><span class="ba__knob" aria-hidden="true">‹›</span>
+    <span class="ba__tag ba__tag--before" aria-hidden="true">Avant</span><span class="ba__tag ba__tag--after" aria-hidden="true">Après</span>
+    <input class="ba__range" type="range" min="0" max="100" value="50" aria-label="Comparer avant / après — Placard mural">
+  </div>
+</figure>
+  </div>
+</section>
+<section class="room" id="chambres-damis" data-section="room-chambres-damis" data-intent="proof" data-layout="split" data-items="2">
+  <div class="room__head">
+    <p class="room__num">08 / 09</p>
+    <h2>Chambres d'amis</h2>
+    <p class="room__count">2 transformations</p>
+    <a class="room__top" href="#pieces">↑ Toutes les pièces</a>
+  </div>
+  <div class="ba-grid">
+<figure class="ba ba--wide" data-room="chambres-damis">
+  <div class="ba__frame" style="--ar:2048/1365">
+    <img class="ba__after" src="assets/realisations/chambres-damis-1-after.webp" alt="Chambres d'amis — après le rangement" loading="lazy">
+    <img class="ba__before" src="assets/realisations/chambres-damis-1-before.webp" alt="Chambres d'amis — avant le rangement" loading="lazy">
+    <span class="ba__line" aria-hidden="true"></span><span class="ba__knob" aria-hidden="true">‹›</span>
+    <span class="ba__tag ba__tag--before" aria-hidden="true">Avant</span><span class="ba__tag ba__tag--after" aria-hidden="true">Après</span>
+    <input class="ba__range" type="range" min="0" max="100" value="50" aria-label="Comparer avant / après — Chambres d'amis — 1/2">
+  </div>
+</figure>
+<figure class="ba " data-room="chambres-damis">
+  <div class="ba__frame" style="--ar:1536/2048">
+    <img class="ba__after" src="assets/realisations/chambres-damis-2-after.webp" alt="Chambres d'amis — après le rangement" loading="lazy">
+    <img class="ba__before" src="assets/realisations/chambres-damis-2-before.webp" alt="Chambres d'amis — avant le rangement" loading="lazy">
+    <span class="ba__line" aria-hidden="true"></span><span class="ba__knob" aria-hidden="true">‹›</span>
+    <span class="ba__tag ba__tag--before" aria-hidden="true">Avant</span><span class="ba__tag ba__tag--after" aria-hidden="true">Après</span>
+    <input class="ba__range" type="range" min="0" max="100" value="50" aria-label="Comparer avant / après — Chambres d'amis — 2/2">
+  </div>
+</figure>
+  </div>
+</section>
+<section class="room" id="bureau" data-section="room-bureau" data-intent="proof" data-layout="split" data-items="1">
+  <div class="room__head">
+    <p class="room__num">09 / 09</p>
+    <h2>Bureau</h2>
+    <p class="room__count">1 transformation</p>
+    <a class="room__top" href="#pieces">↑ Toutes les pièces</a>
+  </div>
+  <div class="ba-grid">
+<figure class="ba " data-room="bureau">
+  <div class="ba__frame" style="--ar:1365/2048">
+    <img class="ba__after" src="assets/realisations/bureau-1-after.webp" alt="Bureau — après le rangement" loading="lazy">
+    <img class="ba__before" src="assets/realisations/bureau-1-before.webp" alt="Bureau — avant le rangement" loading="lazy">
+    <span class="ba__line" aria-hidden="true"></span><span class="ba__knob" aria-hidden="true">‹›</span>
+    <span class="ba__tag ba__tag--before" aria-hidden="true">Avant</span><span class="ba__tag ba__tag--after" aria-hidden="true">Après</span>
+    <input class="ba__range" type="range" min="0" max="100" value="50" aria-label="Comparer avant / après — Bureau">
+  </div>
+</figure>
+  </div>
+</section>
+  </div></div>
+<section class="contact" data-section="contact-cta" data-intent="drive action" data-layout="full-bleed" data-interactive="link">
+  <div class="container">
+    <span class="script" data-anim>Et si on commençait&nbsp;?</span>
+    <h2 data-anim>Prêt(e) pour une maison plus sereine&nbsp;?</h2>
+    <p data-anim>Parlons de votre projet, sans engagement. Le premier échange se fait par email ou téléphone, en toute simplicité.</p>
+    <div class="contact__row" data-anim>
+      <a class="btn btn--deep" href="mailto:contact@celinek.org">Contactez-moi</a>
+      <a class="contact__phone" href="tel:+33632731898">📞 06 32 73 18 98</a>
+    </div>
+    <p class="contact__more" data-anim><a href="/#process">Comment ça se passe&nbsp;?</a></p>
+  </div>
+</section>
+</main>
+<footer class="site-footer" data-section="footer" data-intent="wayfinding" data-layout="edge-to-edge">
+  <div class="container">
+    <div class="fcontact">
+      <span>© Céline Knobloch, 2025</span>
+      <a href="tel:+33632731898">Tél : 06 32 73 18 98</a>
+      <a href="mailto:contact@celinek.org">contact@celinek.org</a>
+    </div>
+    <div class="socials">
+      <a href="/" aria-label="Instagram"><img src="assets/instagram.svg" alt="Instagram"></a>
+      <a href="/" aria-label="Facebook"><img src="assets/facebook.svg" alt="Facebook"></a>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* mobile nav + condensing header (canon) */
+(function(){
+  var h=document.getElementById('nav'),b=h.querySelector('.nav-toggle');
+  b.addEventListener('click',function(){var o=h.classList.toggle('open');b.setAttribute('aria-expanded',o?'true':'false');});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&h.classList.contains('open')){h.classList.remove('open');b.setAttribute('aria-expanded','false');b.focus();}});
+  function s(){h.classList.toggle('scrolled',window.scrollY>40);} s(); window.addEventListener('scroll',s,{passive:true});
+})();
+/* before/after comparison: range drives --pos */
+document.querySelectorAll('.ba__frame').forEach(function(f){
+  var r=f.querySelector('.ba__range'); if(!r) return;
+  function u(){f.style.setProperty('--pos',r.value+'%');} r.addEventListener('input',u); u();
+});
+</script>
+</body>
+</html>
