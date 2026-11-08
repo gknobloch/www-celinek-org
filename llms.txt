@@ -1,0 +1,7 @@
+# Celinek.org
+
+> Official website and digital resources for Celinek.org.
+
+## Primary Resources
+- [Home](https://www.celinek.org/)
+- [GitHub Repository](https://github.com/gknobloch/www-celinek-org)
